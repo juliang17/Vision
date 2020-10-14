@@ -1,0 +1,81 @@
+
+body {
+    background: white;
+}
+.principal {
+    width: 900px;
+    height: 1000px;
+    margin: auto;   
+}
+header {
+    width: 900px;
+    height:100px;
+}
+.titulo {
+    float:left;
+    margin-top:10px;
+    margin: 10px;
+    color: black;
+}
+.sesion{
+    background: black;
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    float:right;
+    margin-top:10px;
+     margin: 10px;
+}
+.sesion li{
+ display:inline-block;
+}
+.sesion li a {
+    padding: 10px 20px;
+    display:inline-block;
+    color:white;
+}
+.sesion li a:hover {
+    background: white;
+    color: black;
+}
+.menu {
+    background: black;
+    width: 600px;
+    height: auto;
+    border: 1px solid black;
+    margin-left: 150px;
+    margin-top:10px;
+}
+.menu li {
+    display:inline-block;
+}
+.menu li a {
+    padding: 10px 20px;
+    display:inline-block;
+    color: white;
+}
+.menu li a:hover {
+    background: white;
+    color: black;
+}
+.novedades {
+    background: black;
+    width:400px;
+    height: auto;
+    margin-top: 15px;
+    display:inline-block;
+    border: 1px solid black;
+    margin: 15px;
+    color: white;
+}
+.direccion {
+    background: black;
+    width:400px;
+    height: auto;
+    float:right;
+    margin-top: 15px;
+    display: inline-block;
+    border: 1px solid black;
+    margin: 15px;
+    color: white;
+}

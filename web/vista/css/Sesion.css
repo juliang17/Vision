@@ -1,0 +1,14 @@
+form {
+    width:30%;
+    border:solid #ccc;
+    margin:20px;
+    padding:20px;
+}
+label {
+    font-size:15px;
+    
+}
+input, textarea {
+    border:1px solid #ccc;
+    
+}
