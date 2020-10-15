@@ -27,40 +27,40 @@ public class Registrarusuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String numerodocusuarios = request.getParameter("Identificacion");
-        String nombreusuarios = request.getParameter("nombres");
-        String apellidousuarios = request.getParameter("apellidos");
-        String correousuarios = request.getParameter("correo");
-        String telefonousuarios = request.getParameter("telefono");
-        String direccionusuario = request.getParameter("direccion");
-        String contraseñausuario = request.getParameter("Password");
-        String tipo_documento_idtipodoc = request.getParameter("tipod");
-        String roles_idroles = request.getParameter("roles");
-        String genero_idgenero = request.getParameter("genero");
-        String estado_usuario_idestadousuario = request.getParameter("estado");
+        String Identificacion = request.getParameter("numerodocusuarios");
+        String  nombres = request.getParameter("nombreusuarios");
+        String apellidos = request.getParameter("apellidousuarios");
+        String correo = request.getParameter("correousuarios");
+        String telefono = request.getParameter("telefonousuarios");
+        String direccion = request.getParameter("direccionusuario");
+        String contraseña = request.getParameter("contraseñausuario");
+        String tipodocumento = request.getParameter("idtipodoc");
+        String roles = request.getParameter("idroles");
+        String genero = request.getParameter("idgenero");
+        String estado = request.getParameter("idestadousuario");
         String BanderaEstado = request.getParameter("BanderaRegistro");
 
-        int Identificacion = Integer.parseInt(numerodocusuarios);
-        int telefono = Integer.parseInt(telefonousuarios);
-        int tipod = Integer.parseInt(tipo_documento_idtipodoc);
-        int roles = Integer.parseInt(roles_idroles);
-        int genero = Integer.parseInt(genero_idgenero);
-        int estado = Integer.parseInt(estado_usuario_idestadousuario);
+        int  numerodocusuarios= Integer.parseInt(Identificacion);
+        int telefonousuarios = Integer.parseInt(telefono);
+        int idtipodoc = Integer.parseInt(tipodocumento);
+        int idroles = Integer.parseInt(roles);
+        int idgenero = Integer.parseInt(genero);
+        int idestadousuario = Integer.parseInt(estado);
 
         usuariosDAO misusuariosDAO = new usuariosDAO();
         usuarios misusuarios = new usuarios();
 
-        misusuarios.setnumerodocusuario(Identificacion);
-        misusuarios.setnombreusuarios(nombreusuarios);
-        misusuarios.setapellidousuarios(apellidousuarios);
-        misusuarios.setcorreousuarios(correousuarios);
-        misusuarios.settelefonousuarios(telefono);
-        misusuarios.setdireccionusuario(direccionusuario);
-        misusuarios.setcontraseñausuario(contraseñausuario);
-        misusuarios.settipo_documento_idtipodoc(tipod);
-        misusuarios.setroles_idroles(roles);
-        misusuarios.setgenero_idgenero(genero);
-        misusuarios.setestado_usuario_idestadousuario(estado);
+        misusuarios.setnumerodocusuario(numerodocusuarios);
+        misusuarios.setnombreusuarios(nombres);
+        misusuarios.setapellidousuarios(apellidos);
+        misusuarios.setcorreousuarios(correo);
+        misusuarios.settelefonousuarios(telefonousuarios);
+        misusuarios.setdireccionusuario(direccion);
+        misusuarios.setcontraseñausuario(contraseña);
+        misusuarios.settipo_documento_idtipodoc(idtipodoc);
+        misusuarios.setroles_idroles(idroles);
+        misusuarios.setgenero_idgenero(idgenero);
+        misusuarios.setestado_usuario_idestadousuario(idestadousuario);
 
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("correcto")) {
