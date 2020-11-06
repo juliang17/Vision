@@ -16,7 +16,7 @@ public class pruebaadicionartipo_documento {
         String Nombretipodoc = "";
 
         System.out.println("Digite un tipo de documento");
-        Nombretipodoc = leer.next();
+        Nombretipodoc = leer.nextLine();
 
         mitipodoc.setdescripciontipodoc(Nombretipodoc);
         String mirespuesta = mitipodocDAO.adicionartipo_documento(mitipodoc);

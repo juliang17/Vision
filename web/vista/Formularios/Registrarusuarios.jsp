@@ -22,7 +22,7 @@
     </head>
     <body>
         <h1>Registro de usuarios</h1>
-        <form form action="/VISION/Registrarusuarios" method= "post" onsubmit="return validacionReg()">
+        <form form action="Registrarusuarios" method= "post" onsubmit="return validacionReg()">
             <div class="form-group">
                 <label 
                     for="Identificacion"><strong>Identificacion</strong></label>
@@ -62,17 +62,18 @@
                 <br>                        <br> 
                 <label 
                     for="contraseña"><strong>contraseña</strong></label>
-                <input id="txt_contraseñausuario_Reg" type="text" class="form-control"
+                <input id="txt_contraseñausuario_Reg" type="password" class="form-control"
                        value="" placeholder="Digite su contraseña" 
                        name="contraseñausuario">
                 <br>                        <br> 
                 <label for="idtipodoc"><strong>Tipo de documento</strong></label>
-                <input id="txt_idtipodoc_Reg" type="text"  class="form-control d-none"
-                       name="idtipodoc"> <br> <br>
+                <input id="txt_idtipodoc_Reg"  type="text" class="form-control d-none"
+                       name="idtipodoc">
+                 <br> <br>
                 <%
                     tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
                     ArrayList<tipo_documento> listatipodoc = mitipodocDAO.Consultarlistadotipo_documento("");
-                    out.println("<select class='form-control' id='Selectdescripciontipodoc' size='1'>");
+                    out.println("<select class='form-control ' id='Selectdescripciontipodoc' size='1'>");
                     out.println("<option onclick='setidtipodoc(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                     for (tipo_documento T : listatipodoc) {
                         out.println("<option onclick='setidtipodoc(\"" + T.getidtipodoc() + "\")'>" + T.getdescripciontipodoc() + "</option>");
@@ -82,7 +83,8 @@
                 <br> <br>
                 <label for="idroles"><strong>Rol</strong></label>
                 <input id="txt_idroles_Reg" type="text" class="form-control d-none"
-                       name="idroles"> <br> <br>
+                       name="idroles">
+                 <br> <br>
                 <%
                     rolesDAO misrolesDAO = new rolesDAO();
                     ArrayList<roles> milistaroles = misrolesDAO.Consultarlistadoroles("");
@@ -96,7 +98,8 @@
                 <br> <br>
                 <label for="idgenero"><strong>Genero</strong></label>
                 <input id="txt_idgenero_Reg" type="text" class="form-control d-none"
-                       name="idgenero"> <br> <br>
+                       name="idgenero">
+                 <br> <br>
                 <%
                     GeneroDAO migeneroDAO = new GeneroDAO();
                     ArrayList<genero> milistagenero = migeneroDAO.Consultarlistadogenero("");
@@ -110,7 +113,8 @@
                 <br> <br> 
                 <label for="idestadousuario"><strong>Estado usuario</strong></label>
                 <input id="txt_idestadousuario_Reg" type="text" class="form-control d-none"
-                       name="idestadousuario"> <br> <br>
+                       name="idestadousuario">
+                 <br> <br>
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
                     ArrayList<estado_usuario> milistaestado = miestadousuarioDAO.Consultarlistadoestado_usuario("");
