@@ -1,5 +1,5 @@
-
 package Controlador;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.categorias;
 
-public class CATEGORIA_PRODUCTO_DAO {
-    
-    public String adicionarcategorias (categorias CATEGORIAS) {
+public class categoriasDAO {
+
+    public String adicionarcategorias(categorias CATEGORIAS) {
 
         String mirespuesta;
         Conexion miconexion = new Conexion();
@@ -47,10 +47,10 @@ public class CATEGORIA_PRODUCTO_DAO {
         try {
             String Query = "update categorias set idcategorias=?, descripcioncategorias=? where idcategorias=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, CATEGORIAS.getIdcategorias());            
+            sentencia.setInt(1, CATEGORIAS.getIdcategorias());
             sentencia.setString(2, CATEGORIAS.getDescripcioncategorias());
             sentencia.setInt(3, CATEGORIAS.getIdcategorias());
-            
+
             sentencia.executeUpdate();
 
         } catch (Exception ex) {
@@ -125,11 +125,11 @@ public class CATEGORIA_PRODUCTO_DAO {
         PreparedStatement sentencia;
         try {
             String Query = " delete from categorias where idcategorias = ? and descripcioncategorias = ?;";
-            
+
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, CATEGORIAS.getIdcategorias());            
+            sentencia.setInt(1, CATEGORIAS.getIdcategorias());
             sentencia.setString(2, CATEGORIAS.getDescripcioncategorias());
-            
+
             mirespuesta = "";
         } catch (Exception ex) {
             mirespuesta = ex.getMessage();
@@ -137,5 +137,5 @@ public class CATEGORIA_PRODUCTO_DAO {
         }
         return mirespuesta;
     }
-    
+
 }

@@ -1,5 +1,6 @@
 
 public class categorias {
+
     private int idcategorias;
     private String descripcioncategorias;
 
@@ -11,6 +12,4 @@ public class categorias {
         return descripcioncategorias;
     }
 
-    
-    
 }
