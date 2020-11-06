@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadogenero {
 
         GeneroDAO migeneroDAO = new GeneroDAO();
         ArrayList<genero> migenero = new ArrayList<genero>();
-        migenero = migeneroDAO.Consultarlistadogenero(' ', "");
+        migenero = migeneroDAO.Consultarlistadogenero("");
 
         int size = migenero.size();
         System.out.println("<table border=\"1\"><tr><td>idgenero</td><td>descripciongenero</td>");

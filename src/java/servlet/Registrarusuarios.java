@@ -40,7 +40,7 @@ public class Registrarusuarios extends HttpServlet {
         String estado = request.getParameter("idestadousuario");
         String BanderaEstado = request.getParameter("BanderaRegistro");
 
-        int  numerodocusuarios= Integer.parseInt(Identificacion);
+        int numerodocusuarios= Integer.parseInt(Identificacion);
         int telefonousuarios = Integer.parseInt(telefono);
         int idtipodoc = Integer.parseInt(tipodocumento);
         int idroles = Integer.parseInt(roles);

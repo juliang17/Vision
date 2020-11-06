@@ -78,7 +78,7 @@ public class estado_usuarioDAO {
         return miestadousuario;
     }
 
-    public ArrayList<estado_usuario> Consultarlistadoestado_usuario(int idestadousuario, String descripcionestadousuario) {
+    public ArrayList<estado_usuario> Consultarlistadoestado_usuario(String Estado) {
         ArrayList<estado_usuario> milistaestado = new ArrayList<estado_usuario>();
         estado_usuario mitipoestado;
 
@@ -86,13 +86,10 @@ public class estado_usuarioDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idestadousuario);
-
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idestadousuario, descripcionestadousuario" + " from estado_usuario"
-                    + " where idestadousuario like '%" + idestadousuario + "%' "
-                    + " or (descripcionestadousuario) like ('%" + descripcionestadousuario + "%') ORDER BY idestadousuario; ";
+                    + " where idestadousuario like '%" + Estado + "%' ORDER BY idestadousuario; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitipoestado = new estado_usuario();

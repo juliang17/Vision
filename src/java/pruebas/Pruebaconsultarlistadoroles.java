@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadoroles {
 
         rolesDAO misrolesDAO = new rolesDAO();
         ArrayList<roles> misroles = new ArrayList<roles>();
-        misroles = misrolesDAO.Consultarlistadoroles(' ', "");
+        misroles = misrolesDAO.Consultarlistadoroles("");
 
         int size = misroles.size();
         System.out.println("<table border=\"1\"><tr><td>idroles</td><td>descripcionrol</td>");

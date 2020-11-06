@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadoestadousuario {
 
         estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
         ArrayList<estado_usuario> miestado = new ArrayList<estado_usuario>();
-        miestado = miestadousuarioDAO.Consultarlistadoestado_usuario(' ', "");
+        miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("");
 
         int size = miestado.size();
         System.out.println("<table border\"1\"><tr><td>idestadousuario</td><td>descripcionestadousuario</td>");

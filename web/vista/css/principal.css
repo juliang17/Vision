@@ -1,6 +1,5 @@
-
 body {
-    background: white;
+    background: url(https://www.asctimetables.com/sg_global/images/bg.jpg);
 }
 .principal {
     width: 900px;
@@ -18,7 +17,7 @@ header {
     color: black;
 }
 .sesion{
-    background: black;
+    
     width: auto;
     height: auto;
     border: 1px solid black;
@@ -29,17 +28,17 @@ header {
 .sesion li{
  display:inline-block;
 }
-.sesion li a {
+.sesion a {
     padding: 10px 20px;
     display:inline-block;
-    color:white;
+    color:black;
 }
 .sesion li a:hover {
-    background: white;
-    color: black;
+    background: black;
+    color: white;
 }
 .menu {
-    background: black;
+    
     width: 600px;
     height: auto;
     border: 1px solid black;
@@ -52,24 +51,24 @@ header {
 .menu li a {
     padding: 10px 20px;
     display:inline-block;
-    color: white;
-}
-.menu li a:hover {
-    background: white;
     color: black;
 }
-.novedades {
+.menu li a:hover {
     background: black;
+    color: white;
+}
+.novedades {
+    
     width:400px;
     height: auto;
     margin-top: 15px;
     display:inline-block;
     border: 1px solid black;
     margin: 15px;
-    color: white;
+    color: black;
 }
 .direccion {
-    background: black;
+    
     width:400px;
     height: auto;
     float:right;
@@ -77,5 +76,5 @@ header {
     display: inline-block;
     border: 1px solid black;
     margin: 15px;
-    color: white;
+    color: black;
 }

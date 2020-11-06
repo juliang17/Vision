@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadotipodedocumento {
 
         tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
         ArrayList<tipo_documento> mitipodoc = new ArrayList<tipo_documento>();
-        mitipodoc = mitipodocDAO.Consultarlistadotipo_documento(' ', "");
+        mitipodoc = mitipodocDAO.Consultarlistadotipo_documento("");
 
         int size = mitipodoc.size();
         System.out.println("<table border=\"1\"><tr><td>idtipodoc</td><td>descripciontipodoc></td>");

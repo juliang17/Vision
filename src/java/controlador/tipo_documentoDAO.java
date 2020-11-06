@@ -77,7 +77,7 @@ public class tipo_documentoDAO {
         return mitipodoc;
     }
 
-    public ArrayList<tipo_documento> Consultarlistadotipo_documento(int idtipodoc, String descripciontipodoc) {
+    public ArrayList<tipo_documento> Consultarlistadotipo_documento(String Tipodoc) {
         ArrayList<tipo_documento> listatipodoc = new ArrayList<tipo_documento>();
         tipo_documento mitipodoc;
 
@@ -85,13 +85,10 @@ public class tipo_documentoDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idtipodoc);
-
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idtipodoc, descripciontipodoc" + " from tipo_documento"
-                    + " where idtipodoc like '%" + idtipodoc + "%' "
-                    + " or (descripciontipodoc) like ('%" + descripciontipodoc + "%') ORDER BY idtipodoc; ";
+                    + " where idtipodoc like '%" + Tipodoc + "%' ORDER BY idtipodoc; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitipodoc = new tipo_documento();

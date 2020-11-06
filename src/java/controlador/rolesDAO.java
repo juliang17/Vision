@@ -76,7 +76,7 @@ public class rolesDAO {
         return misroles;
     }
 
-    public ArrayList<roles> Consultarlistadoroles(int idroles, String descripcionrol) {
+    public ArrayList<roles> Consultarlistadoroles(String ROL) {
         ArrayList<roles> milistaroles = new ArrayList<roles>();
         roles mitiporol;
 
@@ -84,13 +84,11 @@ public class rolesDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idroles);
 
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idroles, descripcionrol" + " from roles"
-                    + " where idroles like '%" + idroles + "%' "
-                    + " or (descripcionrol) like ('%" + descripcionrol + "%') ORDER BY idroles; ";
+                    + " where idroles like '%" + ROL + "%' ORDER BY idroles; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitiporol = new roles();

@@ -76,7 +76,7 @@ public class GeneroDAO {
         return migenero;
     }
 
-    public ArrayList<genero> Consultarlistadogenero(int idgenero, String descripciongenero) {
+    public ArrayList<genero> Consultarlistadogenero(String GENERO) {
         ArrayList<genero> milistagenero = new ArrayList<genero>();
         genero mitipogenero;
 
@@ -84,13 +84,10 @@ public class GeneroDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro" + idgenero);
-
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idgenero, descripciongenero " + " from genero "
-                    + " where idgenero like '%" + idgenero + "%' "
-                    + " or (descripciongenero) like ('%" + descripciongenero + "%') ORDER BY idgenero; ";
+                    + " where idgenero like '%" + GENERO + "%' ORDER BY idgenero; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitipogenero = new genero();
