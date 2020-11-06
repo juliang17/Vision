@@ -1,4 +1,3 @@
-
 package controlador;
 
 import java.sql.Connection;
@@ -8,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.tipo_doc_contable;
 
-public class tipodocDAO {
+public class tipo_doc_contableDAO {
 
     public String Adicionartipo_doc_contable(tipo_doc_contable tipoDocContable) {
 
@@ -128,7 +127,7 @@ public class tipodocDAO {
         }
         return listado_tipo_doc_contable;
     }
-    
+
     public String EliminarTipoDocContable(tipo_doc_contable TipoDocContable) {
 
         String miRespuesta;
@@ -149,13 +148,12 @@ public class tipodocDAO {
             miRespuesta = "";
 
         } catch (Exception ex) {
-            
+
             miRespuesta = ex.getMessage();
-            
+
             System.out.println("Ocurrio un error en EliminarTipoDocContable" + ex.getMessage());
         }
         return miRespuesta;
     }
-
 
 }
