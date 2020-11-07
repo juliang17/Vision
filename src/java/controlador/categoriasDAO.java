@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import modelo.categorias;
 
 public class categoriasDAO {
 
@@ -22,7 +21,7 @@ public class categoriasDAO {
             String Query = "insert categorias (descripcioncategorias)"
                     + "values (?)";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, CATEGORIAS.getDescripcioncategorias());
+            sentencia.setString(1, CATEGORIAS.getDescripcioncateogiras());
 
             sentencia.execute();
             mirespuesta = "";
@@ -76,7 +75,7 @@ public class categoriasDAO {
             while (rs.next()) {
                 micategorias = new categorias();
                 micategorias.setIdcategorias(rs.getInt(1));
-                micategorias.setDescripcioncategorias(rs.getString(2));
+                micategorias.setdescripcioncategorias(rs.getString(2));
 
             }
             return micategorias;
