@@ -1,14 +1,14 @@
-
 package Pruebas;
-import Controlador.CATEGORIA_PRODUCTO_DAO;
+
+import Controlador.categoriasDAO;
 import java.util.ArrayList;
 import modelo.categorias;
 
 public class pruebaListaCategorias {
 
     public static void main(String[] args) {
-        
-        CATEGORIA_PRODUCTO_DAO categorias_dao = new CATEGORIA_PRODUCTO_DAO();
+
+        categoriasDAO categorias_dao = new categoriasDAO();
         ArrayList<categorias> mi_categorias = new ArrayList<categorias>();
         mi_categorias = categorias_dao.listadocategorias(0, "");
 
@@ -25,5 +25,5 @@ public class pruebaListaCategorias {
 
         }
     }
-    
+
 }
