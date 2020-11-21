@@ -18,9 +18,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="../css/Sesion.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
+        <div class="Formulario">
         <h1>Registro de usuarios</h1>
         <form form action="Registrarusuarios" method= "post" onsubmit="return validacionReg()">
             <div class="form-group">
@@ -130,13 +132,10 @@
                     <input id="txt_Bandera_Reg" type="text" class="form-control" 
                            name="BanderaRegistro">
                 </div>
-                <input type="submit" class="btn btn_success btn_block 
-                       bg_warning" value="Registrar">
-                <input type="reset" class="btn btn_success btn_block 
-                       bg_warning" value="Borrar">
+                <input type="submit" class="boton" value="Registrar">
+                <input type="reset" class="boton" value="Borrar">
                 </html>
-
             </div>
-
         </form>
+           </div>     
     </body>
