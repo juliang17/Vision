@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Iniciosesion</servlet-name>
         <servlet-class>servlet.Iniciosesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registroDeUsuarios</servlet-name>
+        <servlet-class>servlet.registroDeUsuarios</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Iniciosesion</servlet-name>
         <url-pattern>/Iniciosesion</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>Registrarusuarios</servlet-name>
-        <servlet-class>servlet.Registrarusuarios</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>Registrarusuarios</servlet-name>
-        <url-pattern>/Registrarusuarios</url-pattern>
+        <servlet-name>registroDeUsuarios</servlet-name>
+        <url-pattern>/registroDeUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

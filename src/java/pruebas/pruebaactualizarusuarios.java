@@ -13,7 +13,7 @@ public class pruebaactualizarusuarios {
 
         Scanner leer = new Scanner(System.in);
 
-        int numerodocusuario = 0;
+        String numerodocusuario = "";
         String nombreusuarios = "";
         String apellidousuarios = "";
         String correousuarios = "";
@@ -26,7 +26,7 @@ public class pruebaactualizarusuarios {
         int estado_usuario_idestadousuario = 0;
 
         System.out.println("Digite su numero de documento");
-        numerodocusuario = leer.nextInt();
+        numerodocusuario = leer.nextLine();
         System.out.println("Digite sus nombres");
         nombreusuarios = leer.next();
         System.out.println("Digite sus apellidos");
@@ -48,7 +48,7 @@ public class pruebaactualizarusuarios {
         System.out.println("Digite su estado usuario");
         estado_usuario_idestadousuario = leer.nextInt();
         System.out.println("Digite su numero de documento");
-        numerodocusuario = leer.nextInt();
+        numerodocusuario = leer.nextLine();
 
         misusuarios.setnumerodocusuario(numerodocusuario);
         misusuarios.setnombreusuarios(nombreusuarios);
@@ -62,7 +62,7 @@ public class pruebaactualizarusuarios {
         misusuarios.setgenero_idgenero(genero_idgenero);
         misusuarios.setestado_usuario_idestadousuario(estado_usuario_idestadousuario);
 
-        misusuarios.setnumerodocusuario(2013542);
+        misusuarios.setnumerodocusuario("2013542");
         String mirespuesta = misusuariosDAO.Actualizarusuario(misusuarios);
         
         if (mirespuesta.length() == 0) {

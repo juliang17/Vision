@@ -22,7 +22,7 @@ public class usuariosDAO {
             String Query = "insert usuarios (numerodocusuario,nombreusuarios,apellidousuarios,correousuarios,telefonousuarios,direccionusuario,contraseñausuario,tipo_documento_idtipodoc,roles_idroles,genero_idgenero,estado_usuario_idestadousuario)"
                     + "values (?,?,?,?,?,?,?,?,?,?,?)";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, USUARIOS.getnumerodocusuario());
+            sentencia.setString(1, USUARIOS.getnumerodocusuario());
             sentencia.setString(2, USUARIOS.getnombreusuarios());
             sentencia.setString(3, USUARIOS.getapellidousuarios());
             sentencia.setString(4, USUARIOS.getcorreousuarios());
@@ -56,7 +56,7 @@ public class usuariosDAO {
         try {
             String Query = "update usuarios set numerodocusuario=?, nombreusuarios=?, apellidousuarios=?, correousuarios=?, telefonousuarios=?, direccionusuario=?, contraseñausuario=?, tipo_documento_idtipodoc=?, roles_idroles=?, genero_idgenero=?, estado_usuario_idestadousuario=? where numerodocusuario=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, USUARIOS.getnumerodocusuario());
+            sentencia.setString(1, USUARIOS.getnumerodocusuario());
             sentencia.setString(2, USUARIOS.getnombreusuarios());
             sentencia.setString(3, USUARIOS.getapellidousuarios());
             sentencia.setString(4, USUARIOS.getcorreousuarios());
@@ -67,7 +67,7 @@ public class usuariosDAO {
             sentencia.setInt(9, USUARIOS.getroles_idroles());
             sentencia.setInt(10, USUARIOS.getgenero_idgenero());
             sentencia.setInt(11, USUARIOS.getestado_usuario_idestadousuario());
-            sentencia.setInt(12, USUARIOS.getnumerodocusuario());
+            sentencia.setString(12, USUARIOS.getnumerodocusuario());
             sentencia.executeUpdate();
 
         } catch (Exception ex) {
@@ -93,7 +93,7 @@ public class usuariosDAO {
             while (rs.next()) {
                 misusuarios = new usuarios();
                 misusuarios.setidusuarios(rs.getInt(1));
-                misusuarios.setnumerodocusuario(rs.getInt(2));
+                misusuarios.setnumerodocusuario(rs.getString(2));
                 misusuarios.setnombreusuarios(rs.getString(3));
                 misusuarios.setapellidousuarios(rs.getString(4));
                 misusuarios.setcorreousuarios(rs.getString(5));
@@ -132,7 +132,7 @@ public class usuariosDAO {
             while (rs.next()) {
                 mitipousuario = new usuarios();
                 mitipousuario.setidusuarios(rs.getInt(1));
-                mitipousuario.setnumerodocusuario(rs.getInt(2));
+                mitipousuario.setnumerodocusuario(rs.getString(2));
                 mitipousuario.setnombreusuarios(rs.getString(3));
                 mitipousuario.setapellidousuarios(rs.getString(4));
                 mitipousuario.setcorreousuarios(rs.getString(5));
@@ -164,7 +164,7 @@ public class usuariosDAO {
             String Query = " delete from usuarios where numerodocusuario = ? and nombreusuarios = ? and apellidousuarios = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
             
-            sentencia.setInt(1, USUARIO.getnumerodocusuario());
+            sentencia.setString(1, USUARIO.getnumerodocusuario());
             sentencia.setString(2, USUARIO.getnombreusuarios());
             sentencia.setString(3, USUARIO.getapellidousuarios());
             sentencia.execute();

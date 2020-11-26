@@ -18,7 +18,7 @@ public class Pruebaadicionarusuarios {
         String Correo;
         String Direccion;
         String Password;
-        int Doc; 
+        String Doc; 
         int Telefono;
         int tDoc;
         int rol;
@@ -26,7 +26,7 @@ public class Pruebaadicionarusuarios {
         int estado;
 
         System.out.println("Digite su numero de documento");
-        Doc = leer.nextInt();
+        Doc = leer.nextLine();
         System.out.println("Digite sus nombres");
         Nombre = leer.next();
         System.out.println("Digite sus apellidos");

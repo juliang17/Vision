@@ -3,7 +3,7 @@ package modelo;
 public class usuarios {
 
     private int idusuarios;
-    private int numerodocusuario;
+    private String numerodocusuario;
     private String nombreusuarios;
     private String apellidousuarios;
     private String correousuarios;
@@ -23,11 +23,11 @@ public class usuarios {
         this.idusuarios = idusuarios;
     }
 
-    public int getnumerodocusuario() {
+    public String getnumerodocusuario() {
         return numerodocusuario;
     }
 
-    public void setnumerodocusuario(int numerodocusuario) {
+    public void setnumerodocusuario(String numerodocusuario) {
         this.numerodocusuario = numerodocusuario;
     }
 
