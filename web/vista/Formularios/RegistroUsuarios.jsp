@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
         <script src="vista/Javascript/validacionRegistrarUsuarios.js" type="text/javascript"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
         <h1>Registro de usuarios</h1>
-        <form action="/VISION/registroDeUsuarios" method="post" onsubmit="return RegistroUsuarios()">
+        <form action="NuevosUsuarios" method="post" onsubmit="return RegistroUsuarios()">
             <h5>Nombres </h5>
             <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres" id="txt_nombreusuarios_Reg"> 
             <br>
@@ -27,7 +27,7 @@
             <li>2 = Tarjeta de identidad</li >
             <br>
             <h5>Tipo de documento</h5>
-            <input type="number" name="tipo_documento_idtipodoc" class="form-control" placeholder="Tipo documento" id="tipo_documento_idtipodoc">
+            <input type="number" name="tipo_documento_idtipodoc" class="form-control" placeholder="Tipo documento" id="txt_tipo_documento_idtipodoc_reg">
             <br>
             <h5>Identificación Usuario</h5>
             <input type="text" name="numerodocusuarios" class="form-control" placeholder="Numero identificación" id="txt_numerodocusuarios_reg">

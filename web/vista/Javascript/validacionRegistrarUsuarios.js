@@ -1,5 +1,6 @@
 function RegistroUsuarios() {
 
+var $;
     var resultado = 'Correcto';
     var numerodocusuarios = $('#txt_numerodocusuarios_reg').val();
     var nombreusuarios = $('#txt_nombreusuarios_Reg').val();

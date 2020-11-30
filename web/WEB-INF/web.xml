@@ -5,16 +5,24 @@
         <servlet-class>servlet.Iniciosesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>registroDeUsuarios</servlet-name>
-        <servlet-class>servlet.registroDeUsuarios</servlet-class>
+        <servlet-name>RegistroDeU</servlet-name>
+        <servlet-class>servlet.RegistroDeU</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroProveedores</servlet-name>
+        <servlet-class>servlet.RegistroProveedores</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Iniciosesion</servlet-name>
         <url-pattern>/Iniciosesion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>registroDeUsuarios</servlet-name>
-        <url-pattern>/registroDeUsuarios</url-pattern>
+        <servlet-name>RegistroDeU</servlet-name>
+        <url-pattern>/NuevosUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroProveedores</servlet-name>
+        <url-pattern>/RegistroProveedores</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,20 +5,20 @@
  */
 package servlet;
 
-import controlador.usuariosDAO;
+import Controlador.PROVEEDORES_DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.usuarios;
+import modelo.proveedores;
 
 /**
  *
  * @author santy
  */
-public class registroDeUsuarios extends HttpServlet {
+public class RegistroProveedores extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,61 +33,40 @@ public class registroDeUsuarios extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String numerodocusuarios = request.getParameter("numerodocusuarios");
-            String nombreusuarios = request.getParameter("nombreusuarios");
-            String apellidousuarios = request.getParameter("apellidousuarios");
-            String correousuarios = request.getParameter("correousuarios");
-            String telefonousuarios = request.getParameter("telefonousuarios");
-            String direccionusuario = request.getParameter("direccionusuario");
-            String contraseñausuario = request.getParameter("contraseñausuario");
-            String tipo_documento_idtipodoc = request.getParameter("tipo_documento_idtipodoc");
-            String roles_idroles = request.getParameter("roles_idroles");
-            String genero_idgenero = request.getParameter("genero_idgenero");
-            String estado_usuario_idestadousuario = request.getParameter("estado_usuario_idestadousuario");
-            String BanderaEstado = request.getParameter("banderaRegistro");
 
-            int Telefono = Integer.parseInt(telefonousuarios);
-            int EstadoUsuario = Integer.parseInt(estado_usuario_idestadousuario);
-            int RolUsuario = Integer.parseInt(roles_idroles);
-            int TipoDocumento = Integer.parseInt(tipo_documento_idtipodoc);
-            int TipoGenero = Integer.parseInt(genero_idgenero);
+            String nombreproveedores = request.getParameter("nombreproveedores");
+            String correoproveedores = request.getParameter("correoproveedores");
+            String telefonoproveedores = request.getParameter("telefonoproveedores");
+            String BanderaProveedor = request.getParameter("BanderaReg");
 
-            usuariosDAO misusuariosDAO = new usuariosDAO();
-            usuarios misusuarios = new usuarios();
+            int Telefono = Integer.parseInt("telefonoproveedores");
 
-            misusuarios.setnumerodocusuario(numerodocusuarios);
-            misusuarios.setnombreusuarios(nombreusuarios);
-            misusuarios.setapellidousuarios(apellidousuarios);
-            misusuarios.setcorreousuarios(correousuarios);
-            misusuarios.settelefonousuarios(Telefono);
-            misusuarios.setdireccionusuario(direccionusuario);
-            misusuarios.setcontraseñausuario(contraseñausuario);
-            misusuarios.settipo_documento_idtipodoc(TipoDocumento);
-            misusuarios.setroles_idroles(RolUsuario);
-            misusuarios.setgenero_idgenero(TipoGenero);
-            misusuarios.setestado_usuario_idestadousuario(EstadoUsuario);
+            proveedores misproveedores = new proveedores();
+            PROVEEDORES_DAO misproveedoresDAO = new PROVEEDORES_DAO();
 
-            System.out.println("El valor es " + BanderaEstado);
-            if (BanderaEstado.equals("Correcto")) {
-                String respuestaRegistrada = misusuariosDAO.adicionarusuarios(misusuarios);
+            misproveedores.setNombreproveedores(nombreproveedores);
+            misproveedores.setCorreoproveedores(correoproveedores);
+            misproveedores.setTelefonoproveedores(Telefono);
+
+            System.out.println("El valor es " + BanderaProveedor);
+            if (BanderaProveedor.equals("Correcto")) {
+                String respuestaRegistrada = misproveedoresDAO.adicionarproveedores(misproveedores);
                 System.out.println("Res " + respuestaRegistrada);
                 System.out.println("Res " + respuestaRegistrada.length());
                 if (respuestaRegistrada.length() == 0) {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "Usuario Registrado con éxito." + "');");
+                    out.println("alert('" + "Registro realizado." + "');");
                     out.println("window.location.href = '/VISION/index.jsp';");
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    //out.println("alert('" + respuestaRegistrada + "');");
-                    out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
+                    out.println("alert('"+ respuestaRegistrada + "');");
+                    out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("", "") + "');");
                     out.println("window.history.back();");
                     out.println("</script>");
-
                 }
             } else {
-                System.out.println("El valor no es correcto " + BanderaEstado);
+                System.out.println("El valor es correcto " + BanderaProveedor);
             }
         }
     }
