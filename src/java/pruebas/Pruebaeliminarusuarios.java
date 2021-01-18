@@ -9,7 +9,7 @@ public class Pruebaeliminarusuarios {
     public static void main(String[] args) {
 
         usuariosDAO misusuariosDAO = new usuariosDAO();
-        ArrayList<usuarios> milistausuarios = misusuariosDAO.Consultarlistadousuarios(' ', "", "");
+        ArrayList<usuarios> milistausuarios = misusuariosDAO.Consultarlistadousuarios("", "", "");
         for (usuarios U : milistausuarios) {
             System.out.println(" id : " + U.getidusuarios() + " Numero de documento : " + U.getnumerodocusuario()
                     + " Nombres : " + U.getnombreusuarios() + " Apellidos : " + U.getapellidousuarios()
@@ -20,7 +20,7 @@ public class Pruebaeliminarusuarios {
         }
         System.out.println("Usuario eliminado");
         misusuariosDAO.Eliminarusuario(milistausuarios.get(0));
-        milistausuarios = misusuariosDAO.Consultarlistadousuarios(' ', "", "");
+        milistausuarios = misusuariosDAO.Consultarlistadousuarios("", "", "");
         for (usuarios U : milistausuarios) {
             System.out.println(" id : " + U.getidusuarios() + " Numero de documento : " + U.getnumerodocusuario()
                     + " Nombres : " + U.getnombreusuarios() + " Apellidos : " + U.getapellidousuarios()

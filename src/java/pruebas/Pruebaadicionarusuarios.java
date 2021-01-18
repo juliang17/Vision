@@ -19,7 +19,7 @@ public class Pruebaadicionarusuarios {
         String Direccion;
         String Password;
         String Doc; 
-        int Telefono;
+        String Telefono;
         int tDoc;
         int rol;
         int genero;
@@ -28,13 +28,13 @@ public class Pruebaadicionarusuarios {
         System.out.println("Digite su numero de documento");
         Doc = leer.nextLine();
         System.out.println("Digite sus nombres");
-        Nombre = leer.next();
+        Nombre = leer.nextLine();
         System.out.println("Digite sus apellidos");
-        Apellidos = leer.next();
+        Apellidos = leer.nextLine();
         System.out.println("Digite su correo");
-        Correo = leer.next();
+        Correo = leer.nextLine();
         System.out.println("Digite su telefono");
-        Telefono = leer.nextInt();
+        Telefono = leer.nextLine();
         System.out.println("Digite su direccion");
         Direccion = leer.next();
         System.out.println("Digite su contraseña");

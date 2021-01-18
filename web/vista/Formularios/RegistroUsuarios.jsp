@@ -4,15 +4,45 @@
     Author     : santy
 --%>
 
+<%@page import="modelo.usuarios"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controlador.usuariosDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
+        <link href="../css/Sesion.css" rel="stylesheet" type="text/css"/>
         <script src="vista/Javascript/validacionRegistrarUsuarios.js" type="text/javascript"></script>
+        <script src="../Javascript/VisualizaOculta.js" type="text/javascript"></script>
+        <script src="../Javascript/RealizarBusqueda.js" type="text/javascript"></script>
+        <script src="JavaScript/jquery-1.11.0.min.js"></script>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
+        <% String buscando = request.getParameter("buscando");
+            if (buscando == null) {
+                buscando = "";
+            }
+        %>
+        <div class="row justify-content-md-center">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"
+                        onClick="visualizaOculta('Registrar')">
+                    Registrar
+                </button>
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"
+                        onClick="visualizaOculta('Listado')">
+                    Consultar
+                </button>
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
+                    Volver al Inicio
+                </button>
+            </div>
+        </div>
         <h1>Registro de usuarios</h1>
         <form action="NuevosUsuarios" method="post" onsubmit="return RegistroUsuarios()">
             <h5>Nombres </h5>
@@ -72,5 +102,51 @@
             <button type="submit" class="boton">Registrar</button>   
             <br>
         </form>
+        <div class="container">
+            <form action="/VISION/ConsultarUsuarios" method="post">
+                <div class="row justify-content-md-center">
+                    <div id="Listado" class="bd-example">
+                        <div id="ControlRegistro" class="input-group">
+                            <input id ="txt_Id_Consultado" type = "text" class="form-control"
+                                   name= "IdConsultado" value="<%=buscando%>" autofocus
+                                   placeholder="Buscar por Identificacion,Nombres y Apellidos..."/>
+                            <button type="button" class="btn btn-primary" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    onClick="realizarBusqueda()">Buscar</button>
+                        </div>
+                        <div>
+                            <h1>Listado Usuarios</h1>
+                            <div id="Tabla_usuarios">
+
+                                <% usuariosDAO misusuariosDAO = new usuariosDAO();
+                                    ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
+                                    milistausuarios = misusuariosDAO.Consultarlistadousuarios(buscando, buscando, buscando);
+                                    out.println("<table class='table table-dark'><tr><td>Identificacion</td><td>Nombre</td><td>Apellido</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Rol</td><td>Genero</td><td>Estado</td><td>Tipo documento</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    for (usuarios U : milistausuarios) {
+                                        out.println("<tr>");
+                                        out.println("<td>" + U.getnumerodocusuario() + "</td>");
+                                        out.println("<td>" + U.getnombreusuarios() + "</td>");
+                                        out.println("<td>" + U.getapellidousuarios() + "</td>");
+                                        out.println("<td>" + U.getcorreousuarios() + "</td>");
+                                        out.println("<td>" + U.gettelefonousuarios() + "</td>");
+                                        out.println("<td>" + U.getdireccionusuario() + "</td>");
+                                        out.println("<td>" + U.getroles_idroles() + "</td>");
+                                        out.println("<td>" + U.getgenero_idgenero() + "</td>");
+                                        out.println("<td>" + U.getestado_usuario_idestadousuario() + "</td>");
+                                        out.println("<td>" + U.gettipo_documento_idtipodoc() + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btnbtn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
+                                                + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btnbtn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
+                                                + "</td>");
+                                        out.println("</tr>");
+                                    }
+                                    out.println("</table>");
+                                %>
+                            </div>  
+                        </div>       
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -26,7 +26,7 @@ public class usuariosDAO {
             sentencia.setString(2, USUARIOS.getnombreusuarios());
             sentencia.setString(3, USUARIOS.getapellidousuarios());
             sentencia.setString(4, USUARIOS.getcorreousuarios());
-            sentencia.setInt(5, USUARIOS.gettelefonousuarios());
+            sentencia.setString(5, USUARIOS.gettelefonousuarios());
             sentencia.setString(6, USUARIOS.getdireccionusuario());
             sentencia.setString(7, USUARIOS.getcontraseñausuario());
             sentencia.setInt(8, USUARIOS.gettipo_documento_idtipodoc());
@@ -60,7 +60,7 @@ public class usuariosDAO {
             sentencia.setString(2, USUARIOS.getnombreusuarios());
             sentencia.setString(3, USUARIOS.getapellidousuarios());
             sentencia.setString(4, USUARIOS.getcorreousuarios());
-            sentencia.setInt(5, USUARIOS.gettelefonousuarios());
+            sentencia.setString(5, USUARIOS.gettelefonousuarios());
             sentencia.setString(6, USUARIOS.getdireccionusuario());
             sentencia.setString(7, USUARIOS.getcontraseñausuario());
             sentencia.setInt(8, USUARIOS.gettipo_documento_idtipodoc());
@@ -97,7 +97,7 @@ public class usuariosDAO {
                 misusuarios.setnombreusuarios(rs.getString(3));
                 misusuarios.setapellidousuarios(rs.getString(4));
                 misusuarios.setcorreousuarios(rs.getString(5));
-                misusuarios.settelefonousuarios(rs.getInt(6));
+                misusuarios.settelefonousuarios(rs.getString(6));
                 misusuarios.setdireccionusuario(rs.getString(7));
                 misusuarios.setcontraseñausuario(rs.getString(8));
                 misusuarios.settipo_documento_idtipodoc(rs.getInt(9));
@@ -112,7 +112,7 @@ public class usuariosDAO {
         return misusuarios;
     }
 
-    public ArrayList<usuarios> Consultarlistadousuarios(int numerodocusuario, String nombreusuarios, String apellidousuarios) {
+    public ArrayList<usuarios> Consultarlistadousuarios(String numerodocusuario, String nombreusuarios, String apellidousuarios) {
         ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
         usuarios mitipousuario;
 
@@ -136,7 +136,7 @@ public class usuariosDAO {
                 mitipousuario.setnombreusuarios(rs.getString(3));
                 mitipousuario.setapellidousuarios(rs.getString(4));
                 mitipousuario.setcorreousuarios(rs.getString(5));
-                mitipousuario.settelefonousuarios(rs.getInt(6));
+                mitipousuario.settelefonousuarios(rs.getString(6));
                 mitipousuario.setdireccionusuario(rs.getString(7));
                 mitipousuario.setcontraseñausuario(rs.getString(8));
                 mitipousuario.settipo_documento_idtipodoc(rs.getInt(9));

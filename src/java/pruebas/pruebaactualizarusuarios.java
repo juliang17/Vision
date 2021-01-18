@@ -17,7 +17,7 @@ public class pruebaactualizarusuarios {
         String nombreusuarios = "";
         String apellidousuarios = "";
         String correousuarios = "";
-        int telefonousuarios = 0;
+        String telefonousuarios = "";
         String direccionusuario = "";
         String contraseñausuario = "";
         int tipo_documento_idtipodoc = 0;
@@ -34,7 +34,7 @@ public class pruebaactualizarusuarios {
         System.out.println("Digite su correo");
         correousuarios = leer.next();
         System.out.println("Digite su telefono");
-        telefonousuarios = leer.nextInt();
+        telefonousuarios = leer.nextLine();
         System.out.println("Digite su direccion");
         direccionusuario = leer.next();
         System.out.println("Digite su contraseña");

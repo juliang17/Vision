@@ -7,7 +7,7 @@ public class usuarios {
     private String nombreusuarios;
     private String apellidousuarios;
     private String correousuarios;
-    private int telefonousuarios;
+    private String telefonousuarios;
     private String direccionusuario;
     private String contraseñausuario;
     private int tipo_documento_idtipodoc;
@@ -55,11 +55,11 @@ public class usuarios {
         this.correousuarios = correousuarios;
     }
 
-    public int gettelefonousuarios() {
+    public String gettelefonousuarios() {
         return telefonousuarios;
     }
 
-    public void settelefonousuarios(int telefonousuarios) {
+    public void settelefonousuarios(String telefonousuarios) {
         this.telefonousuarios = telefonousuarios;
     }
 

@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadousuarios {
 
         usuariosDAO misusuariosDAO = new usuariosDAO();
         ArrayList<usuarios> misusuarios = new ArrayList<usuarios>();
-        misusuarios = misusuariosDAO.Consultarlistadousuarios(' ', "", "");
+        misusuarios = misusuariosDAO.Consultarlistadousuarios("", "", "");
 
         int size = misusuarios.size();
         System.out.println("<table border=\"1\"><tr><td>idusuarios</td><td>numerodocusuario</td><td>nombreusuarios</td><td>apellidousuarios</td><td>correousuarios</td><td>telefonousuarios</td><td>direccionusuario</td><td>contraseñausuario</td><td>tipo_documento_idtipodoc</td><td>roles_idroles</td><td>genero_idgenero</td><td>estado_usuario_idestadousuario</td>");
