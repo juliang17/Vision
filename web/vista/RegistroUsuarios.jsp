@@ -12,10 +12,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
-        <link href="../css/Sesion.css" rel="stylesheet" type="text/css"/>
-        <script src="vista/Javascript/validacionRegistrarUsuarios.js" type="text/javascript"></script>
-        <script src="../Javascript/VisualizaOculta.js" type="text/javascript"></script>
-        <script src="../Javascript/RealizarBusqueda.js" type="text/javascript"></script>
+        <link href="css/Sesion.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../vista/Javascript/validacionRegistrarUsuarios.js" type="text/javascript"></script>
+        <script src="../vista/Javascript/VisualizaOculta.js" type="text/javascript"></script>
+        <script src="../vista/Javascript/RealizarBusqueda.js" type="text/javascript"></script>
         <script src="JavaScript/jquery-1.11.0.min.js"></script>
         <title>JSP Page</title>
     </head>
@@ -44,7 +45,7 @@
             </div>
         </div>
         <h1>Registro de usuarios</h1>
-        <form action="NuevosUsuarios" method="post" onsubmit="return RegistroUsuarios()">
+        <form action="/RegistroUsuarios" method="post" onsubmit="return RegistroUsuarios()">
             <h5>Nombres </h5>
             <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres" id="txt_nombreusuarios_Reg"> 
             <br>

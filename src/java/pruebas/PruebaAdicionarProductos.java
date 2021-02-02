@@ -46,7 +46,7 @@ public class PruebaAdicionarProductos {
     
         if (miRespuesta.length() == 0) {
 
-            System.out.println("Consulta exitosa");
+            System.out.println("registro exitoso");
 
         } else {
 

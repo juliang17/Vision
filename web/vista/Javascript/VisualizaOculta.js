@@ -14,5 +14,3 @@ $("#Registrar").addClass('d-none');
 $("#Actualizar").addClass('d-none');
 }
 }
-
-
