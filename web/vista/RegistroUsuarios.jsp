@@ -11,8 +11,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">       
-        <link href="css/Sesion.css" rel="stylesheet" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../vista/Javascript/validacionRegistrarUsuarios.js" type="text/javascript"></script>
         <script src="../vista/Javascript/VisualizaOculta.js" type="text/javascript"></script>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <h1>Registro de usuarios</h1>
-        <form action="/RegistroUsuarios" method="post" onsubmit="return RegistroUsuarios()">
+        <form action="/VISION/RegistroUsuarios" method="post" onsubmit="return RegistroUsuarios()">
             <h5>Nombres </h5>
             <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres" id="txt_nombreusuarios_Reg"> 
             <br>
@@ -100,9 +100,10 @@
             <div id="controlRegistro" class="bd-example d-none">
                 <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
             </div>
-            <button type="submit" class="boton">Registrar</button>   
-            <br>
+            <button type="submit" class="btn btn-success">Registrar</button>   
+
         </form>
+        <br>
         <div class="container">
             <form action="/VISION/ConsultarUsuarios" method="post">
                 <div class="row justify-content-md-center">
@@ -135,9 +136,9 @@
                                         out.println("<td>" + U.getgenero_idgenero() + "</td>");
                                         out.println("<td>" + U.getestado_usuario_idestadousuario() + "</td>");
                                         out.println("<td>" + U.gettipo_documento_idtipodoc() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btnbtn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btnbtn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }
