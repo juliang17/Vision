@@ -1,24 +1,17 @@
-var Buscar;
+function RegistroUsuarios() {
 
-
-
-
-
-
-
-function validacionAct() {
     var resultado = 'Correcto';
-    var numerodocusuarios = $('#txt_numerodocusuarios_Act').val();
-    var nombreusuarios = $('#txt_nombreusuarios_Act').val();
-    var apellidousuarios = $('#txt_apellidousuarios_Act').val();
-    var correousuario = $('#txt_correousuario_Act').val();
-    var telefonousuarios = $('#txt_telefonousuarios_Act').val();
-    var direccionusuario = $('#txt_direccionusuario_Act').val();
-    var contraseñausuario = $('#txt_contraseñausuario_Act').val();
-    var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_Act').val();
-    var roles_idroles = $('#txt_roles_idroles_Act').val();
-    var genero_idgenero = $('#txt_genero_idgenero_Act').val();
-    var estado_usuario_idestadousuario = $('#txt_estado_usuario_idestadousuario_Act').val();
+    var numerodocusuarios = $('#txt_numerodocusuarios_reg').val();
+    var nombreusuarios = $('#txt_nombreusuarios_Reg').val();
+    var apellidousuarios = $('#txt_apellidousuarios_reg').val();
+    var correousuario = $('#txt_correousuario_reg').val();
+    var telefonousuarios = $('#txt_telefonousuarios_reg').val();
+    var direccionusuario = $('#txt_direccionusuario_reg').val();
+    var contraseñausuario = $('#txt_contraseñausuario_reg').val();
+    var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_reg').val();
+    var roles_idroles = $('#txt_roles_idroles_reg').val();
+    var genero_idgenero = $('#txt_genero_idgenero_reg').val();
+    var estado_usuario_idestadousuario = $('#txt_estado_usuario_idestadousuario_reg').val();
 
 
     console.log('Información a validar');
@@ -93,8 +86,8 @@ function validacionAct() {
     } else {
         resultado = 'Correcto';
     }
-    $('#txt_bandera_Act').val(resultado);
-    console.log('Resultado:' + $('#txt_bandera_Act').val());
+    $('#txt_bandera_reg').val(resultado);
+    console.log('Resultado:' + $('#txt_bandera_reg').val());
     if (resultado == 'Correcto') {
         return true;
     } else {
@@ -102,13 +95,55 @@ function validacionAct() {
     }
 }
 
-function DefinirFoco(){
-document.getElementById("txt_Id_Consultado").focus();
+function settipo_documento_idtipodoc(x) {
+    $('#txt_tipo_documento_idtipodoc_reg').val(x);
+    console.log("valor : " + x);
 }
-function MostrarSelector(){
-var Valor = $("#foo").val();
-console.log('Valor Selector: ' +Valor);
+function setroles_idroles(x) {
+    $('#txt_roles_idroles_reg').val(x);
+    console.log("valor : " + x);
 }
-$('#txt_Id_Consultado').change(function(){
-console.log("Texto" + $('#txt_Id_Consultado').val());
+function setgenero_idgenero(x) {
+    $('#txt_genero_idgenero_reg').val(x);
+    console.log("valor : " + x);
+}
+function setestado_usuario_idestadousuario(x) {
+    $('#txt_estado_usuario_idestadousuario_reg').val(x);
+    console.log("valor : " + x);
+}
+
+function realizarBusqueda()
+{
+    var textoBuscado = $('#txt_Id_Consultado').val();
+    console.log("Texto: " + $('#txt_Id_Consultado').val());
+    window.location.href = '/VISION/RegistroUsuarios.jsp?buscando=' + textoBuscado.trim() + '&';
+}
+
+function SetIdConsulta(x) {
+    $('#txt_Id_Consultado').val(x);
+    console.log("valor : " + x);
+}
+
+$('#txt_Id_Consultado').change(function () {
+    console.log("Texto" + $('#txt_Id_Consultado').val());
 });
+
+function visualizaOculta(Dato) {
+    console.log("Viene " + Dato);
+    if (Dato == "Registrar") {
+        $("#Registrar").removeClass('d-none');
+        $("#Actualizar").addClass('d-none');
+        $("#Listado").addClass('d-none');
+    } else if (Dato == "Actualizar") {
+        $("#Registrar").addClass('d-none');
+        $("#Actualizar").removeClass('d-none');
+        $("#Listado").addClass('d-none');
+    } else if (Dato == "Listado") {
+        $("#Listado").removeClass('d-none');
+        $("#Registrar").addClass('d-none');
+        $("#Actualizar").addClass('d-none');
+    }
+}
+
+
+

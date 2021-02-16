@@ -110,5 +110,4 @@ public class usuarios {
     public void setestado_usuario_idestadousuario(int estado_usuario_idestadousuario) {
         this.estado_usuario_idestadousuario = estado_usuario_idestadousuario;
     }
-
 }

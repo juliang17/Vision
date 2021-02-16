@@ -9,20 +9,28 @@
         <url-pattern>/Iniciosesion</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroUsuarios</servlet-name>
-        <servlet-class>servlet.RegistroUsuarios</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistroUsuarios</servlet-name>
-        <url-pattern>/RegistroUsuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ConsultarUsuarios</servlet-name>
         <servlet-class>servlet.ConsultarUsuarios</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarUsuarios</servlet-name>
         <url-pattern>/ConsultarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarUsuario</servlet-name>
+        <servlet-class>servlet.ActualizarUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarUsuario</servlet-name>
+        <url-pattern>/ActualizarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistroUsuarios</servlet-name>
+        <servlet-class>servlet.RegistroUsuarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuarios</servlet-name>
+        <url-pattern>/RegistroUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
 import controlador.usuariosDAO;
@@ -14,8 +19,8 @@ import modelo.usuarios;
  *
  * @author santy
  */
-@WebServlet(name = "RegistroUsuarios", urlPatterns = {"/RegistroUsuarios"})
-public class RegistroUsuarios extends HttpServlet {
+@WebServlet(name = "ActualizarUsuario", urlPatterns = {"/ActualizarUsuario"})
+public class ActualizarUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,63 +36,55 @@ public class RegistroUsuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String numerodocusuario = request.getParameter("Numerodocusuario");
-        String nombreusuarios = request.getParameter("Nombreusuarios");
-        String apellidousuarios = request.getParameter("Apellidousuarios");
+        String numerodocusuarios = request.getParameter("numerodocusuarios");
+        String nombreusuarios = request.getParameter("nombreusuarios");
+        String apellidousuarios = request.getParameter("apellidousuarios");
         String correousuarios = request.getParameter("correousuarios");
         String telefonousuarios = request.getParameter("telefonousuarios");
         String direccionusuario = request.getParameter("direccionusuario");
         String contraseñausuario = request.getParameter("contraseñausuario");
-        String Tipod = request.getParameter("tipo_documento_idtipodoc");
-        String Roles = request.getParameter("roles_idroles");
-        String Genero = request.getParameter("genero_idgenero");
-        String Estado = request.getParameter("estado_usuario_idestadousuario");
-        String Banderaestado = request.getParameter("Banderaregistro");
+        String tipo_documento_idtipodoc = request.getParameter("tipo_documento_idtipodoc");
+        String roles_idroles = request.getParameter("roles_idroles");
+        String genero_idgenero = request.getParameter("genero_idgenero");
+        String estado_usuario_idestadousuario = request.getParameter("estado_usuario_idestadousuario");
 
-        int tipo_documento_idtipodoc = Integer.parseInt(Tipod);
-        int roles_idroles = Integer.parseInt(Roles);
-        int genero_idgenero = Integer.parseInt(Genero);
-        int estado_usuario_idestadousuario = Integer.parseInt(Estado);
-
+        int Estado = Integer.parseInt(estado_usuario_idestadousuario);
+        int Roles = Integer.parseInt(roles_idroles);
+        int TipoD = Integer.parseInt(tipo_documento_idtipodoc);
+        int Genero = Integer.parseInt(genero_idgenero);
+        
+        
         usuariosDAO misusuariosDAO = new usuariosDAO();
         usuarios misusuarios = new usuarios();
 
-        misusuarios.setnumerodocusuario(numerodocusuario);
+        misusuarios.setnumerodocusuario(numerodocusuarios);
         misusuarios.setnombreusuarios(nombreusuarios);
         misusuarios.setapellidousuarios(apellidousuarios);
         misusuarios.setcorreousuarios(correousuarios);
         misusuarios.settelefonousuarios(telefonousuarios);
         misusuarios.setdireccionusuario(direccionusuario);
         misusuarios.setcontraseñausuario(contraseñausuario);
-        misusuarios.settipo_documento_idtipodoc(tipo_documento_idtipodoc);
-        misusuarios.setroles_idroles(roles_idroles);
-        misusuarios.setgenero_idgenero(genero_idgenero);
-        misusuarios.setestado_usuario_idestadousuario(estado_usuario_idestadousuario);
+        misusuarios.settipo_documento_idtipodoc(TipoD);
+        misusuarios.setroles_idroles(Roles);
+        misusuarios.setgenero_idgenero(Genero);
+        misusuarios.setestado_usuario_idestadousuario(Estado);
 
-        System.out.println("El valor es " + Banderaestado);
-        if (Banderaestado.equals("Correcto")) {
-            String Respuestaregistrada = misusuariosDAO.adicionarusuarios(misusuarios);
-            System.out.println("Res " + Respuestaregistrada);
-            System.out.println("Res " + Respuestaregistrada.length());
-            if (Respuestaregistrada.length() == 0) {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Usuario Registrado con Exito." + "');");
-                out.println("window.location.href = '/VISION/index.jsp';");
-                out.println("</script>");
-            } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + Respuestaregistrada + "');");
-                out.println("alert('" + "Error Encontrado: "
-                        + Respuestaregistrada.replace("'", "") + "');");
-                out.println("window.history.back();");
-                out.println("</script>");
-            }
+        System.out.println(" Identificacion: " + numerodocusuarios);
+        String respuestaRegistrada = misusuariosDAO.Actualizarusuario(misusuarios);
+        if (respuestaRegistrada.length() == 0) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + "Actualización Realizada." + "');");
+
+            out.println("window.location.href = '/Iglesias/VISTA/GestionarClientes.jsp';");
+            out.println("</script>");
         } else {
-            System.out.println("El valor no es correcto " + Banderaestado);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + "No se ha podido relizar la actualizacion." + "\n" + respuestaRegistrada + "');");
+            out.println("</script>");
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
