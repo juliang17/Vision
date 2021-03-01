@@ -8,7 +8,7 @@ public class Pruebaconsultargenero {
     public static void main(String[] args) {
 
         GeneroDAO migeneroDAO = new GeneroDAO();
-        genero migenero = migeneroDAO.Consultargenero(1);
+        genero migenero = migeneroDAO.Consultargenero("");
 
         if (migenero != null) {
             System.out.println("Genero encontrado" + migenero.getidgenero() + "_" + migenero.getdescripciongenero() + "_");

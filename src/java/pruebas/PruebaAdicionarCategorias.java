@@ -1,6 +1,6 @@
 package Pruebas;
 
-import Controlador.categoriasDAO;
+import controlador.categoriasDAO;
 import java.util.Scanner;
 import modelo.categorias;
 

@@ -1,6 +1,6 @@
 package Pruebas;
 
-import Controlador.categoriasDAO;
+import controlador.categoriasDAO;
 import modelo.categorias;
 
 public class pruebaConsultarCategorias {
@@ -8,7 +8,7 @@ public class pruebaConsultarCategorias {
     public static void main(String[] args) {
 
         categoriasDAO categorias_dao = new categoriasDAO();
-        categorias mi_categorias = categorias_dao.Consultacategorias(1);
+        categorias mi_categorias = categorias_dao.Consultacategorias("");
 
         if (mi_categorias != null) {
             System.out.println("categoria encontrada " + mi_categorias.getIdcategorias() + " " + mi_categorias.getDescripcioncategorias() + " ");

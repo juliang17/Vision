@@ -52,7 +52,7 @@ public class GeneroDAO {
         return mirespuesta;
     }
 
-    public genero Consultargenero(int idgenero) {
+    public genero Consultargenero(String descripciongenero) {
 
         genero migenero = null;
 
@@ -62,7 +62,7 @@ public class GeneroDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idgenero, descripciongenero from genero where idgenero = " + idgenero);
+            String Query = ("select idgenero, descripciongenero from genero where descripciongenero = " + descripciongenero);
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 migenero = new genero();

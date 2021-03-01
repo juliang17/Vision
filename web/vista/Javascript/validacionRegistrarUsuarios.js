@@ -102,13 +102,3 @@ function validacionAct() {
     }
 }
 
-function DefinirFoco(){
-document.getElementById("txt_Id_Consultado").focus();
-}
-function MostrarSelector(){
-var Valor = $("#foo").val();
-console.log('Valor Selector: ' +Valor);
-}
-$('#txt_Id_Consultado').change(function(){
-console.log("Texto" + $('#txt_Id_Consultado').val());
-});

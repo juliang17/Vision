@@ -1,6 +1,7 @@
 package Pruebas;
 
-import Controlador.PRODUCTOS_DAO;
+
+import controlador.ProductoDAO;
 import java.util.ArrayList;
 import modelo.productos;
 
@@ -8,12 +9,12 @@ public class pruebaListaProductos {
 
     public static void main(String[] args) {
 
-        PRODUCTOS_DAO productos_dao = new PRODUCTOS_DAO();
+        ProductoDAO productos_dao = new ProductoDAO();
         ArrayList<productos> mi_productos = new ArrayList<productos>();
-        mi_productos = productos_dao.listadoproductos(0, 0);
+        mi_productos = productos_dao.listadoproductos(0);
 
         int size = mi_productos.size();
-        System.out.println("<table border=\"1\"><tr><td>idproductos</td><td>nombreproducto</td><td>cantidadproducto</td><td>ivaproducto</td><td>descripcionproducto</td><td>precio</td> ");
+        System.out.println("<table border=\"1\"><tr><td>idproductos</td><td>nombreproducto</td><td>cantidadproducto</td><td>ivaproducto</td><td>descripcionproducto</td><td>precio</td><td>Categoria</td><td>Marca</td><td>UnidadDemedida</td><td>Proveedoes</td> ");
 
         for (productos P : mi_productos) {
 
@@ -24,6 +25,10 @@ public class pruebaListaProductos {
             System.out.println("<td>" + P.getIvaproducto() + "</td>");
             System.out.println("<td>" + P.getDescripcionproducto() + "</td>");
             System.out.println("<td>" + P.getPrecio() + "</td>");
+            System.out.println("<td>" + P.getCategorias_idcategorias() + "</td>");
+            System.out.println("<td>" + P.getMarca_idmarca() + "</td>");
+            System.out.println("<td>" + P.getUnidad_de_medida_idunidadmedida() + "</td>");
+            System.out.println("<td>" + P.getProveedores_idproveedores() + "</td>");
 
             System.out.println("</tr>");
 

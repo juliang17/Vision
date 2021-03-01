@@ -2,23 +2,23 @@ package modelo;
 
 public class unidad_de_medida {
 
-    private int unidadmedida;
-    private String descricionunidadmedida;
+    private int idunidadmedida;
+    private String descripcionunidadmedida;
 
-    public int getUnidadmedida() {
-        return unidadmedida;
+    public int getIdunidadmedida() {
+        return idunidadmedida;
     }
 
-    public void setUnidadmedida(int unidadmedida) {
-        this.unidadmedida = unidadmedida;
+    public void setIdunidadmedida(int idunidadmedida) {
+        this.idunidadmedida = idunidadmedida;
     }
 
-    public String getDescricionunidadmedida() {
-        return descricionunidadmedida;
+    public String getDescripcionunidadmedida() {
+        return descripcionunidadmedida;
     }
 
-    public void setDescricionunidadmedida(String descricionunidadmedida) {
-        this.descricionunidadmedida = descricionunidadmedida;
+    public void setDescripcionunidadmedida(String descripcionunidadmedida) {
+        this.descripcionunidadmedida = descripcionunidadmedida;
     }
-
+   
 }

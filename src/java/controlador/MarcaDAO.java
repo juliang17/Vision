@@ -1,4 +1,4 @@
-package Controlador;
+package controlador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.marca;
 
-public class MARCA_PRODUCTO_DAO {
+public class MarcaDAO {
 
     public String adicionarmarca(marca MARCA) {
 
@@ -61,7 +61,7 @@ public class MARCA_PRODUCTO_DAO {
         return mirespuesta;
     }
 
-    public marca Consultamarca(int idmarca) {
+    public marca Consultamarca(String descripcionmarca) {
         marca mimarca = null;
 
         Conexion miconexion = new Conexion();
@@ -70,7 +70,7 @@ public class MARCA_PRODUCTO_DAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idmarca, descripcionmarca from marca where idmarca = " + idmarca);
+            String Query = ("select idmarca, descripcionmarca from marca where descripcionmarca = " + descripcionmarca);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
@@ -86,7 +86,7 @@ public class MARCA_PRODUCTO_DAO {
         return mimarca;
     }
 
-    public ArrayList<marca> listadomarca(int idmarca, String descripcionmarca) {
+    public ArrayList<marca> listadomarca(String descripcionmarca) {
         ArrayList<marca> milistamimarca = new ArrayList<marca>();
         marca mimarca;
 
@@ -94,13 +94,13 @@ public class MARCA_PRODUCTO_DAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idmarca);
+        System.out.println("Buscando parametro: " + descripcionmarca);
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idmarca, descripcionmarca "
                     + " from marca"
-                    + " where idmarca like '%" + idmarca + "%' "
-                    + " or (descripcionmarca) like ('%" + descripcionmarca + "%') ORDER BY idmarca; ";
+                    + " where descripcionmarca like '%" + descripcionmarca + "%' "
+                    + "ORDER BY descripcionmarca; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mimarca = new marca();
@@ -137,5 +137,4 @@ public class MARCA_PRODUCTO_DAO {
         }
         return mirespuesta;
     }
-
 }

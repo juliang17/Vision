@@ -75,7 +75,7 @@ public class ActualizarUsuario extends HttpServlet {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + "Actualización Realizada." + "');");
 
-            out.println("window.location.href = '/Iglesias/VISTA/GestionarClientes.jsp';");
+            out.println("window.location.href = '/VISION/vista/RegistroUsuarios.jsp';");
             out.println("</script>");
         } else {
             out.println("<script type=\"text/javascript\">");

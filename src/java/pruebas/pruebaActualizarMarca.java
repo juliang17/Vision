@@ -1,6 +1,7 @@
 package Pruebas;
 
-import Controlador.MARCA_PRODUCTO_DAO;
+
+import controlador.MarcaDAO;
 import java.util.Scanner;
 import modelo.marca;
 
@@ -8,7 +9,7 @@ public class pruebaActualizarMarca {
 
     public static void main(String[] args) {
 
-        MARCA_PRODUCTO_DAO marca_dao = new MARCA_PRODUCTO_DAO();
+        MarcaDAO marca_dao = new MarcaDAO();
         marca mi_marca = new marca();
 
         Scanner teclado = new Scanner(System.in);
