@@ -11,23 +11,23 @@ public class Pruebaeliminarusuarios {
         usuariosDAO misusuariosDAO = new usuariosDAO();
         ArrayList<usuarios> milistausuarios = misusuariosDAO.Consultarlistadousuarios("", "", "");
         for (usuarios U : milistausuarios) {
-            System.out.println(" id : " + U.getidusuarios() + " Numero de documento : " + U.getnumerodocusuario()
-                    + " Nombres : " + U.getnombreusuarios() + " Apellidos : " + U.getapellidousuarios()
-                    + " Correo : " + U.getcorreousuarios() + " Telefono : " + U.gettelefonousuarios()
-                    + " Direccion : " + U.getdireccionusuario() + " Contraseña : " + U.getcontraseñausuario()
-                    + " Tipo de documento : " + U.gettipo_documento_idtipodoc() + " Rol : " + U.getroles_idroles()
-                    + " Genero : " + U.getgenero_idgenero() + " Estado usuario : " + U.getestado_usuario_idestadousuario());
+            System.out.println(" id : " + U.getIdusuarios() + " Numero de documento : " + U.getNumerodocusuario()
+                    + " Nombres : " + U.getNombreusuarios() + " Apellidos : " + U.getApellidousuarios()
+                    + " Correo : " + U.getCorreousuarios() + " Telefono : " + U.getTelefonousuarios()
+                    + " Direccion : " + U.getDireccionusuario() + " Contraseña : " + U.getClaveusuario()
+                    + " Tipo de documento : " + U.getTipo_documento_idtipodoc() + " Rol : " + U.getRoles_idroles()
+                    + " Genero : " + U.getGenero_idgenero() + " Estado usuario : " + U.getEstado_usuario_idestadousuario());
         }
         System.out.println("Usuario eliminado");
         misusuariosDAO.Eliminarusuario(milistausuarios.get(0));
         milistausuarios = misusuariosDAO.Consultarlistadousuarios("", "", "");
         for (usuarios U : milistausuarios) {
-            System.out.println(" id : " + U.getidusuarios() + " Numero de documento : " + U.getnumerodocusuario()
-                    + " Nombres : " + U.getnombreusuarios() + " Apellidos : " + U.getapellidousuarios()
-                    + " Correo : " + U.getcorreousuarios() + " Telefono : " + U.gettelefonousuarios()
-                    + " Direccion : " + U.getdireccionusuario() + " Contraseña : " + U.getcontraseñausuario()
-                    + " Tipo de documento : " + U.gettipo_documento_idtipodoc() + " Rol : " + U.getroles_idroles()
-                    + " Genero : " + U.getgenero_idgenero() + " Estado usuario : " + U.getestado_usuario_idestadousuario());
+            System.out.println(" id : " + U.getIdusuarios() + " Numero de documento : " + U.getNumerodocusuario()
+                    + " Nombres : " + U.getNombreusuarios() + " Apellidos : " + U.getApellidousuarios()
+                    + " Correo : " + U.getCorreousuarios() + " Telefono : " + U.getTelefonousuarios()
+                    + " Direccion : " + U.getDireccionusuario() + " Contraseña : " + U.getClaveusuario()
+                    + " Tipo de documento : " + U.getTipo_documento_idtipodoc() + " Rol : " + U.getRoles_idroles()
+                    + " Genero : " + U.getGenero_idgenero() + " Estado usuario : " + U.getEstado_usuario_idestadousuario());
         }
     }
 }

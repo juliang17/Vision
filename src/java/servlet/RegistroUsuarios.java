@@ -37,32 +37,32 @@ public class RegistroUsuarios extends HttpServlet {
         String correousuarios = request.getParameter("correousuarios");
         String telefonousuarios = request.getParameter("telefonousuarios");
         String direccionusuario = request.getParameter("direccionusuario");
-        String contraseñausuario = request.getParameter("contraseñausuario");
-        String Tipod = request.getParameter("tipo_documento_idtipodoc");
-        String Roles = request.getParameter("roles_idroles");
-        String Genero = request.getParameter("genero_idgenero");
-        String Estado = request.getParameter("estado_usuario_idestadousuario");
+        String claveusuario = request.getParameter("claveusuario");
+        String tipo_documento_idtipodoc = request.getParameter("tipo_documento_idtipodoc");
+        String roles_idroles = request.getParameter("roles_idroles");
+        String genero_idgenero = request.getParameter("genero_idgenero");
+        String estado_usuario_idestadousuario = request.getParameter("estado_usuario_idestadousuario");
         String Banderaestado = request.getParameter("Banderaregistro");
 
-        int tipo_documento_idtipodoc = Integer.parseInt(Tipod);
-        int roles_idroles = Integer.parseInt(Roles);
-        int genero_idgenero = Integer.parseInt(Genero);
-        int estado_usuario_idestadousuario = Integer.parseInt(Estado);
+        int Tipod = Integer.parseInt(tipo_documento_idtipodoc);
+        int Roles = Integer.parseInt(roles_idroles);
+        int Genero = Integer.parseInt(genero_idgenero);
+        int Estado = Integer.parseInt(estado_usuario_idestadousuario);
 
         usuariosDAO misusuariosDAO = new usuariosDAO();
         usuarios misusuarios = new usuarios();
 
-        misusuarios.setnumerodocusuario(numerodocusuario);
-        misusuarios.setnombreusuarios(nombreusuarios);
-        misusuarios.setapellidousuarios(apellidousuarios);
-        misusuarios.setcorreousuarios(correousuarios);
-        misusuarios.settelefonousuarios(telefonousuarios);
-        misusuarios.setdireccionusuario(direccionusuario);
-        misusuarios.setcontraseñausuario(contraseñausuario);
-        misusuarios.settipo_documento_idtipodoc(tipo_documento_idtipodoc);
-        misusuarios.setroles_idroles(roles_idroles);
-        misusuarios.setgenero_idgenero(genero_idgenero);
-        misusuarios.setestado_usuario_idestadousuario(estado_usuario_idestadousuario);
+        misusuarios.setNumerodocusuario(numerodocusuario);
+        misusuarios.setNombreusuarios(nombreusuarios);
+        misusuarios.setApellidousuarios(apellidousuarios);
+        misusuarios.setCorreousuarios(correousuarios);
+        misusuarios.setTelefonousuarios(telefonousuarios);
+        misusuarios.setDireccionusuario(direccionusuario);
+        misusuarios.setClaveusuario(claveusuario);
+        misusuarios.setTipo_documento_idtipodoc(Tipod);
+        misusuarios.setRoles_idroles(Roles);
+        misusuarios.setGenero_idgenero(Genero);
+        misusuarios.setEstado_usuario_idestadousuario(Estado);
 
         System.out.println("El valor es " + Banderaestado);
         if (Banderaestado.equals("Correcto")) {

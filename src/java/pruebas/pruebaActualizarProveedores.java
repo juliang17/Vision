@@ -1,6 +1,7 @@
 package Pruebas;
 
-import Controlador.PROVEEDORES_DAO;
+
+import controlador.ProveedoresDAO;
 import java.util.Scanner;
 import modelo.proveedores;
 
@@ -8,7 +9,7 @@ public class pruebaActualizarProveedores {
 
     public static void main(String[] args) {
 
-        PROVEEDORES_DAO proveedores_dao = new PROVEEDORES_DAO();
+        ProveedoresDAO proveedores_dao = new ProveedoresDAO();
         proveedores mi_proveedores = new proveedores();
 
         Scanner teclado = new Scanner(System.in);

@@ -44,7 +44,7 @@ public class ConsultarCategorias extends HttpServlet {
         categoriasDAO categorias_dao = new categoriasDAO();
         categorias mi_categorias = null;
         
-        mi_categorias = categorias_dao.Consultacategorias(descripcioncategorias);
+        mi_categorias = categorias_dao.Consultacategorias(0);
         if (Accion != null) {
 
             if (mi_categorias != null) {

@@ -11,7 +11,7 @@ public class PruebaAdicionarProductos {
 
     public static void main(String[] args) {
         
-        ProductoDAO productos_dao = new ProductoDAO();
+       ProductoDAO productos_dao = new ProductoDAO();
        productos mi_productos= new productos();  
        
        Scanner teclado = new Scanner(System.in);

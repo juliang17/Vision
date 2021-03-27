@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.rolesDAO;
+import controlador.detalleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.roles;
+import modelo.detalle_movimiento;
 
 /**
  *
  * @author santy
  */
-@WebServlet(name = "RegistroRoles", urlPatterns = {"/RegistroRoles"})
-public class RegistroRoles extends HttpServlet {
+@WebServlet(name = "ActualizarDetalle", urlPatterns = {"/ActualizarDetalle"})
+public class ActualizarDetalle extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,34 +36,42 @@ public class RegistroRoles extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String descripcionrol = request.getParameter("descripcionrol");
-        String Banderaestado = request.getParameter("Banderaregistro");
-        
-        rolesDAO misrolesDAO = new rolesDAO();
-        roles misroles = new roles();
-        
-        misroles.setdescripcionrol(descripcionrol);
-        
-        System.out.println("El valor es " + Banderaestado);
-        if (Banderaestado.equals("correcto")) {
-            String Respuestaregistrada = misrolesDAO.adicionarroles(misroles);
-            System.out.println("Res " + Respuestaregistrada);
-            System.out.println("Res " + Respuestaregistrada.length());
-            if (Respuestaregistrada.length() == 0) {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Rol Registrado con Exito." + "');");
-                out.println("window.location.href = '/VISION/Formularios/GestionRoles.jsp';");
-                out.println("</script>");
-            } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + Respuestaregistrada + "');");
-                out.println("alert('" + "Error Encontrado: "
-                        + Respuestaregistrada.replace("'", "") + "');");
-                out.println("window.history.back();");
-                out.println("</script>");
-            }
+        String descripcion = request.getParameter("descripcion");
+        String cantidad = request.getParameter("cantidad");
+        String precio = request.getParameter("precio");
+        String iva = request.getParameter("iva");
+        String subtotal = request.getParameter("subtotal");
+        String productos_idproductos = request.getParameter("productos_idproductos");
+        String movimiento_idmovimiento = request.getParameter("movimiento_idmovimiento");
+
+        int Cantidad = Integer.parseInt(cantidad);
+        int Precio = Integer.parseInt(precio);
+        int Iva = Integer.parseInt(iva);
+        int Subtotal = Integer.parseInt(subtotal);
+        int Producto = Integer.parseInt(productos_idproductos);
+        int Movimiento = Integer.parseInt(movimiento_idmovimiento);
+
+        detalleDAO mi_detalle_dao = new detalleDAO();
+        detalle_movimiento mi_detalle = new detalle_movimiento();
+
+        mi_detalle.setCantidad(Cantidad);
+        mi_detalle.setPrecio(Precio);
+        mi_detalle.setIva(Iva);
+        mi_detalle.setSubtotal(Subtotal);
+        mi_detalle.setProductos_idproductos(Producto);
+        mi_detalle.setMovimiento_idmovimiento(Movimiento);
+
+        System.out.println("descripcion " + descripcion);
+        String respuestaRegistrada = mi_detalle_dao.Adicionardetalle_Movimiento(mi_detalle);
+        if (respuestaRegistrada.length() == 0) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + "Actualización Realizada." + "');");
+            out.println("window.location.href = '/VISION/vista/GestionDetalle.jsp';");
+            out.println("</script>");
         } else {
-            System.out.println("El valor no es correcto " + Banderaestado);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('" + "No se ha podido relizar la actualizacion." + "\n" + respuestaRegistrada + "');");
+            out.println("</script>");
         }
     }
 

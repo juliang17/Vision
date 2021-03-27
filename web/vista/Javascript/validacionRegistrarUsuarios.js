@@ -14,7 +14,7 @@ function validacionAct() {
     var correousuario = $('#txt_correousuario_Act').val();
     var telefonousuarios = $('#txt_telefonousuarios_Act').val();
     var direccionusuario = $('#txt_direccionusuario_Act').val();
-    var contraseñausuario = $('#txt_contraseñausuario_Act').val();
+    var claveusuario = $('#txt_claveusuario_Act').val();
     var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_Act').val();
     var roles_idroles = $('#txt_roles_idroles_Act').val();
     var genero_idgenero = $('#txt_genero_idgenero_Act').val();
@@ -28,7 +28,7 @@ function validacionAct() {
     console.log('correousuario: ' + correousuario + ".");
     console.log('telefonousuarios: ' + telefonousuarios + ".");
     console.log('direccionusuario: ' + direccionusuario + ".");
-    console.log('contraseñausuario: ' + contraseñausuario + ".");
+    console.log('claveusuario: ' + claveusuario + ".");
     console.log('tipo_documento_idtipodoc: ' + tipo_documento_idtipodoc + ".");
     console.log('roles_idroles: ' + roles_idroles + ".");
     console.log('genero_idgenero: ' + genero_idgenero + ".");
@@ -53,7 +53,7 @@ function validacionAct() {
     } else if (direccionusuario == '') {
         alert('La dirección no puede estar vacia');
         resultado = 'Error';
-    } else if (contraseñausuario == '') {
+    } else if (claveusuario == '') {
         alert('La contraseña no puede estar vacia');
         resultado = 'Error';
     } else if (tipo_documento_idtipodoc == '') {

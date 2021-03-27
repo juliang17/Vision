@@ -1,20 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlet;
 
-import controlador.ProductoDAO;
+import controlador.tipo_documentoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.productos;
-import modelo.Carritomodelo;
+import modelo.tipo_documento;
 
-@WebServlet(name = "Carrito", urlPatterns = {"/Carrito"})
-public class Carrito extends HttpServlet {
+/**
+ *
+ * @author santy
+ */
+@WebServlet(name = "RegistroTipoDocumento", urlPatterns = {"/RegistroTipoDocumento"})
+public class RegistroTipoDocumento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,34 +31,40 @@ public class Carrito extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    ProductoDAO productos_dao = new ProductoDAO();
-    productos mi_productos = new productos();
-    ArrayList<productos> miproducto = new ArrayList<productos>();
-
-    List<Carritomodelo> listacarrito = new ArrayList();
-    int item;
-    double totalapagar = 0.0;
-    int cantidad = 1;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        String TIPOD = request.getParameter("descripciontipodoc");
+        String BanderaEstado = request.getParameter("BanderaRegistro");
+        
+        tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
+        tipo_documento mitipodoc = new tipo_documento();
+        
+        mitipodoc.setdescripciontipodoc(TIPOD);
+        
+        System.out.println("El valor es " + BanderaEstado);
+        if (BanderaEstado.equals("Correcto")) {
+            String respuestaRegistrada = mitipodocDAO.adicionartipo_documento(mitipodoc);
+            System.out.println("Res " + respuestaRegistrada);
+            System.out.println("Res " + respuestaRegistrada.length());
+            if (respuestaRegistrada.length() == 0) {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('" + "Tipo documento Usuario registrado con éxito." + "');");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionTipodocumento.jsp';");
+                out.println("</script>");
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                //out.println("alert('" + respuestaRegistrada + "');");
+                out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
+                out.println("window.history.back();");
+                out.println("</script>");
 
-        String accion = request.getParameter("accion");
-
-        switch (accion) {
-            case "agregarcarrito":
-                int idproductos = Integer.parseInt("id");
-                miproducto = productos_dao.listadoproductos(idproductos);
-                item=item+1;
-                Carritomodelo car = new Carritomodelo();
-                car.setItem(item);
-                break;
-            case "carrito":
-
-                break;
-
+            }
+        } else {
+            System.out.println("El valor no es correcto " + BanderaEstado);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,14 +1,14 @@
 package Pruebas;
 
-import Controlador.PROVEEDORES_DAO;
+import controlador.ProveedoresDAO;
 import modelo.proveedores;
 
 public class pruebaConsultarProveedores {
 
     public static void main(String[] args) {
 
-        PROVEEDORES_DAO proveedores_dao = new PROVEEDORES_DAO();
-        proveedores mi_proveedores = proveedores_dao.Consultaproveedores(1);
+        ProveedoresDAO proveedores_dao = new ProveedoresDAO();
+        proveedores mi_proveedores = proveedores_dao.Consultaproveedores("");
 
         if (mi_proveedores != null) {
             System.out.println("proveedor encontrado " + mi_proveedores.getIdProveedores() + " " + mi_proveedores.getNombreproveedores() + " ");

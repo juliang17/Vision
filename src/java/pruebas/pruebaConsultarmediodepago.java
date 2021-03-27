@@ -20,7 +20,7 @@ public class pruebaConsultarmediodepago {
     public static void main(String[] args) {
 
          mediodepagoDAO mi_medio_de_pago_dao = new mediodepagoDAO();
-       medio_de_pago mi_medio_de_pago = mi_medio_de_pago_dao.ConsultarMedio_de_pago(1);
+       medio_de_pago mi_medio_de_pago = mi_medio_de_pago_dao.ConsultarMedio_de_pago("");
         
         if (mi_medio_de_pago != null) {
             System.out.println("medio de pago fue encontrado " + mi_medio_de_pago.getIdMedioDePago() + " " + mi_medio_de_pago.getDescripcionmediodepago() + " ");

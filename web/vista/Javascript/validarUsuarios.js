@@ -7,7 +7,7 @@ function RegistroUsuarios() {
     var correousuario = $('#txt_correousuario_reg').val();
     var telefonousuarios = $('#txt_telefonousuarios_reg').val();
     var direccionusuario = $('#txt_direccionusuario_reg').val();
-    var contraseñausuario = $('#txt_contraseñausuario_reg').val();
+    var claveusuario = $('#txt_claveusuario_reg').val();
     var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_reg').val();
     var roles_idroles = $('#txt_roles_idroles_reg').val();
     var genero_idgenero = $('#txt_genero_idgenero_reg').val();
@@ -21,7 +21,7 @@ function RegistroUsuarios() {
     console.log('correousuario: ' + correousuario + ".");
     console.log('telefonousuarios: ' + telefonousuarios + ".");
     console.log('direccionusuario: ' + direccionusuario + ".");
-    console.log('contraseñausuario: ' + contraseñausuario + ".");
+    console.log('claveusuario: ' + claveusuario + ".");
     console.log('tipo_documento_idtipodoc: ' + tipo_documento_idtipodoc + ".");
     console.log('roles_idroles: ' + roles_idroles + ".");
     console.log('genero_idgenero: ' + genero_idgenero + ".");
@@ -46,7 +46,7 @@ function RegistroUsuarios() {
     } else if (direccionusuario == '') {
         alert('La dirección no puede estar vacia');
         resultado = 'Error';
-    } else if (contraseñausuario == '') {
+    } else if (claveusuario == '') {
         alert('La contraseña no puede estar vacia');
         resultado = 'Error';
     } else if (tipo_documento_idtipodoc == '') {
@@ -62,15 +62,8 @@ function RegistroUsuarios() {
         alert('El estado de usuario no puede estar vacio');
         resultado = 'Error';
 
-    } else if (isNaN(numerodocusuarios)) {
-        alert('El número de identificacion debe ser numérico');
-        resultado = 'Error';
-
     } else if (isNaN(telefonousuarios)) {
         alert('El número telefónico debe ser numérico');
-        resultado = 'Error';
-    } else if (isNaN(estado_usuario_idestadousuario)) {
-        alert('El estado usuario debe ser numérico');
         resultado = 'Error';
     } else if (isNaN(roles_idroles)) {
         alert('El rol de  usuario debe ser numérico');
@@ -81,8 +74,12 @@ function RegistroUsuarios() {
     } else if (isNaN(tipo_documento_idtipodoc)) {
         alert('El tipo documento debe ser numérico');
         resultado = 'Error';
-
-
+   } else if (isNaN(numerodocusuarios)) {
+        alert('El número de identificacion debe ser numérico');
+        resultado = 'Error';
+        } else if (isNaN(estado_usuario_idestadousuario)) {
+        alert('El estado usuario debe ser numérico');
+        resultado = 'Error';
     } else {
         resultado = 'Correcto';
     }
@@ -95,65 +92,73 @@ function RegistroUsuarios() {
     }
 }
 
-function settipo_documento_idtipodoc(x) {
+function settipo_documento_idtipodoc(x){
     $('#txt_tipo_documento_idtipodoc_reg').val(x);
-    console.log("valor : " + x);
-}
-function setroles_idroles(x) {
-    $('#txt_roles_idroles_reg').val(x);
-    console.log("valor : " + x);
-}
-function setgenero_idgenero(x) {
-    $('#txt_genero_idgenero_reg').val(x);
-    console.log("valor : " + x);
-}
-function setestado_usuario_idestadousuario(x) {
-    $('#txt_estado_usuario_idestadousuario_reg').val(x);
-    console.log("valor : " + x);
+    console.log("valor : " + x);   
 }
 
-function realizarBusqueda()
-{
-    var textoBuscado = $('#txt_Id_Consultado').val();
-    console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/VISION/RegistroUsuarios.jsp?buscando=' + textoBuscado.trim() + '&';
+function setroles_idroles(x){
+    $('#txt_roles_idroles_reg').val(x);
+    console.log("valor : " + x);   
 }
+
+function setestado_usuario_idestadousuario(x){
+    $('#txt_estado_usuario_idestadousuario_Reg').val(x);
+    console.log("valor : " + x);   
+}
+
+function setgenero_idgenero(x){
+    $('#txt_genero_idgenero_reg').val(x);
+    console.log("valor : " + x);   
+}
+
+$('#txt_Id_Consultado').change(function(){
+console.log("Texto" + $('#txt_Id_Consultado').val());
+});
 
 function SetIdConsulta(x) {
     $('#txt_Id_Consultado').val(x);
     console.log("valor : " + x);
 }
 
-$('#txt_Id_Consultado').change(function () {
-    console.log("Texto" + $('#txt_Id_Consultado').val());
-});
+function realizarBusqueda() {
+    var textoBuscado = $('#txt_Id_Consultado').val();
+    console.log("Texto: " + $('#txt_Id_Consultado').val());
+    window.location.href = '/VISION/vista/RegistroUsuarios.jsp?buscando=' + textoBuscado.trim() + '&';
+}
 
 function visualizaOculta(Dato) {
+
     console.log("Viene " + Dato);
     if (Dato == "Registrar") {
+
         $("#Registrar").removeClass('d-none');
         $("#Actualizar").addClass('d-none');
         $("#Listado").addClass('d-none');
+
+
     } else if (Dato == "Actualizar") {
+
         $("#Registrar").addClass('d-none');
         $("#Actualizar").removeClass('d-none');
         $("#Listado").addClass('d-none');
+
+
     } else if (Dato == "Listado") {
+
         $("#Listado").removeClass('d-none');
         $("#Registrar").addClass('d-none');
         $("#Actualizar").addClass('d-none');
+
     }
 }
-function DefinirFoco() {
-    document.getElementById("txt_Id_Consultado").focus();
-}
-function MostrarSelector() {
-    var Valor = $("#foo").val();
-    console.log('Valor Selector: ' + Valor);
-}
-$('#txt_Id_Consultado').change(function () {
-    console.log("Texto" + $('#txt_Id_Consultado').val());
-});
+
+
+
+
+
+
+
 
 
 

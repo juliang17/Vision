@@ -50,19 +50,19 @@ public class pruebaactualizarusuarios {
         System.out.println("Digite su numero de documento");
         numerodocusuario = leer.nextLine();
 
-        misusuarios.setnumerodocusuario(numerodocusuario);
-        misusuarios.setnombreusuarios(nombreusuarios);
-        misusuarios.setapellidousuarios(apellidousuarios);
-        misusuarios.setcorreousuarios(correousuarios);
-        misusuarios.settelefonousuarios(telefonousuarios);
-        misusuarios.setdireccionusuario(direccionusuario);
-        misusuarios.setcontraseñausuario(contraseñausuario);
-        misusuarios.settipo_documento_idtipodoc(tipo_documento_idtipodoc);
-        misusuarios.setroles_idroles(roles_idroles);
-        misusuarios.setgenero_idgenero(genero_idgenero);
-        misusuarios.setestado_usuario_idestadousuario(estado_usuario_idestadousuario);
+        misusuarios.setNumerodocusuario(numerodocusuario);
+        misusuarios.setNombreusuarios(nombreusuarios);
+        misusuarios.setApellidousuarios(apellidousuarios);
+        misusuarios.setCorreousuarios(correousuarios);
+        misusuarios.setTelefonousuarios(telefonousuarios);
+        misusuarios.setDireccionusuario(direccionusuario);
+        misusuarios.setClaveusuario(contraseñausuario);
+        misusuarios.setTipo_documento_idtipodoc(tipo_documento_idtipodoc);
+        misusuarios.setRoles_idroles(roles_idroles);
+        misusuarios.setGenero_idgenero(genero_idgenero);
+        misusuarios.setEstado_usuario_idestadousuario(estado_usuario_idestadousuario);
 
-        misusuarios.setnumerodocusuario("10021475");
+        misusuarios.setNumerodocusuario("10021475");
         String mirespuesta = misusuariosDAO.Actualizarusuario(misusuarios);
         
         if (mirespuesta.length() == 0) {

@@ -1,4 +1,6 @@
 
+<%@page import="modelo.usuarios"%>
+<%@page import="controlador.usuariosDAO"%>
 <%@page import="modelo.genero"%>
 <%@page import="controlador.GeneroDAO"%>
 <%@page import="modelo.estado_usuario"%>
@@ -6,18 +8,16 @@
 <%@page import="modelo.roles"%>
 <%@page import="controlador.rolesDAO"%>
 <%@page import="modelo.tipo_documento"%>
-<%@page import="controlador.tipo_documentoDAO"%>
-<%@page import="modelo.usuarios"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="controlador.usuariosDAO"%>
+<%@page import="controlador.tipo_documentoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="../vista/Javascript/validarUsuarios.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="./Javascript/validarUsuarios.js"></script>
         <title>Registro Usuarios</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
@@ -46,15 +46,15 @@
         </div>
         <div id="Registrar" class="d-none">
             <h1>Registro de usuarios</h1>
-            <form action="/VISION/RegistroUsuarios" method="post" onsubmit="return RegistroUsuarios()">
+            <form action="/VISION/RegistrarUsuarios" method="post" onsubmit="return RegistroUsuarios()">
                 <h5>Nombres </h5>
-                <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres" id="txt_nombreusuarios_Reg"> 
+                <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres"  id="txt_nombreusuarios_Reg">
                 <br>
                 <h5>Apellidos</h5>
                 <input type="text" name="apellidousuarios" class="form-control" placeholder="Apellidos" id="txt_apellidousuarios_reg">
                 <br>
-                <label for="idtipodoc"><strong>Tipo documento</strong></label>
-                <input id="txt_tipo_documento_idtipodoc_reg" type="text" class="form-control d-none" name= "idtipodoc"/> <br>
+                <h5><strong>Tipo documento</strong></h5>
+                <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" placeholder="Tipo Documento" id="txt_tipo_documento_idtipodoc_reg"> <br>
                 <%
                     tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
                     ArrayList<tipo_documento> mitipodoc = mitipodocDAO.Consultarlistadotipo_documento("");
@@ -67,22 +67,22 @@
                 %>
                 <br>
                 <h5>Identificación Usuario</h5>
-                <input type="text" name="numerodocusuarios" class="form-control" placeholder="Numero identificación" id="txt_numerodocusuarios_reg">
+                <input type="number" name="numerodocusuario" class="form-control" placeholder="Número identificación" id="txt_numerodocusuario_reg">
                 <br>
                 <h5>Contraseña</h5>
-                <input type="password" name="contraseñausuario" class="form-control" placeholder="clave" id="txt_contraseñausuario_reg">
+                <input type="text" name="claveusuario" class="form-control" placeholder="Contraseña" id="txt_claveusuario_reg">
                 <br>
                 <h5>Telefono</h5>
-                <input type="text" name="telefonousuarios" class="form-control" placeholder="Telefono" id="txt_telefonousuarios_reg">
+                <input type="number" name="telefonousuarios" class="form-control" placeholder="Telefono" id="txt_telefonousuarios_reg">
                 <br>
                 <h5>Dirección</h5>
-                <input type="text" name="direccionusuario" class="form-control" placeholder="Direccion" id="txt_direccionusuario_reg">
+                <input type="text" name="direccionusuario" class="form-control" placeholder="Dirección" id="txt_direccionusuario_reg">
                 <br>
                 <h5>Correo</h5>
-                <input type="text" name="correousuario" class="form-control" placeholder="Correo" id="txt_correousuario_reg">
+                <input type="text" name="correousuarios" class="form-control" placeholder="Correo" id="txt_correousuarios_reg">
                 <br>
-                <label for="idroles"><strong>Rol usuario</strong></label>
-                <input id="txt_roles_idroles_reg" type="text" class="form-control d-none" name= "idroles"/> <br>
+                <h5><strong>Rol usuario</strong></h5>
+                <input type="number" name="roles_idroles" class="form-control d-none" id="txt_roles_idroles_reg">
                 <%
                     rolesDAO misrolesDAO = new rolesDAO();
                     ArrayList<roles> misroles = misrolesDAO.Consultarlistadoroles("");
@@ -95,8 +95,8 @@
                 %>
                 <br>
                 <br>
-                <label for="idestadousuario"><strong>Estado usuario</strong></label>
-                <input id="txt_estado_usuario_idestadousuario_reg" type="text" class="form-control d-none" name= "idestadousuario"/> <br>
+                <h5><strong>Estado usuario</strong></h5>
+                <input type="number" name="estado_usuario_idestadousuario" class="form-control d-none" id="txt_estado_usuario_idestadousuario_Reg">
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
                     ArrayList<estado_usuario> miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("");
@@ -109,8 +109,8 @@
                 %>
                 <br>
                 <br>
-                <label for="idgenero"><strong>Genero</strong></label>
-                <input id="txt_genero_idgenero_reg" type="text" class="form-control d-none" name= "idgenero"/> <br>
+                <h5><strong>Genero</strong></h5>
+                <input type="number" name="genero_idgenero" class="form-control d-none" id="txt_genero_idgenero_reg">
                 <%
                     GeneroDAO migeneroDAO = new GeneroDAO();
                     ArrayList<genero> migenero = migeneroDAO.Consultarlistadogenero("");
@@ -121,125 +121,90 @@
                     }
                     out.println("</select>");
                 %>
-                <br>
-                <br>
-                <br>
                 <div id="controlRegistro" class="bd-example d-none">
                     <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
                 </div>
-                <button type="submit" class="btn btn-success">Registrar</button>   
-
+                <button type="submit" class="btn btn-success">Registrar</button>
             </form>
         </div>
 
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div id="Actualizar" class="bd-example d-none">
-                    <h1>Actualizar usuarios</h1>
-                    <form action="/VISION/ActualizarUsuario" method = "post">
-                        <div class ="form-group">
-                            <label>Identificacion</label>
-                            <input type="text" class="form-control" readonly name="numerodocusuarios" value="<%=request.getParameter("numerodocusuarios")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Nombres</label>
-                            <input type="text" class="form-control" name= "nombreusuarios" value="<%=request.getParameter("nombreusuarios")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Apellidos</label>
-                            <input type = "text" class="form-control" name= "apellidousuarios" value="<%=request.getParameter("apellidousuarios")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Correo</label>
-                            <input type = "text" class="form-control" name= "correousuarios" value="<%=request.getParameter("correousuarios")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Telefono</label>
-                            <input type = "text" class="form-control" name= "telefonousuarios" value="<%=request.getParameter("telefonousuarios")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Direccion</label>
-                            <input type = "text" class="form-control" name= "direccionusuario" value="<%=request.getParameter("direccionusuario")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Contraseña</label>
-                            <input type = "text" class="form-control" name= "contraseñausuario" value="<%=request.getParameter("contraseñausuario")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Tipo documento</label>
-                            <input type = "text" class="form-control" name= "tipo_documento_idtipodoc" value="<%=request.getParameter("tipo_documento_idtipodoc")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Rol</label>
-                            <input type = "text" class="form-control" name= "roles_idroles" value="<%=request.getParameter("roles_idroles")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Genero</label>
-                            <input type = "text" class="form-control" name= "genero_idgenero" value="<%=request.getParameter("genero_idgenero")%>"/>
-                        </div>
-                        <div class ="form-group">
-                            <label>Estado usuario</label>
-                            <input type = "text" class="form-control" name= "estado_usuario_idestadousuario" value="<%=request.getParameter("estado_usuario_idestadousuario")%>"/>
-                        </div>
-                        <div id="ControlRegistro" class="bd-example d-none">
-                            <input type = "text" class="form-control" name=
-                                   "BanderaActualiza"/>
-                        </div>
-                        <div class="row justify-content-md-center">
-                            <div class="btn-group">
-                                <input type = "submit" class="btn btn-primary form-control
-                                       btn btn-login" value= "Actualizar"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>        
-
+        <div id="Actualizar" class="d-none">
+            <h1>Actualizar usuarios</h1>
+            <form action="/VISION/ActualizarUsuarios" method="post">
+                <h5>Nombres </h5>
+                <input type="text" name="nombreusuarios" class="form-control" id="txt_nombreusuarios_Reg" value="<%=request.getParameter("Nombres")%>">
+                <br>
+                <h5>Apellidos</h5>
+                <input type="text" name="apellidousuarios" class="form-control" id="txt_apellidousuarios_reg" value="<%=request.getParameter("Apellidos")%>">
+                <br>
+                <h5><strong>Tipo documento</strong></h5>
+                <input type="number" name="tipo_documento_idtipodoc" class="form-control" id="txt_tipo_documento_idtipodoc_reg" value="<%=request.getParameter("Tipo_doc")%>"> <br>
+                <br>
+                <h5>Identificación Usuario</h5>
+                <input type="number" name="numerodocusuario" class="form-control" id="txt_numerodocusuario_reg" value="<%=request.getParameter("NumeroDoc")%>">
+                <br>
+                <h5>Contraseña</h5>
+                <input type="text" name="claveusuario" class="form-control" id="txt_claveusuario_reg" value="<%=request.getParameter("Contrasena")%>">
+                <br>
+                <h5>Telefono</h5>
+                <input type="number" name="telefonousuarios" class="form-control" id="txt_telefonousuarios_reg" value="<%=request.getParameter("Telefono")%>">
+                <br>
+                <h5>Dirección</h5>
+                <input type="text" name="direccionusuario" class="form-control" id="txt_direccionusuario_reg" value="<%=request.getParameter("Direccion")%>">
+                <br>
+                <h5>Correo</h5>
+                <input type="text" name="correousuarios" class="form-control" id="txt_correousuarios_reg" value="<%=request.getParameter("Correo")%>">
+                <br>
+                <h5><strong>Rol usuario</strong></h5>
+                <input type="number" name="roles_idroles" class="form-control" id="txt_roles_idroles_reg" value="<%=request.getParameter("Tipo_usuario")%>">
+                <br>
+                <br>
+                <h5><strong>Estado usuario</strong></h5>
+                <input type="number" name="estado_usuario_idestadousuario" class="form-control" id="txt_estado_usuario_idestadousuario_Reg" value="<%=request.getParameter("Estado_usuario")%>">
+                <br>
+                <br>
+                <h5><strong>Genero</strong></h5>
+                <input type="number" name="genero_idgenero" class="form-control" id="txt_genero_idgenero_reg" value="<%=request.getParameter("Genero")%>">
+                <button type="submit" class="btn btn-success">Actualizar</button>
+            </form>
+        </div>    
 
         <br>
-        <div id="Listado" class="container">
-            <form action="/VISION/ConsultarUsuarios" method="post">
+        <div id="Listado" class="bd-example">
+            <form action="/VISION/ConsultaUsuarios" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="Listado" class="bd-example">
-                        <div id="ControlRegistro" class="input-group">
-                            <input id ="txt_Id_Consultado" type = "text" class="form-control"
-                                   name= "IdConsultado" value="<%=buscando%>" autofocus
-                                   placeholder="Buscar por Identificacion,Nombres y Apellidos..."/>
-                            <button type="button" class="btn btn-primary" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false"
-                                    onClick="realizarBusqueda()">Buscar</button>
-                        </div>
-                        <div>
-                            <h1>Listado Usuarios</h1>
-                            <div id="Tabla_usuarios">
+                    <div id="ControlRegistro" class="input-group">
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar Número de documento, Nombre o Apellido."/>
+                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                    </div>    
+                    <div>
+                        <h2 class="title-table">Listado Usuarios</h2>
+                        <div id="Tabla_usuarios">
 
-                                <% usuariosDAO misusuariosDAO = new usuariosDAO();
-                                    ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
-                                    milistausuarios = misusuariosDAO.Consultarlistadousuarios(buscando, buscando, buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Identificacion</td><td>Nombre</td><td>Apellido</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Rol</td><td>Genero</td><td>Estado</td><td>Tipo documento</td><td>Editar</td><td>Eliminar</td></tr>");
-                                    for (usuarios U : milistausuarios) {
-                                        out.println("<tr>");
-                                        out.println("<td>" + U.getnumerodocusuario() + "</td>");
-                                        out.println("<td>" + U.getnombreusuarios() + "</td>");
-                                        out.println("<td>" + U.getapellidousuarios() + "</td>");
-                                        out.println("<td>" + U.getcorreousuarios() + "</td>");
-                                        out.println("<td>" + U.gettelefonousuarios() + "</td>");
-                                        out.println("<td>" + U.getdireccionusuario() + "</td>");
-                                        out.println("<td>" + U.getroles_idroles() + "</td>");
-                                        out.println("<td>" + U.getgenero_idgenero() + "</td>");
-                                        out.println("<td>" + U.getestado_usuario_idestadousuario() + "</td>");
-                                        out.println("<td>" + U.gettipo_documento_idtipodoc() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
-                                                + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getnumerodocusuario() + ")'/>"
-                                                + "</td>");
-                                        out.println("</tr>");
-                                    }
-                                    out.println("</table>");
-                                %>
-                            </div>  
-                        </div>       
+                            <% usuariosDAO misusuariosDAO = new usuariosDAO();
+                                ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
+                                milistausuarios = misusuariosDAO.Consultarlistadousuarios(buscando, buscando, buscando);
+                                out.println("<table class='table table-dark'><tr><td>Identificacion</td><td>Nombre</td><td>Apellido</td><td>Contraseña</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Rol</td><td>Genero</td><td>Estado</td><td>Tipo documento</td><td>Editar</td><td>Eliminar</td></tr>");
+                                for (usuarios U : milistausuarios) {
+                                    out.println("<tr>");
+                                    out.println("<td>" + U.getNumerodocusuario() + "</td>");
+                                    out.println("<td>" + U.getNombreusuarios() + "</td>");
+                                    out.println("<td>" + U.getApellidousuarios() + "</td>");
+                                    out.println("<td>" + U.getClaveusuario()+ "</td>");
+                                    out.println("<td>" + U.getCorreousuarios() + "</td>");
+                                    out.println("<td>" + U.getTelefonousuarios() + "</td>");
+                                    out.println("<td>" + U.getDireccionusuario() + "</td>");
+                                    out.println("<td>" + U.getRoles_idroles() + "</td>");
+                                    out.println("<td>" + U.getGenero_idgenero() + "</td>");
+                                    out.println("<td>" + U.getEstado_usuario_idestadousuario() + "</td>");
+                                    out.println("<td>" + U.getTipo_documento_idtipodoc() + "</td>");
+                                    out.println("<td>" + "<input type = 'submit' class='btn btn-secondary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getNumerodocusuario()+ ")'/>" + "</td>");
+                                    out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getNumerodocusuario()+ ")'/>" + "</td>");
+                                    out.println("</tr>");
+                                }
+                                out.println("</table>");
+                            %>
+                        </div>  
                     </div>
                 </div>
             </form>

@@ -36,18 +36,25 @@
                 </button>
             </div>
         </div>
-        <div id="Registrar" class="d-none">
-            <h1>Registro unidad de medida</h1>      
-            <form action="/VISION/RegistroUnidadmedida" method="post" onsubmit="return RegistroUnidadmedida()">
-                <h5>Descripcion </h5>
-                <input type="text" name="descripcionunidadmedida" class="form-control" placeholder="descripcion unidad de medida" id="txt_descripcionunidadmedida_reg"> 
-                <br>
-                <div id="controlRegistro" class="bd-example d-none">
-                    <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
-                </div>
-                <button type="submit" class="btn btn-success">Registrar</button>     
-            </form>         
+        <!--REGISTRAR-->
+        <div id="Registrar" class="bd-example d-none">
+            <div class="container" style="background-color: white">
+                <h1>Registrar Unidad de medida</h1>
+                <form action="/VISION/RegistroUnidadMedida" method="post" onsubmit="return validarUnidad()" >
+                    <div class="form-row" >
+                        <div class="form-group col-md-12" >
+                            <h2>Unidad de medida:</h2>
+                            <input type="text" name="descripcionunidadmedida" class="form-control" placeholder="Digite la unidad de medida" id="txt_descripcionunidadmedida_Reg">
+                        </div> 
+                    </div>
+                    <div id="ControlRegistro" class="bd-example d-none">
+                        <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
+                    </div>
+                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                </form>
+            </div>
         </div>
+        <!--REGISTRAR-->
 
         <div class="container">
             <div class="row justify-content-md-center">

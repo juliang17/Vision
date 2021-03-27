@@ -1,23 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pruebas;
 
 import controlador.detalleDAO;
 import java.util.Scanner;
 import modelo.detalle_movimiento;
 
-/**
- *
- * @author Jeffe
- */
 public class PruebaAdicionardetalle {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         detalleDAO mi_detalle_dao = new detalleDAO();
@@ -25,7 +14,6 @@ public class PruebaAdicionardetalle {
        
        Scanner teclado = new Scanner(System.in);
        
-       String descripcion = ""; 
        int cantidad;
        int iva;
        int subtotal;
@@ -33,8 +21,6 @@ public class PruebaAdicionardetalle {
        int movimiento_idmovimiento;
        int productos_idproductos;
        
-        System.out.println("Digite la descripción del detalle");
-        descripcion = teclado.nextLine();
         
         System.out.println("Digite la cantidad del detalle");
         cantidad = teclado.nextInt();
@@ -54,7 +40,6 @@ public class PruebaAdicionardetalle {
         System.out.println("Digite el producto del detalle");
         productos_idproductos = teclado.nextInt();
         
-        mi_detalle.setDescripcion(descripcion);
         mi_detalle.setCantidad(cantidad);
         mi_detalle.setIva(iva);
         mi_detalle.setSubtotal(subtotal);

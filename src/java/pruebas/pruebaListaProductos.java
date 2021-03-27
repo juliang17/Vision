@@ -11,7 +11,7 @@ public class pruebaListaProductos {
 
         ProductoDAO productos_dao = new ProductoDAO();
         ArrayList<productos> mi_productos = new ArrayList<productos>();
-        mi_productos = productos_dao.listadoproductos(0);
+        mi_productos = productos_dao.listadoproductos("","");
 
         int size = mi_productos.size();
         System.out.println("<table border=\"1\"><tr><td>idproductos</td><td>nombreproducto</td><td>cantidadproducto</td><td>ivaproducto</td><td>descripcionproducto</td><td>precio</td><td>Categoria</td><td>Marca</td><td>UnidadDemedida</td><td>Proveedoes</td> ");
@@ -31,6 +31,7 @@ public class pruebaListaProductos {
             System.out.println("<td>" + P.getProveedores_idproveedores() + "</td>");
 
             System.out.println("</tr>");
+            System.out.println("</table>");
 
         }
     }

@@ -23,7 +23,7 @@ public class PruebaAdicionarCategorias {
 
         if (miRespuesta.length() == 0) {
 
-            System.out.println("Consulta exitosa");
+            System.out.println("Registro exitosa");
 
         } else {
 

@@ -11,7 +11,7 @@ public class Pruebaconsultarusuarios {
         usuarios misusuarios = misusuariosDAO.Consultarusuarios("1000127213");
 
         if (misusuarios != null) {
-            System.out.println("Usuario encontrado:" + misusuarios.getnumerodocusuario() + "_" + misusuarios.getnombreusuarios() + "_");
+            System.out.println("Usuario encontrado:" + misusuarios.getNumerodocusuario() + "_" + misusuarios.getNombreusuarios() + "_");
 
         } else {
             System.out.println("Usuario no encontrado");

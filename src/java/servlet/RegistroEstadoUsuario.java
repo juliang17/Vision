@@ -5,8 +5,7 @@
  */
 package servlet;
 
-
-import controlador.MarcaDAO;
+import controlador.estado_usuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.marca;
+import modelo.estado_usuario;
 
 /**
  *
  * @author santy
  */
-@WebServlet(name = "RegistroMarca", urlPatterns = {"/RegistroMarca"})
-public class RegistroMarca extends HttpServlet {
+@WebServlet(name = "RegistroEstadoUsuario", urlPatterns = {"/RegistroEstadoUsuario"})
+public class RegistroEstadoUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,35 +35,35 @@ public class RegistroMarca extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-        String descripcionmarca = request.getParameter("descripcionmarca");
-        String Banderaestado = request.getParameter("Banderaregistro");
         
-        MarcaDAO marca_dao = new MarcaDAO();
-        marca mi_marca = new marca();
+        String EstadoUsuario = request.getParameter("descripcionestadousuario");
+        String BanderaEstado = request.getParameter("BanderaRegistro");
         
-        mi_marca.setDescripcionmarca(descripcionmarca);
+        estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
+        estado_usuario miestadousuario = new estado_usuario();
         
-        System.out.println("El valor es " + Banderaestado);
-        if (Banderaestado.equals("correcto")) {
-            String Respuestaregistrada = marca_dao.adicionarmarca(mi_marca);
-            System.out.println("Res " + Respuestaregistrada);
-            System.out.println("Res " + Respuestaregistrada.length());
-            if (Respuestaregistrada.length() == 0) {
+        miestadousuario.setdescripcionestadousuario(EstadoUsuario);
+        
+        System.out.println("El valor es " + BanderaEstado);
+        if (BanderaEstado.equals("Correcto")) {
+            String respuestaRegistrada = miestadousuarioDAO.adicionarestado_usuario(miestadousuario);
+            System.out.println("Res " + respuestaRegistrada);
+            System.out.println("Res " + respuestaRegistrada.length());
+            if (respuestaRegistrada.length() == 0) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Marca registrada con Exito." + "');");
-                out.println("window.location.href = '/VISION/Formularios/GestionMarca.jsp';");
+                out.println("alert('" + "Estado Usuario registrado con éxito." + "');");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionEstadoUsuario.jsp';");
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + Respuestaregistrada + "');");
-                out.println("alert('" + "Error Encontrado: "
-                        + Respuestaregistrada.replace("'", "") + "');");
+                //out.println("alert('" + respuestaRegistrada + "');");
+                out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
                 out.println("window.history.back();");
                 out.println("</script>");
+
             }
         } else {
-            System.out.println("El valor no es correcto " + Banderaestado);
+            System.out.println("El valor no es correcto " + BanderaEstado);
         }
     }
 

@@ -111,7 +111,7 @@ public class tipo_documentoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from tipo_documento where idtipodoc = ? and descripciontipodoc = ? ;";
+            String Query = " Delete from tipo_documento where idtipodoc = ? and descripciontipodoc = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setInt(1, tipodoc.getidtipodoc());
             sentencia.setString(2, tipodoc.getdescripciontipodoc());

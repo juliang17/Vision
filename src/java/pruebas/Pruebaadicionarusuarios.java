@@ -48,17 +48,17 @@ public class Pruebaadicionarusuarios {
         System.out.println("Digite su estado usuario");
         estado = leer.nextInt();
 
-        misusuarios.setnumerodocusuario(Doc);
-        misusuarios.setnombreusuarios(Nombre);
-        misusuarios.setapellidousuarios(Apellidos);
-        misusuarios.setcorreousuarios(Correo);
-        misusuarios.settelefonousuarios(Telefono);
-        misusuarios.setdireccionusuario(Direccion);
-        misusuarios.setcontraseñausuario(Password);
-        misusuarios.settipo_documento_idtipodoc(tDoc);
-        misusuarios.setroles_idroles(rol);
-        misusuarios.setgenero_idgenero(genero);
-        misusuarios.setestado_usuario_idestadousuario(estado);
+        misusuarios.setNumerodocusuario(Doc);
+        misusuarios.setNombreusuarios(Nombre);
+        misusuarios.setApellidousuarios(Apellidos);
+        misusuarios.setCorreousuarios(Correo);
+        misusuarios.setTelefonousuarios(Telefono);
+        misusuarios.setDireccionusuario(Direccion);
+        misusuarios.setClaveusuario(Password);
+        misusuarios.setTipo_documento_idtipodoc(tDoc);
+        misusuarios.setRoles_idroles(rol);
+        misusuarios.setGenero_idgenero(genero);
+        misusuarios.setEstado_usuario_idestadousuario(estado);
         String mirespuesta = misusuariosDAO.adicionarusuarios(misusuarios);
 
         if (mirespuesta.length() == 0) {

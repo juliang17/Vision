@@ -11,13 +11,13 @@ public class pruebaEliminarProductos {
 
         ProductoDAO productos_dao = new ProductoDAO();
 
-        ArrayList<productos> listado_productos = productos_dao.listadoproductos(0);
+        ArrayList<productos> listado_productos = productos_dao.listadoproductos("","");
         for (productos P : listado_productos) {
             System.out.println(" ID. " + P.getIdproductos() + " NOMBRE : " + P.getNombreproducto());
         }
         System.out.println("Se elimino");
         productos_dao.Eliminarproductos(listado_productos.get(0));
-        listado_productos = productos_dao.listadoproductos(0);
+        listado_productos = productos_dao.listadoproductos("","");
         for (productos P : listado_productos) {
             System.out.println(" ID. " + P.getIdproductos() + " NOMBRE : " + P.getNombreproducto());
         }

@@ -20,18 +20,18 @@ public class ProductoDAO {
         PreparedStatement sentencia;
 
         try {
-            String Query = "insert productos (nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, categorias_idcategorias, marca_idmarca, unidad_de_medida_idunidadmedida, proveedores_idproveedores)"
-                    + "values (?,?,?,?,?,?,?,?,?)";
+            String Query = "Insert into productos (referenciaproducto, nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, categorias_idcategorias, marca_idmarca, unidad_de_medida_idunidadmedida, proveedores_idproveedores)" + "values (?,?,?,?,?,?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, PRODUCTOS.getNombreproducto());
-            sentencia.setInt(2, PRODUCTOS.getCantidadproducto());
-            sentencia.setInt(3, PRODUCTOS.getIvaproducto());
-            sentencia.setString(4, PRODUCTOS.getDescripcionproducto());
-            sentencia.setInt(5, PRODUCTOS.getPrecio());
-            sentencia.setInt(6, PRODUCTOS.getCategorias_idcategorias());
-            sentencia.setInt(7, PRODUCTOS.getMarca_idmarca());
-            sentencia.setInt(8, PRODUCTOS.getUnidad_de_medida_idunidadmedida());
-            sentencia.setInt(9, PRODUCTOS.getProveedores_idproveedores());
+            sentencia.setString(1, PRODUCTOS.getReferenciaproducto());
+            sentencia.setString(2, PRODUCTOS.getNombreproducto());
+            sentencia.setInt(3, PRODUCTOS.getCantidadproducto());
+            sentencia.setInt(4, PRODUCTOS.getIvaproducto());
+            sentencia.setString(5, PRODUCTOS.getDescripcionproducto());
+            sentencia.setInt(6, PRODUCTOS.getPrecio());
+            sentencia.setInt(7, PRODUCTOS.getCategorias_idcategorias());
+            sentencia.setInt(8, PRODUCTOS.getMarca_idmarca());
+            sentencia.setInt(9, PRODUCTOS.getUnidad_de_medida_idunidadmedida());
+            sentencia.setInt(10, PRODUCTOS.getProveedores_idproveedores());
 
             sentencia.execute();
             mirespuesta = "";
@@ -54,9 +54,9 @@ public class ProductoDAO {
         PreparedStatement sentencia;
 
         try {
-            String Query = "update productos set idproductos=?, nombreproducto=?, cantidadproducto=?, ivaproducto=?, descripcionproducto=?, precio=?, Categorias_idcategorias=?, Marca_idmarca=?, Unidad_de_medida_idunidadmedida=?, Proveedores_idproveedores=?, where idproductos=?";
+            String Query = "update productos set referenciaproducto=?, nombreproducto=?, cantidadproducto=?, ivaproducto=?, descripcionproducto=?, precio=?, categorias_idcategorias=?, marca_idmarca=?, unidad_de_medida_idunidadmedida=?, proveedores_idproveedores=? where referenciaproducto=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, PRODUCTOS.getIdproductos());
+            sentencia.setString(1, PRODUCTOS.getReferenciaproducto());
             sentencia.setString(2, PRODUCTOS.getNombreproducto());
             sentencia.setInt(3, PRODUCTOS.getCantidadproducto());
             sentencia.setInt(4, PRODUCTOS.getIvaproducto());
@@ -66,7 +66,6 @@ public class ProductoDAO {
             sentencia.setInt(8, PRODUCTOS.getMarca_idmarca());
             sentencia.setInt(9, PRODUCTOS.getUnidad_de_medida_idunidadmedida());
             sentencia.setInt(10, PRODUCTOS.getProveedores_idproveedores());
-            sentencia.setInt(11, PRODUCTOS.getIdproductos());
 
             sentencia.executeUpdate();
 
@@ -78,7 +77,7 @@ public class ProductoDAO {
         return mirespuesta;
     }
 
-    public productos Consultaproductos(String nombreproducto) {
+    public productos Consultaproductos(String referenciaproducto) {
         productos miproductos = null;
 
         controlador.Conexion miconexion = new controlador.Conexion();
@@ -87,21 +86,22 @@ public class ProductoDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idproductos, nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, Categorias_idcategorias, Marca_idmarca, Unidad_de_medida_idunidadmedida, Proveedores_idproveedores from productos where idproductos = " + nombreproducto);
+            String Query = ("select idproductos, referenciaproducto, nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, categorias_idcategorias, marca_idmarca, unidad_de_medida_idunidadmedida, proveedores_idproveedores from productos where referenciaproducto = " + referenciaproducto);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
                 miproductos = new productos();
                 miproductos.setIdproductos(rs.getInt(1));
-                miproductos.setNombreproducto(rs.getString(2));
-                miproductos.setCantidadproducto(rs.getInt(3));
-                miproductos.setIvaproducto(rs.getInt(4));
-                miproductos.setDescripcionproducto(rs.getString(5));
-                miproductos.setPrecio(rs.getInt(6));
-                miproductos.setCategorias_idcategorias(rs.getInt(7));
-                miproductos.setMarca_idmarca(rs.getInt(8));
-                miproductos.setUnidad_de_medida_idunidadmedida(rs.getInt(9));
-                miproductos.setProveedores_idproveedores(rs.getInt(10));
+                miproductos.setReferenciaproducto(rs.getString(2));
+                miproductos.setNombreproducto(rs.getString(3));
+                miproductos.setCantidadproducto(rs.getInt(4));
+                miproductos.setIvaproducto(rs.getInt(5));
+                miproductos.setDescripcionproducto(rs.getString(6));
+                miproductos.setPrecio(rs.getInt(7));
+                miproductos.setCategorias_idcategorias(rs.getInt(8));
+                miproductos.setMarca_idmarca(rs.getInt(9));
+                miproductos.setUnidad_de_medida_idunidadmedida(rs.getInt(10));
+                miproductos.setProveedores_idproveedores(rs.getInt(11));
 
             }
             return miproductos;
@@ -111,7 +111,7 @@ public class ProductoDAO {
         return miproductos;
     }
 
-    public ArrayList<productos> listadoproductos(int idproductos) {
+    public ArrayList<productos> listadoproductos(String referenciaproducto, String nombreproducto ) {
         ArrayList<productos> milistaproductos = new ArrayList<productos>();
         productos miproductos;
 
@@ -119,26 +119,27 @@ public class ProductoDAO {
         Connection nuevaCon;
         nuevaCon = miconexion.getConn();
 
-        System.out.println("Buscando parametro: " + idproductos);
+        System.out.println("Buscando parametro: " + referenciaproducto);
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idproductos, nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, Categorias_idcategorias, Marca_idmarca, Unidad_de_medida_idunidadmedida, Proveedores_idproveedores "
+            String Query = " select idproductos, referenciaproducto, nombreproducto, cantidadproducto, ivaproducto, descripcionproducto, precio, categorias_idcategorias, marca_idmarca, unidad_de_medida_idunidadmedida, proveedores_idproveedores "
                     + " from productos"
-                    + " where idproducto like '%" + idproductos + "%' "
-                    + " or (idproducto) like ('%" + idproductos + "%') ORDER BY idproductos; ";
+                    + " where referenciaproducto like '%" + referenciaproducto + "%' "
+                    + " or (nombreproducto) like ('%" + nombreproducto + "%') ORDER BY referenciaproducto; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 miproductos = new productos();
                 miproductos.setIdproductos(rs.getInt(1));
-                miproductos.setNombreproducto(rs.getString(2));
-                miproductos.setCantidadproducto(rs.getInt(3));
-                miproductos.setIvaproducto(rs.getInt(4));
-                miproductos.setDescripcionproducto(rs.getString(5));
-                miproductos.setPrecio(rs.getInt(6));
-                miproductos.setCategorias_idcategorias(rs.getInt(7));
-                miproductos.setMarca_idmarca(rs.getInt(8));
-                miproductos.setUnidad_de_medida_idunidadmedida(rs.getInt(9));
-                miproductos.setProveedores_idproveedores(rs.getInt(10));
+                miproductos.setReferenciaproducto(rs.getString(2));
+                miproductos.setNombreproducto(rs.getString(3));
+                miproductos.setCantidadproducto(rs.getInt(4));
+                miproductos.setIvaproducto(rs.getInt(5));
+                miproductos.setDescripcionproducto(rs.getString(6));
+                miproductos.setPrecio(rs.getInt(7));
+                miproductos.setCategorias_idcategorias(rs.getInt(8));
+                miproductos.setMarca_idmarca(rs.getInt(9));
+                miproductos.setUnidad_de_medida_idunidadmedida(rs.getInt(10));
+                miproductos.setProveedores_idproveedores(rs.getInt(11));
                 milistaproductos.add(miproductos);
 
             }
@@ -149,7 +150,7 @@ public class ProductoDAO {
         return milistaproductos;
     }
 
-    public String Eliminarproductos(productos PRODUCTOS) {
+    public String Eliminarproductos(productos Producto) {
         String mirespuesta;
         controlador.Conexion miconexion = new controlador.Conexion();
         Connection nuevaCon;
@@ -157,11 +158,11 @@ public class ProductoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from productos where idproductos = ? and nombreproducto = ?;";
+            String Query = " delete from productos where idproductos = ? and referenciaproducto = ? ;";
 
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, PRODUCTOS.getIdproductos());
-            sentencia.setString(2, PRODUCTOS.getNombreproducto());
+            sentencia.setInt(1, Producto.getIdproductos());
+            sentencia.setString(2, Producto.getReferenciaproducto());
 
             mirespuesta = "";
         } catch (Exception ex) {

@@ -58,7 +58,7 @@
                 <div class="col-sm-1">
                     <% ProductoDAO productos_dao = new ProductoDAO();
                         ArrayList<productos> milistaproductos = new ArrayList<productos>();
-                        milistaproductos = productos_dao.listadoproductos(3);
+                        milistaproductos = productos_dao.listadoproductos("");
 
                         for (productos P : milistaproductos) {
                             out.print(P.getNombreproducto());
@@ -70,7 +70,7 @@
                     %>
                 </div>
                 <div>
-                    <a href="Carrito?accion=agregarcarrito$idproductos=${P.getidproductos}" class="btn btn-primary">Agregar al carrito</a>
+                    <a href="#" class="btn btn-primary">Agregar al carrito</a>
                     <a href="#" class="btn btn-success">Comprar</a>
                 </div>
             </div>

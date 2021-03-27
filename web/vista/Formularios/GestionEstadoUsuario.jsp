@@ -36,18 +36,30 @@
                 </button>
             </div>
         </div>
-        <div id="Registrar" class="d-none">
-            <h1>Registro de roles</h1>      
-            <form action="/VISION/RegistroEstadousuario" method="post" onsubmit="return RegistroEstado()">
-                <h5>Descripcion </h5>
-                <input type="text" name="descripcionestadousuario" class="form-control" placeholder="descripcion estado usuario" id="txt_descripcionestadousuario_reg"> 
-                <br>
-                <div id="controlRegistro" class="bd-example d-none">
-                    <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
-                </div>
-                <button type="submit" class="btn btn-success">Registrar</button>     
-            </form>         
+
+        <!--REGISTRAR-->
+
+        <div id="Registrar" class="bd-example d-none">
+            <div class="container">
+                <h1>Registrar Estado Usuario</h1>
+                <form action="/VISION/RegistroEstadoUsuario" method="post" onsubmit="return validarEstadoUsuario()" >
+                    <div class="form-row" >
+                        <div class="form-group col-md-12" >
+                            <h2>Estado usuario:</h2>
+                            <input type="text" name="descripcionestadousuario" class="form-control" placeholder="Digite el estado del usuario" id="txt_descripcionestadousuario_Reg">
+                        </div> 
+                    </div>
+                    <div id="ControlRegistro" class="bd-example d-none">
+                        <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
+                    </div>
+                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                </form>
+            </div>
         </div>
+
+        <!--REGISTRAR-->
+
+        <!--Actualizar-->
 
         <div class="container">
             <div class="row justify-content-md-center">
@@ -71,6 +83,10 @@
                 </div>
             </div>
         </div>
+
+        <!--Actualizar-->
+
+        <!--Listar-->
 
         <div id="Listado" class="container">
             <form action="/VISION/ConsultarEstadoUsuario" method="post">
@@ -109,5 +125,6 @@
                 </div>
             </form>
         </div>
+                            <!--Listar-->
     </body>
 </html>

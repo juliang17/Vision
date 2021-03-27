@@ -61,7 +61,7 @@ public class MarcaDAO {
         return mirespuesta;
     }
 
-    public marca Consultamarca(String descripcionmarca) {
+    public marca Consultamarca(int idmarca) {
         marca mimarca = null;
 
         Conexion miconexion = new Conexion();
@@ -70,7 +70,7 @@ public class MarcaDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idmarca, descripcionmarca from marca where descripcionmarca = " + descripcionmarca);
+            String Query = ("select idmarca, descripcionmarca from marca where idmarca = " + idmarca);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
@@ -86,7 +86,7 @@ public class MarcaDAO {
         return mimarca;
     }
 
-    public ArrayList<marca> listadomarca(String descripcionmarca) {
+    public ArrayList<marca> listadomarca(int idmarca, String descripcionmarca) {
         ArrayList<marca> milistamimarca = new ArrayList<marca>();
         marca mimarca;
 
@@ -94,13 +94,13 @@ public class MarcaDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + descripcionmarca);
+        System.out.println("Buscando parametro: " + idmarca);
         try {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idmarca, descripcionmarca "
                     + " from marca"
-                    + " where descripcionmarca like '%" + descripcionmarca + "%' "
-                    + "ORDER BY descripcionmarca; ";
+                    + " where idmarca like '%" + idmarca + "%' "
+                    + " or (descripcionmarca) like ('%" + descripcionmarca + "%') ORDER BY idmarca; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mimarca = new marca();

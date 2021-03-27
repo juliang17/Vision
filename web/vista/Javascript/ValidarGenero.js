@@ -1,30 +1,35 @@
-function RegistroGeneroo() {
+function validarGenero() {
 
-    var resultado = 'correcto';
-    var descripciongenero = $('#txt_descripciongenero_reg').val();
+    var resultado = 'Correcto';
+    var Genero = document.getElementById("txt_descripciongenero_Reg").value;
 
-    console.log('Información a validar');
-    console.log('descripciongenero: ' + descripciongenero + ".");
 
-    if (descripciongenero == '') {
-        alert('El genero no puede estar vacio');
+    console.log("-- Informacion a validar -- ");
+    console.log("Genero : " + Genero);
+
+
+    if (Genero == '') {
+
+        alert("El genero no puede estar vacio");
         resultado = 'Error';
-    } else {
-        resultado = 'correcto';
     }
-    $('#txt_bandera_reg').val(resultado);
-    console.log('Resultado:' + $('#txt_bandera_reg').val());
-    if (resultado == 'correcto') {
+    $('#txt_Bandera_Reg').val(resultado);
+    console.log('Resultado:' + $('#txt_Bandera_Reg').val());
+    if (resultado == 'Correcto') {
+
         return true;
+
     } else {
+
         return false;
     }
+
 }
-function realizarBusqueda()
-{
+
+function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/VISION/Formularios/GestionGenero.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/Formularios/GestionGenero.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
@@ -32,23 +37,34 @@ function SetIdConsulta(x) {
     console.log("valor : " + x);
 }
 
-$('#txt_Id_Consultado').change(function () {
-    console.log("Texto" + $('#txt_Id_Consultado').val());
-});
-
 function visualizaOculta(Dato) {
+
     console.log("Viene " + Dato);
     if (Dato == "Registrar") {
+
         $("#Registrar").removeClass('d-none');
         $("#Actualizar").addClass('d-none');
         $("#Listado").addClass('d-none');
+
     } else if (Dato == "Actualizar") {
+
         $("#Registrar").addClass('d-none');
         $("#Actualizar").removeClass('d-none');
         $("#Listado").addClass('d-none');
+
     } else if (Dato == "Listado") {
+
         $("#Listado").removeClass('d-none');
         $("#Registrar").addClass('d-none');
         $("#Actualizar").addClass('d-none');
     }
 }
+
+function DefinirFoco(){
+document.getElementById("txt_Id_Consultado").focus();
+}
+
+$('#txt_Id_Consultado').change(function(){
+console.log("Texto" + $('#txt_Id_Consultado').val());
+});
+

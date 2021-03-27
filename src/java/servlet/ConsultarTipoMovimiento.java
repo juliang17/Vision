@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.usuariosDAO;
+import controlador.TipoMovimientoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.usuarios;
+import modelo.tipo_movimiento;
 
 /**
  *
  * @author santy
  */
-@WebServlet(name = "ConsultarUsuarios", urlPatterns = {"/ConsultarUsuarios"})
-public class ConsultarUsuarios extends HttpServlet {
+    @WebServlet(name = "ConsultarTipoMovimiento", urlPatterns = {"/ConsultarTipoMovimiento"})
+public class ConsultarTipoMovimiento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,41 +39,32 @@ public class ConsultarUsuarios extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String numerodocusuario = request.getParameter("IdConsultado");
-        usuariosDAO misUsuariosDAO = new usuariosDAO();
-        usuarios Usuario = null;
-
-        Usuario = misUsuariosDAO.Consultarusuarios(numerodocusuario);
+        String descripciontipomov = request.getParameter("IdConsultado");
+        
+        TipoMovimientoDAO TIPOMOVDAO = new TipoMovimientoDAO();
+        tipo_movimiento mitipomov = null;
+        
+        mitipomov = TIPOMOVDAO.Consultartipomovimiento(0);
         if (Accion != null) {
 
-            if (Usuario != null) {
-                response.sendRedirect("/VISION/vista/RegistroUsuarios.jsp?numerodocusuario="
-                        + Usuario.getnumerodocusuario().toString() + "&"
-                        + "nombreusuarios=" + Usuario.getnombreusuarios() + "&"
-                        + "apellidousuarios=" + Usuario.getapellidousuarios() + "&"
-                        + "correousuarios=" + Usuario.getcorreousuarios().toString() + "&"
-                        + "telefonousuarios=" + Usuario.gettelefonousuarios().toString() + "&"
-                        + "direccionusuario=" + Usuario.getdireccionusuario().replace("#", "No.") + "&"
-                        + "contraseñausuario=" + Usuario.getcontraseñausuario().toString() + "&"
-                        + "tipo_documento_idtipodoc=" + Usuario.gettipo_documento_idtipodoc() + "&"
-                        + "roles_idroles=" + Usuario.getroles_idroles() + "&"
-                        + "genero_idgenero=" + Usuario.getgenero_idgenero() + "&"
-                        + "estado_usuario_idestadousuario=" + Usuario.getestado_usuario_idestadousuario() + "&"
+            if (mitipomov != null) {
+                response.sendRedirect("/VISION/vista/Formulario/GestionTipoMovimiento.jsp?descripciontipomov="
+                        + mitipomov.getDescripciontipomov().toString() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la identificacion: " + numerodocusuario + "');");
+                out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
+                        + "Por favor verificar la descripcion: " + descripciontipomov + "');");
                 out.println("</script>");
             }
         } else {
-            if (Usuario != null) {
-                String RespuestaRegistrada = misUsuariosDAO.Eliminarusuario(Usuario);
+            if (mitipomov != null) {
+                String RespuestaRegistrada = TIPOMOVDAO.Eliminartipomovimiento(mitipomov);
                 if (RespuestaRegistrada.length() == 0) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('" + "Eliminacion Realizada." + "');");
-                    out.println("window.location.href ='/VISION/vista/RegistroUsuarios.jsp';");
+                    out.println("window.location.href ='/VISION/vista/Formularios/GestionCategorias.jsp';");
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");
@@ -84,14 +75,14 @@ public class ConsultarUsuarios extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la identificacion: " + numerodocusuario
+                        + "Por favor verificar la Descripcion: " + descripciontipomov
                         + "');");
                 out.println("</script>");
             }
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

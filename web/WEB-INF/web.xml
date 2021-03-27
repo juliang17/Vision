@@ -9,36 +9,12 @@
         <url-pattern>/Iniciosesion</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ConsultarUsuarios</servlet-name>
-        <servlet-class>servlet.ConsultarUsuarios</servlet-class>
+        <servlet-name>RegistroTipoDocumento</servlet-name>
+        <servlet-class>servlet.RegistroTipoDocumento</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ConsultarUsuarios</servlet-name>
-        <url-pattern>/ConsultarUsuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ActualizarUsuario</servlet-name>
-        <servlet-class>servlet.ActualizarUsuario</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ActualizarUsuario</servlet-name>
-        <url-pattern>/ActualizarUsuario</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegistroUsuarios</servlet-name>
-        <servlet-class>servlet.RegistroUsuarios</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistroUsuarios</servlet-name>
-        <url-pattern>/RegistroUsuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegistroTipoDoc</servlet-name>
-        <servlet-class>servlet.RegistroTipoDoc</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistroTipoDoc</servlet-name>
-        <url-pattern>/RegistroTipoDoc</url-pattern>
+        <servlet-name>RegistroTipoDocumento</servlet-name>
+        <url-pattern>/RegistroTipoDocumento</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarTipodocumento</servlet-name>
@@ -73,12 +49,12 @@
         <url-pattern>/ConsultarRoles</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroRoles</servlet-name>
-        <servlet-class>servlet.RegistroRoles</servlet-class>
+        <servlet-name>RegistroRol</servlet-name>
+        <servlet-class>servlet.RegistroRol</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroRoles</servlet-name>
-        <url-pattern>/RegistroRoles</url-pattern>
+        <servlet-name>RegistroRol</servlet-name>
+        <url-pattern>/RegistroRol</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarEstadoUsuario</servlet-name>
@@ -97,12 +73,12 @@
         <url-pattern>/ConsultarEstadoUsuario</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroEstadousuario</servlet-name>
-        <servlet-class>servlet.RegistroEstadousuario</servlet-class>
+        <servlet-name>RegistroEstadoUsuario</servlet-name>
+        <servlet-class>servlet.RegistroEstadoUsuario</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroEstadousuario</servlet-name>
-        <url-pattern>/RegistroEstadousuario</url-pattern>
+        <servlet-name>RegistroEstadoUsuario</servlet-name>
+        <url-pattern>/RegistroEstadoUsuario</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarGenero</servlet-name>
@@ -121,12 +97,12 @@
         <url-pattern>/ConsultarGenero</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroGenero</servlet-name>
-        <servlet-class>servlet.RegistroGenero</servlet-class>
+        <servlet-name>RegistroGeneros</servlet-name>
+        <servlet-class>servlet.RegistroGeneros</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroGenero</servlet-name>
-        <url-pattern>/RegistroGenero</url-pattern>
+        <servlet-name>RegistroGeneros</servlet-name>
+        <url-pattern>/RegistroGeneros</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarCategorias</servlet-name>
@@ -145,12 +121,12 @@
         <url-pattern>/ConsultarCategorias</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroCategorias</servlet-name>
-        <servlet-class>servlet.RegistroCategorias</servlet-class>
+        <servlet-name>RegistroCategoria</servlet-name>
+        <servlet-class>servlet.RegistroCategoria</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroCategorias</servlet-name>
-        <url-pattern>/RegistroCategorias</url-pattern>
+        <servlet-name>RegistroCategoria</servlet-name>
+        <url-pattern>/RegistroCategoria</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarMarca</servlet-name>
@@ -169,12 +145,12 @@
         <url-pattern>/ConsultarMarca</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroMarca</servlet-name>
-        <servlet-class>servlet.RegistroMarca</servlet-class>
+        <servlet-name>RegistroMarcas</servlet-name>
+        <servlet-class>servlet.RegistroMarcas</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroMarca</servlet-name>
-        <url-pattern>/RegistroMarca</url-pattern>
+        <servlet-name>RegistroMarcas</servlet-name>
+        <url-pattern>/RegistroMarcas</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarUnidadmedida</servlet-name>
@@ -193,13 +169,142 @@
         <url-pattern>/ConsultarUnidadmedida</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistroUnidadmedida</servlet-name>
-        <servlet-class>servlet.RegistroUnidadmedida</servlet-class>
+        <servlet-name>RegistroUnidadMedida</servlet-name>
+        <servlet-class>servlet.RegistroUnidadMedida</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistroUnidadmedida</servlet-name>
-        <url-pattern>/RegistroUnidadmedida</url-pattern>
+        <servlet-name>RegistroUnidadMedida</servlet-name>
+        <url-pattern>/RegistroUnidadMedida</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarMedioPago</servlet-name>
+        <servlet-class>servlet.ActualizarMedioPago</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarMedioPago</servlet-name>
+        <url-pattern>/ActualizarMedioPago</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultarMedioPago</servlet-name>
+        <servlet-class>servlet.ConsultarMedioPago</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarMedioPago</servlet-name>
+        <url-pattern>/ConsultarMedioPago</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistroMedioPago</servlet-name>
+        <servlet-class>servlet.RegistroMedioPago</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroMedioPago</servlet-name>
+        <url-pattern>/RegistroMedioPago</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistroDetalleMovimiento</servlet-name>
+        <servlet-class>servlet.RegistroDetalleMovimiento</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroDetalleMovimiento</servlet-name>
+        <url-pattern>/RegistroDetalleMovimiento</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultarProveedor</servlet-name>
+        <servlet-class>servlet.ConsultarProveedor</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarProveedor</servlet-name>
+        <url-pattern>/ConsultarProveedor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarProveedores</servlet-name>
+        <servlet-class>servlet.ActualizarProveedores</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarProveedores</servlet-name>
+        <url-pattern>/ActualizarProveedores</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistroProveedores</servlet-name>
+        <servlet-class>servlet.RegistroProveedores</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroProveedores</servlet-name>
+        <url-pattern>/RegistroProveedores</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistrarUsuarios</servlet-name>
+        <servlet-class>servlet.RegistrarUsuarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarUsuarios</servlet-name>
+        <url-pattern>/RegistrarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultaUsuarios</servlet-name>
+        <servlet-class>servlet.ConsultaUsuarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultaUsuarios</servlet-name>
+        <url-pattern>/ConsultaUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarUsuarios</servlet-name>
+        <servlet-class>servlet.ActualizarUsuarios</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarUsuarios</servlet-name>
+        <url-pattern>/ActualizarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarDetalle</servlet-name>
+        <servlet-class>servlet.ActualizarDetalle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarDetalle</servlet-name>
+        <url-pattern>/ActualizarDetalle</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultarDetalle</servlet-name>
+        <servlet-class>servlet.ConsultarDetalle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarDetalle</servlet-name>
+        <url-pattern>/ConsultarDetalle</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistrarDetalle</servlet-name>
+        <servlet-class>servlet.RegistrarDetalle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarDetalle</servlet-name>
+        <url-pattern>/RegistrarDetalle</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarTipoMovimiento</servlet-name>
+        <servlet-class>servlet.ActualizarTipoMovimiento</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarTipoMovimiento</servlet-name>
+        <url-pattern>/ActualizarTipoMovimiento</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultarTipoMovimiento</servlet-name>
+        <servlet-class>servlet.ConsultarTipoMovimiento</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarTipoMovimiento</servlet-name>
+        <url-pattern>/ConsultarTipoMovimiento</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistrarTipoMovimiento</servlet-name>
+        <servlet-class>servlet.RegistrarTipoMovimiento</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarTipoMovimiento</servlet-name>
+        <url-pattern>/RegistrarTipoMovimiento</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

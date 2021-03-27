@@ -3,6 +3,7 @@ package modelo;
 public class productos {
 
     private int idproductos;
+    private String referenciaproducto;
     private String nombreproducto;
     private int cantidadproducto;
     private int ivaproducto;
@@ -19,6 +20,14 @@ public class productos {
 
     public void setIdproductos(int idproductos) {
         this.idproductos = idproductos;
+    }
+
+    public String getReferenciaproducto() {
+        return referenciaproducto;
+    }
+
+    public void setReferenciaproducto(String referenciaproducto) {
+        this.referenciaproducto = referenciaproducto;
     }
 
     public String getNombreproducto() {
@@ -65,31 +74,32 @@ public class productos {
         return Categorias_idcategorias;
     }
 
-    public void setCategorias_idcategorias(int categorias_idcategorias) {
-        this.Categorias_idcategorias = categorias_idcategorias;
+    public void setCategorias_idcategorias(int Categorias_idcategorias) {
+        this.Categorias_idcategorias = Categorias_idcategorias;
     }
 
     public int getMarca_idmarca() {
         return Marca_idmarca;
     }
 
-    public void setMarca_idmarca(int marca_idmarca) {
-        this.Marca_idmarca = marca_idmarca;
+    public void setMarca_idmarca(int Marca_idmarca) {
+        this.Marca_idmarca = Marca_idmarca;
     }
 
     public int getUnidad_de_medida_idunidadmedida() {
         return Unidad_de_medida_idunidadmedida;
     }
 
-    public void setUnidad_de_medida_idunidadmedida(int unidad_de_medida_idunidadmedida) {
-        this.Unidad_de_medida_idunidadmedida = unidad_de_medida_idunidadmedida;
+    public void setUnidad_de_medida_idunidadmedida(int Unidad_de_medida_idunidadmedida) {
+        this.Unidad_de_medida_idunidadmedida = Unidad_de_medida_idunidadmedida;
     }
 
     public int getProveedores_idproveedores() {
         return Proveedores_idproveedores;
     }
 
-    public void setProveedores_idproveedores(int proveedores_idproveedores) {
-        this.Proveedores_idproveedores = proveedores_idproveedores;
+    public void setProveedores_idproveedores(int Proveedores_idproveedores) {
+        this.Proveedores_idproveedores = Proveedores_idproveedores;
     }
+
 }

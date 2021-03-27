@@ -36,18 +36,25 @@
                 </button>
             </div>
         </div>
-        <div id="Registrar" class="d-none">
-            <h1>Registro de categorias</h1>      
-            <form action="/VISION/RegistroCategorias" method="post" onsubmit="return RegistroCategorias()">
-                <h5>Descripcion </h5>
-                <input type="text" name="descripcioncategorias" class="form-control" placeholder="descripcion categorias" id="txt_descripcioncategorias_reg"> 
-                <br>
-                <div id="controlRegistro" class="bd-example d-none">
-                    <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
-                </div>
-                <button type="submit" class="btn btn-success">Registrar</button>     
-            </form>         
+        <!--REGISTRAR-->
+        <div id="Registrar" class="bd-example d-none">
+            <div class="container" style="background-color: white">
+                <h1>Registrar categorias</h1>
+                <form action="/VISION/RegistroCategoria" method="post" onsubmit="return validarCategoria()" >
+                    <div class="form-row" >
+                        <div class="form-group col-md-12" >
+                            <h2>Categoria:</h2>
+                            <input type="text" name="descripcioncategorias" class="form-control" placeholder="Digite la categoria" id="txt_descripcioncategorias_Reg">
+                        </div> 
+                    </div>
+                    <div id="ControlRegistro" class="bd-example d-none">
+                        <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
+                    </div>
+                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                </form>
+            </div>
         </div>
+        <!--REGISTRAR-->
 
         <div class="container">
             <div class="row justify-content-md-center">
@@ -56,7 +63,7 @@
                     <form action="/VISION/ActualizarCategorias" method = "post">
                         <div class ="form-group">
                             <label>Categorias</label>
-                            <input type="text" class="form-control" readonly name="descripcionestadousuario" value="<%=request.getParameter("descripcionestadousuario")%>"/>
+                            <input type="text" class="form-control" readonly name="descripcioncategorias" value="<%=request.getParameter("descripcioncategorias")%>"/>
                         </div>
                         <div id="ControlRegistro" class="bd-example d-none">
                             <input type = "text" class="form-control" name="BanderaActualiza"/>

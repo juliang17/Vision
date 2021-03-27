@@ -5,7 +5,7 @@ import java.util.Date;
 public class movimiento {
 
     private int idmovimiento;
-    private Date fechamovimiento;
+    private String fechamovimiento;
     private int subtotal;
     private int iva;
     private int descuento;
@@ -21,11 +21,11 @@ public class movimiento {
         this.idmovimiento = idmovimiento;
     }
 
-    public Date getFechamovimiento() {
+    public String getFechamovimiento() {
         return fechamovimiento;
     }
 
-    public void setFechamovimiento(Date fechamovimiento) {
+    public void setFechamovimiento(String fechamovimiento) {
         this.fechamovimiento = fechamovimiento;
     }
 

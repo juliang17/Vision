@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.tipo_documentoDAO;
+import controlador.UnidadDeMedidaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.tipo_documento;
+import modelo.unidad_de_medida;
 
 /**
  *
  * @author santy
  */
-@WebServlet(name = "RegistroTipoDoc", urlPatterns = {"/RegistroTipoDoc"})
-public class RegistroTipoDoc extends HttpServlet {
+@WebServlet(name = "RegistroUnidadMedida", urlPatterns = {"/RegistroUnidadMedida"})
+public class RegistroUnidadMedida extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +35,36 @@ public class RegistroTipoDoc extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-        String descripciontipodoc = request.getParameter("descripciontipodoc");
-        String Banderaestado = request.getParameter("Banderaregistro");
         
-        tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
-        tipo_documento mitipodoc = new tipo_documento();
+        String UNIDAD = request.getParameter("descripcionunidadmedida");
+        String BanderaEstado = request.getParameter("BanderaRegistro");
         
-        mitipodoc.setdescripciontipodoc(descripciontipodoc);
+        UnidadDeMedidaDAO unidadmedidaDAO = new UnidadDeMedidaDAO();
+        unidad_de_medida miunidad = new unidad_de_medida();
         
-        System.out.println("El valor es " + Banderaestado);
-        if (Banderaestado.equals("correcto")) {
-            String Respuestaregistrada = mitipodocDAO.adicionartipo_documento(mitipodoc);
-            System.out.println("Res " + Respuestaregistrada);
-            System.out.println("Res " + Respuestaregistrada.length());
-            if (Respuestaregistrada.length() == 0) {
+        miunidad.setDescripcionunidadmedida(UNIDAD);
+        
+        System.out.println("El valor es " + BanderaEstado);
+        if (BanderaEstado.equals("Correcto")) {
+            String respuestaRegistrada = unidadmedidaDAO.adicionarunidaddemedida(miunidad);
+            System.out.println("Res " + respuestaRegistrada);
+            System.out.println("Res " + respuestaRegistrada.length());
+            if (respuestaRegistrada.length() == 0) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Tipo documento Registrado con Exito." + "');");
-                out.println("window.location.href = '/VISION/Formularios/GestionTipodocumento.jsp';");
+                out.println("alert('" + "unidad de medida registrada con éxito." + "');");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionUnidadmedida.jsp';");
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + Respuestaregistrada + "');");
-                out.println("alert('" + "Error Encontrado: "
-                        + Respuestaregistrada.replace("'", "") + "');");
+                //out.println("alert('" + respuestaRegistrada + "');");
+                out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
                 out.println("window.history.back();");
                 out.println("</script>");
+
             }
         } else {
-            System.out.println("El valor no es correcto " + Banderaestado);
+            System.out.println("El valor no es correcto " + BanderaEstado);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,7 +11,7 @@ public class pruebaListaMarca {
 
         MarcaDAO marca_dao = new MarcaDAO();
         ArrayList<marca> mi_marca = new ArrayList<marca>();
-        mi_marca = marca_dao.listadomarca("");
+        mi_marca = marca_dao.listadomarca(0,"");
 
         int size = mi_marca.size();
         System.out.println("<table border=\"1\"><tr><td>idmarca</td><td>descripcionmarca</td> ");

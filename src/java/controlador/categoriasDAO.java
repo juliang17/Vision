@@ -61,7 +61,7 @@ public class categoriasDAO {
         return mirespuesta;
     }
 
-    public categorias Consultacategorias(String descripcioncategorias) {
+    public categorias Consultacategorias(int idcategorias) {
         categorias micategorias = null;
 
         Conexion miconexion = new Conexion();
@@ -70,13 +70,13 @@ public class categoriasDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idcategorias, descripcioncategorias from categorias where descripcioncategorias = " + descripcioncategorias);
+            String Query = ("select idcategorias, descripcioncategorias from categorias where idcategorias = " + idcategorias);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
                 micategorias = new categorias();
                 micategorias.setIdcategorias(rs.getInt(1));
-                micategorias.setDescripcioncategorias(rs.getString(1));
+                micategorias.setDescripcioncategorias(rs.getString(2));
 
             }
             return micategorias;
@@ -100,7 +100,7 @@ public class categoriasDAO {
             String Query = " select idcategorias, descripcioncategorias "
                     + " from categorias"
                     + " where descripcioncategorias like '%" + descripcioncategorias + "%' "
-                    + "ORDER BY idcategorias; ";
+                    + " ORDER BY idcategorias; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 micategorias = new categorias();

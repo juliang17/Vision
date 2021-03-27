@@ -45,7 +45,7 @@ public class ConsultarMarca extends HttpServlet {
         MarcaDAO marca_dao = new MarcaDAO();
         marca mi_marca = null;
         
-        mi_marca = marca_dao.Consultamarca(descripcionmarca);
+        mi_marca = marca_dao.Consultamarca(0);
         if (Accion != null) {
 
             if (mi_marca != null) {

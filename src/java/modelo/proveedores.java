@@ -1,6 +1,12 @@
 package modelo;
 
 public class proveedores {
+    
+    private int idProveedores;
+    private String nombreproveedores;
+    private String identificacionproveedores;
+    private String correoproveedores;
+    private int telefonoproveedores;
 
     public int getIdProveedores() {
         return idProveedores;
@@ -16,6 +22,14 @@ public class proveedores {
 
     public void setNombreproveedores(String nombreproveedores) {
         this.nombreproveedores = nombreproveedores;
+    }
+
+    public String getIdentificacionproveedores() {
+        return identificacionproveedores;
+    }
+
+    public void setIdentificacionproveedores(String identificacionproveedores) {
+        this.identificacionproveedores = identificacionproveedores;
     }
 
     public String getCorreoproveedores() {
@@ -34,8 +48,5 @@ public class proveedores {
         this.telefonoproveedores = telefonoproveedores;
     }
     
-    private int idProveedores;
-    private String nombreproveedores;
-    private String correoproveedores;
-    private int telefonoproveedores;
+    
 }

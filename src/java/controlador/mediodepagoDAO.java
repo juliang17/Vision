@@ -67,7 +67,7 @@ public class mediodepagoDAO {
         return miRespuesta;
     }
 
-    public medio_de_pago ConsultarMedio_de_pago(int idMedioDePago) {
+    public medio_de_pago ConsultarMedio_de_pago(String descripcionmediodepago) {
         medio_de_pago mi_medio_de_pago = null;
 
         Conexion miConexion = new Conexion();
@@ -78,7 +78,7 @@ public class mediodepagoDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idMedioDePago, descripcionmediodepago from medio_de_pago where idMedioDePago = " + idMedioDePago;
+            String Query = "Select idMedioDePago, descripcionmediodepago from medio_de_pago where descripcionmediodepago = " + descripcionmediodepago;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
@@ -95,7 +95,7 @@ public class mediodepagoDAO {
         return mi_medio_de_pago;
     }
 
-    public ArrayList<medio_de_pago> ListadoMedioDePago(int idMedioDePago, String descripcionmediodepago) {
+    public ArrayList<medio_de_pago> ListadoMedioDePago(String descripcionmediodepago) {
         ArrayList<medio_de_pago> listado_medio_de_pago = new ArrayList<medio_de_pago>();
         medio_de_pago mi_medio_de_pago;
 
@@ -103,14 +103,14 @@ public class mediodepagoDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idMedioDePago);
+        System.out.println("Buscando parametro: " + descripcionmediodepago);
         try {
             Statement sentencia = nuevaCon.createStatement();
 
             String Query = " select idMedioDePago, descripcionmediodepago "
                     + " from medio_de_pago "
-                    + " where idMedioDePago like '%" + idMedioDePago + "%' "
-                    + "  or (descripcionmediodepago) like ('%" + descripcionmediodepago + "%') ORDER BY idMedioDePago;";
+                    + " where descripcionmediodepago like '%" + descripcionmediodepago + "%' "
+                    + " ORDER BY descripcionmediodepago;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
