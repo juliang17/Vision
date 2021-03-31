@@ -14,16 +14,13 @@ public class PruebaAdicionartipodoc {
         Scanner teclado = new Scanner(System.in);
 
         String descripciontipodoccontable = "";
-        int tipo_movimiento_idTipoMov;
 
         System.out.println("Digite la descripción del tipo documento contable");
         descripciontipodoccontable = teclado.nextLine();
 
-        System.out.println("Digite el id del tipo documento contable");
-        tipo_movimiento_idTipoMov = teclado.nextInt();
 
         mi_tipo_doc.setDescripciontipodoccontable(descripciontipodoccontable);
-        mi_tipo_doc.setTipo_movimiento_idTipoMov(tipo_movimiento_idTipoMov);
+ 
 
         String miRespuesta = mi_tipo_doc_dao.Adicionartipo_doc_contable(mi_tipo_doc);
 

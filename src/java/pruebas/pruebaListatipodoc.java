@@ -13,15 +13,13 @@ public class pruebaListatipodoc {
         mi_tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(1, "");
 
         int size = mi_tipo_doc_contable.size();
-        System.out.println("<table border=\"1\"><tr><td>idtipodoccontable</td><td>descripciontipodoccontable</td><td>tipo_movimiento_idTipoMov ");
+        System.out.println("<table border=\"1\"><tr><td>idtipodoccontable</td><td>descripciontipodoccontable</td>");
 
         for (tipo_doc_contable D : mi_tipo_doc_contable) {
 
             System.out.println("<tr>");
             System.out.println("<td>" + D.getIdtipodoccontable() + "</td>");
             System.out.println("<td>" + D.getDescripciontipodoccontable() + "</td>");
-            System.out.println("<td>" + D.getTipo_movimiento_idTipoMov() + "</td>");
-
             System.out.println("</tr>");
 
         }

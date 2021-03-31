@@ -27,7 +27,6 @@ public class pruebaModificartipodoc {
 
         mi_tipo_doc.setIdtipodoccontable(idtipodoccontable);
 
-        mi_tipo_doc.setTipo_movimiento_idTipoMov(1);
 
         String miRespuesta = mi_tipo_doc_dao.ModificarTipoDocContable(mi_tipo_doc);
 
