@@ -15,31 +15,32 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="Javascript/validarProductos.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
-
         <% String buscando = request.getParameter("buscando");
             if (buscando == null) {
                 buscando = "";
             }
         %>
-
-
         <div class="row justify-content-md-center">
             <div class="btn-group">
-                <button type="button" class="btn btn-dark" data-toggle="dropdown"
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
                         onClick="visualizaOculta('Registrar')">
                     Registrar
                 </button>
-                <button type="button" class="btn btn-dark" data-toggle="dropdown"
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-dark" ><a href="" class="text-decoration-none">Volver al inicio</a></button>
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
+                    Volver al Inicio
+                </button>
             </div>
         </div>
 
@@ -86,12 +87,12 @@
                             <input type="number" name="categorias_idcategorias" class="form-control " id="categorias_idcategorias">
 
                             <%
-                                categoriasDAO cDao = new categoriasDAO();
-                                ArrayList<categorias> mc = cDao.listadocategorias(' ', "");
+                                categoriasDAO categorias_dao = new categoriasDAO();
+                                ArrayList<categorias> mi_categorias = categorias_dao.listadocategorias(buscando);
                                 out.println("<select class='form-control'id ='SelectCategoria' size = '1' >");
                                 out.println("<option onclick='setCtegoria(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
 
-                                for (categorias C : mc) {
+                                for (categorias C : mi_categorias) {
                                     out.println("<option onclick='setCtegoria(\"" + C.getIdcategorias() + "\")'>" + C.getDescripcioncategorias() + "</option>");
 
                                 }
@@ -256,7 +257,6 @@
                 </form>
             </div>
         </div>
-        <script src="../Javascript/validarProductos.js" type="text/javascript"></script>
     </body>
 </html>
 

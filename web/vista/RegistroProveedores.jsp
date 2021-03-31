@@ -10,11 +10,9 @@
     <head>
         <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <script src="../Javascript/validarProveedores.js"></script>        
-        <script src="../Javascript/realizarBusquedaP.js"></script>        
-
-        <title>proveedores</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">       
+        <script src="Javascript/validarProveedores.js" type="text/javascript"></script>
+        <title>Proveedores</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
@@ -22,28 +20,28 @@
                 buscando = "";
             }
         %>
-        
         <div class="row justify-content-md-center">
             <div class="btn-group">
-                <button type="button" class="btn btn-dark" data-toggle="dropdown"
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
                         onClick="visualizaOculta('Registrar')">
                     Registrar
                 </button>
-                <button type="button" class="btn btn-dark" data-toggle="dropdown"
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-dark" ><a href="" class="text-decoration-none">Volver al inicio</a></button>
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
+                    Volver al Inicio
+                </button>
             </div>
         </div>
 
        <div id="Registrar" class="d-none">
             <h1>Registro Proveedor</h1>
-            <br>
-            <br>
-            <form action="/Vision-master/RegistroProveedores" method="post" onsubmit="return validarProveedores()" >
+            <form action="/VISION/RegistroProveedores" method="post" onsubmit="return validarProveedores()" >
                 <div class="form-row" >
                     <div class="form-group col-md-6" >
                         <h1>Número de Identificación:</h1>
@@ -75,7 +73,7 @@
             <h1>Actualizar Proveedor</h1>
             <br>
             <br>
-            <form action="/Vision-master/ActualizarProveedores" method="post">
+            <form action="/VISION/ActualizarProveedores" method="post">
                 <div class="form-row" >
                     <div class="form-group col-md-6" >
                         <h1>Número de Identificación:</h1>
@@ -101,7 +99,7 @@
         </div>
 
         <div id="Listado" class="container">
-            <form action="/Vision-master/ConsultarProveedor" method="post">
+            <form action="/VISION/ConsultarProveedor" method="post">
                 <div class="row justify-content-md-center">
                         <div id="ControlRegistro" class="input-group">
                             <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingrese identificación o nombres"/>

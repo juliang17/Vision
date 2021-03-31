@@ -116,7 +116,7 @@ function setMarca(x) {
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/Vision-master/vista/RegistroProductos.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/RegistroProductos.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
