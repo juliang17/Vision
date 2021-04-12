@@ -1,25 +1,31 @@
 package pruebas;
 
-import controlador.tipo_doc_contableDAO;
+import controlador.detalleDAO;
 import java.util.ArrayList;
-import modelo.tipo_doc_contable;
+import modelo.detalle_movimiento;
 
 public class pruebaEliminarDetalle {
 
     public static void main(String[] args) {
 
-        tipo_doc_contableDAO tipo_doc_contable_dao = new tipo_doc_contableDAO();
+        detalleDAO detalle_movimiento_dao = new detalleDAO();
+        ArrayList<detalle_movimiento> mi_detalle_movimiento = detalle_movimiento_dao.ListadoDetalleMovimiento("", "");
+        for (detalle_movimiento D : mi_detalle_movimiento) {
+            System.out.println(" id : " + D.getIddetallemovimiento() + " Cantidad : " + D.getCantidad()
+                    + " Precio : " + D.getPrecio() + " Iva : " + D.getIva()
+                    + " Subtotal : " + D.getSubtotal() + " Producto : " + D.getProductos_idproductos()
+                    + " Movimiento : " + D.getMovimiento_idmovimiento());
+        }
+        System.out.println("detalle movimiento eliminado");
+        detalle_movimiento_dao.EliminarDetalleMovimiento(mi_detalle_movimiento.get(0));
+        mi_detalle_movimiento = detalle_movimiento_dao.ListadoDetalleMovimiento("", "");
+        for (detalle_movimiento D : mi_detalle_movimiento) {
+            System.out.println(" id : " + D.getIddetallemovimiento() + " Cantidad : " + D.getCantidad()
+                    + " Precio : " + D.getPrecio() + " Iva : " + D.getIva()
+                    + " Subtotal : " + D.getSubtotal() + " Producto : " + D.getProductos_idproductos()
+                    + " Movimiento : " + D.getMovimiento_idmovimiento());
+        }
 
-        ArrayList<tipo_doc_contable> listado_tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(1, "");
-        for (tipo_doc_contable C : listado_tipo_doc_contable) {
-            System.out.println(" id : " + C.getIdtipodoccontable() + " descripción : " + C.getDescripciontipodoccontable());
-        }
-        System.out.println("eliminado");
-        tipo_doc_contable_dao.EliminarTipoDocContable(listado_tipo_doc_contable.get(0));
-        listado_tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(1, "");
-        for (tipo_doc_contable C : listado_tipo_doc_contable) {
-            System.out.println(" id : " + C.getIdtipodoccontable() + " descripción : " + C.getDescripciontipodoccontable());
-        }
     }
 
 }

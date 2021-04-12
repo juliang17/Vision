@@ -52,7 +52,7 @@
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <center><button type="submit" class="btn btn-info">Registrar</button></center>
                 </form>
             </div>
         </div>

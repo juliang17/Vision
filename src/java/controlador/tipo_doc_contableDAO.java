@@ -65,7 +65,7 @@ public class tipo_doc_contableDAO {
         return miRespuesta;
     }
 
-    public tipo_doc_contable ConsultarTipo_doc_contable(int idtipodoccontable) {
+    public tipo_doc_contable ConsultarTipo_doc_contable(String descripciontipodoccontable) {
         tipo_doc_contable mi_tipo_doc_contable = null;
 
         Conexion miConexion = new Conexion();
@@ -76,7 +76,7 @@ public class tipo_doc_contableDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idtipodoccontable, descripciontipodoccontable from tipo_doc_contable where idtipodoccontable = " + idtipodoccontable;
+            String Query = "Select idtipodoccontable, descripciontipodoccontable from tipo_doc_contable where descripciontipodoccontable = " + descripciontipodoccontable;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
@@ -92,7 +92,7 @@ public class tipo_doc_contableDAO {
         return mi_tipo_doc_contable;
     }
 
-    public ArrayList<tipo_doc_contable> ListadoTipoDocContable(int idtipodoccontable, String descripciontipodoccontable) {
+    public ArrayList<tipo_doc_contable> ListadoTipoDocContable(String descripciontipodoccontable) {
         ArrayList<tipo_doc_contable> listado_tipo_doc_contable = new ArrayList<tipo_doc_contable>();
         tipo_doc_contable mi_tipo_doc_contable;
 
@@ -100,14 +100,14 @@ public class tipo_doc_contableDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idtipodoccontable);
+        System.out.println("Buscando parametro: " + descripciontipodoccontable);
         try {
             Statement sentencia = nuevaCon.createStatement();
 
             String Query = " select idtipodoccontable, descripciontipodoccontable "
                     + " from tipo_doc_contable "
-                    + " where idtipodoccontable like '%" + idtipodoccontable + "%' "
-                    + "  or (descripciontipodoccontable) like ('%" + descripciontipodoccontable + "%') ORDER BY idtipodoccontable;";
+                    + " where descripciontipodoccontable like '%" + descripciontipodoccontable + "%' "
+                    + " ORDER BY idtipodoccontable;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 

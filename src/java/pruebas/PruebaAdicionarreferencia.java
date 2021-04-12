@@ -9,10 +9,6 @@ import controlador.referenciaDAO;
 import java.util.Scanner;
 import modelo.referencia_de_pago;
 
-/**
- *
- * @author Jeffe
- */
 public class PruebaAdicionarreferencia {
 
     /**
@@ -25,24 +21,19 @@ public class PruebaAdicionarreferencia {
 
         Scanner repuesta = new Scanner(System.in);
 
-        String descripcion = "";
         String fechadepago = "";
-        int medio_de_pago_idMedioDePago_;
-
-        System.out.println("Por favor ingrese la descripción de la referencia");
-        descripcion = repuesta.nextLine();
+        int medio_de_pago_idMedioDePago;
         
         System.out.println("Por favor ingrese la fecha de la referencia");
         fechadepago = repuesta.nextLine();
         
         System.out.println("Por favor ingrese el id del medio de pago");
-        medio_de_pago_idMedioDePago_ = repuesta.nextInt();
+        medio_de_pago_idMedioDePago = repuesta.nextInt();
 
-        mi_referencia_pago.setDescripcion(descripcion);
-        mi_referencia_pago.setFechadepago(medio_de_pago_idMedioDePago_);
-        mi_referencia_pago.setMedio_de_pago_idMedioDePago_(medio_de_pago_idMedioDePago_);
+        mi_referencia_pago.setFechadepago(fechadepago);
+        mi_referencia_pago.setMedio_de_pago_idMedioDePago(medio_de_pago_idMedioDePago);
 
-        String miRespuesta = mi_referenciae_pago_dao.ModificarReferencia(mi_referencia_pago);
+        String miRespuesta = mi_referenciae_pago_dao.Adicionardetalle_Referencia(mi_referencia_pago);
 
         if (miRespuesta.length() == 0) {
 

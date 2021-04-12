@@ -41,15 +41,15 @@ public class ConsultarDetalle extends HttpServlet {
             String descripcion = request.getParameter("IdConsultado");
 
             detalleDAO mi_detalle_dao = new detalleDAO();
-       detalle_movimiento mi_detalle = null;
+            detalle_movimiento mi_detalle = null;
 
-            mi_detalle = mi_detalle_dao.ConsultarDetalle_movimiento(0);
+            mi_detalle = mi_detalle_dao.ConsultarDetalle_movimiento("");
 
             if (Accion != null) {
 
                 if (mi_detalle != null) {
 
-                    response.sendRedirect("/VISION/vista/GestionDetalle.jsp?descripcion=" + mi_detalle.getIddetallemovimiento() + "&"
+                    response.sendRedirect("/VISION/vista/Formularios/GestionDetalle.jsp?descripcion=" + mi_detalle.getIddetallemovimiento() + "&"
                             + "Cantidad=" + mi_detalle.getCantidad() + "&"
                             + "Precio=" + mi_detalle.getPrecio() + "&"
                             + "Iva=" + mi_detalle.getIva() + "&"
@@ -62,7 +62,7 @@ public class ConsultarDetalle extends HttpServlet {
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la descripcion: " + descripcion + "');");
+                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la descripcion: " + descripcion + "');");
                     out.println("</script>");
                 }
 
@@ -75,7 +75,7 @@ public class ConsultarDetalle extends HttpServlet {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "Eliminacion Realizada." + "');");
 
-                        out.println("window.location.href = '/VISION/vista/RegistroUsuarios.jsp';");
+                        out.println("window.location.href = '/VISION/vista/Formularios/GestionDetalle.jsp';");
                         out.println("</script>");
 
                     } else {

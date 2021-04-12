@@ -36,7 +36,6 @@ public class RegistrarDetalle extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
             
-        String descripcion = request.getParameter("descripcion");
         String cantidad = request.getParameter("cantidad");
         String precio = request.getParameter("precio");
         String iva = request.getParameter("iva");
@@ -71,7 +70,7 @@ public class RegistrarDetalle extends HttpServlet {
             if (respuestaRegistrada.length() == 0) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "Usuario Registrado." + "');");
-                out.println("window.location.href = '/VISION/vista/GestionDetalle.jsp';");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionDetalle.jsp';");
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");

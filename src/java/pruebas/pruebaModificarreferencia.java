@@ -9,10 +9,6 @@ import controlador.referenciaDAO;
 import java.util.Scanner;
 import modelo.referencia_de_pago;
 
-/**
- *
- * @author Jeffe
- */
 public class pruebaModificarreferencia {
 
     /**
@@ -26,25 +22,22 @@ public class pruebaModificarreferencia {
         Scanner repuesta = new Scanner(System.in);
 
         int idreferenciadepago;
-        String descripcion = "";
         String fechadepago = "";
-
-        System.out.println("Por favor ingrese la descripción de la referencia");
-        descripcion = repuesta.nextLine();
+        int medio_de_pago_idMedioDePago;
         
         System.out.println("Por favor ingrese la fecha de la referencia");
         fechadepago = repuesta.nextLine();
+        System.out.println("Por favor ingrese el medio de pago");
+        medio_de_pago_idMedioDePago = repuesta.nextInt();
         
         System.out.println("Por favor ingrese el id del medio de pago");
         idreferenciadepago = repuesta.nextInt();
 
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
-        mi_referencia_pago.setDescripcion(descripcion);
-        mi_referencia_pago.setFechadepago(idreferenciadepago);
+        mi_referencia_pago.setFechadepago(fechadepago);
+        mi_referencia_pago.setMedio_de_pago_idMedioDePago(medio_de_pago_idMedioDePago);
         
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
-
-        mi_referencia_pago.setMedio_de_pago_idMedioDePago_(1);
 
         String miRespuesta = mi_referenciae_pago_dao.ModificarReferencia(mi_referencia_pago);
 

@@ -9,10 +9,10 @@ public class PruebaConsultarInventario {
     public static void main(String[] args) {
         
         inventarioDAO INVENDAO = new inventarioDAO();
-        inventario miinventario = INVENDAO.Consultarinventario(2);
+        inventario miinventario = INVENDAO.Consultarinventario("1");
         
         if (miinventario != null) {
-            System.out.println("inventario encontrado " + miinventario.getIdinventario() + " " + miinventario.getEntrada() + " ");
+            System.out.println("inventario encontrado " + miinventario.getIdinventario() + " " + miinventario.getEntrada() + "" );
         } else {
             System.out.println("Error en la consulta");
         }

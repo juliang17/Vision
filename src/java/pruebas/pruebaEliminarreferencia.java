@@ -22,15 +22,15 @@ public class pruebaEliminarreferencia {
         
         referenciaDAO referencia_de_pago_dao = new referenciaDAO();
         
-        ArrayList<referencia_de_pago> listado_referencia_de_pago = referencia_de_pago_dao.ListadoReferenciaDePago(1, "");
+        ArrayList<referencia_de_pago> listado_referencia_de_pago = referencia_de_pago_dao.ListadoReferenciaDePago("");
         for (referencia_de_pago R : listado_referencia_de_pago) {
-            System.out.println(" id : " + R.getIdreferenciadepago() + " descripción : " + R.getDescripcion());
+            System.out.println(" id : " + R.getIdreferenciadepago() );
         }
         System.out.println("eliminado");
         referencia_de_pago_dao.EliminarReferenciaDePago(listado_referencia_de_pago.get(0));
-        listado_referencia_de_pago = referencia_de_pago_dao.ListadoReferenciaDePago(1, "");
+        listado_referencia_de_pago = referencia_de_pago_dao.ListadoReferenciaDePago("");
         for (referencia_de_pago R : listado_referencia_de_pago) {
-            System.out.println(" id : " + R.getIdreferenciadepago() + " descripción : " + R.getDescripcion());
+            System.out.println(" id : " + R.getIdreferenciadepago());
         }
     }
     

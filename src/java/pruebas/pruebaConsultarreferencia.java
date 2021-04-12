@@ -8,10 +8,6 @@ package pruebas;
 import controlador.referenciaDAO;
 import modelo.referencia_de_pago;
 
-/**
- *
- * @author Jeffe
- */
 public class pruebaConsultarreferencia {
 
     /**
@@ -20,10 +16,10 @@ public class pruebaConsultarreferencia {
     public static void main(String[] args) {
         
         referenciaDAO mi_referenciae_pago_dao = new referenciaDAO();
-       referencia_de_pago mi_referenciae_pago = mi_referenciae_pago_dao.ConsultarReferencia(0);
+       referencia_de_pago mi_referenciae_pago = mi_referenciae_pago_dao.ConsultarReferencia("");
         
         if (mi_referenciae_pago != null) {
-            System.out.println("referencia de pago fue encontrado " + mi_referenciae_pago.getIdreferenciadepago() + " " + mi_referenciae_pago.getDescripcion() + " ");
+            System.out.println("referencia de pago fue encontrado " + mi_referenciae_pago.getIdreferenciadepago()+ "_" + mi_referenciae_pago.getFechadepago() + "_"  );
         } else {
             System.out.println("La referencia de pago no fue encontrada");
         }

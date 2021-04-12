@@ -1,4 +1,3 @@
-
 package pruebas;
 
 import controlador.detalleDAO;
@@ -19,33 +18,43 @@ public class pruebaModificardetalle {
         int iva;
         int subtotal;
         int precio;
+        int movimiento_idmovimiento;
+        int productos_idproductos;
 
+        System.out.println("Digite el id del detalle");
+        iddetallemovimiento = teclado.nextInt();
 
-
-        System.out.println("Digite la cantidad del detalle");
+        System.out.println("Digite la cantidad");
         cantidad = teclado.nextInt();
 
-        System.out.println("Digite el iva del detalle");
-        iva = teclado.nextInt();
-
-        System.out.println("Digite el subtotal del detalle");
-        subtotal = teclado.nextInt();
-
-        System.out.println("Digite el precio del detalle");
+        System.out.println("Digite el precio");
         precio = teclado.nextInt();
 
-        System.out.println("Digite el producto del detalle");
+        System.out.println("Digite el iva");
+        iva = teclado.nextInt();
+
+        System.out.println("Digite el subtotal");
+        subtotal = teclado.nextInt();
+
+        System.out.println("Digite el producto");
+        productos_idproductos = teclado.nextInt();
+
+        System.out.println("Digite el movimiento");
+        movimiento_idmovimiento = teclado.nextInt();
+
+        System.out.println("Digite el id del detalle");
         iddetallemovimiento = teclado.nextInt();
 
         mi_detalle.setIddetallemovimiento(iddetallemovimiento);
         mi_detalle.setCantidad(cantidad);
+        mi_detalle.setPrecio(precio);
         mi_detalle.setIva(iva);
         mi_detalle.setSubtotal(subtotal);
-        mi_detalle.setPrecio(precio);
+        mi_detalle.setProductos_idproductos(productos_idproductos);
+        mi_detalle.setMovimiento_idmovimiento(movimiento_idmovimiento);
 
-        mi_detalle.setIddetallemovimiento(iddetallemovimiento);
-        mi_detalle.setMovimiento_idmovimiento(1);
-        mi_detalle.setProductos_idproductos(1);
+        mi_detalle.setIddetallemovimiento(1);
+  
         String miRespuesta = mi_detalle_dao.ModificarDetalle(mi_detalle);
 
         if (miRespuesta.length() == 0) {

@@ -74,12 +74,7 @@ function RegistroUsuarios() {
     } else if (isNaN(tipo_documento_idtipodoc)) {
         alert('El tipo documento debe ser numérico');
         resultado = 'Error';
-   } else if (isNaN(numerodocusuarios)) {
-        alert('El número de identificacion debe ser numérico');
-        resultado = 'Error';
-        } else if (isNaN(estado_usuario_idestadousuario)) {
-        alert('El estado usuario debe ser numérico');
-        resultado = 'Error';
+   
     } else {
         resultado = 'Correcto';
     }

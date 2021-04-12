@@ -20,7 +20,7 @@ public class movimientoDAO {
 
         try {
             String Query = "insert movimiento (fechamovimiento,subtotal,iva,descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago)"
-                    + "values (?,?,?,??,?,?)";
+                    + "values (?,?,?,?,?,?,?)";
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setString(1, MOVIMIENTO.getFechamovimiento());
             sentencia.setInt(2, MOVIMIENTO.getSubtotal());
@@ -69,7 +69,7 @@ public class movimientoDAO {
         return mirespuesta;
     }
 
-    public movimiento Consultarmovimiento(int idmovimiento) {
+    public movimiento Consultarmovimiento(String fechamovimiento) {
         movimiento mimovimiento = null;
 
         Conexion miconexion = new Conexion();
@@ -78,7 +78,7 @@ public class movimientoDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idmovimiento, fechamovimiento, subtotal, iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago  from movimiento where idmovimiento = " + idmovimiento);
+            String Query = ("select idmovimiento, fechamovimiento, subtotal, iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago  from movimiento where fechamovimiento = " + fechamovimiento);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {

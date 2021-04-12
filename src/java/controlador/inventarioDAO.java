@@ -19,7 +19,7 @@ public class inventarioDAO {
         PreparedStatement sentencia;
 
         try {
-            String Query = "insert inventario (entrada,salida,saldo,productos_idproductos)"
+            String Query = "Insert into inventario (entrada,salida,saldo,productos_idproductos)"
                     + "values (?,?,?,?)";
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setInt(1, INVENTARIO.getEntrada());
@@ -64,7 +64,7 @@ public class inventarioDAO {
         return mirespuesta;
     }
 
-    public inventario Consultarinventario(int idinventario) {
+    public inventario Consultarinventario(String idinventario) {
         inventario miinventario = null;
 
         Conexion miconexion = new Conexion();
@@ -73,7 +73,7 @@ public class inventarioDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idinventario, entrada, salida, saldo, productos_idproductos,  from inventario where idinventario = " + idinventario);
+            String Query = ("Select idinventario, entrada, salida, saldo, productos_idproductos from inventario where idinventario = " + idinventario);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
@@ -91,7 +91,7 @@ public class inventarioDAO {
         return miinventario;
     }
 
-    public ArrayList<inventario> Consultarlistadoinventario(int idinventario) {
+    public ArrayList<inventario> Consultarlistadoinventario(String idinventario, String entrada, String salida) {
         ArrayList<inventario> milistainventario = new ArrayList<inventario>();
         inventario miinventario;
 
@@ -105,7 +105,8 @@ public class inventarioDAO {
             String Query = " select idinventario, entrada, salida, saldo, productos_idproductos"
                     + " from inventario"
                     + " where idinventario like '%" + idinventario + "%' "
-                    + "ORDER BY idinventario; ";
+                    + "  or (entrada) like ('%" + entrada + "%')"
+                    + "  or (salida) like ('%" + salida + "%') ORDER BY idinventario;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 miinventario = new inventario();

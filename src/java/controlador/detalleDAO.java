@@ -24,15 +24,15 @@ public class detalleDAO {
 
         try {
 
-            String Query = "Insert into detalle_movimiento (cantidad, iva, subtotal, precio, mocimiento_id_movimiento, productos_idproductos)" + "values (?,?,?,?,?,?);";
+            String Query = "Insert into detalle_movimiento (cantidad, precio , iva ,  subtotal ,productos_idproductos, movimiento_idmovimiento)" + "values (?,?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Detalle_Movimiento.getCantidad());
+            sentencia.setInt(4, Detalle_Movimiento.getPrecio());
             sentencia.setInt(2, Detalle_Movimiento.getIva());
             sentencia.setInt(3, Detalle_Movimiento.getSubtotal());
-            sentencia.setInt(4, Detalle_Movimiento.getPrecio());
-            sentencia.setInt(5, Detalle_Movimiento.getMovimiento_idmovimiento());
-            sentencia.setInt(6, Detalle_Movimiento.getProductos_idproductos());
+            sentencia.setInt(5, Detalle_Movimiento.getProductos_idproductos());
+            sentencia.setInt(6, Detalle_Movimiento.getMovimiento_idmovimiento());
 
             sentencia.execute();
             miRespuesta = "";
@@ -57,16 +57,16 @@ public class detalleDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update detalle_movimiento set iddetallemovimiento=?,cantidad=?, iva=?, subtotal=?, precio=?, mocimiento_id_movimiento=?, productos_idproductos=? where iddetallemovimiento=?";
+            String Query = "update detalle_movimiento set iddetallemovimiento=?,cantidad=?, precio=?, iva=?, subtotal=?, productos_idproductos=?, movimiento_idmovimiento=? where iddetallemovimiento=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Detalle_Movimiento.getIddetallemovimiento());
             sentencia.setInt(2, Detalle_Movimiento.getCantidad());
-            sentencia.setInt(3, Detalle_Movimiento.getIva());
-            sentencia.setInt(4, Detalle_Movimiento.getSubtotal());
-            sentencia.setInt(5, Detalle_Movimiento.getPrecio());
-            sentencia.setInt(6, Detalle_Movimiento.getMovimiento_idmovimiento());
-            sentencia.setInt(7, Detalle_Movimiento.getProductos_idproductos());
+            sentencia.setInt(3, Detalle_Movimiento.getPrecio());
+            sentencia.setInt(4, Detalle_Movimiento.getIva());
+            sentencia.setInt(5, Detalle_Movimiento.getSubtotal());
+            sentencia.setInt(6, Detalle_Movimiento.getProductos_idproductos());
+            sentencia.setInt(7, Detalle_Movimiento.getMovimiento_idmovimiento());
             sentencia.setInt(8, Detalle_Movimiento.getIddetallemovimiento());
 
             sentencia.executeUpdate();
@@ -79,7 +79,7 @@ public class detalleDAO {
         return miRespuesta;
     }
 
-    public detalle_movimiento ConsultarDetalle_movimiento(int iddetallemovimiento) {
+    public detalle_movimiento ConsultarDetalle_movimiento(String iddetallemovimiento) {
         detalle_movimiento mi_detalle_movimiento = null;
 
         Conexion miConexion = new Conexion();
@@ -90,7 +90,7 @@ public class detalleDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select iddetallemovimiento,cantidad, iva, subtotal, precio, mocimiento_id_movimiento, productos_idproductos from detalle_movimiento where iddetallemovimiento = " + iddetallemovimiento;
+            String Query = "Select iddetallemovimiento,cantidad, precio, iva, subtotal, productos_idproductos,  movimiento_idmovimiento from detalle_movimiento where iddetallemovimiento = " + iddetallemovimiento;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
@@ -112,7 +112,7 @@ public class detalleDAO {
         return mi_detalle_movimiento;
     }
 
-    public ArrayList<detalle_movimiento> ListadoDetalleMovimiento(int iddetallemovimiento) {
+    public ArrayList<detalle_movimiento> ListadoDetalleMovimiento(String iddetallemovimiento, String cantidad) {
         ArrayList<detalle_movimiento> listado_detalle_movimiento = new ArrayList<detalle_movimiento>();
         detalle_movimiento mi_detalle_movimiento;
 
@@ -124,7 +124,7 @@ public class detalleDAO {
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select iddetallemovimiento,cantidad, iva, subtotal, precio, mocimiento_id_movimiento, productos_idproductos "
+            String Query = " select iddetallemovimiento,cantidad, precio, iva, subtotal, productos_idproductos, movimiento_idmovimiento  "
                     + " from detalle_movimiento "
                     + " where iddetallemovimiento like '%" + iddetallemovimiento + "%' "
                     + "ORDER BY iddetallemovimiento;";
@@ -134,11 +134,11 @@ public class detalleDAO {
                 mi_detalle_movimiento = new detalle_movimiento();
                 mi_detalle_movimiento.setIddetallemovimiento(rs.getInt(1));
                 mi_detalle_movimiento.setCantidad(rs.getInt(2));
-                mi_detalle_movimiento.setIva(rs.getInt(3));
-                mi_detalle_movimiento.setSubtotal(rs.getInt(4));
-                mi_detalle_movimiento.setPrecio(rs.getInt(5));
-                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(6));
-                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(7));
+                mi_detalle_movimiento.setPrecio(rs.getInt(3));
+                mi_detalle_movimiento.setIva(rs.getInt(4));
+                mi_detalle_movimiento.setSubtotal(rs.getInt(5));
+                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(6));
+                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(7));
                 listado_detalle_movimiento.add(mi_detalle_movimiento);
             }
             return listado_detalle_movimiento;

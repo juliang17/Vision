@@ -29,12 +29,11 @@ public class referenciaDAO {
 
         try {
 
-            String Query = "Insert into referencia_de_pago (descripcion, fechadepago, medio_de_pago_idMedioDePago_)" + "values (?,?,?);";
+            String Query = "Insert into referencia_de_pago (fechadepago, medio_de_pago_idMedioDePago)" + "values (?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setString(1, Refrencia_Pago.getDescripcion());
-            sentencia.setInt(2, Refrencia_Pago.getFechadepago());
-            sentencia.setInt(3, Refrencia_Pago.getMedio_de_pago_idMedioDePago_());
+            sentencia.setString(1, Refrencia_Pago.getFechadepago());
+            sentencia.setInt(2, Refrencia_Pago.getMedio_de_pago_idMedioDePago());
 
             sentencia.execute();
             miRespuesta = "";
@@ -59,14 +58,13 @@ public class referenciaDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update referencia_de_pago set idreferenciadepago=?, descripcion=?, fechadepago=?, medio_de_pago_idMedioDePago_=? where idreferenciadepago=?";
+            String Query = "update referencia_de_pago set idreferenciadepago=?, fechadepago=?, medio_de_pago_idMedioDePago=? where idreferenciadepago=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Refrencia_Pago.getIdreferenciadepago());
-            sentencia.setString(2, Refrencia_Pago.getDescripcion());
-            sentencia.setInt(3, Refrencia_Pago.getFechadepago());
-            sentencia.setInt(4, Refrencia_Pago.getMedio_de_pago_idMedioDePago_());
-            sentencia.setInt(5, Refrencia_Pago.getIdreferenciadepago());
+            sentencia.setString(2, Refrencia_Pago.getFechadepago());
+            sentencia.setInt(3, Refrencia_Pago.getMedio_de_pago_idMedioDePago());
+            sentencia.setInt(4, Refrencia_Pago.getIdreferenciadepago());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -78,7 +76,7 @@ public class referenciaDAO {
         return miRespuesta;
     }
 
-     public referencia_de_pago ConsultarReferencia(int idreferenciadepago) {
+     public referencia_de_pago ConsultarReferencia(String fechadepago) {
              referencia_de_pago mi_referencia_pago = null;
 
 
@@ -90,15 +88,14 @@ public class referenciaDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idreferenciadepago, descripcion, fechadepago, medio_de_pago_idMedioDePago_ from referencia_de_pago where idreferenciadepago = " + idreferenciadepago;
+            String Query = "Select idreferenciadepago,fechadepago, medio_de_pago_idMedioDePago from referencia_de_pago where fechadepago = " + fechadepago;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_referencia_pago = new referencia_de_pago();
                 mi_referencia_pago.setIdreferenciadepago(rs.getInt(1));
-                mi_referencia_pago.setDescripcion(rs.getString(2));
-                mi_referencia_pago.setFechadepago(rs.getInt(3));
-                mi_referencia_pago.setMedio_de_pago_idMedioDePago_(rs.getInt(4));
+                mi_referencia_pago.setFechadepago(rs.getString(2));
+                mi_referencia_pago.setMedio_de_pago_idMedioDePago(rs.getInt(3));
                 
             }
 
@@ -109,7 +106,7 @@ public class referenciaDAO {
         return mi_referencia_pago;
     }
      
-     public ArrayList<referencia_de_pago> ListadoReferenciaDePago(int idreferenciadepago, String descripcion) {
+     public ArrayList<referencia_de_pago> ListadoReferenciaDePago(String fechadepago) {
         ArrayList<referencia_de_pago> listado_referencia_de_pago = new ArrayList<referencia_de_pago>();
         referencia_de_pago mi_referencia_pago;
 
@@ -117,22 +114,21 @@ public class referenciaDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idreferenciadepago);
+        System.out.println("Buscando parametro: " + fechadepago);
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select idreferenciadepago, descripcion, fechadepago, medio_de_pago_idMedioDePago_ "
+            String Query = " select idreferenciadepago,fechadepago, medio_de_pago_idMedioDePago "
                     + " from referencia_de_pago "
-                    + " where idreferenciadepago like '%" + idreferenciadepago + "%' "
-                    + "  or (descripcion) like ('%" + descripcion + "%') ORDER BY idreferenciadepago;";
+                    + " where fechadepago like '%" + fechadepago + "%' "
+                    + " ORDER BY idreferenciadepago;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_referencia_pago = new referencia_de_pago();
                 mi_referencia_pago.setIdreferenciadepago(rs.getInt(1));
-                mi_referencia_pago.setDescripcion(rs.getString(2));
-                mi_referencia_pago.setFechadepago(rs.getInt(3));
-                mi_referencia_pago.setMedio_de_pago_idMedioDePago_(rs.getInt(4));
+                mi_referencia_pago.setFechadepago(rs.getString(2));
+                mi_referencia_pago.setMedio_de_pago_idMedioDePago(rs.getInt(3));
                 listado_referencia_de_pago.add(mi_referencia_pago);
             }
             return listado_referencia_de_pago;
@@ -151,11 +147,10 @@ public class referenciaDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from referencia_de_pago where idreferenciadepago = ? and descripcion = ? ;";
+            String Query = " delete from referencia_de_pago where idreferenciadepago = ?;";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, ReferenciaDePago.getIdreferenciadepago());
-            sentencia.setString(2, ReferenciaDePago.getDescripcion());
 
             sentencia.execute();
 
