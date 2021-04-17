@@ -5,7 +5,7 @@ function validaciondetalle() {
     var precio = document.getElementById("txt_precio_Reg").value;
     var iva = document.getElementById("txt_iva_Reg").value;
     var subtotal = document.getElementById("txt_subtotal_Reg").value;
-    var productos_idproductos = document.getElementById("txt_productos_idproductos_Reg").value;
+    var productos_idproductos = document.getElementById("txt_productos_idproductos_Reg").value();
     var movimiento_idmovimiento = document.getElementById("txt_movimiento_idmovimiento_Reg").value;
 
 

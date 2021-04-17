@@ -16,7 +16,7 @@
         <script src="../Javascript/ValidarDetalle.js" type="text/javascript"></script>
         <title>Detalle movimiento</title>
     </head>
-    <body style="background-image: url('../imagenes/ropaRosada (1).jpg')" onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
+    <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
             if (buscando == null) {
                 buscando = "";
@@ -68,7 +68,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12" >
                                 <h2>producto</h2>
-                                <input type="number" name="productos_idproductos" class="form-control d-none" placeholder="Producto" id="txt_productos_idproductos_reg"> <br>
+                                <input type="number" name="productos_idproductos" class="form-control d-none" placeholder="Producto" id="txt_productos_idproductos_Reg"> <br>
                                 <%
                                     ProductoDAO productos_dao = new ProductoDAO();
                                     ArrayList<productos> mi_productos = productos_dao.listadoproductos("", "");
@@ -84,7 +84,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12" >
                                 <h2>movimiento</h2>
-                                <input type="number" name="movimiento_idmovimiento" class="form-control d-none" placeholder="Movimiento" id="txt_movimiento_idmovimiento_reg"> <br>
+                                <input type="number" name="movimiento_idmovimiento" class="form-control d-none" placeholder="Movimiento" id="txt_movimiento_idmovimiento_Reg"> <br>
                                 <%
                                     movimientoDAO MovDAO = new movimientoDAO();
                                     ArrayList<movimiento> milistamovimiento = MovDAO.Consultarlistadomovimiento("");
@@ -111,14 +111,14 @@
         <div id="Listado" class="bd-example contenedor2">
             <form action="/VSION/ConsultarDetalle" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id ="txt_Id_Consultado" type = "text" class="form-control"
-                               name= "IdConsultado" value="<%=buscando%>" autofocus
-                               placeholder="Buscar por cantidad"/>
-                        <button type="button" class="btn btn-primary" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"
-                                onClick="realizarBusqueda()">Buscar</button>
-                    </div>    
+                    <div id="ControlRegistro" class="input-group">
+                            <input id ="txt_Id_Consultado" type = "text" class="form-control"
+                                   name= "IdConsultado" value="<%=buscando%>" autofocus
+                                   placeholder="Buscar por cantidad"/>
+                            <button type="button" class="btn btn-primary" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    onClick="realizarBusqueda()">Buscar</button>
+                        </div>   
                     <div>
                         <h2 class="title-table">Listado detalle movimiento</h2>
                         <%

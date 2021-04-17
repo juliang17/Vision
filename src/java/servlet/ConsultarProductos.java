@@ -33,7 +33,7 @@ public class ConsultarProductos extends HttpServlet {
                 if (p != null) {
 
                     response.sendRedirect("/VISION/vista/RegistroProductos.jsp?Nombres=" + p.getNombreproducto() + "&"
-                            + "Refrencia=" + p.getReferenciaproducto() + "&"
+                            + "Referencia=" + p.getReferenciaproducto() + "&"
                             + "Cantidad=" + p.getCantidadproducto() + "&"
                             + "Iva=" + p.getIvaproducto() + "&"
                             + "Descripcion=" + p.getDescripcionproducto() + "&"

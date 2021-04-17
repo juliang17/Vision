@@ -28,8 +28,8 @@ function validarEstadoUsuario() {
 
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
-    console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/VISION/vista//formularios/estadousuario.jsp?buscando=' + textoBuscado.trim() + '&';
+    console.log("Texto: " + $('#txt_Id_Consultado').val());             
+    window.location.href = '/VISION/vista/Formularios/GestionEstadoUsuario.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {

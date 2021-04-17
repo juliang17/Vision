@@ -74,6 +74,7 @@ public class RegistrarDetalle extends HttpServlet {
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
+                //out.println("alert('" + respuestaRegistrada + "');");
                 out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
                 out.println("window.history.back();");
                 out.println("</script>");

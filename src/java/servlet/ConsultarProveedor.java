@@ -43,7 +43,7 @@ public class ConsultarProveedor extends HttpServlet {
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
@@ -62,13 +62,13 @@ public class ConsultarProveedor extends HttpServlet {
                     } else {
 
                         out.println("<script type=\"text/javascript\">");
-                        out.println("alert('" + "No se ha podido relizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
+                        out.println("alert('" + "No se ha podido realizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
                         out.println("</script>");
                     }
                 } else {
 
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
 
                 }

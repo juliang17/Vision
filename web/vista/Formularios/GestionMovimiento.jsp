@@ -16,7 +16,7 @@
         <script src="../Javascript/ValidarMovimiento.js" type="text/javascript"></script>
         <title>Movimiento</title>
     </head>
-    <body style="background-image: url('../imagenes/ropaRosada (1).jpg')" onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
+    <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
             if (buscando == null) {
                 buscando = "";
@@ -74,7 +74,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12" >
                                 <h2>Tipo de documento contable</h2>
-                                <input type="number" name="tipo_doc_contable_idtipodoccontable" class="form-control d-none" placeholder="Tipo de documento contable" id="txt_tipo_doc_contable_idtipodoccontable_reg"> <br>
+                                <input type="number" name="tipo_doc_contable_idtipodoccontable" class="form-control d-none" placeholder="Tipo de documento contable" id="txt_tipo_doc_contable_idtipodoccontable_Reg"> <br>
                                 <%
                                     tipo_doc_contableDAO tipo_doc_contable_dao = new tipo_doc_contableDAO();
                                     ArrayList<tipo_doc_contable> tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable("");
@@ -88,7 +88,7 @@
                             </div>
                             <div class="form-group col-md-12" >
                                 <h2>Medio de pago</h2>
-                                <input type="number" name="medio_de_pago_idmediodepago" class="form-control d-none" placeholder="Medio de pago" id="txt_medio_de_pago_idmediodepago_reg"> <br>
+                                <input type="number" name="medio_de_pago_idmediodepago" class="form-control d-none" placeholder="Medio de pago" id="txt_medio_de_pago_idmediodepago_Reg"> <br>
                                 <%
                                     mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                                     ArrayList<medio_de_pago> mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("");
@@ -115,14 +115,14 @@
         <div id="Listado" class="bd-example contenedor2">
             <form action="/VISION/ConsultarMovimiento" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id ="txt_Id_Consultado" type = "text" class="form-control"
-                               name= "IdConsultado" value="<%=buscando%>" autofocus
-                               placeholder="Buscar por fecha"/>
-                        <button type="button" class="btn btn-primary" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"
-                                onClick="realizarBusqueda()">Buscar</button>
-                    </div>    
+                    <div id="ControlRegistro" class="input-group">
+                            <input id ="txt_Id_Consultado" type = "text" class="form-control"
+                                   name= "IdConsultado" value="<%=buscando%>" autofocus
+                                   placeholder="Buscar por fecha"/>
+                            <button type="button" class="btn btn-primary" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"
+                                    onClick="realizarBusqueda()">Buscar</button>
+                        </div>    
                     <div>
                         <h2 class="title-table">Listado movimiento</h2>
                         <%

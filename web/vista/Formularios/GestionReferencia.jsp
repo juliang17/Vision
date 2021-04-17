@@ -48,7 +48,7 @@
                             <input type="date" name="fechadepago" class="form-control" id="txt_fechadepago_Reg">
                         </div> 
                         <h5><strong>Medio de pago</strong></h5>
-                        <input type="number" name="medio_de_pago_idMedioDePago" class="form-control d-none" placeholder="Medio de pago" id="txt_medio_de_pago_idMedioDePago_reg"> <br>
+                        <input type="number" name="medio_de_pago_idMedioDePago" class="form-control d-none" placeholder="Medio de pago" id="txt_medio_de_pago_idMedioDePago_Reg"> <br>
                         <%
                             mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                             ArrayList<medio_de_pago> mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("");
@@ -106,7 +106,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false"
                                     onClick="realizarBusqueda()">Buscar</button>
-                        </div>
+                        </div> 
                         <div>
                             <h1>Listado referencia de pago</h1>
                             <div id="Tabla_referencia_de_pago">

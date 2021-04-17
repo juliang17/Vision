@@ -1,8 +1,8 @@
 function ValidarReferencia() {
 
     var resultado = 'Correcto';
-    var fechadepago = $('#txt_fechadepago_reg').val();
-    var medio_de_pago_idMedioDePago = $('#txt_medio_de_pago_idMedioDePago_Reg').val();
+    var fechadepago = document.getElementById("txt_fechadepago_Reg").value;
+    var medio_de_pago_idMedioDePago = document.getElementById("txt_medio_de_pago_idMedioDePago_Reg").value;
 
 
     console.log('Información a validar');
@@ -16,6 +16,10 @@ function ValidarReferencia() {
     } else if (medio_de_pago_idMedioDePago == '') {
         alert('El medio de pago no puede estar vacio');
         resultado = 'Error';
+    } else if (isNaN(medio_de_pago_idMedioDePago)) {
+        alert('El medio de pago debe ser numérico');
+        resultado = 'Error';
+   
     } else {
         resultado = 'Correcto';
     }

@@ -49,7 +49,7 @@ public class RegistrarMovimiento extends HttpServlet {
         int Iv = Integer.parseInt(iva);
         int des = Integer.parseInt(descuento);
         int tot = Integer.parseInt(total);
-        int TipoDocC = Integer.parseInt(tipo_doc_contable_idtipodoccontable);
+        int TipoDoc = Integer.parseInt(tipo_doc_contable_idtipodoccontable);
         int medio = Integer.parseInt(medio_de_pago_idMedioDePago);
 
         movimientoDAO MovDAO = new movimientoDAO();
@@ -60,7 +60,7 @@ public class RegistrarMovimiento extends HttpServlet {
         Mov.setIva(Iv);
         Mov.setDescuento(des);
         Mov.setTotal(tot);
-        Mov.setTipo_doc_contable_idtipodoccontable(TipoDocC);
+        Mov.setTipo_doc_contable_idtipodoccontable(TipoDoc);
         Mov.setMedio_de_pago_idmediodepago(medio);
 
         System.out.println("El valor es " + BanderaEstado);

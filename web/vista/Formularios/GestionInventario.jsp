@@ -13,7 +13,7 @@
         <script src="../Javascript/ValidarInventario.js" type="text/javascript"></script>
         <title>Inventario</title>
     </head>
-    <body style="background-image: url('../imagenes/ropaRosada (1).jpg')" onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
+    <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
             if (buscando == null) {
                 buscando = "";
@@ -58,8 +58,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12" >
-                        <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" placeholder="Tipo Documento" id="txt_tipo_documento_idtipodoc_reg"> <br>
-                <input type="number" name="productos_idproductos" class="form-control d-none" placeholder="Producto" id="txt_productos_idproductos_reg"> <br>
+                <input type="number" name="productos_idproductos" class="form-control d-none" placeholder="Producto" id="txt_productos_idproductos_Reg"> <br>
                 <%
                     ProductoDAO productos_dao = new ProductoDAO();
         ArrayList<productos> mi_productos = productos_dao.listadoproductos("", "");
@@ -86,14 +85,14 @@
         <div id="Listado" class="bd-example contenedor2">
             <form action="/VISION/ConsultarInventario" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id ="txt_Id_Consultado" type = "text" class="form-control"
+                    <div id="ControlRegistro" class="input-group">
+                            <input id ="txt_Id_Consultado" type = "text" class="form-control"
                                    name= "IdConsultado" value="<%=buscando%>" autofocus
                                    placeholder="Buscar por entrada o salida"/>
                             <button type="button" class="btn btn-primary" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false"
                                     onClick="realizarBusqueda()">Buscar</button>
-                    </div>    
+                        </div>   
                     <div>
                         <h2 class="title-table">Listado Inventario</h2>
                         <%

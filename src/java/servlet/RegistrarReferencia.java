@@ -35,7 +35,7 @@ public class RegistrarReferencia extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         String fechadepago = request.getParameter("fechadepago");
         String medio_de_pago_idMedioDePago = request.getParameter("medio_de_pago_idMedioDePago");
         String BanderaEstado = request.getParameter("banderaRegistro");
@@ -55,11 +55,12 @@ public class RegistrarReferencia extends HttpServlet {
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Proveedor Registrado." + "');");
+                out.println("alert('" + "Referencia registrada con éxito." + "');");
                 out.println("window.location.href = '/VISION/vista/Formularios/GestionReferencia.jsp';");
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
+                //out.println("alert('" + respuestaRegistrada + "');");
                 out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
                 out.println("window.history.back();");
                 out.println("</script>");

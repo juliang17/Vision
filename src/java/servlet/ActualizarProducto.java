@@ -53,7 +53,7 @@ public class ActualizarProducto extends HttpServlet {
         p.setUnidad_de_medida_idunidadmedida(Unidad);
         p.setProveedores_idproveedores(Proveedor);
         
-        System.out.println("Número de documento " + referenciaproducto);
+        System.out.println("Referencia producto " + referenciaproducto);
         String respuestaRegistrada = pdao.Actualizarproductos(p);
         if(respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
