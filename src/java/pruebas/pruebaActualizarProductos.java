@@ -13,7 +13,7 @@ public class pruebaActualizarProductos {
 
         Scanner teclado = new Scanner(System.in);
 
-        int idproductos;
+        String referenciaproducto;
         String nombreproducto;
         int cantidadproducto;
         int ivaproducto;
@@ -24,8 +24,8 @@ public class pruebaActualizarProductos {
         int Unidad_de_medida_idunidadmedida;
         int Proveedores_idproveedores;
 
-        System.out.println("Ingrese el id");
-        idproductos = teclado.nextInt();
+        System.out.println("Ingrese la refencia del producto");
+        referenciaproducto = teclado.next();
         System.out.println("Ingrese el nombre del producto");
         nombreproducto = teclado.next();
         System.out.println("Ingrese la cantidad");
@@ -44,10 +44,10 @@ public class pruebaActualizarProductos {
         Unidad_de_medida_idunidadmedida = teclado.nextInt();
         System.out.println("Ingrese proveedor");
         Proveedores_idproveedores = teclado.nextInt();
-        System.out.println("Ingrese el id");
-        idproductos = teclado.nextInt();
+        System.out.println("Ingrese la referencia del producto");
+        referenciaproducto = teclado.next();
 
-        mi_productos.setIdproductos(idproductos);
+        mi_productos.setReferenciaproducto(referenciaproducto);
         mi_productos.setNombreproducto(nombreproducto);
         mi_productos.setCantidadproducto(cantidadproducto);
         mi_productos.setIvaproducto(ivaproducto);
@@ -58,7 +58,7 @@ public class pruebaActualizarProductos {
         mi_productos.setUnidad_de_medida_idunidadmedida(Unidad_de_medida_idunidadmedida);
         mi_productos.setProveedores_idproveedores(Proveedores_idproveedores);
 
-        mi_productos.setIdproductos(idproductos);
+        mi_productos.setReferenciaproducto("");
 
         String respuesta = productos_dao.Actualizarproductos(mi_productos);
 

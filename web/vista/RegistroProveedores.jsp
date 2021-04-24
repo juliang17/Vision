@@ -102,9 +102,9 @@
             <form action="/VISION/ConsultarProveedor" method="post">
                 <div class="row justify-content-md-center">
                         <div id="ControlRegistro" class="input-group">
-                            <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingrese identificación o nombres"/>
-                            <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
-                        </div>    
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar identificacion o nombre"/>
+                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                    </div>    
                             <br>
                         <div>
                             <h2 class="title-table">Listado Proveedores</h2>

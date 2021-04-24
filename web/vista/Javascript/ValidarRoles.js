@@ -37,6 +37,14 @@ function SetIdConsulta(x) {
     console.log("valor : " + x);
 }
 
+function DefinirFoco(){
+document.getElementById("txt_Id_Consultado").focus();
+}
+
+$('#txt_Id_Consultado').change(function(){
+console.log("Texto" + $('#txt_Id_Consultado').val());
+});
+
 function visualizaOculta(Dato) {
 
     console.log("Viene " + Dato);
@@ -59,11 +67,3 @@ function visualizaOculta(Dato) {
         $("#Actualizar").addClass('d-none');
     }
 }
-
-function DefinirFoco(){
-document.getElementById("txt_Id_Consultado").focus();
-}
-
-$('#txt_Id_Consultado').change(function(){
-console.log("Texto" + $('#txt_Id_Consultado').val());
-});

@@ -8,7 +8,7 @@ public class Pruebaconsultarroles {
     public static void main(String[] args) {
 
         rolesDAO misrolesDAO = new rolesDAO();
-        roles misroles = misrolesDAO.Consultarroles("1");
+        roles misroles = misrolesDAO.Consultarroles("");
 
         if (misroles != null) {
             System.out.println("Rol encontrado:" + misroles.getidroles() + "_" + misroles.getdescripcionrol() + "_");

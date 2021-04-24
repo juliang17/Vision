@@ -66,6 +66,7 @@ public class ProductoDAO {
             sentencia.setInt(8, PRODUCTOS.getMarca_idmarca());
             sentencia.setInt(9, PRODUCTOS.getUnidad_de_medida_idunidadmedida());
             sentencia.setInt(10, PRODUCTOS.getProveedores_idproveedores());
+            sentencia.setString(11, PRODUCTOS.getReferenciaproducto());
 
             sentencia.executeUpdate();
 
@@ -163,7 +164,7 @@ public class ProductoDAO {
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setInt(1, Producto.getIdproductos());
             sentencia.setString(2, Producto.getReferenciaproducto());
-
+            sentencia.execute();
             mirespuesta = "";
         } catch (Exception ex) {
             mirespuesta = ex.getMessage();

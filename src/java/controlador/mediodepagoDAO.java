@@ -125,7 +125,7 @@ public class mediodepagoDAO {
         }
         return listado_medio_de_pago;
     }
-    
+
     public String EliminarDetalleMedioDePago(medio_de_pago MedioDePago) {
 
         String miRespuesta;
@@ -135,7 +135,7 @@ public class mediodepagoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from medio_de_pago where idMedioDePago = ? and descripcionmediodepago = ? ;";
+            String Query = " delete from medio_de_pago where IdMedioDePago = ? and Descripcionmediodepago = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, MedioDePago.getIdMedioDePago());
@@ -146,13 +146,12 @@ public class mediodepagoDAO {
             miRespuesta = "";
 
         } catch (Exception ex) {
-            
+
             miRespuesta = ex.getMessage();
-            
+
             System.out.println("Ocurrio un error en EliminarDetalleMedioDePago" + ex.getMessage());
         }
         return miRespuesta;
     }
-
 
 }

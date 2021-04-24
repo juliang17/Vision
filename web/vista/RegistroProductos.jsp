@@ -17,7 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <script src="Javascript/validarProductos.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Productos</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
@@ -84,7 +84,7 @@
 
                         <div class="form-group col-md-6" >
                             <h2>Categoria:</h2>
-                            <input type="number" name="categorias_idcategorias" class="form-control " id="categorias_idcategorias">
+                            <input type="number" name="categorias_idcategorias" class="form-control d-none" id="categorias_idcategorias">
 
                             <%
                                 categoriasDAO categorias_dao = new categoriasDAO();
@@ -101,10 +101,10 @@
                         </div>
                         <div class="form-group col-md-6" >
                             <h2>Marca:</h2>
-                            <input type="number" name="marca_idmarca" class="form-control " id="marca_idmarca">
+                            <input type="number" name="marca_idmarca" class="form-control d-none" id="marca_idmarca">
 
                             <%  MarcaDAO quipoDao = new MarcaDAO();
-                                ArrayList<marca> miequipo = quipoDao.listadomarca(' ', "");
+                                ArrayList<marca> miequipo = quipoDao.listadomarca("");
                                 out.println("<select class='form-control'id ='SelectMarca' size = '1' >");
                                 out.println("<option onclick='setMarca(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
 
@@ -121,7 +121,7 @@
                     <div class="form-row" >
                         <div class="form-group col-md-6" >
                             <h2>proveedor:</h2>
-                            <input type="number" name="proveedores_idproveedores" class="form-control " id="proveedores_idproveedores">
+                            <input type="number" name="proveedores_idproveedores" class="form-control d-none" id="proveedores_idproveedores">
 
                             <%  ProveedoresDAO pdao = new ProveedoresDAO();
                                 ArrayList<proveedores> p = pdao.listadoproveedores("", "", "");
@@ -177,7 +177,7 @@
                     <div class="form-row" >
                         <div class="form-group col-md-6" >
                             <h2>Referencia Producto:</h2>
-                            <input type="number" readonly="" name="referenciaproducto" class="form-control" id="referenciaproducto" value="<%=request.getParameter("Refrencia")%>">
+                            <input type="number" readonly="" name="referenciaproducto" class="form-control" id="referenciaproducto" value="<%=request.getParameter("Referencia")%>">
                         </div>
                         <div class="form-group col-md-6" >
                             <h2>Precio:</h2>
@@ -218,7 +218,7 @@
                         <div id="Listado" class="bd-example">
 
                             <div id="ControlRegistro" class="input-group">
-                                <input id="txt_Id_Consultado" type="text" class="form-control input-1" name="IdConsultado" value="<%=buscando%>" autofocus placeholder="Buscar por Identificación, Nombres o Apellidos..."/>
+                                <input id="txt_Id_Consultado" type="text" class="form-control input-1" name="IdConsultado" value="<%=buscando%>" autofocus placeholder="Buscar por referencia o nombre del producto"/>
                                 <button type="button" class="btn btn-info-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                             </div>
 

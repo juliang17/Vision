@@ -74,7 +74,7 @@ public class ConsultarUnidadmedida extends HttpServlet {
 
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
+                out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
                         + "Por favor verificar la Descripcion: " + descripcionunidadmedida
                         + "');");
                 out.println("</script>");

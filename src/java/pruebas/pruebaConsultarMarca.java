@@ -9,7 +9,7 @@ public class pruebaConsultarMarca {
     public static void main(String[] args) {
 
         MarcaDAO marca_dao = new MarcaDAO();
-        marca mi_marca = marca_dao.Consultamarca(0);
+        marca mi_marca = marca_dao.Consultamarca("");
 
         if (mi_marca != null) {
             System.out.println("marca encontrada " + mi_marca.getIdmarca() + " " + mi_marca.getDescripcionmarca() + " ");

@@ -55,12 +55,12 @@ public class Iniciosesion extends HttpServlet {
                     if (misusuarios.getClaveusuario().equals(password)) {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "Inicio de sesion exitoso :" + misusuarios.getNombreusuarios() + " " + misusuarios.getApellidousuarios() + "');");
-                        out.println("window.location.href ='/VISION/index.html';");
+                        out.println("window.location.href ='/VISION/PaginaPrincipal.jsp';");
                         out.println("</script>");
                     } else {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "La clave es incorrecta" + "');");
-                        out.println("window.location.href ='/VISION/index.html';");
+                        out.println("window.location.href ='/VISION/index.jsp';");
                         out.println("</script>");
 
                     }

@@ -136,12 +136,13 @@ public class ProveedoresDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from proveedores where idproveedores = ? and identificacionproveedores = ? ;";
+            String Query = " delete from proveedores where identificacionproveedores = ? and nombreproveedores = ? and correoproveedores = ? ;";
 
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, Proveedor.getIdProveedores());
-            sentencia.setString(2, Proveedor.getIdentificacionproveedores());
-
+            sentencia.setString(1, Proveedor.getIdentificacionproveedores());
+            sentencia.setString(2, Proveedor.getNombreproveedores());
+            sentencia.setString(3, Proveedor.getCorreoproveedores());
+            sentencia.execute();
             mirespuesta = "";
         } catch (Exception ex) {
             mirespuesta = ex.getMessage();
