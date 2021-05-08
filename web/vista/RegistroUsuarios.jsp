@@ -85,11 +85,11 @@
                 <input type="number" name="roles_idroles" class="form-control d-none" id="txt_roles_idroles_reg">
                 <%
                     rolesDAO misrolesDAO = new rolesDAO();
-                    ArrayList<roles> misroles = misrolesDAO.Consultarlistadoroles("");
+                    ArrayList<roles> misroles = misrolesDAO.Consultarlistadoroles("" , "");
                     out.println("<select class='form-control' id='Selectidroles' size='1'>");
                     out.println("<option onclick='setroles_idroles(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                     for (roles R : misroles) {
-                        out.println("<option onclick='setroles_idroles(\"" + R.getidroles() + "\")'>" + R.getdescripcionrol() + "</option>");
+                        out.println("<option onclick='setroles_idroles(\"" + R.getIdroles() + "\")'>" + R.getDescripcionrol() + "</option>");
                     }
                     out.println("</select>");
                 %>

@@ -1,0 +1,17 @@
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-75%);
+}
+.navbar-nav.navbar-right {
+    position: absolute;
+    left: 70%;
+    transform: translatex(-10%);
+}
+.navbar-nav.navbar-left {
+    left: 80%;
+    transform: translatex(10%);
+}
+a {
+   font: oblique bold 120% cursive;  
+}
