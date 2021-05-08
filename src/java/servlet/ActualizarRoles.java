@@ -41,7 +41,7 @@ public class ActualizarRoles extends HttpServlet {
         rolesDAO misrolesDAO = new rolesDAO();
         roles misroles = new roles();
         
-        misroles.setdescripcionrol(descripcionrol);
+        misroles.setDescripcionrol(descripcionrol);
         
         System.out.println(" Descripcion: " + descripcionrol);
         String respuestaRegistrada = misrolesDAO.actualizarroles(misroles);

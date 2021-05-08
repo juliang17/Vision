@@ -26,7 +26,7 @@ public class pruebaModificarmediodepago {
 
         Scanner repuesta = new Scanner(System.in);
 
-        int idMedioDePago;
+        String idMedioDePago;
         String mediodepago = "";
 
         
@@ -34,7 +34,7 @@ public class pruebaModificarmediodepago {
         mediodepago = repuesta.nextLine();
         
         System.out.println("Por favor ingrese el id");
-        idMedioDePago = repuesta.nextInt();
+        idMedioDePago = repuesta.next();
 
         mi_forma_De_pago.setIdMedioDePago(idMedioDePago);
         mi_forma_De_pago.setDescripcionmediodepago(mediodepago);

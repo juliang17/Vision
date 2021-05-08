@@ -22,7 +22,7 @@ public class estado_usuarioDAO {
 
             String Query = "Insert estado_usuario (descripcionestadousuario)" + "values (?)";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, estado.getdescripcionestadousuario());
+            sentencia.setString(1, estado.getDescripcionestadousuario());
             sentencia.execute();
             mirespuesta = "";
 
@@ -43,8 +43,8 @@ public class estado_usuarioDAO {
         try {
             String Query = "update estado_usuario set descripcionestadousuario=? where idestadousuario=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, estado.getdescripcionestadousuario());
-            sentencia.setInt(2, estado.getidestadousuario());
+            sentencia.setString(1, estado.getDescripcionestadousuario());
+            sentencia.setString(2, estado.getIdestadousuario());
             sentencia.executeUpdate();
 
         } catch (Exception ex) {
@@ -68,8 +68,8 @@ public class estado_usuarioDAO {
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 miestadousuario = new estado_usuario();
-                miestadousuario.setidestadousuario(rs.getInt(1));
-                miestadousuario.setdescripcionestadousuario(rs.getString(2));
+                miestadousuario.setIdestadousuario(rs.getString(1));
+                miestadousuario.setDescripcionestadousuario(rs.getString(2));
             }
             return miestadousuario;
         } catch (Exception ex) {
@@ -78,7 +78,7 @@ public class estado_usuarioDAO {
         return miestadousuario;
     }
 
-    public ArrayList<estado_usuario> Consultarlistadoestado_usuario(String Estado) {
+    public ArrayList<estado_usuario> Consultarlistadoestado_usuario(String idestadousuario, String descripcionestadousuario) {
         ArrayList<estado_usuario> milistaestado = new ArrayList<estado_usuario>();
         estado_usuario mitipoestado;
 
@@ -88,13 +88,15 @@ public class estado_usuarioDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idestadousuario, descripcionestadousuario" + " from estado_usuario"
-                    + " where idestadousuario like '%" + Estado + "%' ORDER BY idestadousuario; ";
+            String Query = " select idestadousuario , descripcionestadousuario " 
+                    + " from estado_usuario " 
+                    + " where idestadousuario like '%" + idestadousuario + "%' " 
+                    + "  or (descripcionestadousuario) like ('%" + descripcionestadousuario + "%') ORDER BY idestadousuario;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitipoestado = new estado_usuario();
-                mitipoestado.setidestadousuario(rs.getInt(1));
-                mitipoestado.setdescripcionestadousuario(rs.getString(2));
+                mitipoestado.setIdestadousuario(rs.getString(1));
+                mitipoestado.setDescripcionestadousuario(rs.getString(2));
                 milistaestado.add(mitipoestado);
             }
             return milistaestado;
@@ -114,8 +116,8 @@ public class estado_usuarioDAO {
         try {
             String Query = " delete from estado_usuario where idestadousuario = ? and descripcionestadousuario = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, estado.getidestadousuario());
-            sentencia.setString(2, estado.getdescripcionestadousuario());
+            sentencia.setString(1, estado.getIdestadousuario());
+            sentencia.setString(2, estado.getDescripcionestadousuario());
             sentencia.execute();
             mirespuesta = "";
 

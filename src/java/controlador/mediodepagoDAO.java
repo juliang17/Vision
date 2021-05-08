@@ -53,9 +53,9 @@ public class mediodepagoDAO {
             String Query = "update medio_de_pago set idMedioDePago=?, descripcionmediodepago=? where idMedioDePago=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setInt(1, Medios_de_pago.getIdMedioDePago());
+            sentencia.setString(1, Medios_de_pago.getIdMedioDePago());
             sentencia.setString(2, Medios_de_pago.getDescripcionmediodepago());
-            sentencia.setInt(3, Medios_de_pago.getIdMedioDePago());
+            sentencia.setString(3, Medios_de_pago.getIdMedioDePago());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -83,7 +83,7 @@ public class mediodepagoDAO {
             while (rs.next()) {
 
                 mi_medio_de_pago = new medio_de_pago();
-                mi_medio_de_pago.setIdMedioDePago(rs.getInt(1));
+                mi_medio_de_pago.setIdMedioDePago(rs.getString(1));
                 mi_medio_de_pago.setDescripcionmediodepago(rs.getString(2));
 
             }
@@ -95,7 +95,7 @@ public class mediodepagoDAO {
         return mi_medio_de_pago;
     }
 
-    public ArrayList<medio_de_pago> ListadoMedioDePago(String descripcionmediodepago) {
+    public ArrayList<medio_de_pago> ListadoMedioDePago(String idMedioDePago , String descripcionmediodepago) {
         ArrayList<medio_de_pago> listado_medio_de_pago = new ArrayList<medio_de_pago>();
         medio_de_pago mi_medio_de_pago;
 
@@ -107,15 +107,15 @@ public class mediodepagoDAO {
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select idMedioDePago, descripcionmediodepago "
+            String Query = " select idMedioDePago,descripcionmediodepago "
                     + " from medio_de_pago "
-                    + " where descripcionmediodepago like '%" + descripcionmediodepago + "%' "
-                    + " ORDER BY descripcionmediodepago;";
+                    + " where idMedioDePago like '%" + idMedioDePago + "%' "
+                    + "  or (descripcionmediodepago) like ('%" + descripcionmediodepago + "%') ORDER BY idMedioDePago;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_medio_de_pago = new medio_de_pago();
-                mi_medio_de_pago.setIdMedioDePago(rs.getInt(1));
+                mi_medio_de_pago.setIdMedioDePago(rs.getString(1));
                 mi_medio_de_pago.setDescripcionmediodepago(rs.getString(2));
                 listado_medio_de_pago.add(mi_medio_de_pago);
             }
@@ -138,7 +138,7 @@ public class mediodepagoDAO {
             String Query = " delete from medio_de_pago where IdMedioDePago = ? and Descripcionmediodepago = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setInt(1, MedioDePago.getIdMedioDePago());
+            sentencia.setString(1, MedioDePago.getIdMedioDePago());
             sentencia.setString(2, MedioDePago.getDescripcionmediodepago());
 
             sentencia.execute();

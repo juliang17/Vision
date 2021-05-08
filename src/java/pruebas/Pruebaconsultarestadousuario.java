@@ -11,7 +11,7 @@ public class Pruebaconsultarestadousuario {
         estado_usuario miestadousuario = miestadousuarioDAO.Consultarestado_usuario("");
 
         if (miestadousuario != null) {
-            System.out.println("Estado usuario encontrado:" + miestadousuario.getidestadousuario() + "_" + miestadousuario.getdescripcionestadousuario() + "_");
+            System.out.println("Estado usuario encontrado:" + miestadousuario.getIdestadousuario() + "_" + miestadousuario.getDescripcionestadousuario() + "_");
         } else {
             System.out.println("Estado usuario no encontrado");
         }

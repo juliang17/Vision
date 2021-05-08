@@ -99,11 +99,11 @@
                 <input type="number" name="estado_usuario_idestadousuario" class="form-control d-none" id="txt_estado_usuario_idestadousuario_Reg">
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
-                    ArrayList<estado_usuario> miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("");
+                    ArrayList<estado_usuario> miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("" , "");
                     out.println("<select class='form-control' id='Selectidestadousuario' size='1'>");
                     out.println("<option onclick='setestado_usuario_idestadousuario(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                     for (estado_usuario E : miestado) {
-                        out.println("<option onclick='setestado_usuario_idestadousuario(\"" + E.getidestadousuario() + "\")'>" + E.getdescripcionestadousuario() + "</option>");
+                        out.println("<option onclick='setestado_usuario_idestadousuario(\"" + E.getIdestadousuario() + "\")'>" + E.getDescripcionestadousuario() + "</option>");
                     }
                     out.println("</select>");
                 %>

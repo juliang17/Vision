@@ -42,7 +42,7 @@ public class RegistroEstadoUsuario extends HttpServlet {
         estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
         estado_usuario miestadousuario = new estado_usuario();
         
-        miestadousuario.setdescripcionestadousuario(EstadoUsuario);
+        miestadousuario.setDescripcionestadousuario(EstadoUsuario);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {

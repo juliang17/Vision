@@ -47,7 +47,7 @@ public class UnidadDeMedidaDAO {
         try {
             String Query = "update unidad_de_medida set idunidadmedida=?, descripcionunidadmedida=? where descripcionunidadmedida=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, UNIDADMEDIDA.getIdunidadmedida());
+            sentencia.setString(1, UNIDADMEDIDA.getIdunidadmedida());
             sentencia.setString(2, UNIDADMEDIDA.getDescripcionunidadmedida());
             sentencia.setString(3, UNIDADMEDIDA.getDescripcionunidadmedida());
 
@@ -61,7 +61,7 @@ public class UnidadDeMedidaDAO {
         return mirespuesta;
     }
     
-    public unidad_de_medida Consultarunidaddemedida(String descripcionunidadmedida) {
+    public unidad_de_medida Consultarunidaddemedida(String idunidadmedida) {
         unidad_de_medida miunidadmedida = null;
 
         Conexion miconexion = new Conexion();
@@ -70,12 +70,12 @@ public class UnidadDeMedidaDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idunidadmedida, descripcionunidadmedida from unidad_de_medida where descripcionunidadmedida = " + descripcionunidadmedida);
+            String Query = ("select idunidadmedida, descripcionunidadmedida from unidad_de_medida where idunidadmedida = " + idunidadmedida);
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
                 miunidadmedida = new unidad_de_medida();
-                miunidadmedida.setIdunidadmedida(rs.getInt(1));
+                miunidadmedida.setIdunidadmedida(rs.getString(1));
                 miunidadmedida.setDescripcionunidadmedida(rs.getString(2));
 
             }
@@ -86,7 +86,7 @@ public class UnidadDeMedidaDAO {
         return miunidadmedida;
     }
     
-     public ArrayList<unidad_de_medida> listadounidaddemedida(String descripcionunidadmedida) {
+     public ArrayList<unidad_de_medida> listadounidaddemedida(String idunidadmedida , String descripcionunidadmedida) {
         ArrayList<unidad_de_medida> milistaunidadmedida = new ArrayList<unidad_de_medida>();
         unidad_de_medida miunidadmedida;
 
@@ -97,14 +97,14 @@ public class UnidadDeMedidaDAO {
         System.out.println("Buscando parametro: " + descripcionunidadmedida);
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idunidadmedida, descripcionunidadmedida "
-                    + " from unidad_de_medida"
-                    + " where descripcionunidadmedida like '%" + descripcionunidadmedida + "%' "
-                    + "ORDER BY descripcionunidadmedida; ";
+            String Query = " select idunidadmedida,descripcionunidadmedida "
+                    + " from unidad_de_medida "
+                    + " where idunidadmedida like '%" + idunidadmedida + "%' "
+                    + "  or (descripcionunidadmedida) like ('%" + descripcionunidadmedida + "%') ORDER BY idunidadmedida;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 miunidadmedida = new unidad_de_medida();
-                miunidadmedida.setIdunidadmedida(rs.getInt(1));
+                miunidadmedida.setIdunidadmedida(rs.getString(1));
                 miunidadmedida.setDescripcionunidadmedida(rs.getString(2));
                 milistaunidadmedida.add(miunidadmedida);
 
@@ -127,7 +127,7 @@ public class UnidadDeMedidaDAO {
             String Query = " delete from unidad_de_medida where idunidadmedida = ? and descripcionunidadmedida = ?;";
 
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, UNIDADMEDIDA.getIdunidadmedida());
+            sentencia.setString(1, UNIDADMEDIDA.getIdunidadmedida());
             sentencia.setString(2, UNIDADMEDIDA.getDescripcionunidadmedida());
 
             mirespuesta = "";

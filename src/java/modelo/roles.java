@@ -2,23 +2,23 @@ package modelo;
 
 public class roles {
     
-    private int idroles;
+    private String idroles;
     private String descripcionrol;
 
-    public int getidroles() {
+    public String getIdroles() {
         return idroles;
     }
 
-    public void setidroles(int idroles) {
+    public void setIdroles(String idroles) {
         this.idroles = idroles;
     }
 
-    public String getdescripcionrol() {
+    public String getDescripcionrol() {
         return descripcionrol;
     }
 
-    public void setdescripcionrol(String descripcionrol) {
+    public void setDescripcionrol(String descripcionrol) {
         this.descripcionrol = descripcionrol;
     }
-    
+
 }

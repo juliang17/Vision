@@ -18,9 +18,9 @@ public class Pruebaactualizarroles {
         System.out.println("Digite un rol");
         descripcionrol = leer.next();
 
-        misroles.setdescripcionrol(descripcionrol);
+        misroles.setDescripcionrol(descripcionrol);
 
-        misroles.setidroles(1);
+        misroles.setIdroles("1");
 
         String mirespuesta = misrolesDAO.actualizarroles(misroles);
 

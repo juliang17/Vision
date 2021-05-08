@@ -2,23 +2,23 @@ package modelo;
 
 public class estado_usuario {
 
-    private int idestadousuario;
+    private String idestadousuario;
     private String descripcionestadousuario;
 
-    public int getidestadousuario() {
+    public String getIdestadousuario() {
         return idestadousuario;
     }
 
-    public void setidestadousuario(int idestadousuario) {
+    public void setIdestadousuario(String idestadousuario) {
         this.idestadousuario = idestadousuario;
     }
 
-    public String getdescripcionestadousuario() {
+    public String getDescripcionestadousuario() {
         return descripcionestadousuario;
     }
 
-    public void setdescripcionestadousuario(String descripcionestadousuario) {
+    public void setDescripcionestadousuario(String descripcionestadousuario) {
         this.descripcionestadousuario = descripcionestadousuario;
     }
-    
+
 }

@@ -49,7 +49,7 @@ public class ConsultarEstadoUsuario extends HttpServlet {
 
             if (miestadousuario != null) {
                 response.sendRedirect("/VISION/vista/Formulario/GestionEstadoUsuario.jsp?descripcionestadousuario="
-                        + miestadousuario.getdescripcionestadousuario().toString() + "&"
+                        + miestadousuario.getDescripcionestadousuario().toString() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {

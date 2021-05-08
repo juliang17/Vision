@@ -97,7 +97,7 @@
 
                                 <% UnidadDeMedidaDAO miunidadmedidaDAO = new UnidadDeMedidaDAO();
                                     ArrayList<unidad_de_medida> milistaunidadmedida = new ArrayList<unidad_de_medida>();
-                                    milistaunidadmedida = miunidadmedidaDAO.listadounidaddemedida(buscando);
+                                    milistaunidadmedida = miunidadmedidaDAO.listadounidaddemedida(buscando , buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (unidad_de_medida U : milistaunidadmedida) {
                                         out.println("<tr>");

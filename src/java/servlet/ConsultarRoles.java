@@ -49,7 +49,7 @@ public class ConsultarRoles extends HttpServlet {
 
             if (misroles != null) {
                 response.sendRedirect("/VISION/vista/Formulario/GestionRoles.jsp?descripcionrol="
-                        + misroles.getdescripcionrol().toString() + "&"
+                        + misroles.getDescripcionrol().toString() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {

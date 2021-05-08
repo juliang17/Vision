@@ -106,14 +106,14 @@
 
                                 <% estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
                                     ArrayList<estado_usuario> miestado = new ArrayList<estado_usuario>();
-                                    miestado = miestadousuarioDAO.Consultarlistadoestado_usuario(buscando);
+                                    miestado = miestadousuarioDAO.Consultarlistadoestado_usuario(buscando , buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (estado_usuario E : miestado) {
                                         out.println("<tr>");
-                                        out.println("<td>" + E.getdescripcionestadousuario() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + E.getdescripcionestadousuario() + ")'/>"
+                                        out.println("<td>" + E.getDescripcionestadousuario() + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + E.getDescripcionestadousuario() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + E.getdescripcionestadousuario() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + E.getDescripcionestadousuario() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

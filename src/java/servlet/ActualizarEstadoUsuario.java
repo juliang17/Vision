@@ -41,7 +41,7 @@ public class ActualizarEstadoUsuario extends HttpServlet {
         estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
         estado_usuario miestadousuario = new estado_usuario();
         
-        miestadousuario.setdescripcionestadousuario(descripcionestadousuario);
+        miestadousuario.setDescripcionestadousuario(descripcionestadousuario);
         
         System.out.println(" Descripcion: " + descripcionestadousuario);
         String respuestaRegistrada = miestadousuarioDAO.actualizarestado_usuario(miestadousuario);

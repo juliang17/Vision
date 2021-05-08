@@ -1,12 +1,12 @@
 function validacionInventario() {
 
     var resultado = 'Correcto';
-    var Entrada = document.getElementById("txt_entrada_Reg").value;
-    var Salida = document.getElementById("txt_salida_Reg").value;
-    var Saldo = document.getElementById("txt_saldo_Reg").value();
-   var productos_idproductos = document.getElementById("txt_productos_idproductos_Reg").value();
+    var Entrada = $('#txt_entrada_Reg').val();
+    var Salida = $('#txt_salida_Reg').val();
+    var Saldo = $('#txt_saldo_Reg').val();
+    var productos_idproductos = $('#txt_productos_idproductos_Reg').val();
 
-    
+
     console.log("-- Informacion a validar -- ");
     console.log("Entrada : " + Entrada);
     console.log("Salida : " + Salida);
@@ -18,30 +18,26 @@ function validacionInventario() {
 
         alert("La entrada no puede estar vacia");
         resultado = 'Error';
-    }
-    if (Salida == '') {
+    } else if (Salida == '') {
 
         alert("La salida no puede estar vacia");
         resultado = 'Error';
-    }
-    if (Saldo == '') {
+    } else if (Saldo == '') {
 
         alert("El saldo no puede estar vacia");
         resultado = 'Error';
-    }
-    if (productos_idproductos == '') {
+    } else if (productos_idproductos == '') {
 
         alert("El Producto no puede estar vacio");
         resultado = 'Error';
-    }
-    $('#txt_Bandera_Reg').val(resultado);
-    console.log('Resultado:' + $('#txt_Bandera_Reg').val());
-    if (resultado == 'Correcto') {
-
-        return true;
-
     } else {
-
+        resultado = 'Correcto';
+    }
+    $('#txt_bandera_reg').val(resultado);
+    console.log('Resultado:' + $('#txt_bandera_reg').val());
+    if (resultado == 'Correcto') {
+        return true;
+    } else {
         return false;
     }
 }

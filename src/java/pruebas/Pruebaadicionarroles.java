@@ -18,7 +18,7 @@ public class Pruebaadicionarroles {
         System.out.println("Digite un rol");
         Nombreroles = leer.next();
 
-        misroles.setdescripcionrol(Nombreroles);
+        misroles.setDescripcionrol(Nombreroles);
         String mirespuesta = misrolesDAO.adicionarroles(misroles);
 
         if (mirespuesta.length() == 0) {

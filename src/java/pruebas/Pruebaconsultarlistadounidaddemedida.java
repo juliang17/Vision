@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadounidaddemedida {
 
         UnidadDeMedidaDAO miunidadmedidaDAO = new UnidadDeMedidaDAO();
         ArrayList<unidad_de_medida> miunidad = new ArrayList<unidad_de_medida>();
-        miunidad = miunidadmedidaDAO.listadounidaddemedida("");
+        miunidad = miunidadmedidaDAO.listadounidaddemedida("" , "");
 
         int size = miunidad.size();
         System.out.println("<table border=\"1\"><tr><td>idunidadmedida</td><td>descripcionunidadmedida></td>");

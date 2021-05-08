@@ -98,14 +98,14 @@
 
                                 <% rolesDAO misrolesDAO = new rolesDAO(); 
                                    ArrayList<roles> misroles = new ArrayList<roles>();
-                                    misroles = misrolesDAO.Consultarlistadoroles(buscando);
+                                    misroles = misrolesDAO.Consultarlistadoroles(buscando , buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (roles R : misroles) {
                                         out.println("<tr>");
-                                        out.println("<td>" + R.getdescripcionrol() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + R.getdescripcionrol() + ")'/>"
+                                        out.println("<td>" + R.getDescripcionrol() + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + R.getDescripcionrol() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + R.getdescripcionrol() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + R.getDescripcionrol() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

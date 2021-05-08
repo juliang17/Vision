@@ -21,7 +21,7 @@ public class PruebaactualizarUnidadMedida {
 
         miunidad.setDescripcionunidadmedida(descripcionunidadmedida);
 
-        miunidad.setIdunidadmedida(1);
+        miunidad.setIdunidadmedida("1");
 
         String mirespuesta = unidadmedidaDAO.Actualizarunidaddemedida(miunidad);
 

@@ -18,7 +18,7 @@ public class pruebaadicionarestadousuario {
         System.out.println("Digite el estado usuario");
         Nombreestadousuario = leer.next();
 
-        miestadousuario.setdescripcionestadousuario(Nombreestadousuario);
+        miestadousuario.setDescripcionestadousuario(Nombreestadousuario);
         String mirespuesta = miestadousuarioDAO.adicionarestado_usuario(miestadousuario);
 
         if (mirespuesta.length() == 0) {

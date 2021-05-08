@@ -98,7 +98,7 @@
 
                                 <% mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                                     ArrayList<medio_de_pago> mi_medio_de_pago = new ArrayList<medio_de_pago>();
-                                    mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago(buscando);
+                                    mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago(buscando , buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (medio_de_pago M : mi_medio_de_pago) {
                                         out.println("<tr>");

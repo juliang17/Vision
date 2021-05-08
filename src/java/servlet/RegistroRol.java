@@ -42,7 +42,7 @@ public class RegistroRol extends HttpServlet {
         rolesDAO misrolesDAO = new rolesDAO();
         roles misroles = new roles();
         
-        misroles.setdescripcionrol(Roles);
+        misroles.setDescripcionrol(Roles);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {

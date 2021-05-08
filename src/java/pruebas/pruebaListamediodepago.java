@@ -22,7 +22,7 @@ public class pruebaListamediodepago {
         
         mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
         ArrayList<medio_de_pago> mi_medio_de_pago = new ArrayList<medio_de_pago>();
-        mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("");
+        mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("" , "");
 
         int size = mi_medio_de_pago.size();
         System.out.println("<table border=\"1\"><tr><td>idMedioDePago</td><td>descripcionmediodepago</td>");

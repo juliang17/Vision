@@ -18,9 +18,9 @@ public class Pruebaactualizarestadousuario {
         System.out.println("Digite la descripcion estado usuario");
         descripcionestadousuario = leer.next();
 
-        miestadousuario.setdescripcionestadousuario(descripcionestadousuario);
+        miestadousuario.setDescripcionestadousuario(descripcionestadousuario);
 
-        miestadousuario.setidestadousuario(1);
+        miestadousuario.setIdestadousuario("1");
 
         String mirespuesta = miestadousuarioDAO.actualizarestado_usuario(miestadousuario);
 

@@ -20,7 +20,7 @@ public class rolesDAO {
         try {
             String Query = "insert roles(descripcionrol)" + "Values (?)";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, ROLES.getdescripcionrol());
+            sentencia.setString(1, ROLES.getDescripcionrol());
             sentencia.execute();
             mirespuesta = "";
         } catch (Exception ex) {
@@ -41,8 +41,8 @@ public class rolesDAO {
         try {
             String Query = "update roles set descripcionrol=? where idroles=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, ROLES.getdescripcionrol());
-            sentencia.setInt(2, ROLES.getidroles());
+            sentencia.setString(1, ROLES.getDescripcionrol());
+            sentencia.setString(2, ROLES.getIdroles());
             sentencia.executeLargeUpdate();
 
         } catch (Exception ex) {
@@ -66,8 +66,8 @@ public class rolesDAO {
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 misroles = new roles();
-                misroles.setidroles(rs.getInt(1));
-                misroles.setdescripcionrol(rs.getString(2));
+                misroles.setIdroles(rs.getString(1));
+                misroles.setDescripcionrol(rs.getString(2));
             }
             return misroles;
         } catch (Exception ex) {
@@ -76,7 +76,7 @@ public class rolesDAO {
         return misroles;
     }
 
-    public ArrayList<roles> Consultarlistadoroles(String ROL) {
+    public ArrayList<roles> Consultarlistadoroles(String idroles , String descripcionrol) {
         ArrayList<roles> milistaroles = new ArrayList<roles>();
         roles mitiporol;
 
@@ -87,13 +87,15 @@ public class rolesDAO {
 
         try {
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idroles, descripcionrol" + " from roles"
-                    + " where idroles like '%" + ROL + "%' ORDER BY idroles; ";
+            String Query = " select idroles,descripcionrol " 
+                    + " from roles "
+                    + " where idroles like '%" + idroles + "%' " 
+                    + "  or (descripcionrol) like ('%" + descripcionrol + "%') ORDER BY idroles;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitiporol = new roles();
-                mitiporol.setidroles(rs.getInt(1));
-                mitiporol.setdescripcionrol(rs.getString(2));
+                mitiporol.setIdroles(rs.getString(1));
+                mitiporol.setDescripcionrol(rs.getString(2));
                 milistaroles.add(mitiporol);
             }
             return milistaroles;
@@ -113,8 +115,8 @@ public class rolesDAO {
         try {
             String Query = " delete from roles where idroles = ? and descripcionrol = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, rol.getidroles());
-            sentencia.setString(2, rol.getdescripcionrol());
+            sentencia.setString(1, rol.getIdroles());
+            sentencia.setString(2, rol.getDescripcionrol());
             sentencia.execute();
             mirespuesta = "";
 

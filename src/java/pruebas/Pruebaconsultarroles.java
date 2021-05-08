@@ -11,7 +11,7 @@ public class Pruebaconsultarroles {
         roles misroles = misrolesDAO.Consultarroles("");
 
         if (misroles != null) {
-            System.out.println("Rol encontrado:" + misroles.getidroles() + "_" + misroles.getdescripcionrol() + "_");
+            System.out.println("Rol encontrado:" + misroles.getIdroles() + "_" + misroles.getDescripcionrol() + "_");
 
         } else {
             System.out.println("Rol no encontrado");
