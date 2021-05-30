@@ -39,25 +39,25 @@ public class ConsultarEstadoUsuario extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String descripcionestadousuario = request.getParameter("IdConsultado");
+        String Identificacion = request.getParameter("IdConsultado");
         
         estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
         estado_usuario miestadousuario = null;
         
-        miestadousuario = miestadousuarioDAO.Consultarestado_usuario(descripcionestadousuario);
+        miestadousuario = miestadousuarioDAO.Consultarestado_usuario(Identificacion);
         if (Accion != null) {
 
             if (miestadousuario != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionEstadoUsuario.jsp?descripcionestadousuario="
-                        + miestadousuario.getDescripcionestadousuario().toString() + "&"
+                response.sendRedirect("/VISION/vista/Formulario/GestionEstadoUsuario.jsp?estado_usuario=" + miestadousuario.getDescripcionestadousuario() + "&"
+                        + "ID" + miestadousuario.getIdestadousuario() + "&"
                         + "Vista=" + "Actualizar" + "&");
+                
                 System.out.println("Salio");
             } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripcionestadousuario + "');");
-                out.println("</script>");
-            }
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("</script>");
+                }
         } else {
             if (miestadousuario != null) {
                 String RespuestaRegistrada = miestadousuarioDAO.Eliminarestado_usuario(miestadousuario);
@@ -75,7 +75,7 @@ public class ConsultarEstadoUsuario extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripcionestadousuario
+                        + "Por favor verificar la Descripcion: " + Identificacion
                         + "');");
                 out.println("</script>");
             }

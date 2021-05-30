@@ -20,7 +20,7 @@ public class Pruebaactualizarestadousuario {
 
         miestadousuario.setDescripcionestadousuario(descripcionestadousuario);
 
-        miestadousuario.setIdestadousuario("1");
+        miestadousuario.setIdestadousuario("3");
 
         String mirespuesta = miestadousuarioDAO.actualizarestado_usuario(miestadousuario);
 

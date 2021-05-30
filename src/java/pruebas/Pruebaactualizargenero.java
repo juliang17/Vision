@@ -21,7 +21,7 @@ public class Pruebaactualizargenero {
                 
         migenero.setdescripciongenero(descripciongenero);
 
-        migenero.setidgenero(1);
+        migenero.setidgenero(3);
         
         String mirespuesta = miGeneroDAO.actualizargenero(migenero);
         

@@ -75,8 +75,7 @@
                         </div>
                         <div class="row justify-content-md-center">
                             <div class="btn-group">
-                                <input type = "submit" class="btn btn-primary form-control
-                                       btn btn-login" value= "Actualizar"/>
+                                <button type="submit" class="btn btn-success">Actualizar</button>
                             </div>
                         </div>
                     </form>
