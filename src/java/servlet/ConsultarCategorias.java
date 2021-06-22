@@ -39,23 +39,23 @@ public class ConsultarCategorias extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String descripcioncategorias = request.getParameter("IdConsultado");
+        String Identificacion = request.getParameter("IdConsultado");
         
         categoriasDAO categorias_dao = new categoriasDAO();
         categorias mi_categorias = null;
         
-        mi_categorias = categorias_dao.Consultacategorias(0);
+        mi_categorias = categorias_dao.Consultarcategorias(Identificacion);
         if (Accion != null) {
 
             if (mi_categorias != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionCategorias.jsp?descripcioncategorias="
-                        + mi_categorias.getDescripcioncategorias().toString() + "&"
+                response.sendRedirect("/VISION/vista/Formulario/GestionCategorias.jsp?descripcioncategorias=" + mi_categorias.getDescripcioncategorias() + "&"
+                        + "ID=" + mi_categorias.getIdcategorias() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripcioncategorias + "');");
+                        + "Por favor verificar la descripcion: " + Identificacion + "');");
                 out.println("</script>");
             }
         } else {
@@ -75,7 +75,7 @@ public class ConsultarCategorias extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripcioncategorias
+                        + "Por favor verificar la Descripcion: " + Identificacion
                         + "');");
                 out.println("</script>");
             }

@@ -50,7 +50,7 @@
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-info">Registrar</button></center>
+                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
                 </form>
             </div>
         </div>
@@ -91,27 +91,24 @@
                                     aria-haspopup="true" aria-expanded="false"
                                     onClick="realizarBusqueda()">Buscar</button>
                         </div>
-                        <div>
                             <h1>Listado genero</h1>
-                            <div id="Tabla_genero">
 
                                 <% GeneroDAO migeneroDAO = new GeneroDAO();
                                     ArrayList<genero> migenero = new ArrayList<genero>();
-                                    migenero = migeneroDAO.Consultarlistadogenero(buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    migenero = migeneroDAO.Listadogenero(buscando, buscando);
+                                    out.println("<table class='table table-dark'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (genero G : migenero) {
                                         out.println("<tr>");
-                                        out.println("<td>" + G.getdescripciongenero() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + G.getdescripciongenero() + ")'/>"
+                                        out.println("<td>" + G.getIdgenero()+ "</td>");
+                                        out.println("<td>" + G.getDescripciongenero() + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + G.getIdgenero()+ ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + G.getdescripciongenero() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + G.getIdgenero()+ ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }
                                     out.println("</table>");
                                 %>
-                            </div>  
-                        </div>       
                     </div>
                 </div>
             </form>

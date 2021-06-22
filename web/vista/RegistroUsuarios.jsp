@@ -54,20 +54,20 @@
                 <input type="text" name="apellidousuarios" class="form-control" placeholder="Apellidos" id="txt_apellidousuarios_reg">
                 <br>
                 <h5><strong>Tipo documento</strong></h5>
-                <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" placeholder="Tipo Documento" id="txt_tipo_documento_idtipodoc_reg"> <br>
+                <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" id="txt_tipo_documento_idtipodoc_reg"> <br>
                 <%
                     tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
-                    ArrayList<tipo_documento> mitipodoc = mitipodocDAO.Consultarlistadotipo_documento("");
+                    ArrayList<tipo_documento> mitipodoc = mitipodocDAO.Listadotipo_documento("", "");
                     out.println("<select class='form-control' id='Selectidtipodoc' size='1'>");
                     out.println("<option onclick='settipo_documento_idtipodoc(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                     for (tipo_documento T : mitipodoc) {
-                        out.println("<option onclick='settipo_documento_idtipodoc(\"" + T.getidtipodoc() + "\")'>" + T.getdescripciontipodoc() + "</option>");
+                        out.println("<option onclick='settipo_documento_idtipodoc(\"" + T.getIdtipodoc() + "\")'>" + T.getDescripciontipodoc() + "</option>");
                     }
                     out.println("</select>");
                 %>
                 <br>
                 <h5>Identificación Usuario</h5>
-                <input type="number" name="numerodocusuario" class="form-control" placeholder="Número identificación" id="txt_numerodocusuario_reg">
+                <input type="number" name="numerodocusuario" class="form-control" placeholder="Número identificación" id="txt_numerodocusuarios_reg">
                 <br>
                 <h5>Contraseña</h5>
                 <input type="text" name="claveusuario" class="form-control" placeholder="Contraseña" id="txt_claveusuario_reg">
@@ -96,7 +96,7 @@
                 <br>
                 <br>
                 <h5><strong>Estado usuario</strong></h5>
-                <input type="number" name="estado_usuario_idestadousuario" class="form-control d-none" id="txt_estado_usuario_idestadousuario_Reg">
+                <input type="number" name="estado_usuario_idestadousuario" class="form-control " id="txt_estado_usuario_idestadousuario_reg">
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
                     ArrayList<estado_usuario> miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("" , "");
@@ -113,11 +113,11 @@
                 <input type="number" name="genero_idgenero" class="form-control d-none" id="txt_genero_idgenero_reg">
                 <%
                     GeneroDAO migeneroDAO = new GeneroDAO();
-                    ArrayList<genero> migenero = migeneroDAO.Consultarlistadogenero("");
+                    ArrayList<genero> migenero = migeneroDAO.Listadogenero("", "");
                     out.println("<select class='form-control' id='Selectidgenero' size='1'>");
                     out.println("<option onclick='setgenero_idgenero(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                     for (genero G : migenero) {
-                        out.println("<option onclick='setgenero_idgenero(\"" + G.getidgenero() + "\")'>" + G.getdescripciongenero() + "</option>");
+                        out.println("<option onclick='setgenero_idgenero(\"" + G.getIdgenero() + "\")'>" + G.getDescripciongenero() + "</option>");
                     }
                     out.println("</select>");
                 %>

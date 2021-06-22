@@ -19,11 +19,11 @@ public class Pruebaactualizargenero {
         System.out.println("Digite un genero");
         descripciongenero = leer.next();
                 
-        migenero.setdescripciongenero(descripciongenero);
+        migenero.setDescripciongenero(descripciongenero);
 
-        migenero.setidgenero(3);
+        migenero.setIdgenero(descripciongenero);
         
-        String mirespuesta = miGeneroDAO.actualizargenero(migenero);
+        String mirespuesta = miGeneroDAO.Atualizargenero(migenero);
         
         if(mirespuesta.length()==0){
             System.out.println("Genero actualizado");

@@ -10,13 +10,13 @@ public class pruebaEliminarProveedores {
 
         ProveedoresDAO proveedores_dao = new ProveedoresDAO();
 
-        ArrayList<proveedores> listado_proveedores = proveedores_dao.listadoproveedores("","","");
+        ArrayList<proveedores> listado_proveedores = proveedores_dao.ListarProveedor("", "", "");
         for (proveedores P : listado_proveedores) {
             System.out.println(" ID. " + P.getIdProveedores() + " NOMBRE : " + P.getNombreproveedores());
         }
         System.out.println("Se elimino");
-        proveedores_dao.Eliminarproveedores(listado_proveedores.get(0));
-        listado_proveedores = proveedores_dao.listadoproveedores("","","");
+        proveedores_dao.EliminarProveedor(listado_proveedores.get(0));
+        listado_proveedores = proveedores_dao.ListarProveedor("", "", "");
         for (proveedores P : listado_proveedores) {
             System.out.println(" ID. " + P.getIdProveedores() + " NOMBRE : " + P.getNombreproveedores());
         }

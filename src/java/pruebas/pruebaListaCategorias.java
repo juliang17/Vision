@@ -10,7 +10,7 @@ public class pruebaListaCategorias {
 
         categoriasDAO categorias_dao = new categoriasDAO();
         ArrayList<categorias> mi_categorias = new ArrayList<categorias>();
-        mi_categorias = categorias_dao.listadocategorias("");
+        mi_categorias = categorias_dao.Listadocategorias("", "");
 
         int size = mi_categorias.size();
         System.out.println("<table border=\"1\"><tr><td>idcategorias</td><td>descripcioncategorias</td> ");

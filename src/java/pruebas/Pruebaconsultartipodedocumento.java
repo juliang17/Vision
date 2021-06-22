@@ -11,7 +11,7 @@ public class Pruebaconsultartipodedocumento {
         tipo_documento mitipodoc = mitipodocDAO.Consultartipo_documento("1");
 
         if (mitipodoc != null) {
-            System.out.println("Tipo de documento encontrado:" + mitipodoc.getidtipodoc() + "_" + mitipodoc.getdescripciontipodoc() + "_");
+            System.out.println("Tipo de documento encontrado:" + mitipodoc.getIdtipodoc() + "_" + mitipodoc.getDescripciontipodoc() + "_");
         } else {
             System.out.println("Tipo de documento no encontrado");
         }

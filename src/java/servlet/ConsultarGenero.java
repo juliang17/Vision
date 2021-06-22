@@ -39,28 +39,28 @@ public class ConsultarGenero extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String descripciongenero = request.getParameter("IdConsultado");
+        String Identificacion = request.getParameter("IdConsultado");
         
-        GeneroDAO miGeneroDAO = new GeneroDAO();
-        genero migenero = null;
+        GeneroDAO genero_dao = new GeneroDAO();
+        genero mi_genero = null;
         
-        migenero = miGeneroDAO.Consultargenero(descripciongenero);
+        mi_genero = genero_dao.Consultargenero(Identificacion);
         if (Accion != null) {
 
-            if (migenero != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionGenero.jsp?descripciongenero="
-                        + migenero.getdescripciongenero().toString() + "&"
+            if (mi_genero != null) {
+                response.sendRedirect("/VISION/vista/Formulario/GestionGenero.jsp?descripciongenero=" + mi_genero.getDescripciongenero()+ "&"
+                        + "ID=" + mi_genero.getIdgenero()+ "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripciongenero + "');");
+                        + "Por favor verificar la descripcion: " + Identificacion + "');");
                 out.println("</script>");
             }
         } else {
-            if (migenero != null) {
-                String RespuestaRegistrada = miGeneroDAO.Eliminargenero(migenero);
+            if (mi_genero != null) {
+                String RespuestaRegistrada = genero_dao.Eliminargenero(mi_genero);
                 if (RespuestaRegistrada.length() == 0) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('" + "Eliminacion Realizada." + "');");
@@ -68,14 +68,14 @@ public class ConsultarGenero extends HttpServlet {
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
+                    out.println("alert('" + "No se ha podido relizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
                     out.println("</script>");
                 }
 
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripciongenero
+                        + "Por favor verificar la Descripcion: " + Identificacion
                         + "');");
                 out.println("</script>");
             }

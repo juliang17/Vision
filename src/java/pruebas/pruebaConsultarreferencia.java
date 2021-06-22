@@ -16,7 +16,7 @@ public class pruebaConsultarreferencia {
     public static void main(String[] args) {
         
         referenciaDAO mi_referenciae_pago_dao = new referenciaDAO();
-       referencia_de_pago mi_referenciae_pago = mi_referenciae_pago_dao.ConsultarReferencia("");
+       referencia_de_pago mi_referenciae_pago = mi_referenciae_pago_dao.ConsultarReferencia_de_pago("");
         
         if (mi_referenciae_pago != null) {
             System.out.println("referencia de pago fue encontrado " + mi_referenciae_pago.getIdreferenciadepago()+ "_" + mi_referenciae_pago.getFechadepago() + "_"  );

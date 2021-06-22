@@ -55,27 +55,23 @@
             </div>
         </div>
         <!--REGISTRAR-->
-
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div id="Actualizar" class="bd-example d-none">
-                    <h1>Actualizar categorias</h1>
-                    <form action="/VISION/ActualizarCategorias" method = "post">
-                        <div class ="form-group">
-                            <label>Categorias</label>
-                            <input type="text" class="form-control" readonly name="descripcioncategorias" value="<%=request.getParameter("descripcioncategorias")%>"/>
-                        </div>
-                        <div id="ControlRegistro" class="bd-example d-none">
-                            <input type = "text" class="form-control" name="BanderaActualiza"/>
-                        </div>
-                        <div class="row justify-content-md-center">
-                            <div class="btn-group">
-                                <input type = "submit" class="btn btn-primary form-control
-                                       btn btn-login" value= "Actualizar"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        
+        <div id="Actualizar" class="bd-example d-none">
+            <div class="container" style="background-color: white">
+                <h1>Actualizar categorias</h1>
+                <form action="/VISION/ActualizarCategorias" method="post">
+                    <div class="form-row" >
+                        <div class="form-group col-md-6" >
+                            <h2>ID:</h2>
+                            <input type="text" name="idcategorias" class="form-control" value="<%=request.getParameter("ID")%>">
+                        </div> 
+                        <div class="form-group col-md-6" >
+                            <h2>Categoria:</h2>
+                            <input type="text" name="descripcioncategorias" class="form-control" id="txt_descripcioncategorias_Reg" value="<%=request.getParameter("descripcioncategorias")%>">
+                        </div> 
+                    </div>
+                    <center><button type="submit" class="btn btn-arg">Actualizar</button></center>
+                </form>
             </div>
         </div>
 
@@ -91,27 +87,23 @@
                                     aria-haspopup="true" aria-expanded="false"
                                     onClick="realizarBusqueda()">Buscar</button>
                         </div>
-                        <div>
                             <h1>Listado categorias</h1>
-                            <div id="Tabla_categorias">
-
                                 <% categoriasDAO categorias_dao = new categoriasDAO();
                                     ArrayList<categorias> milistacategorias = new ArrayList<categorias>();
-                                    milistacategorias = categorias_dao.listadocategorias(buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    milistacategorias = categorias_dao.Listadocategorias(buscando, buscando);
+                                    out.println("<table class='table table-dark'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (categorias C : milistacategorias) {
                                         out.println("<tr>");
+                                        out.println("<td>" + C.getIdcategorias() + "</td>");
                                         out.println("<td>" + C.getDescripcioncategorias() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + C.getDescripcioncategorias() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + C.getIdcategorias() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + C.getDescripcioncategorias() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + C.getIdcategorias()+ ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }
                                     out.println("</table>");
                                 %>
-                            </div>  
-                        </div>       
                     </div>
                 </div>
             </form>

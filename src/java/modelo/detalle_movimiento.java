@@ -3,19 +3,28 @@ package modelo;
 
 public class detalle_movimiento {
     private int iddetallemovimiento;
+    private String descripcion;
     private int cantidad;
     private int precio;
     private int iva;
     private int subtotal;
     private int productos_idproductos;
     private int movimiento_idmovimiento;
-
+  
     public int getIddetallemovimiento() {
         return iddetallemovimiento;
     }
 
     public void setIddetallemovimiento(int iddetallemovimiento) {
         this.iddetallemovimiento = iddetallemovimiento;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getCantidad() {
@@ -65,5 +74,5 @@ public class detalle_movimiento {
     public void setMovimiento_idmovimiento(int movimiento_idmovimiento) {
         this.movimiento_idmovimiento = movimiento_idmovimiento;
     }
- 
+
 }

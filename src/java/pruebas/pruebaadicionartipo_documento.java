@@ -18,8 +18,8 @@ public class pruebaadicionartipo_documento {
         System.out.println("Digite un tipo de documento");
         Nombretipodoc = leer.nextLine();
 
-        mitipodoc.setdescripciontipodoc(Nombretipodoc);
-        String mirespuesta = mitipodocDAO.adicionartipo_documento(mitipodoc);
+        mitipodoc.setDescripciontipodoc(Nombretipodoc);
+        String mirespuesta = mitipodocDAO.Adicionartipo_documento(mitipodoc);
 
         if (mirespuesta.length() == 0) {
             System.out.println("Registro exitoso");

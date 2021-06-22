@@ -14,21 +14,21 @@ public class pruebaActualizarMarca {
 
         Scanner teclado = new Scanner(System.in);
 
-        int idmarca;
+        String idmarca;
         String descripcionmarca = "";
 
         System.out.println("Ingrese la marca");
         descripcionmarca = teclado.nextLine();
 
         System.out.println("Ingrese el id");
-        idmarca = teclado.nextInt();
+        idmarca = teclado.nextLine();
 
         mi_marca.setIdmarca(idmarca);
         mi_marca.setDescripcionmarca(descripcionmarca);
 
         mi_marca.setIdmarca(idmarca);
 
-        String respuesta = marca_dao.Actualizarmarca(mi_marca);
+        String respuesta = marca_dao.ActualizarMarca(mi_marca);
 
         if (respuesta.length() == 0) {
 

@@ -13,16 +13,17 @@ public class Pruebaactualizartipodedocumento {
 
         Scanner leer = new Scanner(System.in);
 
+        String idtipodoc = "";
         String descripciontipodoc = "";
 
         System.out.println("Digite el tipo de documento");
         descripciontipodoc = leer.next();
 
-        mitipodoc.setdescripciontipodoc(descripciontipodoc);
+        mitipodoc.setDescripciontipodoc(descripciontipodoc);
 
-        mitipodoc.setidtipodoc(1);
+        mitipodoc.setIdtipodoc(idtipodoc);
 
-        String mirespuesta = mitipodocDAO.actualizartipo_documento(mitipodoc);
+        String mirespuesta = mitipodocDAO.Atualizartipo_documento(mitipodoc);
 
         if (mirespuesta.length() == 0) {
             System.out.println("Tipo de documento actualizado");

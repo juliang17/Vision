@@ -41,10 +41,10 @@ public class ActualizarTipodocumento extends HttpServlet {
         tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
         tipo_documento mitipodoc = new tipo_documento();
         
-        mitipodoc.setdescripciontipodoc(descripciontipodoc);
+        mitipodoc.setDescripciontipodoc(descripciontipodoc);
         
         System.out.println(" Descripcion: " + descripciontipodoc);
-        String respuestaRegistrada = mitipodocDAO.actualizartipo_documento(mitipodoc);
+        String respuestaRegistrada = mitipodocDAO.Atualizartipo_documento(mitipodoc);
         if (respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + "Actualización Realizada." + "');");

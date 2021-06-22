@@ -8,7 +8,7 @@ public class pruebaConsultarCategorias {
     public static void main(String[] args) {
 
         categoriasDAO categorias_dao = new categoriasDAO();
-        categorias mi_categorias = categorias_dao.Consultacategorias(0);
+        categorias mi_categorias = categorias_dao.Consultarcategorias("1");
 
         if (mi_categorias != null) {
             System.out.println("categoria encontrada " + mi_categorias.getIdcategorias() + " " + mi_categorias.getDescripcioncategorias() + " ");

@@ -40,7 +40,7 @@ public class PruebaActualizarInventario {
 
         miinventario.setIdinventario(idinventario);
 
-        String respuesta = INVENDAO.Actualizarinventario(miinventario);
+        String respuesta = INVENDAO.ActualizarInventario(miinventario);
 
         if (respuesta.length() == 0) {
 

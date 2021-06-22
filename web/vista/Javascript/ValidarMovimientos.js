@@ -1,13 +1,13 @@
 function validacionMovimiento() {
 
     var resultado = 'Correcto';
-    var fechamovimiento = document.getElementById("txt_fechamovimiento_Reg").value;
-    var subtotal = document.getElementById("txt_subtotal_Reg").value;
-    var iva = document.getElementById("txt_iva_Reg").value;
-    var descuento = document.getElementById("txt_descuento_Reg").value;
-    var total = document.getElementById("txt_total_Reg").value;
-    var tipo_doc_contable_idtipodoccontable = document.getElementById("txt_tipo_doc_contable_idtipodoccontable_Reg").value;
-    var medio_de_pago_idmediodepago = document.getElementById("txt_medio_de_pago_idmediodepago_Reg").value;
+    var fechamovimiento = $("#txt_fechamovimiento_Reg").val;
+    var subtotal = $("#txt_subtotal_Reg").val;
+    var iva = $("#txt_iva_Reg").val;
+    var descuento = $("#txt_descuento_Reg").val;
+    var total = $("#txt_total_Reg").val;
+    var tipo_doc_contable_idtipodoccontable = $("#txt_tipo_doc_contable_idtipodoccontable_Reg").val;
+    var medio_de_pago_idmediodepago = $("#txt_medio_de_pago_idmediodepago_Reg").val;
 
     console.log("-- Informacion a validar -- ");
     console.log("fechamovimiento : " + fechamovimiento);
@@ -77,7 +77,7 @@ function setmedio_de_pago_idmediodepago(x) {
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/vigiwebB/vista/inventario.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/Formularios/GestionMovimiento.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
@@ -115,4 +115,5 @@ function DefinirFoco() {
 $('#txt_Id_Consultado').change(function () {
     console.log("Texto" + $('#txt_Id_Consultado').val());
 });
+
 

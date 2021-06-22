@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.inventarioDAO;
+import controlador.detalleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.inventario;
+import modelo.detalle_movimiento;
 
 /**
  *
- * @author santy
+ * @author Famil
  */
-@WebServlet(name = "RegistrarInventario", urlPatterns = {"/RegistrarInventario"})
-public class RegistrarInventario extends HttpServlet {
+@WebServlet(name = "RegistroDetalle", urlPatterns = {"/RegistroDetalle"})
+public class RegistroDetalle extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,38 +35,45 @@ public class RegistrarInventario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        String Entrada = request.getParameter("entrada");
-        String Salida = request.getParameter("salida");
-        String Saldo = request.getParameter("saldo");
-        String productos_idproductos = request.getParameter("productos_idproductos");
+            
+        String descripcion = request.getParameter("descripcion");
+        String cantidad = request.getParameter("cantidad");
+        String precio = request.getParameter("precio");
+        String iva = request.getParameter("iva");
+        String subtotal = request.getParameter("subtotal");
+        String productos = request.getParameter("productos_idproductos");
+        String movimiento = request.getParameter("movimiento_idmovimiento");
+
         String BanderaEstado = request.getParameter("BanderaRegistro");
         
-        int entrada = Integer.parseInt(Entrada);
-        int salida = Integer.parseInt(Salida);
-        int saldo = Integer.parseInt(Saldo);
-        int Productos = Integer.parseInt(productos_idproductos);
+        int C = Integer.parseInt(cantidad);
+        int P = Integer.parseInt(precio);
+        int I = Integer.parseInt(iva);
+        int S = Integer.parseInt(subtotal);
+        int PR = Integer.parseInt(productos);
+        int M = Integer.parseInt(movimiento);
         
         
-        inventarioDAO idao = new inventarioDAO();
-        inventario i = new inventario();
+        detalleDAO ddao = new detalleDAO();
+        detalle_movimiento d = new detalle_movimiento();
         
-        i.setEntrada(entrada);
-        i.setSalida(salida);
-        i.setSaldo(saldo);
-        i.setProductos_idproductos(Productos);
-        
-        
+        d.setDescripcion(descripcion);
+        d.setCantidad(C);
+        d.setPrecio(P);
+        d.setIva(I);
+        d.setSubtotal(S);
+        d.setProductos_idproductos(PR);
+        d.setMovimiento_idmovimiento(M);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = idao.adicionarinventario(i);
+            String respuestaRegistrada = ddao.AdicionarDetalle(d);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "Inventario registrada con éxito." + "');");
-                out.println("window.location.href = '/VISION/vista/Formularios/GestionInventario.jsp';");
+                out.println("alert('" + "Detalle Movimiento registrado con éxito." + "');");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionDetalleMovimiento.jsp';");
                 out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
@@ -78,7 +85,7 @@ public class RegistrarInventario extends HttpServlet {
             }
         } else {
             System.out.println("El valor no es correcto " + BanderaEstado);
-        } 
+        }   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

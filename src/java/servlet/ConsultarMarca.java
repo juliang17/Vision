@@ -35,50 +35,59 @@ public class ConsultarMarca extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        try (PrintWriter out = response.getWriter()) {
+            
+            String Accion = request.getParameter("Actualizar");
+            System.out.println("Accion " + Accion);
 
-        String Accion = request.getParameter("Actualizar");
-        System.out.println("Accion " + Accion);
+            String Identificacion = request.getParameter("IdConsultado");
 
-        String descripcionmarca = request.getParameter("IdConsultado");
-        
-        MarcaDAO marca_dao = new MarcaDAO();
-        marca mi_marca = null;
-        
-        mi_marca = marca_dao.Consultamarca("");
-        if (Accion != null) {
+            MarcaDAO mimarcadao = new MarcaDAO();
+            marca Marca = null;
 
-            if (mi_marca != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionMarca.jsp?descripcionmarca="
-                        + mi_marca.getDescripcionmarca().toString() + "&"
-                        + "Vista=" + "Actualizar" + "&");
-                System.out.println("Salio");
-            } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripcionmarca + "');");
-                out.println("</script>");
-            }
-        } else {
-            if (mi_marca != null) {
-                String RespuestaRegistrada = marca_dao.Eliminarmarca(mi_marca);
-                if (RespuestaRegistrada.length() == 0) {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "Eliminacion Realizada." + "');");
-                    out.println("window.location.href ='/VISION/vista/Formularios/GestionMarca.jsp';");
-                    out.println("</script>");
+            Marca = mimarcadao.ConsultarMarca(Identificacion);
+
+            if (Accion != null) {
+
+                if (Marca != null) {
+
+                    response.sendRedirect("/VISION/vista/Formularios/GestionMarca.jsp?marca=" + Marca.getDescripcionmarca() + "&"
+                            + "ID=" + Marca.getIdmarca() + "&"
+                            + "Vista=" + "Actualizar" + "&");
+
+                    System.out.println("Salio");
+
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
             } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripcionmarca
-                        + "');");
-                out.println("</script>");
+
+                if (Marca != null) {
+
+                    String respuestaRegistrada = mimarcadao.EliminarMarca(Marca);
+                    if (respuestaRegistrada.length() == 0) {
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('" + "Eliminacion Realizada." + "');");
+
+                        out.println("window.location.href = '/VISION/vista/Formularios/GestionMarca.jsp';");
+                        out.println("</script>");
+
+                    } else {
+
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('" + "No se ha podido relizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
+                        out.println("</script>");
+                    }
+                } else {
+
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("</script>");
+
+                }
             }
         }
     }

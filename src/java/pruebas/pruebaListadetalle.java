@@ -11,7 +11,7 @@ public class pruebaListadetalle {
         
         detalleDAO detalle_movimiento_dao = new detalleDAO();
         ArrayList<detalle_movimiento> mi_detalle_movimiento = new ArrayList<detalle_movimiento>();
-        mi_detalle_movimiento = detalle_movimiento_dao.ListadoDetalleMovimiento("1","");
+        mi_detalle_movimiento = detalle_movimiento_dao.ListadoDetalle("", "");
 
         int size = mi_detalle_movimiento.size();
         System.out.println("<table border=\"1\"><tr><td>Iddetallemovimiento</td><td>cantidad</td><td>iva</td><td>subtotal</td><td>precio</td><td>movimiento_idmovimiento</td><td>productos_idproductos</td> ");

@@ -10,7 +10,7 @@ public class PruebaListarInventario {
         
         inventarioDAO INVENDAO = new inventarioDAO();
         ArrayList<inventario> milistainventario = new ArrayList<inventario>();
-        milistainventario = INVENDAO.Consultarlistadoinventario("","","");
+        milistainventario = INVENDAO.ListadoInventario("", "", "");
 
         int size = milistainventario.size();
         System.out.println("<table border=\"1\"><tr><td>idinventario</td><td>entrada</td><td>salida</td><td>saldo</td><td>productos_idproductos</td>");

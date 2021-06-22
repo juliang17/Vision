@@ -2,14 +2,14 @@ package modelo;
 
 public class categorias {
 
-    private int idcategorias;
-    private String descripcioncategorias;
+    private String idcategorias;
+    private String descripcioncategorias;  
 
-    public int getIdcategorias() {
+    public String getIdcategorias() {
         return idcategorias;
     }
 
-    public void setIdcategorias(int idcategorias) {
+    public void setIdcategorias(String idcategorias) {
         this.idcategorias = idcategorias;
     }
 

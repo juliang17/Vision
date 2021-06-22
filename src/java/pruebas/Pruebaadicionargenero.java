@@ -19,8 +19,8 @@ public class Pruebaadicionargenero {
         System.out.println("Digite descripcion genero");
         Nombregenero = leer.next();
 
-        migenero.setdescripciongenero(Nombregenero);
-        String mirespuesta = miGeneroDAO.adicionargenero(migenero);
+        migenero.setDescripciongenero(Nombregenero);
+        String mirespuesta = miGeneroDAO.Adicionargenero(migenero);
 
         if (mirespuesta.length() == 0) {
             System.out.println("Registro exitoso");

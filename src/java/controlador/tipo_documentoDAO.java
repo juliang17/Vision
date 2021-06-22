@@ -9,119 +9,136 @@ import modelo.tipo_documento;
 
 public class tipo_documentoDAO {
 
-    public String adicionartipo_documento(tipo_documento tipodoc) {
+    public String Adicionartipo_documento (tipo_documento Tipo_documento) {
 
-        String mirespuesta;
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = ("insert tipo_documento(descripciontipodoc)" + "Values (?)");
+            String Query = "Insert into tipo_documento (descripciontipodoc)" + "values (?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, tipodoc.getdescripciontipodoc());
+
+            sentencia.setString(1, Tipo_documento.getDescripciontipodoc());
+
             sentencia.execute();
-            mirespuesta = "";
-
+            miRespuesta = "";
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un eror en adicionar tipo_documento_tipo_documentoDAO/n" + ex.getMessage());
-
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Adicionartipo_documento\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
+    
+    public String Atualizartipo_documento (tipo_documento Tipo_documento) {
 
-    public String actualizartipo_documento(tipo_documento tipodoc) {
-        String mirespuesta = "";
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
         try {
-            String Query = " update tipo_documento set descripciontipodoc =? where idtipodoc=?";
+            String Query = "update tipo_documento set idtipodoc=?, descripciontipodoc=? where idtipodoc=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, tipodoc.getdescripciontipodoc());
-            sentencia.setInt(2, tipodoc.getidtipodoc());
+
+            sentencia.setString(1, Tipo_documento.getIdtipodoc());
+            sentencia.setString(2, Tipo_documento.getDescripciontipodoc());
+            sentencia.setString(3, Tipo_documento.getIdtipodoc());
+
             sentencia.executeUpdate();
-
+            miRespuesta = "";
+            
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en actualizar tipo_documento_tipo_documentoDAO/n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Atualizartipo_documento\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
-    public tipo_documento Consultartipo_documento(String idtipodoc) {
-        tipo_documento mitipodoc = null;
 
-        Conexion miconexion = new Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idtipodoc, descripciontipodoc from tipo_documento where idtipodoc =" + idtipodoc);
-            ResultSet rs = sentencia.executeQuery(Query);
-            while (rs.next()) {
-                mitipodoc = new tipo_documento();
-                mitipodoc.setidtipodoc(rs.getInt(1));
-                mitipodoc.setdescripciontipodoc(rs.getString(2));
-            }
-            return mitipodoc;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return mitipodoc;
-    }
-
-    public ArrayList<tipo_documento> Consultarlistadotipo_documento(String Tipodoc) {
-        ArrayList<tipo_documento> listatipodoc = new ArrayList<tipo_documento>();
-        tipo_documento mitipodoc;
-
+    public tipo_documento Consultartipo_documento (String idtipodoc) {
+    tipo_documento mi_tipo_documento = null;
+    
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
         try {
+            
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idtipodoc, descripciontipodoc" + " from tipo_documento"
-                    + " where idtipodoc like '%" + Tipodoc + "%' ORDER BY idtipodoc; ";
+            
+            String Query = "Select idtipodoc, descripciontipodoc from tipo_documento where idtipodoc = " + idtipodoc;
             ResultSet rs = sentencia.executeQuery(Query);
-            while (rs.next()) {
-                mitipodoc = new tipo_documento();
-                mitipodoc.setidtipodoc(rs.getInt(1));
-                mitipodoc.setdescripciontipodoc(rs.getString(2));
-                listatipodoc.add(mitipodoc);
+            while (rs.next()){
+            
+                mi_tipo_documento = new tipo_documento();
+                mi_tipo_documento.setIdtipodoc(rs.getString(1));
+                mi_tipo_documento.setDescripciontipodoc(rs.getString(2));
+                
             }
-            return listatipodoc;
+            
+         return mi_tipo_documento;            
         } catch (Exception ex) {
-            System.out.println("Ocurrio un error en la consulta de listado en el tipo de documento" + ex.getMessage());
+            System.out.println("Ha ocurrido un error en Consultartipo_documento\n " + ex.getMessage());
         }
-        return listatipodoc;
+        return mi_tipo_documento;
     }
-
-    public String Eliminartipo_documento(tipo_documento tipodoc) {
-        String mirespuesta;
+     
+    public ArrayList<tipo_documento> Listadotipo_documento(String idtipodoc, String descripciontipodoc) {
+        ArrayList<tipo_documento>mi_listado_tipo_documento = new ArrayList<tipo_documento>();
+        tipo_documento mi_tipo_documento;
+        
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
-
+        
+        System.out.println("Buscando parametro: " + idtipodoc);
+        try{
+            Statement sentencia = nuevaCon.createStatement();
+            
+            String Query = " select idtipodoc,descripciontipodoc "
+                    + " from tipo_documento "
+                    + " where idtipodoc like '%" + idtipodoc + "%' "
+                    + "  or (descripciontipodoc) like ('%" + descripciontipodoc + "%') ORDER BY idtipodoc;";
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()) {
+                
+                mi_tipo_documento = new tipo_documento();
+                mi_tipo_documento.setIdtipodoc(rs.getString(1));
+                mi_tipo_documento.setDescripciontipodoc(rs.getString(2));
+                mi_listado_tipo_documento.add(mi_tipo_documento);
+            }
+            return mi_listado_tipo_documento;
+        }catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en Listadotipo_documento\n " + ex.getMessage());
+        }
+        return mi_listado_tipo_documento;
+    }
+ 
+    public String Eliminartipo_documento(tipo_documento Tipo_documento) {
+        
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+        
         PreparedStatement sentencia;
-        try {
-            String Query = " Delete from tipo_documento where idtipodoc = ? and descripciontipodoc = ? ;";
+        try{
+            String Query = " delete from tipo_documento where idtipodoc = ? and descripciontipodoc = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, tipodoc.getidtipodoc());
-            sentencia.setString(2, tipodoc.getdescripciontipodoc());
+            
+            sentencia.setString(1, Tipo_documento.getIdtipodoc());
+            sentencia.setString(2, Tipo_documento.getDescripciontipodoc());
             sentencia.execute();
-            mirespuesta = "";
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en tipo_documentoDAO.Eliminartipo_documento" + ex.getMessage());
+            miRespuesta = "";
+        }catch(Exception ex){
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Eliminartipo_documento\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
 }

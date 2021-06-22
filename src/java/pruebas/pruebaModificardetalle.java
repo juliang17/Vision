@@ -55,7 +55,7 @@ public class pruebaModificardetalle {
 
         mi_detalle.setIddetallemovimiento(1);
   
-        String miRespuesta = mi_detalle_dao.ModificarDetalle(mi_detalle);
+        String miRespuesta = mi_detalle_dao.ActualizarDetalle(mi_detalle);
 
         if (miRespuesta.length() == 0) {
 

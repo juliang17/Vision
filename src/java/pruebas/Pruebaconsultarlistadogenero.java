@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadogenero {
 
         GeneroDAO migeneroDAO = new GeneroDAO();
         ArrayList<genero> migenero = new ArrayList<genero>();
-        migenero = migeneroDAO.Consultarlistadogenero("");
+        migenero = migeneroDAO.Listadogenero("", "");
 
         int size = migenero.size();
         System.out.println("<table border=\"1\"><tr><td>idgenero</td><td>descripciongenero</td>");
@@ -18,8 +18,8 @@ public class Pruebaconsultarlistadogenero {
         for (genero G : migenero) {
 
             System.out.println("<tr>");
-            System.out.println("tb>" + G.getidgenero() + "</tb>");
-            System.out.println("tb>" + G.getdescripciongenero() + "</tb>");
+            System.out.println("tb>" + G.getIdgenero() + "</tb>");
+            System.out.println("tb>" + G.getDescripciongenero() + "</tb>");
 
             System.out.println("</tr>");
             System.out.println("</table>");

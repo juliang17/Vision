@@ -35,7 +35,7 @@ public class PruebaAdicionarInventario {
        miinventario.setSaldo(saldo);
        miinventario.setProductos_idproductos(productos_idproductos);
        
-       String miRespuesta = INVENDAO.adicionarinventario(miinventario);
+       String miRespuesta = INVENDAO.AdicionarInventario(miinventario);
     
         if (miRespuesta.length() == 0) {
 

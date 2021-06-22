@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.usuariosDAO;
+import controlador.referenciaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.usuarios;
+import modelo.referencia_de_pago;
 
-/**
- *
- * @author santy
- */
-@WebServlet(name = "Iniciosesion", urlPatterns = {"/Iniciosesion"})
-public class Iniciosesion extends HttpServlet {
+
+@WebServlet(name = "ConsultarReferencias", urlPatterns = {"/ConsultarReferencias"})
+public class ConsultarReferencias extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,45 +32,60 @@ public class Iniciosesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String Accion = request.getParameter("Actualizar");
+            System.out.println("Accion " + Accion);
 
-            String Usuario = request.getParameter("usuarios");
-            String password = request.getParameter("password");
+            String Identificacion = request.getParameter("IdConsultado");
 
-            try {
-                usuariosDAO miusuarioDAO = new usuariosDAO();
-                usuarios misusuarios = new usuarios();
-                misusuarios = miusuarioDAO.Consultarusuarios(Usuario);
+            referenciaDAO rdao = new referenciaDAO();
+            referencia_de_pago Referencia = null;
 
-                if (misusuarios == null) {
-                    System.out.println(Usuario);
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "La identificacion :" + Usuario + ",no existe," + "');");
-                    out.println("window.history.back();");
-                    out.println("</script>");
+            Referencia = rdao.ConsultarReferencia_de_pago(Identificacion);
+
+            if (Accion != null) {
+
+                if (Referencia != null) {
+
+                    response.sendRedirect("/VISION/vista/Formularios/GestionReferencias.jsp?descripcion=" + Referencia.getDescripcion()+ "&"
+                            + "fecha=" + Referencia.getFechadepago() + "&"
+                            + "medio=" + Referencia.getMedio_de_pago_idMedioDePago_()+ "&"
+                            + "Id=" + Referencia.getIdreferenciadepago()+ "&"
+                                    + "Vista=" + "Actualizar" + "&");
+
+                    System.out.println("Salio");
+
                 } else {
-                    System.out.println(misusuarios.getClaveusuario());
-                    System.out.println(password);
-                    if (misusuarios.getClaveusuario().equals(password)) {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("</script>");
+                }
+
+            } else {
+
+                if (Referencia != null) {
+
+                    String respuestaRegistrada = rdao.EliminarReferencia_de_pago(Referencia);
+                    if (respuestaRegistrada.length() == 0) {
                         out.println("<script type=\"text/javascript\">");
-                        out.println("alert('" + "Inicio de sesion exitoso :" + misusuarios.getNombreusuarios() + " " + misusuarios.getApellidousuarios() + "');");
-                        out.println("window.location.href ='/VISION/PaginaPrincipal.jsp';");
-                        out.println("</script>");
-                    } else {
-                        out.println("<script type=\"text/javascript\">");
-                        out.println("alert('" + "La clave es incorrecta" + "');");
-                        out.println("window.history.back();");
+                        out.println("alert('" + "Eliminacion Realizada." + "');");
+
+                        out.println("window.location.href = '/VISION/vista/Formularios/GestionReferencias.jsp';");
                         out.println("</script>");
 
+                    } else {
+
+                        out.println("<script type=\"text/javascript\">");
+                        out.println("alert('" + "No se ha podido relizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
+                        out.println("</script>");
                     }
+                } else {
+
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("</script>");
 
                 }
-            } catch (NumberFormatException ex) {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "La identificacion debe ser numerica : " + Usuario + "');");
-                out.println("</script>");
-
             }
-
         }
     }
 

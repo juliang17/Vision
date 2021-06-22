@@ -9,141 +9,162 @@ import modelo.inventario;
 
 public class inventarioDAO {
 
-    public String adicionarinventario(inventario INVENTARIO) {
+    public String AdicionarInventario(inventario Inventario) {
 
-        String mirespuesta;
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "Insert into inventario (entrada,salida,saldo,productos_idproductos)"
-                    + "values (?,?,?,?)";
+            String Query = "Insert into inventario (entrada, salida, saldo, productos_idproductos)" + "values (?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, INVENTARIO.getEntrada());
-            sentencia.setInt(2, INVENTARIO.getSalida());
-            sentencia.setInt(3, INVENTARIO.getSaldo());;
-            sentencia.setInt(4, INVENTARIO.getProductos_idproductos());
+
+            sentencia.setInt(1, Inventario.getEntrada());
+            sentencia.setInt(2, Inventario.getSalida());
+            sentencia.setInt(3, Inventario.getSaldo());
+            sentencia.setInt(4, Inventario.getProductos_idproductos());
+
+            
             sentencia.execute();
-            mirespuesta = "";
-
+            miRespuesta = "";
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en adicionar inventario_inventarioDAO/n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en AdicionarInventario\n " + ex.getMessage());
         }
-        return mirespuesta;
-
+        return miRespuesta;
     }
 
-    public String Actualizarinventario(inventario INVENTARIO) {
+    public String ActualizarInventario(inventario Inventario) {
 
-        String mirespuesta = "";
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "update inventario set idinventario=?,entrada=?, salida=?, saldo=?, productos_idproductos=?, where idinventario=?";
+            String Query = "update inventario set idinventario=?, entrada=?, salida=?, saldo=?, productos_idproductos=? where idinventario=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, INVENTARIO.getIdinventario());
-            sentencia.setInt(2, INVENTARIO.getEntrada());
-            sentencia.setInt(3, INVENTARIO.getSalida());
-            sentencia.setInt(4, INVENTARIO.getSaldo());
-            sentencia.setInt(5, INVENTARIO.getProductos_idproductos());
-            sentencia.setInt(6, INVENTARIO.getIdinventario());
+
+            sentencia.setInt(1, Inventario.getIdinventario());
+            sentencia.setInt(2, Inventario.getEntrada());
+            sentencia.setInt(3, Inventario.getSalida());
+            sentencia.setInt(4, Inventario.getSaldo());
+            sentencia.setInt(5, Inventario.getProductos_idproductos());
+            sentencia.setInt(6, Inventario.getIdinventario());
+
+            sentencia.executeUpdate();
+            miRespuesta = "";
 
         } catch (Exception ex) {
-            mirespuesta = "";
-            mirespuesta = ex.getMessage();
-            System.err.println("ocurrió un problema en el Actualizar inventario_inventarioDAO \n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en ActualizarInventario\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
-    public inventario Consultarinventario(String idinventario) {
-        inventario miinventario = null;
-
-        Conexion miconexion = new Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("Select idinventario, entrada, salida, saldo, productos_idproductos from inventario where idinventario = " + idinventario);
-            ResultSet rs = sentencia.executeQuery(Query);
-
-            while (rs.next()) {
-                miinventario = new inventario();
-                miinventario.setIdinventario(rs.getInt(1));
-                miinventario.setEntrada(rs.getInt(2));
-                miinventario.setSalida(rs.getInt(3));
-                miinventario.setSaldo(rs.getInt(4));
-                miinventario.setProductos_idproductos(rs.getInt(5));
-            }
-            return miinventario;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return miinventario;
-    }
-
-    public ArrayList<inventario> Consultarlistadoinventario(String idinventario, String entrada, String salida) {
-        ArrayList<inventario> milistainventario = new ArrayList<inventario>();
-        inventario miinventario;
+    public inventario ConsultarInventario(String idinventario) {
+        inventario mi_inventario = null;
 
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + idinventario);
         try {
+
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idinventario, entrada, salida, saldo, productos_idproductos"
+
+            String Query = "Select idinventario, entrada, salida, saldo, productos_idproductos from inventario where idinventario = " + idinventario;
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()) {
+
+                mi_inventario = new inventario();
+                mi_inventario.setIdinventario(rs.getInt(1));
+                mi_inventario.setEntrada(rs.getInt(2));
+                mi_inventario.setSalida(rs.getInt(3));
+                mi_inventario.setSaldo(rs.getInt(4));
+                mi_inventario.setProductos_idproductos(rs.getInt(5));     
+            }
+
+            return mi_inventario;
+        } catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en ConsultarInventario\n " + ex.getMessage());
+        }
+        return mi_inventario;
+    }
+
+    public ArrayList<inventario> ListadoInventario(String idinventario, String entrada, String salida) {
+
+        ArrayList<inventario> mi_lista_inventario = new ArrayList<inventario>();
+        inventario mi_inventario;
+
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+
+        System.out.println("Buscando parametro" + idinventario);
+
+        try {
+
+            Statement sentencia = nuevaCon.createStatement();
+
+            String Query = "select idinventario,entrada,salida,saldo, productos_idproductos "
                     + " from inventario"
-                    + " where idinventario like '%" + idinventario + "%' "
+                    + " where idinventario like '%" + idinventario + "%'"
                     + "  or (entrada) like ('%" + entrada + "%')"
                     + "  or (salida) like ('%" + salida + "%') ORDER BY idinventario;";
             ResultSet rs = sentencia.executeQuery(Query);
+
             while (rs.next()) {
-                miinventario = new inventario();
-                miinventario.setIdinventario(rs.getInt(1));
-                miinventario.setEntrada(rs.getInt(2));
-                miinventario.setSalida(rs.getInt(3));
-                miinventario.setSaldo(rs.getInt(4));
-                miinventario.setProductos_idproductos(rs.getInt(5));
-                milistainventario.add(miinventario);
+
+                mi_inventario = new inventario();
+                mi_inventario.setIdinventario(rs.getInt(1));
+                mi_inventario.setEntrada(rs.getInt(2));
+                mi_inventario.setSalida(rs.getInt(3));
+                mi_inventario.setSaldo(rs.getInt(4));
+                mi_inventario.setProductos_idproductos(rs.getInt(5)); 
+
+                mi_lista_inventario.add(mi_inventario);
 
             }
-            return milistainventario;
+
+            return mi_lista_inventario;
+
         } catch (Exception ex) {
-            System.out.print("Ocurrio un error en la consulta de listado en el inventario" + ex.getMessage());
+
+            System.out.println("Error en el ListadoInventario" + "\n" + ex.getMessage());
+            return mi_lista_inventario;
+
         }
-        return milistainventario;
+
     }
 
-    public String Eliminarinventario(inventario INVENTARIO) {
-        String mirespuesta;
+    public String EliminarInventario(inventario Inventario) {
+
+        String miRespuesta;
+
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
+
         try {
-            String Query = " delete from inventario where idinventario = ?;";
+
+            String Query = "delete from inventario where idinventario = ?  ";
             sentencia = nuevaCon.prepareStatement(Query);
-
-            sentencia.setInt(1, INVENTARIO.getIdinventario());
+            sentencia.setInt(1, Inventario.getIdinventario());
             sentencia.execute();
-            mirespuesta = "";
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en inventarioDAO.Eliminarinventario" + ex.getMessage());
-        }
-        return mirespuesta;
-    }
+            miRespuesta = "";
 
+        } catch (Exception ex) {
+
+            miRespuesta = ex.getMessage();
+            System.err.println("Ocurrio un error en EliminarInventario" + ex.getMessage());
+        }
+        return miRespuesta;
+
+    }
 }

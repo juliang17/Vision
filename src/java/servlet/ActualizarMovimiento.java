@@ -63,7 +63,7 @@ public class ActualizarMovimiento extends HttpServlet {
         Mov.setMedio_de_pago_idmediodepago(medio);
 
         System.out.println("fecha de movimiento " + fechamovimiento);
-        String respuestaRegistrada = MovDAO.Actualizarmovimiento(Mov);
+        String respuestaRegistrada = MovDAO.ActualizarMovimiento(Mov);
         if (respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + "Actualización Realizada." + "');");

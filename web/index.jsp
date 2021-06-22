@@ -8,27 +8,30 @@
         <title>Inicio de sesion</title>
     </head>
     <body>
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="card" style="width: 18rem;">
-                    <img src="vista/imagenes/login.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <form action="Iniciosesion" method="post">
-
-                            <h1>Iniciar sesion</h1>
-                            <div class="form-floating mb-3 form-group">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="usuarios">
-                                <label for="floatingInput">Usuarios</label>
-                            </div>
-                            <div class="form-floating form-group">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                            <div class="form-group">
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col bg">
+                    
+                </div>
+                <div class="col">
+                    <h2 class="inicio">Inicio de sesion</h2>
+                    <form action="Iniciosesion" method="post">
+                        <div class="form-floating mb-3 form-group">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="usuarios">
+                            <label for="floatingInput">Usuarios</label>
+                        </div>
+                        <div class="form-floating form-group">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <br>
+                        <div class="d-grid">
                             <button type="submit" class="btn btn-success">Iniciar sesion</button> 
-                            </div>
-                        </form>  
-                    </div>
+                        </div>
+                        <div class="my-3">
+                            <span>No estas registrado? <a href="vista/RegistroUsuarios.jsp">Registrate</a></span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

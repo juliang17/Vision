@@ -25,33 +25,35 @@ public class ConsultarProveedor extends HttpServlet {
 
             String Identificacion = request.getParameter("IdConsultado");
 
-            ProveedoresDAO pdao = new ProveedoresDAO();
-            proveedores p = null;
+            ProveedoresDAO miProveedordao = new ProveedoresDAO();
+            proveedores proveedor = null;
 
-            p = pdao.Consultaproveedores(Identificacion);
+            proveedor = miProveedordao.ConsultarProveedor(Identificacion);
 
             if (Accion != null) {
 
-                if (p != null) {
+                if (proveedor != null) {
 
-                    response.sendRedirect("/VISION/vista/RegistroProveedores.jsp?Nombres=" + p.getNombreproveedores() + "&"
-                            + "Identificacion=" + p.getIdentificacionproveedores() + "&"
-                            + "Correo=" + p.getCorreoproveedores() + "&"
-                            + "Telefono=" + p.getTelefonoproveedores() + "&"
+                    response.sendRedirect("/VISION/vista/RegistroProveedores.jsp?Nombres=" + proveedor.getNombreproveedores() + "&"
+                            + "Identificacion=" + proveedor.getIdentificacionproveedores() + "&"
+                            + "Tipo=" + proveedor.getCorreoproveedores() + "&"
+                            + "Telefono=" + proveedor.getTelefonoproveedores() + "&"
+           
                             + "Vista=" + "Actualizar" + "&");
+
                     System.out.println("Salio");
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
             } else {
 
-                if (p != null) {
+                if (proveedor != null) {
 
-                    String respuestaRegistrada = pdao.Eliminarproveedores(p);
+                    String respuestaRegistrada = miProveedordao.EliminarProveedor(proveedor);
                     if (respuestaRegistrada.length() == 0) {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "Eliminacion Realizada." + "');");
@@ -62,13 +64,13 @@ public class ConsultarProveedor extends HttpServlet {
                     } else {
 
                         out.println("<script type=\"text/javascript\">");
-                        out.println("alert('" + "No se ha podido realizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
+                        out.println("alert('" + "No se ha podido relizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
                         out.println("</script>");
                     }
                 } else {
 
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
 
                 }

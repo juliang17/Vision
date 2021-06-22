@@ -10,7 +10,7 @@ public class Pruebaconsultarlistadotipodedocumento {
 
         tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
         ArrayList<tipo_documento> mitipodoc = new ArrayList<tipo_documento>();
-        mitipodoc = mitipodocDAO.Consultarlistadotipo_documento("");
+        mitipodoc = mitipodocDAO.Listadotipo_documento("", "");
 
         int size = mitipodoc.size();
         System.out.println("<table border=\"1\"><tr><td>idtipodoc</td><td>descripciontipodoc></td>");
@@ -18,8 +18,8 @@ public class Pruebaconsultarlistadotipodedocumento {
         for (tipo_documento T : mitipodoc) {
 
             System.out.println("<tr>");
-            System.out.println("<tb>" + T.getidtipodoc() + "</tb>");
-            System.out.println("<tb>" + T.getdescripciontipodoc() + "</tb>");
+            System.out.println("<tb>" + T.getIdtipodoc() + "</tb>");
+            System.out.println("<tb>" + T.getDescripciontipodoc() + "</tb>");
 
             System.out.println("</tr>");
             System.out.println("</table>");

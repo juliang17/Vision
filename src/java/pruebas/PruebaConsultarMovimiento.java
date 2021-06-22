@@ -9,7 +9,7 @@ public class PruebaConsultarMovimiento {
     public static void main(String[] args) {
         
          movimientoDAO MovDAO = new movimientoDAO();
-        movimiento Mov = MovDAO.Consultarmovimiento("");
+        movimiento Mov = MovDAO.ConsultarMovimiento("");
         
         if (Mov != null) {
             System.out.println("El movimiento fue encontrado " + Mov.getIdmovimiento() + "_" + Mov.getFechamovimiento() + "_"  );

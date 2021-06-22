@@ -50,7 +50,7 @@ public class PruebaAdicionarMovimiento {
         Mov.setTipo_doc_contable_idtipodoccontable(tipo_doc_contable_idtipodoccontable);
         Mov.setMedio_de_pago_idmediodepago(medio_de_pago_idmediodepago);
 
-        String miRespuesta = MovDAO.adicionarmovimiento(Mov);
+        String miRespuesta = MovDAO.AdicionarMovimiento(Mov);
 
         if (miRespuesta.length() == 0) {
 

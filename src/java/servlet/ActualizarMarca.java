@@ -45,7 +45,7 @@ public class ActualizarMarca extends HttpServlet {
         mi_marca.setDescripcionmarca(descripcionmarca);
         
         System.out.println(" Descripcion: " + descripcionmarca);
-        String respuestaRegistrada = marca_dao.Actualizarmarca(mi_marca);
+        String respuestaRegistrada = marca_dao.ActualizarMarca(mi_marca);
         if (respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + "Actualización Realizada." + "');");

@@ -97,14 +97,15 @@
 
                                 <% tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
                                    ArrayList<tipo_documento> mitipodoc = new ArrayList<tipo_documento>();
-                                    mitipodoc = mitipodocDAO.Consultarlistadotipo_documento(buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    mitipodoc = mitipodocDAO.Listadotipo_documento(buscando, buscando);
+                                    out.println("<table class='table table-dark'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (tipo_documento T : mitipodoc) {
                                         out.println("<tr>");
-                                        out.println("<td>" + T.getdescripciontipodoc() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + T.getdescripciontipodoc() + ")'/>"
+                                        out.println("<td>" + T.getIdtipodoc()+ "</td>");
+                                        out.println("<td>" + T.getDescripciontipodoc() + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + T.getIdtipodoc()+ ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getdescripciontipodoc() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getIdtipodoc() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.detalle_movimiento;
 
-/**
- *
- * @author santy
- */
+
 @WebServlet(name = "ConsultarDetalle", urlPatterns = {"/ConsultarDetalle"})
 public class ConsultarDetalle extends HttpServlet {
 
@@ -35,47 +32,50 @@ public class ConsultarDetalle extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             String Accion = request.getParameter("Actualizar");
             System.out.println("Accion " + Accion);
 
-            String descripcion = request.getParameter("IdConsultado");
+            String Identificacion = request.getParameter("IdConsultado");
 
-            detalleDAO mi_detalle_dao = new detalleDAO();
-            detalle_movimiento mi_detalle = null;
+            detalleDAO ddao = new detalleDAO();
+            detalle_movimiento Detalle = null;
 
-            mi_detalle = mi_detalle_dao.ConsultarDetalle_movimiento("");
+            Detalle = ddao.ConsultarDetalle(Identificacion);
 
             if (Accion != null) {
 
-                if (mi_detalle != null) {
+                if (Detalle != null) {
 
-                    response.sendRedirect("/VISION/vista/Formularios/GestionDetalle.jsp?descripcion=" + mi_detalle.getIddetallemovimiento() + "&"
-                            + "Cantidad=" + mi_detalle.getCantidad() + "&"
-                            + "Precio=" + mi_detalle.getPrecio() + "&"
-                            + "Iva=" + mi_detalle.getIva() + "&"
-                            + "Subtotal=" + mi_detalle.getSubtotal() + "&"
-                            + "Producto=" + mi_detalle.getProductos_idproductos() + "&"
-                            + "Movimiento=" + mi_detalle.getMovimiento_idmovimiento() + "&"
+                    response.sendRedirect("/VISION/vista/Formularios/GestionDetalleMovimiento.jsp?descripcion=" + Detalle.getDescripcion()+ "&"
+                            + "cantidad=" + Detalle.getCantidad()+ "&"
+                            + "precio=" + Detalle.getPrecio()+ "&"
+                            + "iva=" + Detalle.getIva()+ "&"
+                            + "subtotal=" + Detalle.getSubtotal()+ "&"
+                            + "productos_idproductos=" + Detalle.getProductos_idproductos()+ "&"
+                            + "movimiento_idmovimiento=" + Detalle.getMovimiento_idmovimiento()+ "&"
+                            + "iddetallemovimiento=" + Detalle.getIddetallemovimiento()+ "&"
+                            
                             + "Vista=" + "Actualizar" + "&");
 
                     System.out.println("Salio");
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la descripcion: " + descripcion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
             } else {
 
-                if (mi_detalle != null) {
+                if (Detalle != null) {
 
-                    String respuestaRegistrada = mi_detalle_dao.EliminarDetalleMovimiento(mi_detalle);
+                    String respuestaRegistrada = ddao.EliminarDetalle(Detalle);
                     if (respuestaRegistrada.length() == 0) {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "Eliminacion Realizada." + "');");
 
-                        out.println("window.location.href = '/VISION/vista/Formularios/GestionDetalle.jsp';");
+                        out.println("window.location.href = '/VISION/vista/Formularios/GestionDetalleMovimiento.jsp';");
                         out.println("</script>");
 
                     } else {
@@ -87,7 +87,7 @@ public class ConsultarDetalle extends HttpServlet {
                 } else {
 
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la descripcion: " + descripcion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
 
                 }

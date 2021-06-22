@@ -1,9 +1,8 @@
 package modelo;
 
-
 public class movimiento {
 
-    private int idmovimiento;
+    private String idmovimiento;
     private String fechamovimiento;
     private int subtotal;
     private int iva;
@@ -12,11 +11,11 @@ public class movimiento {
     private int tipo_doc_contable_idtipodoccontable;
     private int medio_de_pago_idmediodepago;
 
-    public int getIdmovimiento() {
+    public String getIdmovimiento() {
         return idmovimiento;
     }
 
-    public void setIdmovimiento(int idmovimiento) {
+    public void setIdmovimiento(String idmovimiento) {
         this.idmovimiento = idmovimiento;
     }
 
@@ -75,5 +74,5 @@ public class movimiento {
     public void setMedio_de_pago_idmediodepago(int medio_de_pago_idmediodepago) {
         this.medio_de_pago_idmediodepago = medio_de_pago_idmediodepago;
     }
-
 }
+

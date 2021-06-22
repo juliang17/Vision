@@ -3,24 +3,26 @@ package modelo;
 
 public class tipo_documento {
     
-    private int idtipodoc;
+    private String idtipodoc;
     private String descripciontipodoc;
 
-    public int getidtipodoc() {
+    public String getIdtipodoc() {
         return idtipodoc;
     }
 
-    public void setidtipodoc(int idtipodoc) {
+    public void setIdtipodoc(String idtipodoc) {
         this.idtipodoc = idtipodoc;
     }
 
-    public String getdescripciontipodoc() {
+    public String getDescripciontipodoc() {
         return descripciontipodoc;
     }
 
-    public void setdescripciontipodoc(String descripciontipodoc) {
+    public void setDescripciontipodoc(String descripciontipodoc) {
         this.descripciontipodoc = descripciontipodoc;
     }
+
+    
     
     
 }

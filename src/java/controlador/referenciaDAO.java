@@ -18,7 +18,7 @@ import modelo.referencia_de_pago;
  */
 public class referenciaDAO {
 
-    public String Adicionardetalle_Referencia(referencia_de_pago Refrencia_Pago) {
+    public String Adicionarreferencia_de_pago(referencia_de_pago Referencia_de_pago) {
 
         String miRespuesta;
         Conexion miConexion = new Conexion();
@@ -26,30 +26,24 @@ public class referenciaDAO {
         nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-
-            String Query = "Insert into referencia_de_pago (fechadepago, medio_de_pago_idMedioDePago)" + "values (?,?);";
+            String Query = "Insert referencia_de_pago (descripcion, fechadepago, medio_de_pago_idMedioDePago_)" + "values (?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
-
-            sentencia.setString(1, Refrencia_Pago.getFechadepago());
-            sentencia.setInt(2, Refrencia_Pago.getMedio_de_pago_idMedioDePago());
+            sentencia.setString(1, Referencia_de_pago.getDescripcion());
+            sentencia.setString(2, Referencia_de_pago.getFechadepago());
+            sentencia.setInt(3, Referencia_de_pago.getMedio_de_pago_idMedioDePago_());
 
             sentencia.execute();
             miRespuesta = "";
 
         } catch (Exception ex) {
-
             miRespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en Adicionardetalle_Referencia\n" + miRespuesta);
-
+            System.out.println("Ha ocurrido un error en AdicionarReferencia_de_pago\n" + ex.getMessage());
         }
-
         return miRespuesta;
-
     }
 
-    public String ModificarReferencia(referencia_de_pago Refrencia_Pago) {
+    public String ActualizarReferencia_de_pago(referencia_de_pago Referencia_de_pago) {
 
         String miRespuesta;
         Conexion miConexion = new Conexion();
@@ -58,27 +52,26 @@ public class referenciaDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update referencia_de_pago set idreferenciadepago=?, fechadepago=?, medio_de_pago_idMedioDePago=? where idreferenciadepago=?";
+            String Query = "update referencia_de_pago set idreferenciadepago=?, descripcion=?, fechadepago=?, medio_de_pago_idMedioDePago_ where idreferenciadepago=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setInt(1, Refrencia_Pago.getIdreferenciadepago());
-            sentencia.setString(2, Refrencia_Pago.getFechadepago());
-            sentencia.setInt(3, Refrencia_Pago.getMedio_de_pago_idMedioDePago());
-            sentencia.setInt(4, Refrencia_Pago.getIdreferenciadepago());
+            sentencia.setString(1, Referencia_de_pago.getIdreferenciadepago());
+            sentencia.setString(2, Referencia_de_pago.getDescripcion());
+            sentencia.setString(3, Referencia_de_pago.getFechadepago());
+            sentencia.setInt(4, Referencia_de_pago.getMedio_de_pago_idMedioDePago_());
 
             sentencia.executeUpdate();
             miRespuesta = "";
 
         } catch (Exception ex) {
             miRespuesta = ex.getMessage();
-            System.out.println("Ha ocurrido un error en ModificarReferencia\n " + ex.getMessage());
+            System.out.println("Ha ocurrido un error en ActualizarReferencia_de_pago\n" + ex.getMessage());
         }
         return miRespuesta;
     }
 
-     public referencia_de_pago ConsultarReferencia(String fechadepago) {
-             referencia_de_pago mi_referencia_pago = null;
-
+    public referencia_de_pago ConsultarReferencia_de_pago(String idreferenciadepago) {
+        referencia_de_pago mi_referencia_de_pago = null;
 
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
@@ -88,57 +81,60 @@ public class referenciaDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idreferenciadepago,fechadepago, medio_de_pago_idMedioDePago from referencia_de_pago where fechadepago = " + fechadepago;
+            String Query = "Select idreferenciadepago, descripcion, fechadepago, medio_de_pago_idMedioDePago_ from referencia_de_pago where idreferenciadepago =  " + idreferenciadepago;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
-                mi_referencia_pago = new referencia_de_pago();
-                mi_referencia_pago.setIdreferenciadepago(rs.getInt(1));
-                mi_referencia_pago.setFechadepago(rs.getString(2));
-                mi_referencia_pago.setMedio_de_pago_idMedioDePago(rs.getInt(3));
-                
+                mi_referencia_de_pago = new referencia_de_pago();
+                mi_referencia_de_pago.setIdreferenciadepago(rs.getString(1));
+                mi_referencia_de_pago.setDescripcion(rs.getString(2));
+                mi_referencia_de_pago.setFechadepago(rs.getString(3));
+                mi_referencia_de_pago.setMedio_de_pago_idMedioDePago_(rs.getInt(4));
+
             }
 
-            return mi_referencia_pago;
+            return mi_referencia_de_pago;
         } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error en ConsultarReferencia\n " + ex.getMessage());
+            System.out.println("Ha ocurrido un error en ConsultarReferencia_de_pago\n " + ex.getMessage());
         }
-        return mi_referencia_pago;
+        return mi_referencia_de_pago;
     }
-     
-     public ArrayList<referencia_de_pago> ListadoReferenciaDePago(String fechadepago) {
-        ArrayList<referencia_de_pago> listado_referencia_de_pago = new ArrayList<referencia_de_pago>();
-        referencia_de_pago mi_referencia_pago;
+
+    public ArrayList<referencia_de_pago> ConsultarListadoReferencia_de_pago(String idreferenciadepago, String descripcion) {
+        ArrayList<referencia_de_pago> mi_referencia_de_pago = new ArrayList<referencia_de_pago>();
+        referencia_de_pago mi_referencia;
 
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + fechadepago);
+        System.out.println("Buscando parametro: " + idreferenciadepago);
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select idreferenciadepago,fechadepago, medio_de_pago_idMedioDePago "
+            String Query = " select idreferenciadepago,descripcion,fechadepago,medio_de_pago_idMedioDePago_  "
                     + " from referencia_de_pago "
-                    + " where fechadepago like '%" + fechadepago + "%' "
-                    + " ORDER BY idreferenciadepago;";
+                    + " where idreferenciadepago like '%" + idreferenciadepago + "%' "
+                    + "  or (descripcion) like ('%" + descripcion + "%') ORDER BY idreferenciadepago;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
-                mi_referencia_pago = new referencia_de_pago();
-                mi_referencia_pago.setIdreferenciadepago(rs.getInt(1));
-                mi_referencia_pago.setFechadepago(rs.getString(2));
-                mi_referencia_pago.setMedio_de_pago_idMedioDePago(rs.getInt(3));
-                listado_referencia_de_pago.add(mi_referencia_pago);
+                mi_referencia = new referencia_de_pago();
+                mi_referencia.setIdreferenciadepago(rs.getString(1));
+                mi_referencia.setDescripcion(rs.getString(2));
+                mi_referencia.setFechadepago(rs.getString(3));
+                mi_referencia.setMedio_de_pago_idMedioDePago_(rs.getInt(4));
+                mi_referencia_de_pago.add(mi_referencia);
             }
-            return listado_referencia_de_pago;
+            return mi_referencia_de_pago;
         } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error en ListadoReferenciaDePago\n " + ex.getMessage());
+            System.out.println("Ha ocurrido un error en ConsultarReferencia_de_pago\n " + ex.getMessage());
         }
-        return listado_referencia_de_pago;
+        return mi_referencia_de_pago;
+
     }
 
-     public String EliminarReferenciaDePago (referencia_de_pago ReferenciaDePago) {
+    public String EliminarReferencia_de_pago(referencia_de_pago Referencia_de_pago) {
 
         String miRespuesta;
         Conexion miConexion = new Conexion();
@@ -147,23 +143,17 @@ public class referenciaDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from referencia_de_pago where idreferenciadepago = ?;";
+            String Query = " delete from referencia_de_pago where idreferenciadepago = ? and descripcion = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-
-            sentencia.setInt(1, ReferenciaDePago.getIdreferenciadepago());
-
+            sentencia.setString(1, Referencia_de_pago.getIdreferenciadepago());
+            sentencia.setString(2, Referencia_de_pago.getDescripcion());
             sentencia.execute();
-
             miRespuesta = "";
-
         } catch (Exception ex) {
-            
             miRespuesta = ex.getMessage();
-            
-            System.out.println("Ocurrio un error en EliminarReferenciaDePago" + ex.getMessage());
+            System.out.println("Ocurrio un error en EliminarReferencia_de_pago" + ex.getMessage());
         }
         return miRespuesta;
+        }
     }
 
-
-}

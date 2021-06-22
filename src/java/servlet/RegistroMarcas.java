@@ -46,7 +46,7 @@ public class RegistroMarcas extends HttpServlet {
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = marca_dao.adicionarmarca(mi_marca);
+            String respuestaRegistrada = marca_dao.AdicionarMarca(mi_marca);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {

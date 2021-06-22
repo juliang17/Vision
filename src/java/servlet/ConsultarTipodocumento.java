@@ -39,28 +39,28 @@ public class ConsultarTipodocumento extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String descripciontipodoc = request.getParameter("IdConsultado");
+        String Identificacion = request.getParameter("IdConsultado");
         
-        tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
-        tipo_documento mitipodoc = null;
+        tipo_documentoDAO tipo_documento_dao = new tipo_documentoDAO();
+        tipo_documento mi_tipo_documento = null;
         
-        mitipodoc = mitipodocDAO.Consultartipo_documento(descripciontipodoc);
+        mi_tipo_documento = tipo_documento_dao.Consultartipo_documento(Identificacion);
         if (Accion != null) {
 
-            if (mitipodoc != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionTipodocumento.jsp?descripciontipodoc="
-                        + mitipodoc.getdescripciontipodoc().toString() + "&"
+            if (mi_tipo_documento != null) {
+                response.sendRedirect("/VISION/vista/Formulario/GestionTipodocumento.jsp?descripciontipodoc=" + mi_tipo_documento.getDescripciontipodoc()+ "&"
+                        + "ID=" + mi_tipo_documento.getIdtipodoc()+ "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripciontipodoc + "');");
+                        + "Por favor verificar la descripcion: " + Identificacion + "');");
                 out.println("</script>");
             }
         } else {
-            if (mitipodoc != null) {
-                String RespuestaRegistrada = mitipodocDAO.Eliminartipo_documento(mitipodoc);
+            if (mi_tipo_documento != null) {
+                String RespuestaRegistrada = tipo_documento_dao.Eliminartipo_documento(mi_tipo_documento);
                 if (RespuestaRegistrada.length() == 0) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('" + "Eliminacion Realizada." + "');");
@@ -75,7 +75,7 @@ public class ConsultarTipodocumento extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripciontipodoc
+                        + "Por favor verificar la Descripcion: " + Identificacion
                         + "');");
                 out.println("</script>");
             }

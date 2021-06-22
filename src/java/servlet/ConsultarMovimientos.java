@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.inventarioDAO;
+import controlador.movimientoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.inventario;
+import modelo.movimiento;
 
-/**
- *
- * @author santy
- */
-@WebServlet(name = "ConsultarInventario", urlPatterns = {"/ConsultarInventario"})
-public class ConsultarInventario extends HttpServlet {
+
+@WebServlet(name = "ConsultarMovimientos", urlPatterns = {"/ConsultarMovimientos"})
+public class ConsultarMovimientos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,45 +32,50 @@ public class ConsultarInventario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-           String Accion = request.getParameter("Actualizar");
+           
+            String Accion = request.getParameter("Actualizar");
             System.out.println("Accion " + Accion);
 
             String Identificacion = request.getParameter("IdConsultado");
 
-            inventarioDAO idao = new inventarioDAO();
-            inventario Inventario = null;
+            movimientoDAO mdao = new movimientoDAO();
+            movimiento Movimiento = null;
 
-            Inventario = idao.Consultarinventario(Identificacion);
+            Movimiento = mdao.ConsultarMovimiento(Identificacion);
 
             if (Accion != null) {
 
-                if (Inventario != null) {
+                if (Movimiento != null) {
 
-                    response.sendRedirect("/VISION/vista/Formularios/GestionInventario.jsp?entrada=" + Inventario.getEntrada() + "&"
-                            + "Salida=" + Inventario.getSalida() + "&"
-                            + "Saldo=" + Inventario.getSaldo() + "&"
-                            + "Producto=" + Inventario.getProductos_idproductos() + "&"
+                    response.sendRedirect("/VISION/vista/Formularios/GestionMovimiento.jsp?fechamovimiento=" + Movimiento.getFechamovimiento()+ "&"
+                            + "subtotal=" + Movimiento.getSubtotal()+ "&"
+                            + "iva=" + Movimiento.getIva()+ "&"
+                            + "descuento=" + Movimiento.getDescuento()+ "&"
+                            + "total=" + Movimiento.getTotal()+ "&"
+                            + "medio_de_pago_idmediodepago=" + Movimiento.getMedio_de_pago_idmediodepago()+ "&"
+                            + "tipo_doc_contable_idtipodoccontable=" + Movimiento.getTipo_doc_contable_idtipodoccontable()+ "&"
+                            + "idmovimiento=" + Movimiento.getIdmovimiento()+ "&"
+                            
                             + "Vista=" + "Actualizar" + "&");
 
                     System.out.println("Salio");
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
             } else {
 
-                if (Inventario != null) {
+                if (Movimiento != null) {
 
-                    String respuestaRegistrada = idao.Eliminarinventario(Inventario);
+                    String respuestaRegistrada = mdao.EliminarMovimiento(Movimiento);
                     if (respuestaRegistrada.length() == 0) {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('" + "Eliminacion Realizada." + "');");
 
-                        out.println("window.location.href = '/VISION/vista/Formularios/GestionInventario.jsp';");
+                        out.println("window.location.href = '/VISION/vista/Formularios/GestionMovimiento.jsp';");
                         out.println("</script>");
 
                     } else {

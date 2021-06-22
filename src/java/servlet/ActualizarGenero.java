@@ -41,10 +41,10 @@ public class ActualizarGenero extends HttpServlet {
         GeneroDAO miGeneroDAO = new GeneroDAO();
         genero migenero = new genero();
         
-        migenero.setdescripciongenero(descripciongenero);
+        migenero.setDescripciongenero(descripciongenero);
         
         System.out.println(" Descripcion: " + descripciongenero);
-        String respuestaRegistrada = miGeneroDAO.actualizargenero(migenero);
+        String respuestaRegistrada = miGeneroDAO.Atualizargenero(migenero);
         if (respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('" + "Actualización Realizada." + "');");

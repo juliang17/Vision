@@ -11,13 +11,13 @@ public class PruebaEliminarMovimiento {
         
         movimientoDAO MovDAO = new movimientoDAO();
         
-        ArrayList<movimiento> milistamovimiento = MovDAO.Consultarlistadomovimiento("");
+        ArrayList<movimiento> milistamovimiento = MovDAO.ListadoMovimiento("", "");
         for (movimiento M : milistamovimiento) {
             System.out.println(" id : " + M.getIdmovimiento() );
         }
         System.out.println("eliminado");
-        MovDAO.Eliminarmovimiento(milistamovimiento.get(0));
-        milistamovimiento = MovDAO.Consultarlistadomovimiento("");
+        MovDAO.EliminarMovimiento(milistamovimiento.get(0));
+        milistamovimiento = MovDAO.ListadoMovimiento("", "");
         for (movimiento M : milistamovimiento) {
             System.out.println(" id : " + M.getIdmovimiento());
         }

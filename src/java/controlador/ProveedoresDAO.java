@@ -10,146 +10,147 @@ import modelo.proveedores;
 
 public class ProveedoresDAO {
     
-    public String adicionarproveedores(proveedores PROVEEDORES) {
+    public String AdicionarProveedor(proveedores Proveedor) {
 
-        String mirespuesta;
-        controlador.Conexion miconexion = new controlador.Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        PreparedStatement sentencia;
-
-        try {
-            String Query = "Insert into proveedores (identificacionproveedores, nombreproveedores, correoproveedores, telefonoproveedores)" + "values (?,?,?,?);";
-            sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, PROVEEDORES.getIdentificacionproveedores());
-            sentencia.setString(2, PROVEEDORES.getNombreproveedores());
-            sentencia.setString(3, PROVEEDORES.getCorreoproveedores());
-            sentencia.setInt(4, PROVEEDORES.getTelefonoproveedores());
-
-            sentencia.execute();
-            mirespuesta = "";
-
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en adicionarproveedores/n" + ex.getMessage());
-        }
-        return mirespuesta;
-
-    }
-
-    public String Actualizarproveedores(proveedores PROVEEDORES) {
-
-        String mirespuesta = "";
-        controlador.Conexion miconexion = new controlador.Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        PreparedStatement sentencia;
-
-        try {
-            String Query = "update proveedores set identificacionproveedores=?, nombreproveedores=?, correoproveedores=?, telefonoproveedores=? where identificacionproveedores=?";
-            sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, PROVEEDORES.getIdentificacionproveedores());
-            sentencia.setString(2, PROVEEDORES.getNombreproveedores());
-            sentencia.setString(3, PROVEEDORES.getCorreoproveedores());
-            sentencia.setInt(4, PROVEEDORES.getTelefonoproveedores());
-            sentencia.setString(5, PROVEEDORES.getIdentificacionproveedores());
-
-            sentencia.executeUpdate();
-
-        } catch (Exception ex) {
-            mirespuesta = "";
-            mirespuesta = ex.getMessage();
-            System.err.println("ocurrió un problema en el  Actualizarproveedores\n" + ex.getMessage());
-        }
-        return mirespuesta;
-    }
-
-    public proveedores Consultaproveedores(String identificacionproveedores) {
-        proveedores miproveedores = null;
-
-        controlador.Conexion miconexion = new controlador.Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idProveedores, identificacionproveedores, nombreproveedores, correoproveedores, telefonoproveedores from proveedores where identificacionproveedores = " + identificacionproveedores);
-            ResultSet rs = sentencia.executeQuery(Query);
-
-            while (rs.next()) {
-                miproveedores = new proveedores();
-                miproveedores.setIdProveedores(rs.getInt(1));
-                miproveedores.setIdentificacionproveedores(rs.getString(2));
-                miproveedores.setNombreproveedores(rs.getString(3));
-                miproveedores.setCorreoproveedores(rs.getString(4));
-                miproveedores.setTelefonoproveedores(rs.getInt(5));
-
-            }
-            return miproveedores;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return miproveedores;
-    }
-
-    public ArrayList<proveedores> listadoproveedores(String identificacionproveedores, String nombreproveedores, String correoproveedores) {
-        ArrayList<proveedores> milistaproveedores = new ArrayList<proveedores>();
-        proveedores miproveedores;
-
-        controlador.Conexion miConexion = new controlador.Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + identificacionproveedores);
+        PreparedStatement sentencia;
         try {
+            String Query = "Insert into proveedores (nombreproveedores, identificacionproveedores, correoproveedores, telefonoproveedores)" + "values (?,?,?,?);";
+            sentencia = nuevaCon.prepareStatement(Query);
+
+            sentencia.setString(1, Proveedor.getNombreproveedores());
+            sentencia.setString(2, Proveedor.getIdentificacionproveedores());
+            sentencia.setString(3, Proveedor.getCorreoproveedores());
+            sentencia.setInt(4, Proveedor.getTelefonoproveedores());
+
+            sentencia.execute();
+            miRespuesta = "";
+        } catch (Exception ex) {
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en AdicionarProveedor\n " + ex.getMessage());
+        }
+        return miRespuesta;
+    }
+    
+     public String ActualizarProveedor (proveedores Proveedor) { 
+
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+
+        PreparedStatement sentencia;
+        try {
+            String Query = "update proveedores set nombreproveedores=?, identificacionproveedores=?, correoproveedores=?, telefonoproveedores=? where identificacionproveedores=?";
+            sentencia = nuevaCon.prepareStatement(Query);
+
+            sentencia.setString(1, Proveedor.getNombreproveedores());
+            sentencia.setString(2, Proveedor.getIdentificacionproveedores());
+            sentencia.setString(3, Proveedor.getCorreoproveedores());
+            sentencia.setInt(4, Proveedor.getTelefonoproveedores());
+            sentencia.setString(5, Proveedor.getIdentificacionproveedores());
+
+            sentencia.executeUpdate();
+            miRespuesta = "";
+            
+        } catch (Exception ex) {
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en AtualizarUsuario\n " + ex.getMessage());
+        }
+        return miRespuesta;
+    }
+     
+     public proveedores ConsultarProveedor(String identificacionproveedores) {
+        proveedores mi_proveedor = null;
+    
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+
+        try {
+            
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idProveedores, identificacionproveedores, nombreproveedores, correoproveedores, telefonoproveedores "
+            
+            String Query = "Select idProveedores, nombreproveedores, identificacionproveedores, correoproveedores, telefonoproveedores from proveedores where identificacionproveedores = " + identificacionproveedores;
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()){
+            
+                mi_proveedor = new proveedores();
+                mi_proveedor.setIdProveedores(rs.getInt(1));
+                mi_proveedor.setNombreproveedores(rs.getString(2));
+                mi_proveedor.setIdentificacionproveedores(rs.getString(3));
+                mi_proveedor.setCorreoproveedores(rs.getString(4));
+                mi_proveedor.setTelefonoproveedores(rs.getInt(5));
+                
+            }
+   
+         return mi_proveedor;            
+        } catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en ConsultarProveedor\n " + ex.getMessage());
+        }
+        return mi_proveedor;
+    }
+     
+     public ArrayList<proveedores> ListarProveedor(String nombreproveedores, String identificacionproveedores, String correoproveedores) {
+       ArrayList<proveedores>mi_listado_provedores = new ArrayList<proveedores>();
+        proveedores mi_proveedor;
+        
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+        
+        System.out.println("Buscando parametro: " + identificacionproveedores);
+        try{
+            Statement sentencia = nuevaCon.createStatement();
+            
+            String Query = " select idProveedores,nombreproveedores,identificacionproveedores,correoproveedores,telefonoproveedores "
                     + " from proveedores "
-                    + " where identificacionproveedores like '%" + identificacionproveedores + "%' "
-                    + "  or (nombreproveedores) like ('%" + nombreproveedores + "%') "
+                    + " where nombreproveedores like '%" + nombreproveedores + "%' "
+                    + "  or (identificacionproveedores) like ('%" + identificacionproveedores + "%') "
                     + "  or (correoproveedores) like ('%" + correoproveedores + "%') ORDER BY identificacionproveedores;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
-                miproveedores = new proveedores();
-                miproveedores.setIdProveedores(rs.getInt(1));
-                miproveedores.setIdentificacionproveedores(rs.getString(2));
-                miproveedores.setNombreproveedores(rs.getString(3));
-                miproveedores.setCorreoproveedores(rs.getString(4));
-                miproveedores.setTelefonoproveedores(rs.getInt(5));
-                milistaproveedores.add(miproveedores);
-
+                
+                mi_proveedor = new proveedores();
+                mi_proveedor.setIdProveedores(rs.getInt(1));
+                mi_proveedor.setNombreproveedores(rs.getString(2));
+                mi_proveedor.setIdentificacionproveedores(rs.getString(3));
+                mi_proveedor.setCorreoproveedores(rs.getString(4));
+                mi_proveedor.setTelefonoproveedores(rs.getInt(5));
+                mi_listado_provedores.add(mi_proveedor);
             }
-            return milistaproveedores;
-        } catch (Exception ex) {
-            System.out.print("Ocurrio un error en listadoproveedores" + ex.getMessage());
+            return mi_listado_provedores;
+        }catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en ListarProveedor\n " + ex.getMessage());
         }
-        return milistaproveedores;
+        return mi_listado_provedores;
     }
-
-    public String Eliminarproveedores(proveedores Proveedor) {
-        String mirespuesta;
-        controlador.Conexion miConexion = new controlador.Conexion();
+     
+    public String EliminarProveedor(proveedores Proveedor) {
+        
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
-
+        
         PreparedStatement sentencia;
-        try {
-            String Query = " delete from proveedores where identificacionproveedores = ? and nombreproveedores = ? and correoproveedores = ? ;";
-
+        try{
+            String Query = " delete from proveedores where idProveedores = ? and identificacionproveedores = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, Proveedor.getIdentificacionproveedores());
-            sentencia.setString(2, Proveedor.getNombreproveedores());
-            sentencia.setString(3, Proveedor.getCorreoproveedores());
+            
+            sentencia.setInt(1, Proveedor.getIdProveedores());
+            sentencia.setString(2, Proveedor.getIdentificacionproveedores());
             sentencia.execute();
-            mirespuesta = "";
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en Eliminarproveedores" + ex.getMessage());
+            miRespuesta = "";
+        }catch(Exception ex){
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en EliminarProveedor\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
-
     
 }

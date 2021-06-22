@@ -20,10 +20,11 @@ public class tipo_doc_contableDAO {
 
         try {
 
-            String Query = "Insert into tipo_doc_contable (descripciontipodoccontable)" + "values (?);";
+            String Query = "Insert into tipo_doc_contable (descripciontipodoccontable, tipo_movimiento_idTipoMov)" + "values (?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setString(1, tipoDocContable.getDescripciontipodoccontable());
+            sentencia.setInt(2, tipoDocContable.getTipo_movimiento_idTipoMov());
 
             sentencia.execute();
             miRespuesta = "";
@@ -48,11 +49,12 @@ public class tipo_doc_contableDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update tipo_doc_contable set idtipodoccontable=?, descripciontipodoccontable=? where idtipodoccontable=?";
+            String Query = "update tipo_doc_contable set idtipodoccontable=?, descripciontipodoccontable=?, tipo_movimiento_idTipoMov=? where idtipodoccontable=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, tipoDocContable.getIdtipodoccontable());
             sentencia.setString(2, tipoDocContable.getDescripciontipodoccontable());
+            sentencia.setInt(3, tipoDocContable.getTipo_movimiento_idTipoMov());
             sentencia.setInt(4, tipoDocContable.getIdtipodoccontable());
 
             sentencia.executeUpdate();
@@ -65,7 +67,7 @@ public class tipo_doc_contableDAO {
         return miRespuesta;
     }
 
-    public tipo_doc_contable ConsultarTipo_doc_contable(String descripciontipodoccontable) {
+    public tipo_doc_contable ConsultarTipo_doc_contable(int idtipodoccontable) {
         tipo_doc_contable mi_tipo_doc_contable = null;
 
         Conexion miConexion = new Conexion();
@@ -76,13 +78,15 @@ public class tipo_doc_contableDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idtipodoccontable, descripciontipodoccontable from tipo_doc_contable where descripciontipodoccontable = " + descripciontipodoccontable;
+            String Query = "Select idtipodoccontable, descripciontipodoccontable, tipo_movimiento_idTipoMov from tipo_doc_contable where idtipodoccontable = " + idtipodoccontable;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_tipo_doc_contable = new tipo_doc_contable();
                 mi_tipo_doc_contable.setIdtipodoccontable(rs.getInt(1));
                 mi_tipo_doc_contable.setDescripciontipodoccontable(rs.getString(2));
+                mi_tipo_doc_contable.setTipo_movimiento_idTipoMov(rs.getInt(3));
+
             }
 
             return mi_tipo_doc_contable;
@@ -92,7 +96,7 @@ public class tipo_doc_contableDAO {
         return mi_tipo_doc_contable;
     }
 
-    public ArrayList<tipo_doc_contable> ListadoTipoDocContable(String descripciontipodoccontable) {
+    public ArrayList<tipo_doc_contable> ListadoTipoDocContable(int idtipodoccontable, String descripciontipodoccontable) {
         ArrayList<tipo_doc_contable> listado_tipo_doc_contable = new ArrayList<tipo_doc_contable>();
         tipo_doc_contable mi_tipo_doc_contable;
 
@@ -100,20 +104,21 @@ public class tipo_doc_contableDAO {
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + descripciontipodoccontable);
+        System.out.println("Buscando parametro: " + idtipodoccontable);
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select idtipodoccontable, descripciontipodoccontable "
+            String Query = " select idtipodoccontable, descripciontipodoccontable, tipo_movimiento_idTipoMov "
                     + " from tipo_doc_contable "
-                    + " where descripciontipodoccontable like '%" + descripciontipodoccontable + "%' "
-                    + " ORDER BY idtipodoccontable;";
+                    + " where idtipodoccontable like '%" + idtipodoccontable + "%' "
+                    + "  or (descripciontipodoccontable) like ('%" + descripciontipodoccontable + "%') ORDER BY idtipodoccontable;";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_tipo_doc_contable = new tipo_doc_contable();
                 mi_tipo_doc_contable.setIdtipodoccontable(rs.getInt(1));
                 mi_tipo_doc_contable.setDescripciontipodoccontable(rs.getString(2));
+                mi_tipo_doc_contable.setTipo_movimiento_idTipoMov(rs.getInt(3));
                 listado_tipo_doc_contable.add(mi_tipo_doc_contable);
             }
             return listado_tipo_doc_contable;

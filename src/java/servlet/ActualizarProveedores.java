@@ -35,7 +35,7 @@ public class ActualizarProveedores extends HttpServlet {
         p.setTelefonoproveedores(Telefono);
         
         System.out.println("Número de documento " + identificacion);
-        String respuestaRegistrada = pdao.Actualizarproveedores(p);
+        String respuestaRegistrada = pdao.ActualizarProveedor(p);
         if(respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('"+"Actualización Realizada."+"');");

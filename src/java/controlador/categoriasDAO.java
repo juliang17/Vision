@@ -9,132 +9,135 @@ import modelo.categorias;
 
 public class categoriasDAO {
 
-    public String adicionarcategorias(categorias CATEGORIAS) {
+    public String Adicionarcategorias (categorias Categorias) {
 
-        String mirespuesta;
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "insert categorias (descripcioncategorias)"
-                    + "values (?)";
+            String Query = "Insert into categorias (descripcioncategorias)" + "values (?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, CATEGORIAS.getDescripcioncategorias());
+
+            sentencia.setString(1, Categorias.getDescripcioncategorias());
 
             sentencia.execute();
-            mirespuesta = "";
-
+            miRespuesta = "";
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en adicionarcategorias/n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Adicionarcategorias\n " + ex.getMessage());
         }
-        return mirespuesta;
-
+        return miRespuesta;
     }
+    
+    public String Atualizarcategorias (categorias Categorias) {
 
-    public String Actualizarcategorias(categorias CATEGORIAS) {
-
-        String mirespuesta = "";
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
             String Query = "update categorias set idcategorias=?, descripcioncategorias=? where idcategorias=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, CATEGORIAS.getIdcategorias());
-            sentencia.setString(2, CATEGORIAS.getDescripcioncategorias());
-            sentencia.setInt(3, CATEGORIAS.getIdcategorias());
+
+            sentencia.setString(1, Categorias.getIdcategorias());
+            sentencia.setString(2, Categorias.getDescripcioncategorias());
+            sentencia.setString(3, Categorias.getIdcategorias());
 
             sentencia.executeUpdate();
-
+            miRespuesta = "";
+            
         } catch (Exception ex) {
-            mirespuesta = "";
-            mirespuesta = ex.getMessage();
-            System.err.println("ocurrió un problema en el  Actualizarcategorias\n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Atualizarcategorias\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
-    public categorias Consultacategorias(int idcategorias) {
-        categorias micategorias = null;
 
-        Conexion miconexion = new Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idcategorias, descripcioncategorias from categorias where idcategorias = " + idcategorias);
-            ResultSet rs = sentencia.executeQuery(Query);
-
-            while (rs.next()) {
-                micategorias = new categorias();
-                micategorias.setIdcategorias(rs.getInt(1));
-                micategorias.setDescripcioncategorias(rs.getString(2));
-
-            }
-            return micategorias;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return micategorias;
-    }
-
-    public ArrayList<categorias> listadocategorias(String descripcioncategorias) {
-        ArrayList<categorias> milistacategorias = new ArrayList<categorias>();
-        categorias micategorias;
-
+    public categorias Consultarcategorias (String idcategorias) {
+    categorias mi_categorias = null;
+    
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + descripcioncategorias);
         try {
+            
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idcategorias, descripcioncategorias "
-                    + " from categorias"
-                    + " where descripcioncategorias like '%" + descripcioncategorias + "%' "
-                    + " ORDER BY idcategorias; ";
+            
+            String Query = "Select idcategorias, descripcioncategorias from categorias where idcategorias = " + idcategorias;
             ResultSet rs = sentencia.executeQuery(Query);
-            while (rs.next()) {
-                micategorias = new categorias();
-                micategorias.setIdcategorias(rs.getInt(1));
-                micategorias.setDescripcioncategorias(rs.getString(2));
-                milistacategorias.add(micategorias);
-
+            while (rs.next()){
+            
+                mi_categorias = new categorias();
+                mi_categorias.setIdcategorias(rs.getString(1));
+                mi_categorias.setDescripcioncategorias(rs.getString(2));
+                
             }
-            return milistacategorias;
+            
+         return mi_categorias;            
         } catch (Exception ex) {
-            System.out.print("Ocurrio un error en listadocategorias" + ex.getMessage());
+            System.out.println("Ha ocurrido un error en Consultarcategorias\n " + ex.getMessage());
         }
-        return milistacategorias;
+        return mi_categorias;
     }
-
-    public String Eliminarcategorias(categorias CATEGORIAS) {
-        String mirespuesta;
+     
+    public ArrayList<categorias> Listadocategorias(String idcategorias, String descripcioncategorias) {
+        ArrayList<categorias>mi_listado_categorias = new ArrayList<categorias>();
+        categorias mi_categorias;
+        
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
-
+        
+        System.out.println("Buscando parametro: " + idcategorias);
+        try{
+            Statement sentencia = nuevaCon.createStatement();
+            
+            String Query = " select idcategorias,descripcioncategorias "
+                    + " from categorias "
+                    + " where idcategorias like '%" + idcategorias + "%' "
+                    + "  or (descripcioncategorias) like ('%" + descripcioncategorias + "%') ORDER BY idcategorias;";
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()) {
+                
+                mi_categorias = new categorias();
+                mi_categorias.setIdcategorias(rs.getString(1));
+                mi_categorias.setDescripcioncategorias(rs.getString(2));
+                mi_listado_categorias.add(mi_categorias);
+            }
+            return mi_listado_categorias;
+        }catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en Listadocategorias\n " + ex.getMessage());
+        }
+        return mi_listado_categorias;
+    }
+ 
+    public String Eliminarcategorias(categorias Categorias) {
+        
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+        
         PreparedStatement sentencia;
-        try {
-            String Query = " delete from categorias where idcategorias = ? and descripcioncategorias = ?;";
-
+        try{
+            String Query = " delete from categorias where idcategorias = ? and descripcioncategorias = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, CATEGORIAS.getIdcategorias());
-            sentencia.setString(2, CATEGORIAS.getDescripcioncategorias());
-
-            mirespuesta = "";
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en Eliminarcategorias" + ex.getMessage());
+            
+            sentencia.setString(1, Categorias.getIdcategorias());
+            sentencia.setString(2, Categorias.getDescripcioncategorias());
+            sentencia.execute();
+            miRespuesta = "";
+        }catch(Exception ex){
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en Eliminarcategorias\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 }

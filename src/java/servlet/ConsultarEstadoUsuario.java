@@ -55,7 +55,7 @@ public class ConsultarEstadoUsuario extends HttpServlet {
                 System.out.println("Salio");
             } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
         } else {

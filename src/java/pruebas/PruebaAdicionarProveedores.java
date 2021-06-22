@@ -31,7 +31,7 @@ public class PruebaAdicionarProveedores {
         mi_proveedores.setCorreoproveedores(correoproveedores);
         mi_proveedores.setTelefonoproveedores(telefonoproveedores);
 
-        String miRespuesta = proveedores_dao.adicionarproveedores(mi_proveedores);
+        String miRespuesta = proveedores_dao.AdicionarProveedor(mi_proveedores);
 
         if (miRespuesta.length() == 0) {
 

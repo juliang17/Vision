@@ -44,7 +44,7 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
         tipo_doc_contableDAO mi_tipo_doc_dao = new tipo_doc_contableDAO();
         tipo_doc_contable mi_tipo_doc = null;
         
-        mi_tipo_doc = mi_tipo_doc_dao.ConsultarTipo_doc_contable(descripciontipodoccontable);
+        mi_tipo_doc = mi_tipo_doc_dao.ConsultarTipo_doc_contable(0);
         if (Accion != null) {
 
             if (mi_tipo_doc != null) {

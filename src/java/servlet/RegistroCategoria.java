@@ -46,7 +46,7 @@ public class RegistroCategoria extends HttpServlet {
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = categorias_dao.adicionarcategorias(mi_categorias);
+            String respuestaRegistrada = categorias_dao.Adicionarcategorias(mi_categorias);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {

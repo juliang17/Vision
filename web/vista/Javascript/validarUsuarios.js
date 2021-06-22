@@ -8,8 +8,8 @@ function RegistroUsuarios() {
     var telefonousuarios = $('#txt_telefonousuarios_reg').val();
     var direccionusuario = $('#txt_direccionusuario_reg').val();
     var claveusuario = $('#txt_claveusuario_reg').val();
-    var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_reg').val();
     var roles_idroles = $('#txt_roles_idroles_reg').val();
+    var tipo_documento_idtipodoc = $('#txt_tipo_documento_idtipodoc_reg').val();
     var genero_idgenero = $('#txt_genero_idgenero_reg').val();
     var estado_usuario_idestadousuario = $('#txt_estado_usuario_idestadousuario_reg').val();
 
@@ -22,8 +22,8 @@ function RegistroUsuarios() {
     console.log('telefonousuarios: ' + telefonousuarios + ".");
     console.log('direccionusuario: ' + direccionusuario + ".");
     console.log('claveusuario: ' + claveusuario + ".");
-    console.log('tipo_documento_idtipodoc: ' + tipo_documento_idtipodoc + ".");
     console.log('roles_idroles: ' + roles_idroles + ".");
+    console.log('tipo_documento_idtipodoc: ' + tipo_documento_idtipodoc + ".");
     console.log('genero_idgenero: ' + genero_idgenero + ".");
     console.log('estado_usuario_idestadousuario: ' + estado_usuario_idestadousuario + ".");
 
@@ -49,13 +49,13 @@ function RegistroUsuarios() {
     } else if (claveusuario == '') {
         alert('La contraseña no puede estar vacia');
         resultado = 'Error';
-    } else if (tipo_documento_idtipodoc == '') {
-        alert('El tipo de documento no puede estar vacio');
-        resultado = 'Error';
     } else if (roles_idroles == '') {
         alert('El rol de usuario no puede estar vacio');
         resultado = 'Error';
-    } else if (genero_idgenero == '') {
+    } else if (tipo_documento_idtipodoc == '') {
+        alert('El tipo de documento no puede estar vacio');
+        resultado = 'Error';
+    }  else if (genero_idgenero == '') {
         alert('El genero de usuario no puede estar vacio');
         resultado = 'Error';
     } else if (estado_usuario_idestadousuario == '') {
@@ -65,7 +65,7 @@ function RegistroUsuarios() {
     } else if (isNaN(telefonousuarios)) {
         alert('El número telefónico debe ser numérico');
         resultado = 'Error';
-    } else if (isNaN(roles_idroles)) {
+    }  else if (isNaN(roles_idroles)) {
         alert('El rol de  usuario debe ser numérico');
         resultado = 'Error';
     } else if (isNaN(genero_idgenero)) {
@@ -74,13 +74,13 @@ function RegistroUsuarios() {
     } else if (isNaN(tipo_documento_idtipodoc)) {
         alert('El tipo documento debe ser numérico');
         resultado = 'Error';
-        } else if (isNaN(numerodocusuarios)) {
+    } else if (isNaN(numerodocusuarios)) {
         alert('El Numero de documento debe ser numérico');
         resultado = 'Error';
-        } else if (isNaN(estado_usuario_idestadousuario)) {
+    } else if (isNaN(estado_usuario_idestadousuario)) {
         alert('El estado usuario debe ser numérico');
-        resultado = 'Error';
-   
+        resultado = 'Error'; 
+    
     } else {
         resultado = 'Correcto';
     }

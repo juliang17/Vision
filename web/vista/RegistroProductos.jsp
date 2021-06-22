@@ -84,11 +84,11 @@
 
                         <div class="form-group col-md-6" >
                             <h2>Categoria:</h2>
-                            <input type="number" name="categorias_idcategorias" class="form-control d-none" id="categorias_idcategorias">
+                            <input type="number" name="categorias_idcategorias" class="form-control" id="categorias_idcategorias">
 
                             <%
                                 categoriasDAO categorias_dao = new categoriasDAO();
-                                ArrayList<categorias> mi_categorias = categorias_dao.listadocategorias(buscando);
+                                ArrayList<categorias> mi_categorias = categorias_dao.Listadocategorias("", "");
                                 out.println("<select class='form-control'id ='SelectCategoria' size = '1' >");
                                 out.println("<option onclick='setCtegoria(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
 
@@ -104,7 +104,7 @@
                             <input type="number" name="marca_idmarca" class="form-control d-none" id="marca_idmarca">
 
                             <%  MarcaDAO quipoDao = new MarcaDAO();
-                                ArrayList<marca> miequipo = quipoDao.listadomarca("");
+                                ArrayList<marca> miequipo = quipoDao.ConsultarListadoMarca("", "");
                                 out.println("<select class='form-control'id ='SelectMarca' size = '1' >");
                                 out.println("<option onclick='setMarca(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
 
@@ -124,7 +124,7 @@
                             <input type="number" name="proveedores_idproveedores" class="form-control d-none" id="proveedores_idproveedores">
 
                             <%  ProveedoresDAO pdao = new ProveedoresDAO();
-                                ArrayList<proveedores> p = pdao.listadoproveedores("", "", "");
+                                ArrayList<proveedores> p = pdao.ListarProveedor("", "", "");
                                 out.println("<select class='form-control'id ='SelectP' size = '1' >");
                                 out.println("<option onclick='setp(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
 

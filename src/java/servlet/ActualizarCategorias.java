@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.categorias;
 
-/**
- *
- * @author santy
- */
+
 @WebServlet(name = "ActualizarCategorias", urlPatterns = {"/ActualizarCategorias"})
 public class ActualizarCategorias extends HttpServlet {
 
@@ -35,25 +32,28 @@ public class ActualizarCategorias extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+            
+        String id = request.getParameter("numero_documento");
+        String nombre= request.getParameter("nombre_usuario");
+        
 
-        String descripcioncategorias = request.getParameter("descripcioncategorias");
+        categorias micategorias = new categorias();
+        categoriasDAO micategoriasDAO = new categoriasDAO();
+
+        micategorias.setIdcategorias(id);
+        micategorias.setDescripcioncategorias(nombre);
         
-        categoriasDAO categorias_dao = new categoriasDAO();
-        categorias mi_categorias = new categorias();
         
-        mi_categorias.setDescripcioncategorias(descripcioncategorias);
-        
-        System.out.println(" Descripcion: " + descripcioncategorias);
-        String respuestaRegistrada = categorias_dao.Actualizarcategorias(mi_categorias);
-        if (respuestaRegistrada.length() == 0) {
+        System.out.println("Número de documento " + id);
+        String respuestaRegistrada = micategoriasDAO.Atualizarcategorias(micategorias);
+        if(respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + "Actualización Realizada." + "');");
-
+            out.println("alert('"+"Actualización Realizada."+"');");
             out.println("window.location.href = '/VISION/vista/Formularios/GestionCategorias.jsp';");
             out.println("</script>");
         } else {
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + "No se ha podido realizar la actualizacion." + "\n" + respuestaRegistrada + "');");
+            out.println("alert('"+"No se ha podido relizar la actualizacion."+"\n"+respuestaRegistrada +"');");
             out.println("</script>");
         }
     }

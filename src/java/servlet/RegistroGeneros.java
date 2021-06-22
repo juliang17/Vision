@@ -42,11 +42,11 @@ public class RegistroGeneros extends HttpServlet {
         GeneroDAO miGeneroDAO = new GeneroDAO();
         genero migenero = new genero();
         
-        migenero.setdescripciongenero(Genero);
+        migenero.setDescripciongenero(Genero);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = miGeneroDAO.adicionargenero(migenero);
+            String respuestaRegistrada = miGeneroDAO.Adicionargenero(migenero);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {

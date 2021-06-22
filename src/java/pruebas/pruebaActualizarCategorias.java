@@ -13,21 +13,21 @@ public class pruebaActualizarCategorias {
 
         Scanner teclado = new Scanner(System.in);
 
-        int idcategorias;
+        String idcategorias;
         String descripcioncategorias = "";
 
         System.out.println("Ingrese la categoria");
         descripcioncategorias = teclado.next();
 
         System.out.println("Ingrese el id");
-        idcategorias = teclado.nextInt();
+        idcategorias = teclado.next();
 
         mi_categorias.setIdcategorias(idcategorias);
         mi_categorias.setDescripcioncategorias(descripcioncategorias);
 
         mi_categorias.setIdcategorias(idcategorias);
 
-        String respuesta = categorias_dao.Actualizarcategorias(mi_categorias);
+        String respuesta = categorias_dao.Atualizarcategorias(mi_categorias);
 
         if (respuesta.length() == 0) {
 

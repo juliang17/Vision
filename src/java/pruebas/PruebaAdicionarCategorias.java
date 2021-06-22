@@ -19,7 +19,7 @@ public class PruebaAdicionarCategorias {
         descripcioncategorias = teclado.next();
 
         mi_categorias.setDescripcioncategorias(descripcioncategorias);
-        String miRespuesta = categorias_dao.adicionarcategorias(mi_categorias);
+        String miRespuesta = categorias_dao.Adicionarcategorias(mi_categorias);
 
         if (miRespuesta.length() == 0) {
 

@@ -11,7 +11,8 @@
         <meta charset="UTF-8"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">       
-        <script src="Javascript/validarProveedores.js" type="text/javascript"></script>
+        <script src="Javascript/validarProveedor.js" type="text/javascript"></script>
+
         <title>Proveedores</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
@@ -87,7 +88,7 @@
                 <div class="form-row" >
                     <div class="form-group col-md-6" >
                         <h2>Correo electrónico:</h2>
-                        <input type="text" name="correoproveedores" class="form-control" id="correo" value="<%=request.getParameter("Correo")%>">
+                        <input type="text" name="correoproveedores" class="form-control" id="Correo" value="<%=request.getParameter("Correo")%>">
                     </div>
                     <div class="form-group col-md-6" >
                         <h2>Número telefónico:</h2>
@@ -99,28 +100,29 @@
         </div>
 
         <div id="Listado" class="container">
-            <form action="/VISION/ConsultarProveedor" method="post">
+            <form action="/VISION/consultarProveedores" method="post">
                 <div class="row justify-content-md-center">
                         <div id="ControlRegistro" class="input-group">
-                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar identificacion o nombre"/>
-                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
-                    </div>    
+                            <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingresar Número de identificación, Nombres o Apellidos"/>
+                            <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                        </div>    
                             <br>
                         <div>
                             <h2 class="title-table">Listado Proveedores</h2>
+                            <div id="Tabla_Proveedores"></div>
                             <%
-                                ProveedoresDAO pdao = new ProveedoresDAO();
-                                ArrayList<proveedores> pList = new ArrayList<proveedores>();
-                                pList = pdao.listadoproveedores("", "", "");
-                                out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><tr><td>Nombre</td><td>Identificación</td><td>Telefono</td><td>Correo</td><td>Actualizar</td><td>Eliminar</td>");
+                                ProveedoresDAO proveedordao = new ProveedoresDAO();
+                                ArrayList<proveedores> proveedorList = new ArrayList<proveedores>();
+                                proveedorList = proveedordao.ListarProveedor(buscando, buscando, buscando);
+                                out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><tr><td>Nombre</td><td>Número de identificación</td><td>Telefono</td><td>Correo</td><td>Actualizar</td><td>Eliminar</td>");
 
-                                for (proveedores P : pList) {
+                                for (proveedores P : proveedorList) {
 
                                     out.println("<tr>");
                                     out.println("<td>" + P.getNombreproveedores()+ "</td>");
                                     out.println("<td>" + P.getIdentificacionproveedores()+ "</td>");
-                                    out.println("<td>" + P.getTelefonoproveedores() + "</td>");
-                                    out.println("<td>" + P.getCorreoproveedores() + "</td>");
+                                    out.println("<td>" + P.getTelefonoproveedores()+ "</td>");
+                                    out.println("<td>" + P.getCorreoproveedores()+ "</td>");
 
                                     out.println("<td>" + "<input type = 'submit' class='btn btn-secondary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
                                     out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
@@ -129,7 +131,9 @@
                                 out.println("</table>");
                                 
                             %>
+
                         </div>
+      
                 </div>
             </form>
         </div>

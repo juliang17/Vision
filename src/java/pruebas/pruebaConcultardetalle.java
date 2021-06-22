@@ -8,7 +8,7 @@ public class pruebaConcultardetalle {
 
     public static void main(String[] args) {
         detalleDAO mi_detalle_dao = new detalleDAO();
-        detalle_movimiento mi_detalle = mi_detalle_dao.ConsultarDetalle_movimiento("1");
+        detalle_movimiento mi_detalle = mi_detalle_dao.ConsultarDetalle("");
         
         if (mi_detalle != null) {
             System.out.println("detalle movimiento fue encontrado " + mi_detalle.getIddetallemovimiento() + " " + mi_detalle.getCantidad() + "" );

@@ -9,151 +9,173 @@ import modelo.movimiento;
 
 public class movimientoDAO {
 
-    public String adicionarmovimiento(movimiento MOVIMIENTO) {
+    public String AdicionarMovimiento(movimiento Movimiento) {
 
-        String mirespuesta;
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "insert movimiento (fechamovimiento,subtotal,iva,descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago)"
-                    + "values (?,?,?,?,?,?,?)";
+            String Query = "Insert into movimiento (fechamovimiento, subtotal, iva, descuento, total, tipo_doc_contable_idtipodoccontable, medio_de_pago_idmediodepago)" + "values (?,?,?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, MOVIMIENTO.getFechamovimiento());
-            sentencia.setInt(2, MOVIMIENTO.getSubtotal());
-            sentencia.setInt(3, MOVIMIENTO.getIva());
-            sentencia.setInt(4, MOVIMIENTO.getDescuento());
-            sentencia.setInt(5, MOVIMIENTO.getTotal());
-            sentencia.setInt(6, MOVIMIENTO.getTipo_doc_contable_idtipodoccontable());
-            sentencia.setInt(7, MOVIMIENTO.getMedio_de_pago_idmediodepago());
+
+            sentencia.setString(1, Movimiento.getFechamovimiento());
+            sentencia.setInt(2, Movimiento.getSubtotal());
+            sentencia.setInt(3, Movimiento.getIva());
+            sentencia.setInt(4, Movimiento.getDescuento());
+            sentencia.setInt(5, Movimiento.getTotal());
+            sentencia.setInt(6, Movimiento.getTipo_doc_contable_idtipodoccontable());
+            sentencia.setInt(7, Movimiento.getMedio_de_pago_idmediodepago());
+
+            
             sentencia.execute();
-            mirespuesta = "";
-
+            miRespuesta = "";
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en adicionar movimiento_movimientoDAO/n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en AdicionarMovimiento\n " + ex.getMessage());
         }
-        return mirespuesta;
-
+        return miRespuesta;
     }
 
-    public String Actualizarmovimiento(movimiento MOVIMIENTO) {
+    public String ActualizarMovimiento(movimiento Movimiento) {
 
-        String mirespuesta = "";
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "update movimiento set idmovimiento=?,fechamovimiento=?, subtotal=?, iva=?, descuento=?,total=?,tipo_doc_contable_idtipodoccontable=?,medio_de_pago_idmediodepago=? where idmovimiento=?";
+            String Query = "update movimiento set idmovimiento=?, fechamovimiento=?, subtotal=?, iva=?, descuento=?, total=?, tipo_doc_contable_idtipodoccontable=?, medio_de_pago_idmediodepago=? where idmovimiento=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, MOVIMIENTO.getIdmovimiento());
-            sentencia.setString(2, MOVIMIENTO.getFechamovimiento());
-            sentencia.setInt(3, MOVIMIENTO.getSubtotal());
-            sentencia.setInt(4, MOVIMIENTO.getIva());
-            sentencia.setInt(5, MOVIMIENTO.getDescuento());
-            sentencia.setInt(6, MOVIMIENTO.getTotal());
-            sentencia.setInt(7, MOVIMIENTO.getTipo_doc_contable_idtipodoccontable());
-            sentencia.setInt(8, MOVIMIENTO.getMedio_de_pago_idmediodepago());
+
+            sentencia.setString(1, Movimiento.getIdmovimiento());
+            sentencia.setString(2, Movimiento.getFechamovimiento());
+            sentencia.setInt(3, Movimiento.getSubtotal());
+            sentencia.setInt(4, Movimiento.getIva());
+            sentencia.setInt(5, Movimiento.getDescuento());
+            sentencia.setInt(6, Movimiento.getTotal());
+            sentencia.setInt(7, Movimiento.getTipo_doc_contable_idtipodoccontable());
+            sentencia.setInt(8, Movimiento.getMedio_de_pago_idmediodepago());
+
+            sentencia.executeUpdate();
+            miRespuesta = "";
 
         } catch (Exception ex) {
-            mirespuesta = "";
-            mirespuesta = ex.getMessage();
-            System.err.println("ocurrió un problema en el Actualizar movimiento_movimientoDAO \n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en ActualizarMovimiento\n " + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
-    public movimiento Consultarmovimiento(String fechamovimiento) {
-        movimiento mimovimiento = null;
-
-        Conexion miconexion = new Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idmovimiento, fechamovimiento, subtotal, iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago  from movimiento where fechamovimiento = " + fechamovimiento);
-            ResultSet rs = sentencia.executeQuery(Query);
-
-            while (rs.next()) {
-                mimovimiento = new movimiento();
-                mimovimiento.setIdmovimiento(rs.getInt(1));
-                mimovimiento.setFechamovimiento(rs.getString(2));
-                mimovimiento.setSubtotal(rs.getInt(3));
-                mimovimiento.setIva(rs.getInt(4));
-                mimovimiento.setDescuento(rs.getInt(5));
-                mimovimiento.setTotal(rs.getInt(6));
-                mimovimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
-                mimovimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
-            }
-            return mimovimiento;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return mimovimiento;
-    }
-
-    public ArrayList<movimiento> Consultarlistadomovimiento(String Fechamovimiento) {
-        ArrayList<movimiento> milistamovimiento = new ArrayList<movimiento>();
-        movimiento mimovimiento;
+    public movimiento ConsultarMovimiento(String idmovimiento) {
+        movimiento mi_movimiento = null;
 
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + Fechamovimiento);
         try {
+
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idmovimiento, fechamovimiento, subtotal, iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago"
+
+            String Query = "Select idmovimiento, fechamovimiento, subtotal, iva, descuento, total, tipo_doc_contable_idtipodoccontable, medio_de_pago_idmediodepago from movimiento where idmovimiento = " + idmovimiento;
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()) {
+
+                mi_movimiento = new movimiento();
+                mi_movimiento.setIdmovimiento(rs.getString(1));
+                mi_movimiento.setFechamovimiento(rs.getString(2));
+                mi_movimiento.setSubtotal(rs.getInt(3));
+                mi_movimiento.setIva(rs.getInt(4));
+                mi_movimiento.setDescuento(rs.getInt(5));
+                mi_movimiento.setTotal(rs.getInt(6));
+                mi_movimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
+                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
+            }
+
+            return mi_movimiento;
+        } catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en ConsultarMovimiento\n " + ex.getMessage());
+        }
+        return mi_movimiento;
+    }
+
+    public ArrayList<movimiento> ListadoMovimiento(String idmovimiento, String fechamovimiento) {
+
+        ArrayList<movimiento> mi_lista_movimiento = new ArrayList<movimiento>();
+        movimiento mi_movimiento;
+
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+
+        System.out.println("Buscando parametro" + idmovimiento);
+
+        try {
+
+            Statement sentencia = nuevaCon.createStatement();
+
+            String Query = "select idmovimiento,fechamovimiento,subtotal,iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago "
                     + " from movimiento"
-                    + " where Fechamovimiento like '%" + Fechamovimiento + "%' "
-                    + "ORDER BY Fechamovimiento; ";
+                    + " where idmovimiento like '%" + idmovimiento + "%'"
+                    + "  or (fechamovimiento) like ('%" + fechamovimiento + "%') ORDER BY idmovimiento;";
             ResultSet rs = sentencia.executeQuery(Query);
+
             while (rs.next()) {
-                mimovimiento = new movimiento();
-                mimovimiento.setIdmovimiento(rs.getInt(1));
-                mimovimiento.setFechamovimiento(rs.getString(2));
-                mimovimiento.setSubtotal(rs.getInt(3));
-                mimovimiento.setIva(rs.getInt(4));
-                mimovimiento.setDescuento(rs.getInt(5));
-                mimovimiento.setTotal(rs.getInt(6));
-                mimovimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
-                mimovimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
-                milistamovimiento.add(mimovimiento);
+
+                mi_movimiento = new movimiento();
+                mi_movimiento.setIdmovimiento(rs.getString(1));
+                mi_movimiento.setFechamovimiento(rs.getString(2));
+                mi_movimiento.setSubtotal(rs.getInt(3));
+                mi_movimiento.setIva(rs.getInt(4));
+                mi_movimiento.setDescuento(rs.getInt(5));
+                mi_movimiento.setTotal(rs.getInt(6));
+                mi_movimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
+                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
+
+                mi_lista_movimiento.add(mi_movimiento);
 
             }
-            return milistamovimiento;
+
+            return mi_lista_movimiento;
+
         } catch (Exception ex) {
-            System.out.print("Ocurrio un error en la consulta de listado en el movimiento" + ex.getMessage());
+
+            System.out.println("Error en el ListadoMovimiento" + "\n" + ex.getMessage());
+            return mi_lista_movimiento;
+
         }
-        return milistamovimiento;
+
     }
 
-    public String Eliminarmovimiento(movimiento MOVIMIENTO) {
-        String mirespuesta;
+    public String EliminarMovimiento(movimiento Movimiento) {
+
+        String miRespuesta;
+
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
+
         try {
-            String Query = " delete from movimiento where idmovimiento = ?;";
+
+            String Query = "delete from movimiento where idmovimiento = ?  ";
             sentencia = nuevaCon.prepareStatement(Query);
-
-            sentencia.setInt(1, MOVIMIENTO.getIdmovimiento());
+            sentencia.setString(1, Movimiento.getIdmovimiento());
             sentencia.execute();
-            mirespuesta = "";
-        } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en movimientoDAO.Eliminarmovimiento" + ex.getMessage());
-        }
-        return mirespuesta;
-    }
+            miRespuesta = "";
 
+        } catch (Exception ex) {
+
+            miRespuesta = ex.getMessage();
+            System.err.println("Ocurrio un error en EliminarMovimiento" + ex.getMessage());
+        }
+        return miRespuesta;
+
+    }
+    
 }

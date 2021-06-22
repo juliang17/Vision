@@ -38,7 +38,7 @@ public class pruebaActualizarProveedores {
 
         mi_proveedores.setIdProveedores(idProveedores);
 
-        String respuesta = proveedores_dao.Actualizarproveedores(mi_proveedores);
+        String respuesta = proveedores_dao.ActualizarProveedor(mi_proveedores);
 
         if (respuesta.length() == 0) {
 

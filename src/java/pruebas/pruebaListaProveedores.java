@@ -10,7 +10,7 @@ public class pruebaListaProveedores {
 
         ProveedoresDAO proveedores_dao = new ProveedoresDAO();
         ArrayList<proveedores> mi_proveedores = new ArrayList<proveedores>();
-        mi_proveedores = proveedores_dao.listadoproveedores("","","");
+        mi_proveedores = proveedores_dao.ListarProveedor("", "", "");
 
         int size = mi_proveedores.size();
         System.out.println("<table border=\"1\"><tr><td>idProveedores</td><td>nombreproveedores</td><td>correoproveedores</td><td>telefonoproveedores</td> ");

@@ -2,14 +2,14 @@ package modelo;
 
 public class marca {
     
-    private int idmarca;
+    private String idmarca;
     private String descripcionmarca;
 
-    public int getIdmarca() {
+    public String getIdmarca() {
         return idmarca;
     }
 
-    public void setIdmarca(int idmarca) {
+    public void setIdmarca(String idmarca) {
         this.idmarca = idmarca;
     }
 

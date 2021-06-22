@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import controlador.referenciaDAO;
+import controlador.inventarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.referencia_de_pago;
+import modelo.inventario;
 
-/**
- *
- * @author santy
- */
-@WebServlet(name = "ConsultarReferencia", urlPatterns = {"/ConsultarReferencia"})
-public class ConsultarReferencia extends HttpServlet {
+
+@WebServlet(name = "RegistroInventario", urlPatterns = {"/RegistroInventario"})
+public class RegistroInventario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,52 +32,50 @@ public class ConsultarReferencia extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+            
+        String Entrada = request.getParameter("entrada");
+        String Salida = request.getParameter("salida");
+        String Saldo = request.getParameter("saldo");
+        String Productos = request.getParameter("productos_idproductos");
 
-        String Accion = request.getParameter("Actualizar");
-        System.out.println("Accion " + Accion);
-
-        String fechadepago = request.getParameter("IdConsultado");
+        String BanderaEstado = request.getParameter("BanderaRegistro");
         
-        referenciaDAO mi_referenciae_pago_dao = new referenciaDAO();
-        referencia_de_pago mi_referencia_pago = null;
-
-        mi_referencia_pago = mi_referenciae_pago_dao.ConsultarReferencia(fechadepago);
-        if (Accion != null) {
-
-            if (mi_referencia_pago != null) {
-                response.sendRedirect("/VISION/vista/Formularios/GestionReferencia.jsp?fechadepago="
-                        + mi_referencia_pago.getFechadepago().toString() + "&"
-                        + "medio_de_pago_idMedioDePago=" + mi_referencia_pago.getMedio_de_pago_idMedioDePago() + "&"
-                        + "Vista=" + "Actualizar" + "&");
-                System.out.println("Salio");
+        int entrada = Integer.parseInt(Entrada);
+        int salida = Integer.parseInt(Salida);
+        int saldo = Integer.parseInt(Saldo);
+        int P = Integer.parseInt(Productos);
+        
+        
+        inventarioDAO idao = new inventarioDAO();
+        inventario i = new inventario();
+        
+        i.setEntrada(entrada);
+        i.setSalida(salida);
+        i.setSaldo(saldo);
+        i.setProductos_idproductos(P);
+        
+        System.out.println("El valor es " + BanderaEstado);
+        if (BanderaEstado.equals("Correcto")) {
+            String respuestaRegistrada = idao.AdicionarInventario(i);
+            System.out.println("Res " + respuestaRegistrada);
+            System.out.println("Res " + respuestaRegistrada.length());
+            if (respuestaRegistrada.length() == 0) {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('" + "Inventario registrado con éxito." + "');");
+                out.println("window.location.href = '/VISION/vista/Formularios/GestionInventarios.jsp';");
+                out.println("</script>");
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la fecha de pago: " + fechadepago + "');");
+                //out.println("alert('" + respuestaRegistrada + "');");
+                out.println("alert('" + "Error encontrado: " + respuestaRegistrada.replace("'", "") + "');");
+                out.println("window.history.back();");
                 out.println("</script>");
+
             }
         } else {
-            if (mi_referencia_pago != null) {
-                String RespuestaRegistrada = mi_referenciae_pago_dao.EliminarReferenciaDePago(mi_referencia_pago);
-                if (RespuestaRegistrada.length() == 0) {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "Eliminacion Realizada." + "');");
-                    out.println("window.location.href ='/VISION/vista/Formularios/GestionReferencia.jsp';");
-                    out.println("</script>");
-                } else {
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
-                    out.println("</script>");
-                }
-
-            } else {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la identificacion: " + fechadepago
-                        + "');");
-                out.println("</script>");
-            }
-        }
+            System.out.println("El valor no es correcto " + BanderaEstado);
+        }   
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

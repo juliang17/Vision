@@ -3,23 +3,25 @@ package modelo;
 
 public class genero {
     
-    private int idgenero;
+    private String idgenero;
     private String descripciongenero;
 
-    public int getidgenero() {
+    public String getIdgenero() {
         return idgenero;
     }
 
-    public void setidgenero(int idgenero) {
+    public void setIdgenero(String idgenero) {
         this.idgenero = idgenero;
     }
 
-    public String getdescripciongenero() {
+    public String getDescripciongenero() {
         return descripciongenero;
     }
 
-    public void setdescripciongenero(String descripciongenero) {
+    public void setDescripciongenero(String descripciongenero) {
         this.descripciongenero = descripciongenero;
     }
+
+    
     
 }

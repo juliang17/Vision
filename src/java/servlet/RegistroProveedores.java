@@ -39,7 +39,7 @@ public class RegistroProveedores extends HttpServlet {
 
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = pdao.adicionarproveedores(p);
+            String respuestaRegistrada = pdao.AdicionarProveedor(p);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {

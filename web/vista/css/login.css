@@ -1,6 +1,18 @@
-.card {
-    background: #686C6C;
+.inicio {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    
+}
+.bg {
+    background-image: url(..//imagenes/login.png);
+    background-position: center center;
 }
 body {
-    background-color: lightblue;
+    background: black;
+}
+.container {
+    width: 75%;
+    margin-top: 5%;
 }

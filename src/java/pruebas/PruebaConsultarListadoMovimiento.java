@@ -10,7 +10,7 @@ public class PruebaConsultarListadoMovimiento {
 
         movimientoDAO MovDAO = new movimientoDAO();
         ArrayList<movimiento> milistamovimiento = new ArrayList<movimiento>();
-        milistamovimiento = MovDAO.Consultarlistadomovimiento("");
+        milistamovimiento = MovDAO.ListadoMovimiento("", "");
 
         int size = milistamovimiento.size();
         System.out.println("<table border=\"1\"><tr><td>id</td><td>fechamovimiento</td>><td>subtotal</td><td>iva</td><td>descuento</td><td>total</td><td>tipo_doc_contable_idtipodoccontable</td><td>medio_de_pago_idmediodepago</td> ");

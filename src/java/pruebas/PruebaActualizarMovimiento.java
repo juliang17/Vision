@@ -50,7 +50,7 @@ public class PruebaActualizarMovimiento {
         System.out.println("Por favor ingrese el id");
         idmovimiento = respuesta.nextInt();
 
-        Mov.setIdmovimiento(idmovimiento);
+        Mov.setIdmovimiento(fechamovimiento);
         Mov.setFechamovimiento(fechamovimiento);
         Mov.setSubtotal(subtotal);
         Mov.setIva(iva);
@@ -59,9 +59,9 @@ public class PruebaActualizarMovimiento {
         Mov.setTipo_doc_contable_idtipodoccontable(tipo_doc_contable_idtipodoccontable);
         Mov.setMedio_de_pago_idmediodepago(medio_de_pago_idmediodepago);
         
-        Mov.setIdmovimiento(idmovimiento);
+        Mov.setIdmovimiento(fechamovimiento);
 
-        String miRespuesta = MovDAO.Actualizarmovimiento(Mov);
+        String miRespuesta = MovDAO.ActualizarMovimiento(Mov);
 
         if (miRespuesta.length() == 0) {
 

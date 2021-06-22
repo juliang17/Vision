@@ -1,50 +1,60 @@
-function validaciondetalle() {
+function validacionDetalle() {
 
     var resultado = 'Correcto';
-    var cantidad = document.getElementById("txt_cantidad_Reg").value;
-    var precio = document.getElementById("txt_precio_Reg").value;
-    var iva = document.getElementById("txt_iva_Reg").value;
-    var subtotal = document.getElementById("txt_subtotal_Reg").value;
-    var productos_idproductos = document.getElementById("txt_productos_idproductos_Reg").value();
-    var movimiento_idmovimiento = document.getElementById("txt_movimiento_idmovimiento_Reg").value;
+
+    var descripcion = $("#txt_descripcion_Reg").val;
+    var cantidad = $("#txt_cantidad_Reg").val;
+    var precio = $("#txt_precio_Reg").val;
+    var iva = $("#txt_iva_Reg").val;
+    var subtotal = $("#txt_subtotal_Reg").val;
+    var productos_idproductos = $("#txt_productos_idproductos_Reg").val;
+    var movimiento_idmovimiento = $("movimiento_idmovimiento").val;
+    
 
 
     console.log("-- Informacion a validar -- ");
+    console.log("descripcion : " + descripcion);
     console.log("cantidad : " + cantidad);
     console.log("precio : " + precio);
     console.log("iva : " + iva);
     console.log("subtotal : " + subtotal);
-    console.log("Producto : " + productos_idproductos);
-    console.log("Movimiento : " + movimiento_idmovimiento);
+    console.log("productos_idproductos : " + productos_idproductos);
+    console.log("movimiento_idmovimiento : " + movimiento_idmovimiento);
 
+
+    if (descripcion == '') {
+
+        alert("La entrada no puede estar vacia");
+        resultado = 'Error';
+    }
     if (cantidad == '') {
 
-        alert("La cantidad no puede estar vacia");
+        alert("La salida no puede estar vacia");
         resultado = 'Error';
     }
     if (precio == '') {
 
-        alert("El precio no puede estar vacia");
+        alert("El saldo no puede estar vacia");
         resultado = 'Error';
     }
     if (iva == '') {
 
-        alert("El Iva no puede estar vacia");
+        alert("El saldo no puede estar vacia");
         resultado = 'Error';
     }
     if (subtotal == '') {
 
-        alert("El subtotal no puede estar vacia");
+        alert("El saldo no puede estar vacia");
         resultado = 'Error';
     }
     if (productos_idproductos == '') {
 
-        alert("El Producto no puede estar vacio");
+        alert("El saldo no puede estar vacia");
         resultado = 'Error';
     }
     if (movimiento_idmovimiento == '') {
 
-        alert("El movimiento no puede estar vacio");
+        alert("El saldo no puede estar vacia");
         resultado = 'Error';
     }
     $('#txt_Bandera_Reg').val(resultado);
@@ -57,20 +67,13 @@ function validaciondetalle() {
 
         return false;
     }
-}
-function setProductos_idproductos(x) {
-    $('#txt_productos_idproductos_Reg').val(x);
-    console.log("valor : " + x);
-}
-function setmovimiento_idmovimiento(x) {
-    $('#txt_movimiento_idmovimiento_Reg').val(x);
-    console.log("valor : " + x);
+
 }
 
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/vigiwebB/vista/inventario.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/Formularios/GestionDetalleMovimiento.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
@@ -108,3 +111,13 @@ function DefinirFoco() {
 $('#txt_Id_Consultado').change(function () {
     console.log("Texto" + $('#txt_Id_Consultado').val());
 });
+
+function setProductos_idproductos(x){
+    $('#txt_productos_idproductos_Reg').val(x);
+    console.log("valor : " + x);   
+}
+function setmov(x){
+    $('#txt_movimiento_idmovimiento_Reg').val(x);
+    console.log("valor : " + x);   
+}
+

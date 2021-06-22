@@ -97,14 +97,14 @@
 
                                 <% MarcaDAO marca_dao = new MarcaDAO();
                                     ArrayList<marca> mi_marca = new ArrayList<marca>();
-                                    mi_marca = marca_dao.listadomarca(buscando);
+                                    mi_marca = marca_dao.ConsultarListadoMarca(buscando, buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (marca M : mi_marca) {
                                         out.println("<tr>");
                                         out.println("<td>" + M.getDescripcionmarca() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + M.getDescripcionmarca() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + M.getIdmarca()+ ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + M.getDescripcionmarca() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + M.getIdmarca() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

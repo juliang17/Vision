@@ -42,11 +42,11 @@ public class RegistroTipoDocumento extends HttpServlet {
         tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
         tipo_documento mitipodoc = new tipo_documento();
         
-        mitipodoc.setdescripciontipodoc(TIPOD);
+        mitipodoc.setDescripciontipodoc(TIPOD);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {
-            String respuestaRegistrada = mitipodocDAO.adicionartipo_documento(mitipodoc);
+            String respuestaRegistrada = mitipodocDAO.Adicionartipo_documento(mitipodoc);
             System.out.println("Res " + respuestaRegistrada);
             System.out.println("Res " + respuestaRegistrada.length());
             if (respuestaRegistrada.length() == 0) {

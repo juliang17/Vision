@@ -9,132 +9,133 @@ import modelo.marca;
 
 public class MarcaDAO {
 
-    public String adicionarmarca(marca MARCA) {
+    public String AdicionarMarca(marca Marca) {
 
-        String mirespuesta;
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
-            String Query = "insert marca (descripcionmarca)"
-                    + "values (?)";
+            String Query = "Insert marca (descripcionmarca)" + "values (?);";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setString(1, MARCA.getDescripcionmarca());
-
+            sentencia.setString(1, Marca.getDescripcionmarca());
             sentencia.execute();
-            mirespuesta = "";
+            miRespuesta = "";
 
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en adicionarmarca/n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en AdicionarMarcaDAO\n" + ex.getMessage());
         }
-        return mirespuesta;
-
+        return miRespuesta;
     }
 
-    public String Actualizarmarca(marca MARCA) {
+    public String ActualizarMarca(marca Marca) {
 
-        String mirespuesta = "";
-        Conexion miconexion = new Conexion();
+        String miRespuesta;
+        Conexion miConexion = new Conexion();
         Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
+        nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
-
         try {
             String Query = "update marca set idmarca=?, descripcionmarca=? where idmarca=?";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, MARCA.getIdmarca());
-            sentencia.setString(2, MARCA.getDescripcionmarca());
-            sentencia.setInt(3, MARCA.getIdmarca());
+
+            sentencia.setString(1, Marca.getIdmarca());
+            sentencia.setString(2, Marca.getDescripcionmarca());
+            sentencia.setString(3, Marca.getIdmarca());
 
             sentencia.executeUpdate();
+            miRespuesta = "";
 
         } catch (Exception ex) {
-            mirespuesta = "";
-            mirespuesta = ex.getMessage();
-            System.err.println("ocurrió un problema en el  Actualizarmarca\n" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ha ocurrido un error en ActualizarMarcaDAO\n" + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 
-    public marca Consultamarca(String descripcionmarca) {
-        marca mimarca = null;
-
-        Conexion miconexion = new Conexion();
-        Connection nuevaCon;
-        nuevaCon = miconexion.getConn();
-
-        try {
-            Statement sentencia = nuevaCon.createStatement();
-            String Query = ("select idmarca, descripcionmarca from marca where descripcionmarca = " + descripcionmarca);
-            ResultSet rs = sentencia.executeQuery(Query);
-
-            while (rs.next()) {
-                mimarca = new marca();
-                mimarca.setIdmarca(rs.getInt(1));
-                mimarca.setDescripcionmarca(rs.getString(2));
-
-            }
-            return mimarca;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return mimarca;
-    }
-
-    public ArrayList<marca> listadomarca(String descripcionmarca) {
-        ArrayList<marca> milistamimarca = new ArrayList<marca>();
-        marca mimarca;
+    public marca ConsultarMarca(String idmarca) {
+        marca mi_marca = null;
 
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
-        System.out.println("Buscando parametro: " + descripcionmarca);
         try {
+
             Statement sentencia = nuevaCon.createStatement();
-            String Query = " select idmarca, descripcionmarca "
-                    + " from marca"
-                    + " where descripcionmarca like '%" + descripcionmarca + "%' "
-                    + "ORDER BY idmarca; ";
+
+            String Query = "Select idmarca, descripcionmarca from marca where idmarca =  " + idmarca;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
-                mimarca = new marca();
-                mimarca.setIdmarca(rs.getInt(1));
-                mimarca.setDescripcionmarca(rs.getString(2));
-                milistamimarca.add(mimarca);
+
+                mi_marca = new marca();
+                mi_marca.setIdmarca(rs.getString(1));
+                mi_marca.setDescripcionmarca(rs.getString(2));
 
             }
-            return milistamimarca;
+
+            return mi_marca;
         } catch (Exception ex) {
-            System.out.print("Ocurrio un error en listadomarca" + ex.getMessage());
+            System.out.println("Ha ocurrido un error en ConsultarMarcaDAO\n " + ex.getMessage());
         }
-        return milistamimarca;
+        return mi_marca;
     }
 
-    public String Eliminarmarca(marca MARCA) {
-        String mirespuesta;
+    public ArrayList<marca> ConsultarListadoMarca(String idmarca, String descripcionmarca) {
+        ArrayList<marca> mi_listado_marca = new ArrayList<marca>();
+        marca mi_marca;
+
+        Conexion miConexion = new Conexion();
+        Connection nuevaCon;
+        nuevaCon = miConexion.getConn();
+
+        System.out.println("Buscando parametro: " + idmarca);
+        try {
+            Statement sentencia = nuevaCon.createStatement();
+
+            String Query = " select idmarca,descripcionmarca "
+                    + " from marca "
+                    + " where idmarca like '%" + idmarca + "%' "
+                    + "  or (descripcionmarca) like ('%" + descripcionmarca + "%') ORDER BY idmarca;";
+            ResultSet rs = sentencia.executeQuery(Query);
+            while (rs.next()) {
+
+                mi_marca = new marca();
+                mi_marca.setIdmarca(rs.getString(1));
+                mi_marca.setDescripcionmarca(rs.getString(2));
+                mi_listado_marca.add(mi_marca);
+            }
+            return mi_listado_marca;
+        } catch (Exception ex) {
+            System.out.println("Ha ocurrido un error en ConsultarListadoMarcaDAO\n " + ex.getMessage());
+        }
+        return mi_listado_marca;
+
+    }
+
+    public String EliminarMarca(marca Marca) {
+
+        String miRespuesta;
         Conexion miConexion = new Conexion();
         Connection nuevaCon;
         nuevaCon = miConexion.getConn();
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from marca where idmarca = ? and descripcionmarca = ?;";
-
+            String Query = " delete from marca where idmarca = ? and descripcionmarca = ? ;";
             sentencia = nuevaCon.prepareStatement(Query);
-            sentencia.setInt(1, MARCA.getIdmarca());
-            sentencia.setString(2, MARCA.getDescripcionmarca());
-
-            mirespuesta = "";
+            sentencia.setString(1, Marca.getIdmarca());
+            sentencia.setString(2, Marca.getDescripcionmarca());
+            sentencia.execute();
+            miRespuesta = "";
         } catch (Exception ex) {
-            mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en Eliminarmarca" + ex.getMessage());
+            miRespuesta = ex.getMessage();
+            System.out.println("Ocurrio un error en EliminarMarcaDAO" + ex.getMessage());
         }
-        return mirespuesta;
+        return miRespuesta;
     }
 }

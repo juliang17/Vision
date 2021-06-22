@@ -20,7 +20,7 @@ public class PruebaAdicionarMarca {
         descripcionmarca = teclado.next();
 
         mi_marca.setDescripcionmarca(descripcionmarca);
-        String miRespuesta = marca_dao.adicionarmarca(mi_marca);
+        String miRespuesta = marca_dao.AdicionarMarca(mi_marca);
 
         if (miRespuesta.length() == 0) {
 

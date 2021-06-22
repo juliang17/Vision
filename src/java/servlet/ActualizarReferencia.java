@@ -45,10 +45,10 @@ public class ActualizarReferencia extends HttpServlet {
         referencia_de_pago mi_referencia_pago = new referencia_de_pago();
 
         mi_referencia_pago.setFechadepago(fechadepago);
-        mi_referencia_pago.setMedio_de_pago_idMedioDePago(Medio);
+        mi_referencia_pago.setMedio_de_pago_idMedioDePago_(Medio);
         
         System.out.println("fecha de pago " + fechadepago);
-        String respuestaRegistrada = mi_referenciae_pago_dao.ModificarReferencia(mi_referencia_pago);
+        String respuestaRegistrada = mi_referenciae_pago_dao.ActualizarReferencia_de_pago(mi_referencia_pago);
         if(respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('"+"Actualización Realizada."+"');");

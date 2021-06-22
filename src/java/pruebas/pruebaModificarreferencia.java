@@ -21,7 +21,7 @@ public class pruebaModificarreferencia {
 
         Scanner repuesta = new Scanner(System.in);
 
-        int idreferenciadepago;
+        String idreferenciadepago = "";
         String fechadepago = "";
         int medio_de_pago_idMedioDePago;
         
@@ -31,15 +31,15 @@ public class pruebaModificarreferencia {
         medio_de_pago_idMedioDePago = repuesta.nextInt();
         
         System.out.println("Por favor ingrese el id del medio de pago");
-        idreferenciadepago = repuesta.nextInt();
+        idreferenciadepago = repuesta.nextLine();
 
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
         mi_referencia_pago.setFechadepago(fechadepago);
-        mi_referencia_pago.setMedio_de_pago_idMedioDePago(medio_de_pago_idMedioDePago);
+        mi_referencia_pago.setMedio_de_pago_idMedioDePago_(medio_de_pago_idMedioDePago);
         
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
 
-        String miRespuesta = mi_referenciae_pago_dao.ModificarReferencia(mi_referencia_pago);
+        String miRespuesta = mi_referenciae_pago_dao.ActualizarReferencia_de_pago(mi_referencia_pago);
 
         if (miRespuesta.length() == 0) {
 

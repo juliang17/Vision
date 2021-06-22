@@ -44,7 +44,7 @@ public class PruebaAdicionardetalle {
         mi_detalle.setSubtotal(subtotal);
         mi_detalle.setProductos_idproductos(productos_idproductos);
         mi_detalle.setMovimiento_idmovimiento(movimiento_idmovimiento);
-        String miRespuesta = mi_detalle_dao.Adicionardetalle_Movimiento(mi_detalle);
+        String miRespuesta = mi_detalle_dao.AdicionarDetalle(mi_detalle);
 
         if (miRespuesta.length() == 0) {
 

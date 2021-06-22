@@ -1,56 +1,49 @@
 function validacionInventario() {
 
     var resultado = 'Correcto';
-    var Entrada = $('#txt_entrada_Reg').val();
-    var Salida = $('#txt_salida_Reg').val();
-    var Saldo = $('#txt_saldo_Reg').val();
-    var productos_idproductos = $('#txt_productos_idproductos_Reg').val();
+    var Entrada = document.getElementById("txt_entrada_Reg").value;
+    var Salida = document.getElementById("txt_salida_Reg").value;
+    var Saldo = document.getElementById("txt_saldo_Reg").value;
 
 
     console.log("-- Informacion a validar -- ");
     console.log("Entrada : " + Entrada);
     console.log("Salida : " + Salida);
     console.log("Saldo : " + Saldo);
-    console.log("Producto : " + productos_idproductos);
 
 
     if (Entrada == '') {
 
         alert("La entrada no puede estar vacia");
         resultado = 'Error';
-    } else if (Salida == '') {
+    }
+    if (Salida == '') {
 
         alert("La salida no puede estar vacia");
         resultado = 'Error';
-    } else if (Saldo == '') {
+    }
+    if (Saldo == '') {
 
         alert("El saldo no puede estar vacia");
         resultado = 'Error';
-    } else if (productos_idproductos == '') {
-
-        alert("El Producto no puede estar vacio");
-        resultado = 'Error';
-    } else {
-        resultado = 'Correcto';
     }
-    $('#txt_bandera_reg').val(resultado);
-    console.log('Resultado:' + $('#txt_bandera_reg').val());
+    $('#txt_Bandera_Reg').val(resultado);
+    console.log('Resultado:' + $('#txt_Bandera_Reg').val());
     if (resultado == 'Correcto') {
+
         return true;
+
     } else {
+
         return false;
     }
-}
 
-function setProductos_idproductos(x) {
-    $('#txt_productos_idproductos_Reg').val(x);
-    console.log("valor : " + x);
 }
 
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());
-    window.location.href = '/vigiwebB/vista/inventario.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/Formularios/GestionInventarios.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
@@ -88,3 +81,11 @@ function DefinirFoco() {
 $('#txt_Id_Consultado').change(function () {
     console.log("Texto" + $('#txt_Id_Consultado').val());
 });
+
+function setProductos_idproductos(x){
+    $('#txt_productos_idproductos_Reg').val(x);
+    console.log("valor : " + x);   
+}
+
+
+
