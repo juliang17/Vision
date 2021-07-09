@@ -74,7 +74,7 @@
                         <input type="number" name="tipo_doc_contable_idtipodoccontable" class="form-control d-none" placeholder="Tipo de documento contable" id="txt_tipo_doc_contable_idtipodoccontable_Reg"> <br>
                         <%
                             tipo_doc_contableDAO tipo_doc_contable_dao = new tipo_doc_contableDAO();
-                            ArrayList<tipo_doc_contable> tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(0, "");
+                            ArrayList<tipo_doc_contable> tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable("","");
                             out.println("<select class='form-control' id='Selectidtipodoccontable' size='1'>");
                             out.println("<option onclick='settipo_doc_contable_idtipodoccontable(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                             for (tipo_doc_contable T : tipo_doc_contable) {
@@ -109,8 +109,8 @@
         <div id="Listado" class="bd-example container">
             <form action="/VISION/ConsultarMovimientos" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar "/>
+                    <div id="ControlRegistro" class="input-group">
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
                         <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div> 
                     <div>

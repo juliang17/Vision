@@ -102,9 +102,9 @@
                                     for (unidad_de_medida U : milistaunidadmedida) {
                                         out.println("<tr>");
                                         out.println("<td>" + U.getDescripcionunidadmedida() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getDescripcionunidadmedida() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getIdunidadmedida() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getDescripcionunidadmedida() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getIdunidadmedida() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

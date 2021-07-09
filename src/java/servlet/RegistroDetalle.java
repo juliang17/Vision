@@ -36,7 +36,6 @@ public class RegistroDetalle extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
             
-        String descripcion = request.getParameter("descripcion");
         String cantidad = request.getParameter("cantidad");
         String precio = request.getParameter("precio");
         String iva = request.getParameter("iva");
@@ -57,7 +56,6 @@ public class RegistroDetalle extends HttpServlet {
         detalleDAO ddao = new detalleDAO();
         detalle_movimiento d = new detalle_movimiento();
         
-        d.setDescripcion(descripcion);
         d.setCantidad(C);
         d.setPrecio(P);
         d.setIva(I);

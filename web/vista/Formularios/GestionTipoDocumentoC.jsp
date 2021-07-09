@@ -96,14 +96,14 @@
 
                                 <% tipo_doc_contableDAO tipo_doc_contable_dao = new tipo_doc_contableDAO();
                                     ArrayList<tipo_doc_contable> mi_tipo_doc_contable = new ArrayList<tipo_doc_contable>();
-                                    mi_tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(buscando);
+                                    mi_tipo_doc_contable = tipo_doc_contable_dao.ListadoTipoDocContable(buscando, buscando);
                                     out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (tipo_doc_contable T : mi_tipo_doc_contable) {
                                         out.println("<tr>");
                                         out.println("<td>" + T.getDescripciontipodoccontable() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + T.getDescripciontipodoccontable() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + T.getIdtipodoccontable() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getDescripciontipodoccontable() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getIdtipodoccontable() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

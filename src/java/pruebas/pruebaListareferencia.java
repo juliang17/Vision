@@ -18,7 +18,7 @@ public class pruebaListareferencia {
         
         referenciaDAO referencia_de_pago_dao = new referenciaDAO();
         ArrayList<referencia_de_pago> mi_referencia_de_pago = new ArrayList<referencia_de_pago>();
-        mi_referencia_de_pago = referencia_de_pago_dao.ConsultarListadoReferencia_de_pago("", "");
+        mi_referencia_de_pago = referencia_de_pago_dao.ConsultarListadoReferencia_de_pago("");
 
         int size = mi_referencia_de_pago.size();
         System.out.println("<table border=\"1\"><tr><td>idreferenciadepago</td><td>fechadepago</td>><td>medio_de_pago_idMedioDePago</td> ");
@@ -28,7 +28,7 @@ public class pruebaListareferencia {
             System.out.println("<tr>");
             System.out.println("<td>" + R.getIdreferenciadepago() + "</td>");
             System.out.println("<td>" + R.getFechadepago() + "</td>");
-            System.out.println("<td>" + R.getMedio_de_pago_idMedioDePago_() + "</td>");
+            System.out.println("<td>" + R.getMedio_de_pago_idMedioDePago() + "</td>");
 
             System.out.println("</tr>");
 

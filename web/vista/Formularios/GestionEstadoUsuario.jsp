@@ -110,9 +110,9 @@
                                     for (estado_usuario E : miestado) {
                                         out.println("<tr>");
                                         out.println("<td>" + E.getDescripcionestadousuario() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + E.getDescripcionestadousuario() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + E.getIdestadousuario() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + E.getDescripcionestadousuario() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + E.getIdestadousuario() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

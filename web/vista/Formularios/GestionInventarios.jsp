@@ -85,8 +85,8 @@
         <div id="Listado" class="bd-example container">
             <form action="/VISION/ConsultarInventarios" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar "/>
+                    <div id="ControlRegistro" class="input-group ">
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
                         <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>

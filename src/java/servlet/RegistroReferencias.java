@@ -33,21 +33,19 @@ public class RegistroReferencias extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
             
-        String descripcion = request.getParameter("descripcion");
         String fechadepago = request.getParameter("fechadepago");
-        String medio_de_pago_idMedioDePago_ = request.getParameter("medio_de_pago_idMedioDePago_");
+        String medioDePago = request.getParameter("medio_de_pago_idMedioDePago");
 
         String BanderaEstado = request.getParameter("BanderaRegistro");
         
-        int Medio = Integer.parseInt(medio_de_pago_idMedioDePago_);
+        int M = Integer.parseInt(medioDePago);
         
         
         referenciaDAO rdao = new referenciaDAO();
         referencia_de_pago r = new referencia_de_pago();
         
-        r.setDescripcion(descripcion);
         r.setFechadepago(fechadepago);
-        r.setMedio_de_pago_idMedioDePago_(Medio);
+        r.setMedio_de_pago_idMedioDePago(M);
         
         
         System.out.println("El valor es " + BanderaEstado);

@@ -15,7 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../Javascript/ValidarDetalle.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inventario</title>
+        <title>Detalle movimiento</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
@@ -45,36 +45,33 @@
 
         <div id="Registrar" class="bd-example d-none">
             <div class="container">
-                <h1>Registrar Inventario</h1>
+                <h3>Registrar detalle movimiento</h3>
                 <form action="/VISION/RegistroDetalle" method="post" onsubmit="return validacionDetalle()" >
                     <div class="form-row" >
                         <div class="form-group col-md-6" >
-                            <h2>Descripcion:</h2>
-                            <input type="text" name="descripcion" class="form-control" placeholder="Digite la descripcion" id="txt_descripcion_Reg">
-                        </div> 
-                        <div class="form-group col-md-6" >
-                            <h2>Cantidad:</h2>
+                            <h5>Cantidad:</h5>
                             <input type="text" name="cantidad" class="form-control" placeholder="Digite la cantidad" id="txt_cantidad_Reg">
                         </div> 
                         <div class="form-row">
                             <div class="form-group col-md-6" >
-                                <h2>Precio:</h2>
+                                <h5>Precio:</h5>
                                 <input type="text" name="precio" class="form-control" placeholder="Digite el precio" id="txt_precio_Reg">
                             </div> 
                             <div class="form-group col-md-6" >
-                                <h2>Precio:</h2>
+                                <h5>Precio:</h5>
                                 <input type="text" name="iva" class="form-control" placeholder="Digite el iva" id="txt_iva_Reg">
                             </div> 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6" >
-                                <h2>Subtotal:</h2>
+                                <h5>Subtotal:</h5>
                                 <input type="text" name="subtotal" class="form-control" placeholder="Digite el subtotal" id="txt_subtotal_Reg">
                             </div> 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12" >
-                                <input type="number" name="productos_idproductos" class="form-control" id="txt_productos_idproductos_Reg"> <br>
+                                <h5><strong>Producto</strong></h5>
+                                <input type="number" name="productos_idproductos" class="form-control d-none" id="txt_productos_idproductos_Reg"> <br>
                                 <%
                                     ProductoDAO productos_dao = new ProductoDAO();
                                     ArrayList<productos> mi_productos = productos_dao.listadoproductos("", "");
@@ -89,7 +86,8 @@
                         </div>  
                         <div class="form-row">
                             <div class="form-group col-md-12" >
-                                <input type="number" name="movimiento_idmovimiento" class="form-control" id="txt_movimiento_idmovimiento_Reg"> <br>
+                                <h5><strong>Movimiento</strong></h5>
+                                <input type="number" name="movimiento_idmovimiento" class="form-control d-none" id="txt_movimiento_idmovimiento_Reg"> <br>
                                 <%
                                     movimientoDAO movimiento_dao = new movimientoDAO();
                                     ArrayList<movimiento> mi_movimiento = movimiento_dao.ListadoMovimiento("", "");
@@ -114,23 +112,22 @@
         <div id="Listado" class="bd-example container">
             <form action="/VISION/ConsultarDetalle" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar"/>
+                    <div id="ControlRegistro" class="input-group">
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
                         <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
-                        <h2 class="title-table">Listado Movimientos</h2>
+                        <h2 class="title-table">Listado detalle movimiento</h2>
                         <%
                             detalleDAO detalledao = new detalleDAO();
                             ArrayList<detalle_movimiento> detalleList = new ArrayList<detalle_movimiento>();
                             detalleList = detalledao.ListadoDetalle(buscando, buscando);
-                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>descripcion</th><th>cantidad</th><th>precio</th><th>iva</th><th>subtotal</th><th>productos_idproductos</th><th>movimiento_idmovimiento</th><th>Eliminar</th></tr></thead>");
+                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>cantidad</th><th>precio</th><th>iva</th><th>subtotal</th><th>productos_idproductos</th><th>movimiento_idmovimiento</th><th>Eliminar</th></tr></thead>");
 
                             for (detalle_movimiento C : detalleList) {
 
                                 out.println("<tr>");
                                 out.println("<td>" + C.getIddetallemovimiento()+ "</td>");
-                                out.println("<td>" + C.getDescripcion()+ "</td>");
                                 out.println("<td>" + C.getCantidad() + "</td>");
                                 out.println("<td>" + C.getPrecio() + "</td>");
                                 out.println("<td>" + C.getIva() + "</td>");

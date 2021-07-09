@@ -84,7 +84,7 @@
 
                         <div class="form-group col-md-6" >
                             <h2>Categoria:</h2>
-                            <input type="number" name="categorias_idcategorias" class="form-control" id="categorias_idcategorias">
+                            <input type="number" name="categorias_idcategorias" class="form-control d-none" id="categorias_idcategorias">
 
                             <%
                                 categoriasDAO categorias_dao = new categoriasDAO();

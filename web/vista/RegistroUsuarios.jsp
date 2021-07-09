@@ -94,9 +94,8 @@
                     out.println("</select>");
                 %>
                 <br>
-                <br>
                 <h5><strong>Estado usuario</strong></h5>
-                <input type="number" name="estado_usuario_idestadousuario" class="form-control " id="txt_estado_usuario_idestadousuario_reg">
+                <input type="number" name="estado_usuario_idestadousuario" class="form-control d-none" id="txt_estado_usuario_idestadousuario_reg">
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
                     ArrayList<estado_usuario> miestado = miestadousuarioDAO.Consultarlistadoestado_usuario("" , "");
@@ -107,7 +106,6 @@
                     }
                     out.println("</select>");
                 %>
-                <br>
                 <br>
                 <h5><strong>Genero</strong></h5>
                 <input type="number" name="genero_idgenero" class="form-control d-none" id="txt_genero_idgenero_reg">
@@ -124,6 +122,7 @@
                 <div id="controlRegistro" class="bd-example d-none">
                     <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
                 </div>
+                <br>
                 <button type="submit" class="btn btn-success">Registrar</button>
             </form>
         </div>

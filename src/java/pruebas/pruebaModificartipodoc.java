@@ -13,14 +13,14 @@ public class pruebaModificartipodoc {
 
         Scanner teclado = new Scanner(System.in);
 
-        int idtipodoccontable;
+        String idtipodoccontable;
         String descripciontipodoccontable = "";
 
         System.out.println("Digite la descripción del tipo documento contable");
         descripciontipodoccontable = teclado.nextLine();
 
         System.out.println("Digite el id del tipo documento contable");
-        idtipodoccontable = teclado.nextInt();
+        idtipodoccontable = teclado.next();
 
         mi_tipo_doc.setIdtipodoccontable(idtipodoccontable);
         mi_tipo_doc.setDescripciontipodoccontable(descripciontipodoccontable);

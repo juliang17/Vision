@@ -22,16 +22,15 @@ public class detalleDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "Insert into detalle_movimiento (descripcion, cantidad, precio, iva, subtotal, productos_idproductos, movimiento_idmovimiento)" + "values (?,?,?,?,?,?,?);";
+            String Query = "Insert into detalle_movimiento (cantidad, precio, iva, subtotal, productos_idproductos, movimiento_idmovimiento)" + "values (?,?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setString(1, Detalle.getDescripcion());
-            sentencia.setInt(2, Detalle.getCantidad());
-            sentencia.setInt(3, Detalle.getPrecio());
-            sentencia.setInt(4, Detalle.getIva());
-            sentencia.setInt(5, Detalle.getSubtotal());
-            sentencia.setInt(6, Detalle.getProductos_idproductos());
-            sentencia.setInt(7, Detalle.getMovimiento_idmovimiento());
+            sentencia.setInt(1, Detalle.getCantidad());
+            sentencia.setInt(2, Detalle.getPrecio());
+            sentencia.setInt(3, Detalle.getIva());
+            sentencia.setInt(4, Detalle.getSubtotal());
+            sentencia.setInt(5, Detalle.getProductos_idproductos());
+            sentencia.setInt(6, Detalle.getMovimiento_idmovimiento());
 
             
             sentencia.execute();
@@ -52,17 +51,16 @@ public class detalleDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update detalle_movimiento set iddetallemovimiento=?, descripcion=?, cantidad=?, precio=?, iva=?, subtotal=?, productos_idproductos=?, movimiento_idmovimiento=? where iddetallemovimiento=?";
+            String Query = "update detalle_movimiento set iddetallemovimiento=?, cantidad=?, precio=?, iva=?, subtotal=?, productos_idproductos=?, movimiento_idmovimiento=? where iddetallemovimiento=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Detalle.getIddetallemovimiento());
-            sentencia.setString(2, Detalle.getDescripcion());
-            sentencia.setInt(3, Detalle.getCantidad());
-            sentencia.setInt(4, Detalle.getPrecio());
-            sentencia.setInt(5, Detalle.getIva());
-            sentencia.setInt(6, Detalle.getSubtotal());
-            sentencia.setInt(7, Detalle.getProductos_idproductos());
-            sentencia.setInt(8, Detalle.getMovimiento_idmovimiento());
+            sentencia.setInt(2, Detalle.getCantidad());
+            sentencia.setInt(3, Detalle.getPrecio());
+            sentencia.setInt(4, Detalle.getIva());
+            sentencia.setInt(5, Detalle.getSubtotal());
+            sentencia.setInt(6, Detalle.getProductos_idproductos());
+            sentencia.setInt(7, Detalle.getMovimiento_idmovimiento());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -85,19 +83,18 @@ public class detalleDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select iddetallemovimiento, descripcion, cantidad, precio, iva, subtotal, productos_idproductos, movimiento_idmovimiento from detalle_movimiento where iddetallemovimiento = " + iddetallemovimiento;
+            String Query = "Select iddetallemovimiento, cantidad, precio, iva, subtotal, productos_idproductos, movimiento_idmovimiento from detalle_movimiento where iddetallemovimiento = " + iddetallemovimiento;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_detalle_movimiento = new detalle_movimiento();
                 mi_detalle_movimiento.setIddetallemovimiento(rs.getInt(1));
-                mi_detalle_movimiento.setDescripcion(rs.getString(2));
-                mi_detalle_movimiento.setCantidad(rs.getInt(3));
-                mi_detalle_movimiento.setPrecio(rs.getInt(4));
-                mi_detalle_movimiento.setIva(rs.getInt(5));     
-                mi_detalle_movimiento.setSubtotal(rs.getInt(6));     
-                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(7));     
-                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(8));     
+                mi_detalle_movimiento.setCantidad(rs.getInt(2));
+                mi_detalle_movimiento.setPrecio(rs.getInt(3));
+                mi_detalle_movimiento.setIva(rs.getInt(4));     
+                mi_detalle_movimiento.setSubtotal(rs.getInt(5));     
+                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(6));     
+                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(7));     
 
             }
 
@@ -123,23 +120,22 @@ public class detalleDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "select iddetallemovimiento,descripcion,cantidad,precio,iva,subtotal,productos_idproductos,movimiento_idmovimiento "
+            String Query = "select iddetallemovimiento,cantidad,precio,iva,subtotal,productos_idproductos,movimiento_idmovimiento "
                     + " from detalle_movimiento"
                     + " where iddetallemovimiento like '%" + iddetallemovimiento + "%'"
-                    + "  or (descripcion) like ('%" + descripcion + "%') ORDER BY iddetallemovimiento;";
+                    + " ORDER BY iddetallemovimiento;";
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
 
                 mi_detalle_movimiento = new detalle_movimiento();
                 mi_detalle_movimiento.setIddetallemovimiento(rs.getInt(1));
-                mi_detalle_movimiento.setDescripcion(rs.getString(2));
-                mi_detalle_movimiento.setCantidad(rs.getInt(3));
-                mi_detalle_movimiento.setPrecio(rs.getInt(4));
-                mi_detalle_movimiento.setIva(rs.getInt(5));     
-                mi_detalle_movimiento.setSubtotal(rs.getInt(6));     
-                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(7));     
-                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(8)); 
+                mi_detalle_movimiento.setCantidad(rs.getInt(2));
+                mi_detalle_movimiento.setPrecio(rs.getInt(3));
+                mi_detalle_movimiento.setIva(rs.getInt(4));     
+                mi_detalle_movimiento.setSubtotal(rs.getInt(5));     
+                mi_detalle_movimiento.setProductos_idproductos(rs.getInt(6));     
+                mi_detalle_movimiento.setMovimiento_idmovimiento(rs.getInt(7)); 
 
                 mi_lista_detalle_movimiento.add(mi_detalle_movimiento);
 

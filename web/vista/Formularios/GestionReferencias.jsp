@@ -11,7 +11,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../Javascript/ValidarReferencia.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inventario</title>
+        <title>Referencia de pago</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
         <% String buscando = request.getParameter("buscando");
@@ -41,27 +41,23 @@
 
         <div id="Registrar" class="bd-example d-none">
             <div class="container">
-                <h1>Registrar Inventario</h1>
-                <form action="/VISION/RegistroReferencias" method="post" onsubmit="return validacionRefrencia()" >
+                <h1>Registrar referencia de pago</h1>
+                <form action="/VISION/RegistroReferencias" method="post" onsubmit="return validacionReferencia()" >
                     <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>descripcion</h2>
-                            <input type="text" name="descripcion" class="form-control" placeholder="Digite la descripcion" id="txt_descripcion_Reg">
-                        </div> 
                         <div class="form-group col-md-6" >
                             <h2>Fecha de pago</h2>
                             <input type="date" name="fechadepago" class="form-control" placeholder="Digite la fecha de pago" id="txt_fechadepago_Reg">
                         </div> 
                         <div class="form-group col-md-12" >
                             <h2>Medio de pago</h2>
-                            <input type="number" name="medio_de_pago_idMedioDePago_" class="form-control d-none" placeholder="Medio de pago" id="txt_medio_de_pago_idmediodepago_Reg"> <br>
+                            <input type="number" name="medio_de_pago_idMedioDePago" class="form-control " id="txt_medio_de_pago_idMedioDePago_Reg"> <br>
                             <%
                                 mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                                 ArrayList<medio_de_pago> mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("", "");
                                 out.println("<select class='form-control' id='Selectidmediodepago' size='1'>");
-                                out.println("<option onclick='setmedio_de_pago_idmediodepago(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
+                                out.println("<option onclick='setMedio_de_pago_idMedioDePago(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
                                 for (medio_de_pago M : mi_medio_de_pago) {
-                                    out.println("<option onclick='setmedio_de_pago_idmediodepago(\"" + M.getIdMedioDePago() + "\")'>" + M.getDescripcionmediodepago() + "</option>");
+                                    out.println("<option onclick='setMedio_de_pago_idMedioDePago(\"" + M.getIdMedioDePago() + "\")'>" + M.getDescripcionmediodepago() + "</option>");
                                 }
                                 out.println("</select>");
                             %>
@@ -78,25 +74,24 @@
         <div id="Listado" class="bd-example container">
             <form action="/VISION/ConsultarReferencias" method="post">
                 <div class="row justify-content-md-center">
-                    <div id="ControlRegistro" class="input-group d-none">
-                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar "/>
+                    <div id="ControlRegistro" class="input-group ">
+                        <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
                         <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
-                        <h2 class="title-table">Listado Movimientos</h2>
+                        <h2 class="title-table">Listado referencia de pago</h2>
                         <%
                             referenciaDAO referenciadao = new referenciaDAO();
                             ArrayList<referencia_de_pago> referenciaList = new ArrayList<referencia_de_pago>();
-                            referenciaList = referenciadao.ConsultarListadoReferencia_de_pago(buscando, buscando);
-                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>Descripción</th><th>Fecha de Pago</th><th>Medio</th><th>Eliminar</th></tr></thead>");
+                            referenciaList = referenciadao.ConsultarListadoReferencia_de_pago(buscando);
+                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>Fecha de Pago</th><th>Medio</th><th>Eliminar</th></tr></thead>");
 
                             for (referencia_de_pago C : referenciaList) {
 
                                 out.println("<tr>");
                                 out.println("<td>" + C.getIdreferenciadepago() + "</td>");
-                                out.println("<td>" + C.getDescripcion()+ "</td>");
                                 out.println("<td>" + C.getFechadepago()+ "</td>");
-                                out.println("<td>" + C.getMedio_de_pago_idMedioDePago_()+ "</td>");
+                                out.println("<td>" + C.getMedio_de_pago_idMedioDePago()+ "</td>");
 
                                 out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + C.getIdreferenciadepago()+ ")'/>" + "</td>");
                                 out.println("</tr>");

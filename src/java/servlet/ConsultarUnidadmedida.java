@@ -64,7 +64,7 @@ public class ConsultarUnidadmedida extends HttpServlet {
                 if (RespuestaRegistrada.length() == 0) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('" + "Eliminacion Realizada." + "');");
-                    out.println("window.location.href ='/VISION/vista/Formularios/GestionCategorias.jsp';");
+                    out.println("window.location.href ='/VISION/vista/Formularios/GestionUnidadmedida.jsp';");
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");

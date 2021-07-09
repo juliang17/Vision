@@ -46,9 +46,9 @@ public class ConsultarReferencias extends HttpServlet {
 
                 if (Referencia != null) {
 
-                    response.sendRedirect("/VISION/vista/Formularios/GestionReferencias.jsp?descripcion=" + Referencia.getDescripcion()+ "&"
+                    response.sendRedirect("/VISION/vista/Formularios/GestionReferencias.jsp?Idreferenciadepago=" + Referencia.getIdreferenciadepago()+ "&"
                             + "fecha=" + Referencia.getFechadepago() + "&"
-                            + "medio=" + Referencia.getMedio_de_pago_idMedioDePago_()+ "&"
+                            + "medio=" + Referencia.getMedio_de_pago_idMedioDePago()+ "&"
                             + "Id=" + Referencia.getIdreferenciadepago()+ "&"
                                     + "Vista=" + "Actualizar" + "&");
 

@@ -30,12 +30,12 @@ public class pruebaModificarreferencia {
         System.out.println("Por favor ingrese el medio de pago");
         medio_de_pago_idMedioDePago = repuesta.nextInt();
         
-        System.out.println("Por favor ingrese el id del medio de pago");
+        System.out.println("Por favor ingrese el id de la referencia de pago");
         idreferenciadepago = repuesta.nextLine();
 
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
         mi_referencia_pago.setFechadepago(fechadepago);
-        mi_referencia_pago.setMedio_de_pago_idMedioDePago_(medio_de_pago_idMedioDePago);
+        mi_referencia_pago.setMedio_de_pago_idMedioDePago(medio_de_pago_idMedioDePago);
         
         mi_referencia_pago.setIdreferenciadepago(idreferenciadepago);
 

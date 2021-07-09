@@ -48,8 +48,8 @@ public class ConsultarMedioPago extends HttpServlet {
         if (Accion != null) {
 
             if (MedioPago != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionMedioPago.jsp?descripcioncategorias="
-                        + MedioPago.getDescripcionmediodepago().toString() + "&"
+                response.sendRedirect("/VISION/vista/Formulario/GestionMedioPago.jsp?medio_de_pago=" + MedioPago.getDescripcionmediodepago() + "&"
+                        + "ID" + MedioPago.getIdMedioDePago() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {

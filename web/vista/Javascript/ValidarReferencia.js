@@ -1,43 +1,44 @@
-function validacionRefrencia() {
+function validacionReferencia() {
 
     var resultado = 'Correcto';
-    var descripcion = $("#txt_descripcion_Reg").val;
     var fechadepago = $("#txt_fechadepago_Reg").val;
-    var medio_de_pago_idMedioDePago_ = $("#txt_medio_de_pago_idmediodepago_Reg").val;
+    var medio_de_pago_idMedioDePago = $("#txt_medio_de_pago_idMedioDePago_Reg").val;
 
 
     console.log("-- Informacion a validar -- ");
-    console.log("descripcion : " + descripcion);
     console.log("fechadepago : " + fechadepago);
-    console.log("medio_de_pago_idMedioDePago_ : " + medio_de_pago_idMedioDePago_);
+    console.log("medio_de_pago_idMedioDePago : " + medio_de_pago_idMedioDePago);
 
 
-    if (descripcion == '') {
-
-        alert("La descripción no puede estar vacia");
-        resultado = 'Error';
-    }
     if (fechadepago == '') {
 
         alert("La fecha no puede estar vacia");
         resultado = 'Error';
     }
-    if (medio_de_pago_idMedioDePago_ == '') {
+    else if (medio_de_pago_idMedioDePago == '') {
 
         alert("El medio no puede estar vacia");
         resultado = 'Error';
+    } else if (isNaN(medio_de_pago_idMedioDePago)) {
+        alert('El medio de pago debe ser numérico');
+        resultado = 'Error'; 
+    
+    } else {
+        resultado = 'Correcto';
     }
     $('#txt_Bandera_Reg').val(resultado);
     console.log('Resultado:' + $('#txt_Bandera_Reg').val());
     if (resultado == 'Correcto') {
-
         return true;
-
     } else {
-
         return false;
     }
 
+}
+
+function setMedio_de_pago_idMedioDePago(x){
+    $('#txt_medio_de_pago_idMedioDePago_Reg').val(x);
+    console.log("valor : " + x);   
 }
 
 function realizarBusqueda() {

@@ -68,13 +68,13 @@ public class ConsultarCategorias extends HttpServlet {
                     out.println("</script>");
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
+                    out.println("alert('" + "No se ha podido realizar la eliminacion." + RespuestaRegistrada.replace("'", "") + "');");
                     out.println("</script>");
                 }
 
             } else {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
+                out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
                         + "Por favor verificar la Descripcion: " + Identificacion
                         + "');");
                 out.println("</script>");

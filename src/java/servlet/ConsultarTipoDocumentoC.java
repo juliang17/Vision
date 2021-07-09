@@ -39,23 +39,23 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String descripciontipodoccontable = request.getParameter("IdConsultado");
+        String idtipodoccontable = request.getParameter("IdConsultado");
         
         tipo_doc_contableDAO mi_tipo_doc_dao = new tipo_doc_contableDAO();
         tipo_doc_contable mi_tipo_doc = null;
         
-        mi_tipo_doc = mi_tipo_doc_dao.ConsultarTipo_doc_contable(0);
+        mi_tipo_doc = mi_tipo_doc_dao.ConsultarTipo_doc_contable("");
         if (Accion != null) {
 
             if (mi_tipo_doc != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionTipoDocumentoC.jsp?descripciontipodoccontable="
+                response.sendRedirect("/VISION/vista/Formulario/GestionTipoDocumentoC.jsp?idtipodoccontable="
                         + mi_tipo_doc.getDescripciontipodoccontable().toString() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + descripciontipodoccontable + "');");
+                        + "Por favor verificar la descripcion: " + idtipodoccontable + "');");
                 out.println("</script>");
             }
         } else {
@@ -75,7 +75,7 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + descripciontipodoccontable
+                        + "Por favor verificar la Descripcion: " + idtipodoccontable
                         + "');");
                 out.println("</script>");
             }

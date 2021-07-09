@@ -67,7 +67,7 @@ public class mediodepagoDAO {
         return miRespuesta;
     }
 
-    public medio_de_pago ConsultarMedio_de_pago(String descripcionmediodepago) {
+    public medio_de_pago ConsultarMedio_de_pago(String idMedioDePago) {
         medio_de_pago mi_medio_de_pago = null;
 
         Conexion miConexion = new Conexion();
@@ -78,7 +78,7 @@ public class mediodepagoDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idMedioDePago, descripcionmediodepago from medio_de_pago where descripcionmediodepago = " + descripcionmediodepago;
+            String Query = "Select idMedioDePago, descripcionmediodepago from medio_de_pago where idMedioDePago = " + idMedioDePago;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 

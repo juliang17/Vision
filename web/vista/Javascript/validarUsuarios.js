@@ -104,7 +104,7 @@ function setroles_idroles(x){
 }
 
 function setestado_usuario_idestadousuario(x){
-    $('#txt_estado_usuario_idestadousuario_Reg').val(x);
+    $('#txt_estado_usuario_idestadousuario_reg').val(x);
     console.log("valor : " + x);   
 }
 

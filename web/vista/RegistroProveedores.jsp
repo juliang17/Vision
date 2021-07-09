@@ -88,22 +88,22 @@
                 <div class="form-row" >
                     <div class="form-group col-md-6" >
                         <h2>Correo electrónico:</h2>
-                        <input type="text" name="correoproveedores" class="form-control" id="Correo" value="<%=request.getParameter("Correo")%>">
+                        <input type="text" name="correoproveedores" class="form-control" id="correo" value="<%=request.getParameter("correo")%>">
                     </div>
                     <div class="form-group col-md-6" >
                         <h2>Número telefónico:</h2>
                         <input type="text" name="telefonoproveedores" class="form-control" id="telefono" value="<%=request.getParameter("Telefono")%>">
                     </div>
                 </div>
-                <center><button type="submit" class="btn btn-primary">Registrar</button></center>
+                <center><button type="submit" class="btn btn-primary">Actualizar</button></center>
             </form>
         </div>
 
         <div id="Listado" class="container">
-            <form action="/VISION/consultarProveedores" method="post">
+            <form action="/VISION/ConsultarProveedor" method="post">
                 <div class="row justify-content-md-center">
                         <div id="ControlRegistro" class="input-group">
-                            <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingresar Número de identificación, Nombres o Apellidos"/>
+                            <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingresar número de identificación"/>
                             <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                         </div>    
                             <br>
