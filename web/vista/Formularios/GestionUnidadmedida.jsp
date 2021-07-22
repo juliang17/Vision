@@ -30,27 +30,21 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
         <!--REGISTRAR-->
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container" style="background-color: white">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar Unidad de medida</h1>
-                <form action="/VISION/RegistroUnidadMedida" method="post" onsubmit="return validarUnidad()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-12" >
-                            <h2>Unidad de medida:</h2>
+                <br>
+                <form action="/VISION/RegistroUnidadMedida" method="post" onsubmit="return validarUnidad()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="descripcionunidadmedida" class="form-control" placeholder="Digite la unidad de medida" id="txt_descripcionunidadmedida_Reg">
+                            <label for="floatingInput">Unidad de medida</label>
                         </div> 
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -98,13 +92,13 @@
                                 <% UnidadDeMedidaDAO miunidadmedidaDAO = new UnidadDeMedidaDAO();
                                     ArrayList<unidad_de_medida> milistaunidadmedida = new ArrayList<unidad_de_medida>();
                                     milistaunidadmedida = miunidadmedidaDAO.listadounidaddemedida(buscando , buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (unidad_de_medida U : milistaunidadmedida) {
                                         out.println("<tr>");
                                         out.println("<td>" + U.getDescripcionunidadmedida() + "</td>");
                                         out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getIdunidadmedida() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getIdunidadmedida() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getIdunidadmedida() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

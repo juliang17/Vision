@@ -1,4 +1,6 @@
 
+<%@page import="modelo.unidad_de_medida"%>
+<%@page import="controlador.UnidadDeMedidaDAO"%>
 <%@page import="modelo.productos"%>
 <%@page import="controlador.ProductoDAO"%>
 <%@page import="modelo.proveedores"%>
@@ -37,53 +39,37 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
-
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar Productos</h1>
                 <br>
-                <br>
-                <form action="/VISION/RegistroProductos" method="post" onsubmit="return validacionProducto()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>Nombre del producto:</h2>
-                            <input type="text" name="nombreproducto" class="form-control" id="nombreproducto">
+                <form action="/VISION/RegistroProductos" method="post" onsubmit="return validacionProducto()" class="row g-3">
+                        <div class="form-floating col-md-12" >
+                            <input type="text" name="nombreproducto" class="form-control" placeholder="" id="nombreproducto">
+                            <label for="floatingInput">Nombre del producto</label>
                         </div>
-                        <div class="form-group col-md-6" >
-                            <h2>Cantidad del producto:</h2>
-                            <input type="number" name="cantidadproducto" class="form-control"  id="cantidadproducto">
+                        <div class="form-floating col-md-6" >
+                            <input type="number" name="cantidadproducto" class="form-control" placeholder="" id="cantidadproducto">
+                            <label for="floatingInput">Cantidad</label>
                         </div>
-                    </div>
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>Iva:</h2>
-                            <input type="number" name="ivaproducto" class="form-control" id="ivaproducto">
+                        <div class="form-floating col-md-6">
+                            <input type="number" name="ivaproducto" class="form-control" placeholder="" id="ivaproducto">
+                            <label for="floatingInput">Iva</label>
                         </div>
-                        <div class="form-group col-md-6" >
-                            <h2>Descripción:</h2>
-                            <input type="text" name="descripcionproducto" class="form-control" id="descripcionproducto">
+                        <div class="form-floating col-md-12" >
+                            <input type="text" name="descripcionproducto" class="form-control" placeholder="" id="descripcionproducto">
+                            <label for="floatingInput">Descripcion producto</label>
                         </div>
-                    </div>
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>Referencia Producto:</h2>
-                            <input type="number" name="referenciaproducto" class="form-control" id="referenciaproducto">
+                        <div class="form-floating col-md-6" >
+                            <input type="number" name="referenciaproducto" class="form-control" placeholder="" id="referenciaproducto">
+                            <label for="floatingInput">Referencia producto</label>
                         </div>
-                        <div class="form-group col-md-6" >
-                            <h2>Precio:</h2>
-                            <input type="number" name="precio" class="form-control" id="precio">
+                        <div class="form-floating col-md-6" >
+                            <input type="number" name="precio" class="form-control" placeholder="" id="precio">
+                            <label for="floatingInput">Precio</label>
                         </div>
-                    </div>
-                    <div class="form-row" >
-
-                        <div class="form-group col-md-6" >
-                            <h2>Categoria:</h2>
+                        <div class="form-floating col-md-6" >
                             <input type="number" name="categorias_idcategorias" class="form-control d-none" id="categorias_idcategorias">
 
                             <%
@@ -98,9 +84,9 @@
                                 }
                                 out.println("</select>");
                             %>
+                            <label for="floatingInput">Categoria</label>
                         </div>
-                        <div class="form-group col-md-6" >
-                            <h2>Marca:</h2>
+                        <div class="form-floating col-md-6" >
                             <input type="number" name="marca_idmarca" class="form-control d-none" id="marca_idmarca">
 
                             <%  MarcaDAO quipoDao = new MarcaDAO();
@@ -115,12 +101,9 @@
 
                                 out.println("</select>");
                             %>
+                            <label for="floatingInput">Marca</label>
                         </div>
-                    </div>
-
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>proveedor:</h2>
+                        <div class="form-floating col-md-6" >
                             <input type="number" name="proveedores_idproveedores" class="form-control d-none" id="proveedores_idproveedores">
 
                             <%  ProveedoresDAO pdao = new ProveedoresDAO();
@@ -135,15 +118,28 @@
 
                                 out.println("</select>");
                             %>
+                            <label for="floatingInput">Proveedor</label>
                         </div>
-                        <div class="form-group col-md-6" >
-                            <input type="number" name="unidad_de_medida_idunidadmedida" value="1" class="form-control d-none" id="unidad_de_medida_idunidadmedida">   
+                        <div class="form-floating col-md-6" >
+                            <input type="number" name="unidad_de_medida_idunidadmedida" value="1" class="form-control d-none" id="unidad_de_medida_idunidadmedida">  
+                                                        <%  UnidadDeMedidaDAO unidadDao = new UnidadDeMedidaDAO();
+                                ArrayList<unidad_de_medida> U = unidadDao.listadounidaddemedida("", "");
+                                out.println("<select class='form-control'id ='SelectP' size = '1' >");
+                                out.println("<option onclick='setUnidad(\"" + "" + "\")'>" + "--Seleccionar--" + "</option>");
+
+                                for (unidad_de_medida C : U) {
+                                    out.println("<option onclick='setUnidad(\"" + C.getIdunidadmedida() + "\")'>" + C.getDescripcionunidadmedida() + "</option>");
+
+                                }
+
+                                out.println("</select>");
+                            %>
+                            <label for="floatingInput">Unidad de medida</label>
                         </div>
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -219,7 +215,7 @@
 
                             <div id="ControlRegistro" class="input-group">
                                 <input id="txt_Id_Consultado" type="text" class="form-control input-1" name="IdConsultado" value="<%=buscando%>" autofocus placeholder="Buscar por referencia o nombre del producto"/>
-                                <button type="button" class="btn btn-info-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                                <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                             </div>
 
                             <div>
@@ -229,7 +225,7 @@
                                     ProductoDAO prdao = new ProductoDAO();
                                     ArrayList<productos> pList = new ArrayList<productos>();
                                     pList = prdao.listadoproductos(buscando, buscando);
-                                    out.println("<table class='table table-light table-striped table-hover table-bordered border-danger'><tr><td>Referencia</td><td>Nombre</td><td>Cantidad</td><td>IVA</td><td>Descripción</td><td>Precio</td><td>Categoria</td><td>Marca</td><td>Unidad de medida</td><td>Proveedor</td><td>Actualizar</td><td>Eliminar</td>");
+                                    out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>Referencia</td><td>Nombre</td><td>Cantidad</td><td>IVA</td><td>Descripción</td><td>Precio</td><td>Categoria</td><td>Marca</td><td>Unidad de medida</td><td>Proveedor</td><td>Actualizar</td><td>Eliminar</td>");
 
                                     for (productos C : pList) {
 
@@ -244,8 +240,8 @@
                                         out.println("<td>" + C.getMarca_idmarca() + "</td>");
                                         out.println("<td>" + C.getUnidad_de_medida_idunidadmedida() + "</td>");
                                         out.println("<td>" + C.getProveedores_idproveedores() + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-secondary' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + C.getReferenciaproducto() + ")'/>" + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + C.getReferenciaproducto() + ")'/>" + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-primary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + C.getReferenciaproducto() + ")'/>" + "</td>");
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + C.getReferenciaproducto() + ")'/>" + "</td>");
                                         out.println("</tr>");
                                     }
                                     out.println("</table>");

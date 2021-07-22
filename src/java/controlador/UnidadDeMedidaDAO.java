@@ -124,16 +124,17 @@ public class UnidadDeMedidaDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = " delete from unidad_de_medida where idunidadmedida = ? and descripcionunidadmedida = ?;";
+            String Query = " delete from unidad_de_medida where idunidadmedida = ? and descripcionunidadmedida = ? ;";
 
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setString(1, UNIDADMEDIDA.getIdunidadmedida());
             sentencia.setString(2, UNIDADMEDIDA.getDescripcionunidadmedida());
-
+            sentencia.execute();
             mirespuesta = "";
+            
         } catch (Exception ex) {
             mirespuesta = ex.getMessage();
-            System.out.println("Ocurrio un error en Eliminarcategorias" + ex.getMessage());
+            System.out.println("Ocurrio un error en Eliminarunidaddemedida" + ex.getMessage());
         }
         return mirespuesta;
     }

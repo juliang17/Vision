@@ -30,27 +30,21 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
         <!--REGISTRAR-->
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container" style="background-color: white">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar Genero usuarios</h1>
-                <form action="/VISION/RegistroGeneros" method="post" onsubmit="return validarGenero()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-12" >
-                            <h2>Genero usuario:</h2>
+                <br>
+                <form action="/VISION/RegistroGeneros" method="post" onsubmit="return validarGenero()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="descripciongenero" class="form-control" placeholder="Digite el genero del usuario" id="txt_descripciongenero_Reg">
+                            <label for="floatingInput">Genero</label>
                         </div> 
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -96,14 +90,14 @@
                                 <% GeneroDAO migeneroDAO = new GeneroDAO();
                                     ArrayList<genero> migenero = new ArrayList<genero>();
                                     migenero = migeneroDAO.Listadogenero(buscando, buscando);
-                                    out.println("<table class='table table-dark'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (genero G : migenero) {
                                         out.println("<tr>");
                                         out.println("<td>" + G.getIdgenero()+ "</td>");
                                         out.println("<td>" + G.getDescripciongenero() + "</td>");
                                         out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + G.getIdgenero()+ ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + G.getIdgenero()+ ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + G.getIdgenero()+ ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

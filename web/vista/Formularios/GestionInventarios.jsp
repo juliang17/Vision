@@ -32,35 +32,27 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
 
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar Inventario</h1>
-                <form action="/VISION/RegistroInventario" method="post" onsubmit="return validacionInventario()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>entrada:</h2>
+                <br>
+                <form action="/VISION/RegistroInventario" method="post" onsubmit="return validacionInventario()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="entrada" class="form-control" placeholder="Digite la entrada" id="txt_entrada_Reg">
+                            <label for="floatingInput">Entrada</label>
                         </div> 
-                        <div class="form-group col-md-6" >
-                            <h2>salida:</h2>
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="salida" class="form-control" placeholder="Digite la salida" id="txt_salida_Reg">
+                            <label for="floatingInput">Salida</label>
                         </div> 
-                        <div class="form-row">
-                            <div class="form-group col-md-12" >
-                                <h2>saldo:</h2>
+                            <div class="form-floating col-md-6" >
                                 <input type="text" name="saldo" class="form-control" placeholder="Digite el saldo" id="txt_saldo_Reg">
+                                <label for="floatingInpur">Saldo</label>
                             </div>  
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12" >
-                                <input type="number" name="productos_idproductos" class="form-control" id="txt_productos_idproductos_Reg"> <br>
+                            <div class="form-floating col-md-6" >
+                                <input type="number" name="productos_idproductos" class="form-control d-none" id="txt_productos_idproductos_Reg"> 
                                 <%
                                     ProductoDAO productos_dao = new ProductoDAO();
                                     ArrayList<productos> mi_productos = productos_dao.listadoproductos("", "");
@@ -71,13 +63,12 @@
                                     }
                                     out.println("</select>");
                                 %>
+                                <label for="floatingInput">Productos</label>
                             </div>
-                        </div>  
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-success">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -87,7 +78,7 @@
                 <div class="row justify-content-md-center">
                     <div id="ControlRegistro" class="input-group ">
                         <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
-                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
                         <h2 class="title-table">Listado Inventarios</h2>
@@ -95,7 +86,7 @@
                             inventarioDAO inventariodao = new inventarioDAO();
                             ArrayList<inventario> inventarioList = new ArrayList<inventario>();
                             inventarioList = inventariodao.ListadoInventario(buscando, buscando, buscando);
-                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>Entrada</th><th>Salida</th><th>Saldo</th><th>Producto</th><th>Eliminar</th></tr></thead>");
+                            out.println("<table class='table table-dark table-striped table-hover table-bordered'><thead class='thead-info'><tr><th>ID</th><th>Entrada</th><th>Salida</th><th>Saldo</th><th>Producto</th><th>Eliminar</th></tr></thead>");
 
                             for (inventario C : inventarioList) {
 

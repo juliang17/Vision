@@ -32,25 +32,19 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
 
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar referencia de pago</h1>
-                <form action="/VISION/RegistroReferencias" method="post" onsubmit="return validacionReferencia()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h2>Fecha de pago</h2>
+                <br>
+                <form action="/VISION/RegistroReferencias" method="post" onsubmit="return validacionReferencia()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="date" name="fechadepago" class="form-control" placeholder="Digite la fecha de pago" id="txt_fechadepago_Reg">
+                            <label for="floatingInput">Fecha de pago</label>
                         </div> 
-                        <div class="form-group col-md-12" >
-                            <h2>Medio de pago</h2>
-                            <input type="number" name="medio_de_pago_idMedioDePago" class="form-control " id="txt_medio_de_pago_idMedioDePago_Reg"> <br>
+                        <div class="form-floating col-md-6" >
+                            <input type="number" name="medio_de_pago_idMedioDePago" class="form-control d-none" id="txt_medio_de_pago_idMedioDePago_Reg">
                             <%
                                 mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                                 ArrayList<medio_de_pago> mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago("", "");
@@ -61,12 +55,12 @@
                                 }
                                 out.println("</select>");
                             %>
+                            <label for="floatingInput">Medio de pago</label>
                         </div>
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-success">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -76,7 +70,7 @@
                 <div class="row justify-content-md-center">
                     <div id="ControlRegistro" class="input-group ">
                         <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
-                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
                         <h2 class="title-table">Listado referencia de pago</h2>
@@ -84,7 +78,7 @@
                             referenciaDAO referenciadao = new referenciaDAO();
                             ArrayList<referencia_de_pago> referenciaList = new ArrayList<referencia_de_pago>();
                             referenciaList = referenciadao.ConsultarListadoReferencia_de_pago(buscando);
-                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>Fecha de Pago</th><th>Medio</th><th>Eliminar</th></tr></thead>");
+                            out.println("<table class='table table-dark table-striped table-hover table-bordered'><thead class='thead-info'><tr><th>ID</th><th>Fecha de Pago</th><th>Medio</th><th>Eliminar</th></tr></thead>");
 
                             for (referencia_de_pago C : referenciaList) {
 

@@ -38,23 +38,22 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
-        <div id="Registrar" class="d-none">
+        <div id="Registrar" class="container bd-example d-none">
             <h1>Registro de usuarios</h1>
-            <form action="/VISION/RegistrarUsuarios" method="post" onsubmit="return RegistroUsuarios()">
-                <h5>Nombres </h5>
-                <input type="text" name="nombreusuarios" class="form-control" placeholder="Nombres"  id="txt_nombreusuarios_Reg">
-                <br>
-                <h5>Apellidos</h5>
-                <input type="text" name="apellidousuarios" class="form-control" placeholder="Apellidos" id="txt_apellidousuarios_reg">
-                <br>
-                <h5><strong>Tipo documento</strong></h5>
-                <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" id="txt_tipo_documento_idtipodoc_reg"> <br>
+            <br>
+            <form action="/VISION/RegistrarUsuarios" method="post" onsubmit="return RegistroUsuarios()" class="row g-3">
+                <div class="form-floating col-md-6">
+                    <input type="text" name="nombreusuarios" class="form-control" placeholder="" id="txt_nombreusuarios_Reg">
+                <label for="floatingInput">Nombres</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="text" name="apellidousuarios" class="form-control" placeholder="" id="txt_apellidousuarios_reg">
+                <label for="floatingInput">Apellidos</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="number" name="tipo_documento_idtipodoc" class="form-control d-none" id="txt_tipo_documento_idtipodoc_reg">
                 <%
                     tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
                     ArrayList<tipo_documento> mitipodoc = mitipodocDAO.Listadotipo_documento("", "");
@@ -65,23 +64,29 @@
                     }
                     out.println("</select>");
                 %>
-                <br>
-                <h5>Identificación Usuario</h5>
-                <input type="number" name="numerodocusuario" class="form-control" placeholder="Número identificación" id="txt_numerodocusuarios_reg">
-                <br>
-                <h5>Contraseña</h5>
-                <input type="text" name="claveusuario" class="form-control" placeholder="Contraseña" id="txt_claveusuario_reg">
-                <br>
-                <h5>Telefono</h5>
-                <input type="number" name="telefonousuarios" class="form-control" placeholder="Telefono" id="txt_telefonousuarios_reg">
-                <br>
-                <h5>Dirección</h5>
-                <input type="text" name="direccionusuario" class="form-control" placeholder="Dirección" id="txt_direccionusuario_reg">
-                <br>
-                <h5>Correo</h5>
-                <input type="text" name="correousuarios" class="form-control" placeholder="Correo" id="txt_correousuarios_reg">
-                <br>
-                <h5><strong>Rol usuario</strong></h5>
+                <label for="floatingInput">Tipo de documento</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="number" name="numerodocusuario" class="form-control" placeholder="" id="txt_numerodocusuarios_reg">
+                <label for="floatingInput">Numero de documento</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="text" name="claveusuario" class="form-control" placeholder="" id="txt_claveusuario_reg">
+                <label for="floatingInput">Contraseña</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="number" name="telefonousuarios" class="form-control" placeholder="" id="txt_telefonousuarios_reg">
+                <label for="floatingInput">Telefono</label>
+                </div>
+                <div class="form-floating col-12">
+                <input type="text" name="direccionusuario" class="form-control" placeholder="" id="txt_direccionusuario_reg">
+                <label for="floatingInput">Direccion</label>
+                </div>
+                <div class="form-floating col-md-6">
+                <input type="text" name="correousuarios" class="form-control" placeholder="" id="txt_correousuarios_reg">
+                <label for="floatingInput">Correo</label>
+                </div>
+                <div class="form-floating col-md-6">
                 <input type="number" name="roles_idroles" class="form-control d-none" id="txt_roles_idroles_reg">
                 <%
                     rolesDAO misrolesDAO = new rolesDAO();
@@ -93,8 +98,9 @@
                     }
                     out.println("</select>");
                 %>
-                <br>
-                <h5><strong>Estado usuario</strong></h5>
+                <label for="floatingInput">Rol</label>
+                </div>
+                <div class="form-floating col-md-6">
                 <input type="number" name="estado_usuario_idestadousuario" class="form-control d-none" id="txt_estado_usuario_idestadousuario_reg">
                 <%
                     estado_usuarioDAO miestadousuarioDAO = new estado_usuarioDAO();
@@ -106,8 +112,9 @@
                     }
                     out.println("</select>");
                 %>
-                <br>
-                <h5><strong>Genero</strong></h5>
+                <label for="floatingInput">Estado usuario</label>
+                </div>
+                <div class="form-floating col-md-6">
                 <input type="number" name="genero_idgenero" class="form-control d-none" id="txt_genero_idgenero_reg">
                 <%
                     GeneroDAO migeneroDAO = new GeneroDAO();
@@ -119,10 +126,11 @@
                     }
                     out.println("</select>");
                 %>
+                <label for="floatingInput">Genero</label>
+                </div>
                 <div id="controlRegistro" class="bd-example d-none">
                     <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
                 </div>
-                <br>
                 <button type="submit" class="btn btn-success">Registrar</button>
             </form>
         </div>
@@ -174,7 +182,7 @@
                 <div class="row justify-content-md-center">
                     <div id="ControlRegistro" class="input-group">
                         <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Ingresar Número de documento, Nombre o Apellido."/>
-                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
                         <h2 class="title-table">Listado Usuarios</h2>
@@ -183,7 +191,7 @@
                             <% usuariosDAO misusuariosDAO = new usuariosDAO();
                                 ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
                                 milistausuarios = misusuariosDAO.Consultarlistadousuarios(buscando, buscando, buscando);
-                                out.println("<table class='table table-dark'><tr><td>Identificacion</td><td>Nombre</td><td>Apellido</td><td>Contraseña</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Rol</td><td>Genero</td><td>Estado</td><td>Tipo documento</td><td>Editar</td><td>Eliminar</td></tr>");
+                                out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>Identificacion</td><td>Nombre</td><td>Apellido</td><td>Contraseña</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Rol</td><td>Genero</td><td>Estado</td><td>Tipo documento</td><td>Editar</td><td>Eliminar</td></tr>");
                                 for (usuarios U : milistausuarios) {
                                     out.println("<tr>");
                                     out.println("<td>" + U.getNumerodocusuario() + "</td>");
@@ -197,7 +205,7 @@
                                     out.println("<td>" + U.getGenero_idgenero() + "</td>");
                                     out.println("<td>" + U.getEstado_usuario_idestadousuario() + "</td>");
                                     out.println("<td>" + U.getTipo_documento_idtipodoc() + "</td>");
-                                    out.println("<td>" + "<input type = 'submit' class='btn btn-secondary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getNumerodocusuario()+ ")'/>" + "</td>");
+                                    out.println("<td>" + "<input type = 'submit' class='btn btn-primary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + U.getNumerodocusuario()+ ")'/>" + "</td>");
                                     out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + U.getNumerodocusuario()+ ")'/>" + "</td>");
                                     out.println("</tr>");
                                 }

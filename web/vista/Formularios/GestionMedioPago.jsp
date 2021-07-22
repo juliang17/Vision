@@ -30,27 +30,21 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
         <!--REGISTRAR-->
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container" style="background-color: white">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar medio de pago</h1>
-                <form action="/VISION/RegistroMedioPago" method="post" onsubmit="return validarMedioPago()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-12" >
-                            <h2>Medio de pago:</h2>
+                <br>
+                <form action="/VISION/RegistroMedioPago" method="post" onsubmit="return validarMedioPago()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="descripcionmediodepago" class="form-control" placeholder="Digite el medio de pago" id="txt_descripcionmediodepago_Reg">
+                            <label for="floatingInput">Medio de pago</label>
                         </div> 
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -99,13 +93,13 @@
                                 <% mediodepagoDAO medio_de_pago_dao = new mediodepagoDAO();
                                     ArrayList<medio_de_pago> mi_medio_de_pago = new ArrayList<medio_de_pago>();
                                     mi_medio_de_pago = medio_de_pago_dao.ListadoMedioDePago(buscando , buscando);
-                                    out.println("<table class='table table-dark'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (medio_de_pago M : mi_medio_de_pago) {
                                         out.println("<tr>");
                                         out.println("<td>" + M.getDescripcionmediodepago() + "</td>");
                                         out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + M.getIdMedioDePago() + ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + M.getIdMedioDePago() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + M.getIdMedioDePago() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

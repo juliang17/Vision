@@ -30,27 +30,21 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
         <!--REGISTRAR-->
-        <div id="Registrar" class="bd-example d-none">
-            <div class="container" style="background-color: white">
+        <div id="Registrar" class="container bd-example d-none">
                 <h1>Registrar tipo documento</h1>
-                <form action="/VISION/RegistroTipoDocumento" method="post" onsubmit="return validarTipodoc()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-12" >
-                            <h2>Tipo documento:</h2>
+                <br>
+                <form action="/VISION/RegistroTipoDocumento" method="post" onsubmit="return validarTipodoc()" class="row g-3">
+                        <div class="form-floating col-md-6" >
                             <input type="text" name="descripciontipodoc" class="form-control" placeholder="Digite el tipo de documento" id="txt_descripciontipodoc_Reg">
+                            <label for="floatingInput">Tipo de documento</label>
                         </div> 
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-arg">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -98,14 +92,14 @@
                                 <% tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
                                    ArrayList<tipo_documento> mitipodoc = new ArrayList<tipo_documento>();
                                     mitipodoc = mitipodocDAO.Listadotipo_documento(buscando, buscando);
-                                    out.println("<table class='table table-dark'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
+                                    out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>ID</td><td>Descripcion</td><td>Editar</td><td>Eliminar</td></tr>");
                                     for (tipo_documento T : mitipodoc) {
                                         out.println("<tr>");
                                         out.println("<td>" + T.getIdtipodoc()+ "</td>");
                                         out.println("<td>" + T.getDescripciontipodoc() + "</td>");
                                         out.println("<td>" + "<input type = 'submit' class='btn btn-primary form-control btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + T.getIdtipodoc()+ ")'/>"
                                                 + "</td>");
-                                        out.println("<td>" + "<input type = 'submit' class='btn btn-warning form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getIdtipodoc() + ")'/>"
+                                        out.println("<td>" + "<input type = 'submit' class='btn btn-danger form-control btn btn-login' value= 'Eliminar'name='Eliminar'onclick='SetIdConsulta(" + T.getIdtipodoc() + ")'/>"
                                                 + "</td>");
                                         out.println("</tr>");
                                     }

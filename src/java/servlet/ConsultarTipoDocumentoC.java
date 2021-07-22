@@ -39,7 +39,7 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
         String Accion = request.getParameter("Actualizar");
         System.out.println("Accion " + Accion);
 
-        String idtipodoccontable = request.getParameter("IdConsultado");
+        String descripciontipodoccontable = request.getParameter("IdConsultado");
         
         tipo_doc_contableDAO mi_tipo_doc_dao = new tipo_doc_contableDAO();
         tipo_doc_contable mi_tipo_doc = null;
@@ -48,14 +48,14 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
         if (Accion != null) {
 
             if (mi_tipo_doc != null) {
-                response.sendRedirect("/VISION/vista/Formulario/GestionTipoDocumentoC.jsp?idtipodoccontable="
-                        + mi_tipo_doc.getDescripciontipodoccontable().toString() + "&"
+                response.sendRedirect("/VISION/vista/Formulario/GestionTipoDocumentoC.jsp?descripciontipodoccontable=" + mi_tipo_doc.getDescripciontipodoccontable() + "&"
+                        + "ID=" + mi_tipo_doc.getIdtipodoccontable() + "&"
                         + "Vista=" + "Actualizar" + "&");
                 System.out.println("Salio");
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido realizar la consulta." + "\n"
-                        + "Por favor verificar la descripcion: " + idtipodoccontable + "');");
+                        + "Por favor verificar la descripcion: " + descripciontipodoccontable + "');");
                 out.println("</script>");
             }
         } else {
@@ -75,7 +75,7 @@ public class ConsultarTipoDocumentoC extends HttpServlet {
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('" + "No se ha podido relizar la consulta." + "\n"
-                        + "Por favor verificar la Descripcion: " + idtipodoccontable
+                        + "Por favor verificar la Descripcion: " + descripciontipodoccontable
                         + "');");
                 out.println("</script>");
             }

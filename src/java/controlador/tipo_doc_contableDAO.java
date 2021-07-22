@@ -66,6 +66,7 @@ public class tipo_doc_contableDAO {
     }
 
     public tipo_doc_contable ConsultarTipo_doc_contable(String idtipodoccontable) {
+        
         tipo_doc_contable mi_tipo_doc_contable = null;
 
         Conexion miConexion = new Conexion();
@@ -73,22 +74,17 @@ public class tipo_doc_contableDAO {
         nuevaCon = miConexion.getConn();
 
         try {
-
             Statement sentencia = nuevaCon.createStatement();
-
-            String Query = ("select idtipodoccontable, descripciontipodoccontable from tipo_doc_contable where idtipodoccontable =" + idtipodoccontable);
+            String Query = ("select idtipodoccontable , descripciontipodoccontable from tipo_doc_contable where idtipodoccontable =" + idtipodoccontable);
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
-
                 mi_tipo_doc_contable = new tipo_doc_contable();
                 mi_tipo_doc_contable.setIdtipodoccontable(rs.getString(1));
                 mi_tipo_doc_contable.setDescripciontipodoccontable(rs.getString(2));
-
             }
-
             return mi_tipo_doc_contable;
         } catch (Exception ex) {
-            System.out.println("Ha ocurrido un error en ConsultarReferencia\n " + ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         return mi_tipo_doc_contable;
     }
@@ -138,9 +134,7 @@ public class tipo_doc_contableDAO {
 
             sentencia.setString(1, TipoDocContable.getIdtipodoccontable());
             sentencia.setString(2, TipoDocContable.getDescripciontipodoccontable());
-
             sentencia.execute();
-
             miRespuesta = "";
 
         } catch (Exception ex) {

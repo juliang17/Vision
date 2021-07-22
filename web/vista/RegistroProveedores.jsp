@@ -33,40 +33,35 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
 
-       <div id="Registrar" class="d-none">
-            <h1>Registro Proveedor</h1>
-            <form action="/VISION/RegistroProveedores" method="post" onsubmit="return validarProveedores()" >
-                <div class="form-row" >
-                    <div class="form-group col-md-6" >
-                        <h1>Número de Identificación:</h1>
-                        <input type="text" name="identificacionproveedores" class="form-control" id="identificacion">
+       <div id="Registrar" class="container bd-example d-none">
+            <h1>Registrar Proveedor</h1>
+            <br>
+            <form action="/VISION/RegistroProveedores" method="post" onsubmit="return validarProveedores()" class="row g-3">
+                    <div class="form-floating col-md-6">
+                        <input type="text" name="identificacionproveedores" class="form-control" placeholder="" id="identificacion">
+                        <label for="floatingInput">Numero de identificacion</label>
                     </div>
-                    <div class="form-group col-md-6" >
-                        <h2>Nombre:</h2>
-                        <input type="text" name="nombreproveedores" class="form-control" id="nombre">
+                    <div class="form-floating col-md-6" >
+                        <input type="text" name="nombreproveedores" class="form-control" placeholder="" id="nombre">
+                        <label for="floatingInput">Nombre de proveedor</label>
                     </div>
-                </div>
-                <div class="form-row" >
-                    <div class="form-group col-md-6" >
-                        <h2>Correo electrónico:</h2>
-                        <input type="text" name="correoproveedores" class="form-control" id="correo">
+                    <div class="form-floating col-md-6" >
+                        <input type="text" name="correoproveedores" class="form-control" placeholder="" id="correo">
+                        <label for="floatingInput">Correo</label>
                     </div>
-                    <div class="form-group col-md-6" >
-                        <h2>Número telefónico:</h2>
-                        <input type="text" name="telefonoproveedores" class="form-control" id="telefono">
+                    <div class="form-floating col-md-6" >
+                        <input type="text" name="telefonoproveedores" class="form-control" placeholder="" id="telefono">
+                        <label for="floatingInput">Telefono</label>
                     </div>
-                </div>
                 <div id="controlRegistro" class="bd-example d-none">
                      <input id="txt_bandera_reg" type="text" class="form-control" name="banderaRegistro">
                 </div>
-                <center><button type="submit" class="btn btn-primary">Registrar</button></center>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-success">Registrar</button>
+                </div>
             </form>
         </div>
 
@@ -104,7 +99,7 @@
                 <div class="row justify-content-md-center">
                         <div id="ControlRegistro" class="input-group">
                             <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="" placeholder="Ingresar número de identificación"/>
-                            <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                            <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                         </div>    
                             <br>
                         <div>
@@ -114,7 +109,7 @@
                                 ProveedoresDAO proveedordao = new ProveedoresDAO();
                                 ArrayList<proveedores> proveedorList = new ArrayList<proveedores>();
                                 proveedorList = proveedordao.ListarProveedor(buscando, buscando, buscando);
-                                out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><tr><td>Nombre</td><td>Número de identificación</td><td>Telefono</td><td>Correo</td><td>Actualizar</td><td>Eliminar</td>");
+                                out.println("<table class='table table-dark table-striped table-hover table-bordered'><tr><td>Nombre</td><td>Número de identificación</td><td>Telefono</td><td>Correo</td><td>Actualizar</td><td>Eliminar</td>");
 
                                 for (proveedores P : proveedorList) {
 
@@ -124,7 +119,7 @@
                                     out.println("<td>" + P.getTelefonoproveedores()+ "</td>");
                                     out.println("<td>" + P.getCorreoproveedores()+ "</td>");
 
-                                    out.println("<td>" + "<input type = 'submit' class='btn btn-secondary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
+                                    out.println("<td>" + "<input type = 'submit' class='btn btn-primary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
                                     out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
                                     out.println("</tr>");
                                 }

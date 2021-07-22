@@ -36,42 +36,32 @@
                         onClick="visualizaOculta('Listado')">
                     Consultar
                 </button>
-                <button type="button" class="btn btn-secondary" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" onClick="VolverAlInicio()">
-                    Volver al Inicio
-                </button>
             </div>
         </div>
 
-        <div id="Registrar" class="bd-example d-none">
+        <div id="Registrar" class="container bd-example d-none">
             <div class="container">
-                <h3>Registrar detalle movimiento</h3>
-                <form action="/VISION/RegistroDetalle" method="post" onsubmit="return validacionDetalle()" >
-                    <div class="form-row" >
-                        <div class="form-group col-md-6" >
-                            <h5>Cantidad:</h5>
+                <center><h3>Registrar detalle movimiento</h3></center>
+                <br>
+                <form action="/VISION/RegistroDetalle" method="post" onsubmit="return validacionDetalle()" class="row g-3">
+                        <div class="form-floating col-md-6">
                             <input type="text" name="cantidad" class="form-control" placeholder="Digite la cantidad" id="txt_cantidad_Reg">
+                            <label for="floatingInput">Cantidad</label>
                         </div> 
-                        <div class="form-row">
-                            <div class="form-group col-md-6" >
-                                <h5>Precio:</h5>
+                            <div class="form-floating col-md-6">
                                 <input type="text" name="precio" class="form-control" placeholder="Digite el precio" id="txt_precio_Reg">
+                                <label for="floatingInput">Precio</label>
                             </div> 
-                            <div class="form-group col-md-6" >
-                                <h5>Precio:</h5>
+                            <div class="form-floating col-md-6" >
                                 <input type="text" name="iva" class="form-control" placeholder="Digite el iva" id="txt_iva_Reg">
+                                <label for="floatingInput">Iva</label>
                             </div> 
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6" >
-                                <h5>Subtotal:</h5>
+                            <div class="form-floating col-md-6" >
                                 <input type="text" name="subtotal" class="form-control" placeholder="Digite el subtotal" id="txt_subtotal_Reg">
+                                <label for="floatingInput">Subtotal</label>
                             </div> 
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12" >
-                                <h5><strong>Producto</strong></h5>
-                                <input type="number" name="productos_idproductos" class="form-control d-none" id="txt_productos_idproductos_Reg"> <br>
+                            <div class="form-floating col-md-6" >
+                                <input type="number" name="productos_idproductos" class="form-control d-none" id="txt_productos_idproductos_Reg"> 
                                 <%
                                     ProductoDAO productos_dao = new ProductoDAO();
                                     ArrayList<productos> mi_productos = productos_dao.listadoproductos("", "");
@@ -82,12 +72,10 @@
                                     }
                                     out.println("</select>");
                                 %>
-                            </div>
-                        </div>  
-                        <div class="form-row">
-                            <div class="form-group col-md-12" >
-                                <h5><strong>Movimiento</strong></h5>
-                                <input type="number" name="movimiento_idmovimiento" class="form-control d-none" id="txt_movimiento_idmovimiento_Reg"> <br>
+                                <label for="floatingInput">Producto</label>
+                            </div> 
+                            <div class="form-floating col-md-6" >
+                                <input type="number" name="movimiento_idmovimiento" class="form-control d-none" id="txt_movimiento_idmovimiento_Reg">
                                 <%
                                     movimientoDAO movimiento_dao = new movimientoDAO();
                                     ArrayList<movimiento> mi_movimiento = movimiento_dao.ListadoMovimiento("", "");
@@ -98,13 +86,12 @@
                                     }
                                     out.println("</select>");
                                 %>
+                                <label for="floatingInput">Movimiento</label>
                             </div>
-                        </div>  
-                    </div>
                     <div id="ControlRegistro" class="bd-example d-none">
                         <input id="txt_Bandera_Reg" type="text" class="form-control" name="BanderaRegistro">
                     </div>
-                    <center><button type="submit" class="btn btn-success">Registrar</button></center>
+                    <button type="submit" class="btn btn-success">Registrar</button>
                 </form>
             </div>
         </div>
@@ -114,7 +101,7 @@
                 <div class="row justify-content-md-center">
                     <div id="ControlRegistro" class="input-group">
                         <input id="txt_Id_Consultado" type="text" class="form-control input-search" name="IdConsultado" value="<%=buscando%>" autofocus="autofocus" placeholder="Consultar por Id"/>
-                        <button type="button" class="btn btn-arg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="realizarBusqueda()">Buscar</button>
                     </div>    
                     <div>
                         <h2 class="title-table">Listado detalle movimiento</h2>
@@ -122,7 +109,7 @@
                             detalleDAO detalledao = new detalleDAO();
                             ArrayList<detalle_movimiento> detalleList = new ArrayList<detalle_movimiento>();
                             detalleList = detalledao.ListadoDetalle(buscando, buscando);
-                            out.println("<table class='table table-light table-striped table-hover table-borderless border-dark'><thead class='thead-info'><tr><th>ID</th><th>cantidad</th><th>precio</th><th>iva</th><th>subtotal</th><th>productos_idproductos</th><th>movimiento_idmovimiento</th><th>Eliminar</th></tr></thead>");
+                            out.println("<table class='table table-dark table-striped table-hover table-bordered'><thead class='thead-info'><tr><th>ID</th><th>cantidad</th><th>precio</th><th>iva</th><th>subtotal</th><th>productos_idproductos</th><th>movimiento_idmovimiento</th><th>Eliminar</th></tr></thead>");
 
                             for (detalle_movimiento C : detalleList) {
 
