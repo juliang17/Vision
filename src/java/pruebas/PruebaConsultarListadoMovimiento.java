@@ -22,9 +22,7 @@ public class PruebaConsultarListadoMovimiento {
             System.out.println("<td>" + M.getFechamovimiento() + "</td>");
             System.out.println("<td>" + M.getSubtotal() + "</td>");
             System.out.println("<td>" + M.getIva() + "</td>");
-            System.out.println("<td>" + M.getDescuento() + "</td>");
             System.out.println("<td>" + M.getTotal() + "</td>");
-            System.out.println("<td>" + M.getTipo_doc_contable_idtipodoccontable() + "</td>");
             System.out.println("<td>" + M.getMedio_de_pago_idmediodepago() + "</td>");
 
             System.out.println("</tr>");

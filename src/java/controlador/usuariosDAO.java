@@ -92,7 +92,7 @@ public class usuariosDAO {
 
             while (rs.next()) {
                 misusuarios = new usuarios();
-                misusuarios.setIdusuarios(rs.getInt(1));
+                misusuarios.setIdusuarios(rs.getString(1));
                 misusuarios.setNumerodocusuario(rs.getString(2));
                 misusuarios.setNombreusuarios(rs.getString(3));
                 misusuarios.setApellidousuarios(rs.getString(4));
@@ -112,7 +112,7 @@ public class usuariosDAO {
         return misusuarios;
     }
 
-    public ArrayList<usuarios> Consultarlistadousuarios(String numerodocusuario, String nombreusuarios, String apellidousuarios) {
+    public ArrayList<usuarios> Consultarlistadousuarios(String idusuarios ,String numerodocusuario) {
         ArrayList<usuarios> milistausuarios = new ArrayList<usuarios>();
         usuarios mitipousuario;
 
@@ -125,13 +125,13 @@ public class usuariosDAO {
             Statement sentencia = nuevaCon.createStatement();
             String Query = " select idusuarios, numerodocusuario, nombreusuarios, apellidousuarios, correousuarios, telefonousuarios, direccionusuario, claveusuario, tipo_documento_idtipodoc, roles_idroles, genero_idgenero, estado_usuario_idestadousuario"
                     + " from usuarios"
-                    + " where numerodocusuario like '%" + numerodocusuario + "%' "
-                    + " or (nombreusuarios) like ('%" + nombreusuarios + "%') "
-                    + " or (apellidousuarios) like ('%" + apellidousuarios + "%') ORDER BY numerodocusuario; ";
+                    + " where idusuarios like '%" + idusuarios + "%' "
+                    + " or (numerodocusuario) like ('%" + numerodocusuario + "%') "
+                    + " ORDER BY numerodocusuario; ";
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
                 mitipousuario = new usuarios();
-                mitipousuario.setIdusuarios(rs.getInt(1));
+                mitipousuario.setIdusuarios(rs.getString(1));
                 mitipousuario.setNumerodocusuario(rs.getString(2));
                 mitipousuario.setNombreusuarios(rs.getString(3));
                 mitipousuario.setApellidousuarios(rs.getString(4));

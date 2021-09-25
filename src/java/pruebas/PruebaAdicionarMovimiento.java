@@ -45,9 +45,7 @@ public class PruebaAdicionarMovimiento {
         Mov.setFechamovimiento(fechamovimiento);
         Mov.setSubtotal(subtotal);
         Mov.setIva(iva);
-        Mov.setDescuento(descuento);
         Mov.setTotal(total);
-        Mov.setTipo_doc_contable_idtipodoccontable(tipo_doc_contable_idtipodoccontable);
         Mov.setMedio_de_pago_idmediodepago(medio_de_pago_idmediodepago);
 
         String miRespuesta = MovDAO.AdicionarMovimiento(Mov);

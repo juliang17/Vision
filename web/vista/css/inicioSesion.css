@@ -1,0 +1,32 @@
+.inicio {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
+    margin-bottom: 50px;
+    
+}
+.bg {
+    background-image: url(..//imagenes/login.png);
+    background-position: center center;
+    width: 350px;
+    height: 350px;
+    border-radius: 80px 20px;
+    margin: 20px;
+    
+}
+.container {
+    width: 85%;
+    margin-top: 15%;
+    background: #9194A3;
+    border-radius: 80px 20px;
+}
+body{
+    background: #D9DAE9;
+}
+h1{
+    font-style: italic;
+    font-family: serif;
+}
+.bot{
+    border-radius: 100px;
+}

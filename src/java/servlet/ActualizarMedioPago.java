@@ -37,11 +37,15 @@ public class ActualizarMedioPago extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String descripcionmediodepago = request.getParameter("descripcionmediodepago");
+        String referencia_pago = request.getParameter("referencia_pago");
+        
+        int referencia = Integer.parseInt(referencia_pago);
 
         mediodepagoDAO MedioPagoDAO = new mediodepagoDAO();
         medio_de_pago MedioPago = new medio_de_pago();
 
         MedioPago.setDescripcionmediodepago(descripcionmediodepago);
+        MedioPago.setReferencia_pago(referencia);
 
         System.out.println(" Descripcion: " + descripcionmediodepago);
         String respuestaRegistrada = MedioPagoDAO.ModificarMedioPago(MedioPago);

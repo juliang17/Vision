@@ -52,9 +52,9 @@ public class ConsultarDetalle extends HttpServlet {
                             + "precio=" + Detalle.getPrecio()+ "&"
                             + "iva=" + Detalle.getIva()+ "&"
                             + "subtotal=" + Detalle.getSubtotal()+ "&"
+                            + "total_producto" + Detalle.getTotal_producto() + "&"
                             + "productos_idproductos=" + Detalle.getProductos_idproductos()+ "&"
                             + "movimiento_idmovimiento=" + Detalle.getMovimiento_idmovimiento()+ "&"
-                            + "iddetallemovimiento=" + Detalle.getIddetallemovimiento()+ "&"
                             
                             + "Vista=" + "Actualizar" + "&");
 

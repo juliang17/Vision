@@ -12,7 +12,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">       
         <script src="Javascript/validarProveedor.js" type="text/javascript"></script>
-
+        <script src="https://kit.fontawesome.com/4d836167dd.js" crossorigin="anonymous"></script>
+        <link href="css/usuarios.css" rel="stylesheet" type="text/css"/>
         <title>Proveedores</title>
     </head>
     <body onload="visualizaOculta('<%=request.getParameter("Vista")%>');">
@@ -21,7 +22,34 @@
                 buscando = "";
             }
         %>
-        <div class="row justify-content-md-center">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../PaginaPrincipal.jsp">MAXILINI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Formularios/GestionCategorias.jsp">Gestión categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Formularios/GestionMarca.jsp">Gestión marca</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Formularios/GestionUnidadmedida.jsp">Gestión unidad de medida</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="Formularios/GestionEstadoProducto.jsp">Gestión estado producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="RegistroProductos.jsp">Gestión productos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row justify-content-md-center menu">
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"
@@ -83,7 +111,7 @@
                 <div class="form-row" >
                     <div class="form-group col-md-6" >
                         <h2>Correo electrónico:</h2>
-                        <input type="text" name="correoproveedores" class="form-control" id="correo" value="<%=request.getParameter("correo")%>">
+                        <input type="text" name="correoproveedores" class="form-control" id="correo" value="<%=request.getParameter("Correo")%>">
                     </div>
                     <div class="form-group col-md-6" >
                         <h2>Número telefónico:</h2>
@@ -93,7 +121,7 @@
                 <center><button type="submit" class="btn btn-primary">Actualizar</button></center>
             </form>
         </div>
-
+                    <br>
         <div id="Listado" class="container">
             <form action="/VISION/ConsultarProveedor" method="post">
                 <div class="row justify-content-md-center">
@@ -119,8 +147,8 @@
                                     out.println("<td>" + P.getTelefonoproveedores()+ "</td>");
                                     out.println("<td>" + P.getCorreoproveedores()+ "</td>");
 
-                                    out.println("<td>" + "<input type = 'submit' class='btn btn-primary btn btn-login' value='Actualizar'name='Actualizar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
-                                    out.println("<td>" + "<input type = 'submit' class='btn btn-danger btn btn-login' value='Eliminar'name='Eliminar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "</td>");
+                                    out.println("<td>" + "<button type = 'submit' class='btn btn-primary btn btn-login' value=''name='Actualizar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "" + "<i class='fas fa-pencil-alt'></i>" + "</button>" + "</td>");
+                                    out.println("<td>" + "<button type = 'submit' class='btn btn-danger btn btn-login' value=''name='Eliminar'onclick='SetIdConsulta(" + P.getIdentificacionproveedores()+ ")'/>" + "" + "<i class='fas fa-trash-alt'></i>" + "</button>" + "</td>");
                                     out.println("</tr>");
                                 }
                                 out.println("</table>");

@@ -1,12 +1,14 @@
 package modelo;
 
-
 public class detalle_movimiento {
+
     private int iddetallemovimiento;
+    private String nombre_producto;
     private int cantidad;
-    private int precio;
-    private int iva;
-    private int subtotal;
+    private float precio;
+    private float iva;
+    private float subtotal;
+    private float total_producto;
     private int productos_idproductos;
     private int movimiento_idmovimiento;
 
@@ -18,6 +20,14 @@ public class detalle_movimiento {
         this.iddetallemovimiento = iddetallemovimiento;
     }
 
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -26,28 +36,36 @@ public class detalle_movimiento {
         this.cantidad = cantidad;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
-    public int getIva() {
+    public float getIva() {
         return iva;
     }
 
-    public void setIva(int iva) {
+    public void setIva(float iva) {
         this.iva = iva;
     }
 
-    public int getSubtotal() {
+    public float getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(int subtotal) {
+    public void setSubtotal(float subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public float getTotal_producto() {
+        return total_producto;
+    }
+
+    public void setTotal_producto(float total_producto) {
+        this.total_producto = total_producto;
     }
 
     public int getProductos_idproductos() {
@@ -65,6 +83,7 @@ public class detalle_movimiento {
     public void setMovimiento_idmovimiento(int movimiento_idmovimiento) {
         this.movimiento_idmovimiento = movimiento_idmovimiento;
     }
+
     
-    
+
 }

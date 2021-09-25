@@ -1,16 +1,16 @@
-function validarTipoDocC() {
+function validarEstadoProducto() {
 
     var resultado = 'Correcto';
-    var TipoDocC = document.getElementById("txt_descripciontipodoccontable_Reg").value;
+    var EstadoProducto = document.getElementById("txt_descripcionestadoproducto_Reg").value;
 
 
     console.log("-- Informacion a validar -- ");
-    console.log("TipoDocC : " + TipoDocC);
+    console.log("EstadoProducto : " + EstadoProducto);
 
 
-    if (TipoDocC == '') {
+    if (EstadoProducto == '') {
 
-        alert("El tipó de documento contable no puede estar vacio");
+        alert("La descripcion del estado del producto no puede estar vacio");
         resultado = 'Error';
     }
     $('#txt_Bandera_Reg').val(resultado);
@@ -29,7 +29,7 @@ function validarTipoDocC() {
 function realizarBusqueda() {
     var textoBuscado = $('#txt_Id_Consultado').val();
     console.log("Texto: " + $('#txt_Id_Consultado').val());             
-    window.location.href = '/VISION/vista/Formularios/GestionTipoDocumentoC.jsp?buscando=' + textoBuscado.trim() + '&';
+    window.location.href = '/VISION/vista/Formularios/GestionEstadoProducto.jsp?buscando=' + textoBuscado.trim() + '&';
 }
 
 function SetIdConsulta(x) {
@@ -67,3 +67,5 @@ document.getElementById("txt_Id_Consultado").focus();
 $('#txt_Id_Consultado').change(function(){
 console.log("Texto" + $('#txt_Id_Consultado').val());
 });
+
+

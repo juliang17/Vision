@@ -79,7 +79,7 @@ public class ActualizarUsuario extends HttpServlet {
             out.println("</script>");
         } else {
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + "No se ha podido relizar la actualizacion." + "\n" + respuestaRegistrada + "');");
+            out.println("alert('" + "No se ha podido realizar la actualizacion." + "\n" + respuestaRegistrada + "');");
             out.println("</script>");
         }
     }

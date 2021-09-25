@@ -6,13 +6,14 @@ public class productos {
     private String referenciaproducto;
     private String nombreproducto;
     private int cantidadproducto;
-    private int ivaproducto;
+    private double ivaproducto;
     private String descripcionproducto;
-    private int precio;
+    private double precio;
     private int Categorias_idcategorias;
     private int Marca_idmarca;
     private int Unidad_de_medida_idunidadmedida;
     private int Proveedores_idproveedores;
+    private int estado_producto_idestado_producto;
 
     public int getIdproductos() {
         return idproductos;
@@ -46,11 +47,11 @@ public class productos {
         this.cantidadproducto = cantidadproducto;
     }
 
-    public int getIvaproducto() {
+    public double getIvaproducto() {
         return ivaproducto;
     }
 
-    public void setIvaproducto(int ivaproducto) {
+    public void setIvaproducto(double ivaproducto) {
         this.ivaproducto = ivaproducto;
     }
 
@@ -62,11 +63,11 @@ public class productos {
         this.descripcionproducto = descripcionproducto;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -100,6 +101,14 @@ public class productos {
 
     public void setProveedores_idproveedores(int Proveedores_idproveedores) {
         this.Proveedores_idproveedores = Proveedores_idproveedores;
+    }
+
+    public int getEstado_producto_idestado_producto() {
+        return estado_producto_idestado_producto;
+    }
+
+    public void setEstado_producto_idestado_producto(int estado_producto_idestado_producto) {
+        this.estado_producto_idestado_producto = estado_producto_idestado_producto;
     }
 
 }

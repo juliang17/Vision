@@ -40,6 +40,7 @@ public class RegistroDetalle extends HttpServlet {
         String precio = request.getParameter("precio");
         String iva = request.getParameter("iva");
         String subtotal = request.getParameter("subtotal");
+        String total_producto = request.getParameter("total_producto");
         String productos = request.getParameter("productos_idproductos");
         String movimiento = request.getParameter("movimiento_idmovimiento");
 
@@ -49,6 +50,7 @@ public class RegistroDetalle extends HttpServlet {
         int P = Integer.parseInt(precio);
         int I = Integer.parseInt(iva);
         int S = Integer.parseInt(subtotal);
+        int totalP = Integer.parseInt(total_producto);
         int PR = Integer.parseInt(productos);
         int M = Integer.parseInt(movimiento);
         
@@ -60,6 +62,7 @@ public class RegistroDetalle extends HttpServlet {
         d.setPrecio(P);
         d.setIva(I);
         d.setSubtotal(S);
+        d.setTotal_producto(totalP);
         d.setProductos_idproductos(PR);
         d.setMovimiento_idmovimiento(M);
         

@@ -7,10 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.medio_de_pago;
 
-/**
- *
- * @author Jeffe
- */
 public class mediodepagoDAO {
 
     public String AdicionarMedios_de_pago(medio_de_pago Medios_de_pago) {
@@ -24,9 +20,10 @@ public class mediodepagoDAO {
 
         try {
 
-            String Query = "Insert into  medio_de_pago (descripcionmediodepago)" + "values (?);";
+            String Query = "Insert into  medio_de_pago (descripcionmediodepago , referencia_pago)" + "values (?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
             sentencia.setString(1, Medios_de_pago.getDescripcionmediodepago());
+            sentencia.setInt(2, Medios_de_pago.getReferencia_pago());
             sentencia.execute();
             miRespuesta = "";
 
@@ -50,12 +47,13 @@ public class mediodepagoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update medio_de_pago set idMedioDePago=?, descripcionmediodepago=? where idMedioDePago=?";
+            String Query = "update medio_de_pago set idMedioDePago=?, descripcionmediodepago=?, referencia_pago=? where idMedioDePago=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setString(1, Medios_de_pago.getIdMedioDePago());
             sentencia.setString(2, Medios_de_pago.getDescripcionmediodepago());
-            sentencia.setString(3, Medios_de_pago.getIdMedioDePago());
+            sentencia.setInt(3, Medios_de_pago.getReferencia_pago());
+            sentencia.setString(4, Medios_de_pago.getIdMedioDePago());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -78,13 +76,14 @@ public class mediodepagoDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idMedioDePago, descripcionmediodepago from medio_de_pago where idMedioDePago = " + idMedioDePago;
+            String Query = "Select idMedioDePago, descripcionmediodepago, referencia_pago from medio_de_pago where idMedioDePago = " + idMedioDePago;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_medio_de_pago = new medio_de_pago();
                 mi_medio_de_pago.setIdMedioDePago(rs.getString(1));
                 mi_medio_de_pago.setDescripcionmediodepago(rs.getString(2));
+                mi_medio_de_pago.setReferencia_pago(3);
 
             }
 
@@ -107,7 +106,7 @@ public class mediodepagoDAO {
         try {
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = " select idMedioDePago,descripcionmediodepago "
+            String Query = " select idMedioDePago,descripcionmediodepago,referencia_pago "
                     + " from medio_de_pago "
                     + " where idMedioDePago like '%" + idMedioDePago + "%' "
                     + "  or (descripcionmediodepago) like ('%" + descripcionmediodepago + "%') ORDER BY idMedioDePago;";
@@ -117,6 +116,7 @@ public class mediodepagoDAO {
                 mi_medio_de_pago = new medio_de_pago();
                 mi_medio_de_pago.setIdMedioDePago(rs.getString(1));
                 mi_medio_de_pago.setDescripcionmediodepago(rs.getString(2));
+                mi_medio_de_pago.setReferencia_pago(rs.getInt(3));
                 listado_medio_de_pago.add(mi_medio_de_pago);
             }
             return listado_medio_de_pago;

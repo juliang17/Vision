@@ -48,13 +48,15 @@ public class ConsultarMovimientos extends HttpServlet {
                 if (Movimiento != null) {
 
                     response.sendRedirect("/VISION/vista/Formularios/GestionMovimiento.jsp?fechamovimiento=" + Movimiento.getFechamovimiento()+ "&"
+                            + "numero_documento" + Movimiento.getNumero_documento() + "&"
                             + "subtotal=" + Movimiento.getSubtotal()+ "&"
                             + "iva=" + Movimiento.getIva()+ "&"
-                            + "descuento=" + Movimiento.getDescuento()+ "&"
+                            + "estadoMov=" + Movimiento.getEstadoMov()+ "&"
                             + "total=" + Movimiento.getTotal()+ "&"
+                            + "usuarios_idusuarios" + Movimiento.getUsuarios_idusuarios() + "&" 
                             + "medio_de_pago_idmediodepago=" + Movimiento.getMedio_de_pago_idmediodepago()+ "&"
-                            + "tipo_doc_contable_idtipodoccontable=" + Movimiento.getTipo_doc_contable_idtipodoccontable()+ "&"
                             + "idmovimiento=" + Movimiento.getIdmovimiento()+ "&"
+                            + "tipo_mov_id_tipo_mov=" + Movimiento.getTipo_mov_id_tipo_mov()+ "&"
                             
                             + "Vista=" + "Actualizar" + "&");
 
@@ -62,7 +64,7 @@ public class ConsultarMovimientos extends HttpServlet {
 
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido realizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
                     out.println("</script>");
                 }
 
@@ -81,13 +83,13 @@ public class ConsultarMovimientos extends HttpServlet {
                     } else {
 
                         out.println("<script type=\"text/javascript\">");
-                        out.println("alert('" + "No se ha podido relizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
+                        out.println("alert('" + "No se ha podido realizar la eliminacion." + respuestaRegistrada.replace("'", "") + "');");
                         out.println("</script>");
                     }
                 } else {
 
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar la identificacion: " + Identificacion + "');");
+                    out.println("alert('" + "No se ha podido relizar la consulta." + "\n" + "Por favor verificar: " + Identificacion + "');");
                     out.println("</script>");
 
                 }

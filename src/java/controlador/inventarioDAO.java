@@ -18,14 +18,14 @@ public class inventarioDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "Insert into inventario (entrada, salida, saldo, productos_idproductos)" + "values (?,?,?,?);";
+            String Query = "Insert into inventario (entrada, salida, saldo, productos_idproductos, detalle_movimiento_iddetallemovimiento)" + "values (?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Inventario.getEntrada());
             sentencia.setInt(2, Inventario.getSalida());
             sentencia.setInt(3, Inventario.getSaldo());
             sentencia.setInt(4, Inventario.getProductos_idproductos());
-
+            sentencia.setInt(5, Inventario.getDetalle_movimiento_iddetallemovimiento());
             
             sentencia.execute();
             miRespuesta = "";
@@ -45,7 +45,7 @@ public class inventarioDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update inventario set idinventario=?, entrada=?, salida=?, saldo=?, productos_idproductos=? where idinventario=?";
+            String Query = "update inventario set idinventario=?, entrada=?, salida=?, saldo=?, productos_idproductos=?, detalle_movimiento_iddetallemovimiento=? where idinventario=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setInt(1, Inventario.getIdinventario());
@@ -53,7 +53,8 @@ public class inventarioDAO {
             sentencia.setInt(3, Inventario.getSalida());
             sentencia.setInt(4, Inventario.getSaldo());
             sentencia.setInt(5, Inventario.getProductos_idproductos());
-            sentencia.setInt(6, Inventario.getIdinventario());
+            sentencia.setInt(6, Inventario.getDetalle_movimiento_iddetallemovimiento());
+            sentencia.setInt(7, Inventario.getIdinventario());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -76,7 +77,7 @@ public class inventarioDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idinventario, entrada, salida, saldo, productos_idproductos from inventario where idinventario = " + idinventario;
+            String Query = "Select idinventario, entrada, salida, saldo, productos_idproductos, detalle_movimiento_iddetallemovimiento from inventario where idinventario = " + idinventario;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
@@ -85,7 +86,8 @@ public class inventarioDAO {
                 mi_inventario.setEntrada(rs.getInt(2));
                 mi_inventario.setSalida(rs.getInt(3));
                 mi_inventario.setSaldo(rs.getInt(4));
-                mi_inventario.setProductos_idproductos(rs.getInt(5));     
+                mi_inventario.setProductos_idproductos(rs.getInt(5)); 
+                mi_inventario.setDetalle_movimiento_iddetallemovimiento(rs.getInt(6));
             }
 
             return mi_inventario;
@@ -110,7 +112,7 @@ public class inventarioDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "select idinventario,entrada,salida,saldo, productos_idproductos "
+            String Query = "select idinventario,entrada,salida,saldo, productos_idproductos, detalle_movimiento_iddetallemovimiento "
                     + " from inventario"
                     + " where idinventario like '%" + idinventario + "%'"
                     + "  or (entrada) like ('%" + entrada + "%')"
@@ -124,7 +126,8 @@ public class inventarioDAO {
                 mi_inventario.setEntrada(rs.getInt(2));
                 mi_inventario.setSalida(rs.getInt(3));
                 mi_inventario.setSaldo(rs.getInt(4));
-                mi_inventario.setProductos_idproductos(rs.getInt(5)); 
+                mi_inventario.setProductos_idproductos(rs.getInt(5));
+                mi_inventario.setDetalle_movimiento_iddetallemovimiento(rs.getInt(6));
 
                 mi_lista_inventario.add(mi_inventario);
 

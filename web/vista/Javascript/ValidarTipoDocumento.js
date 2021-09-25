@@ -60,10 +60,4 @@ function visualizaOculta(Dato) {
     }
 }
 
-function DefinirFoco(){
-document.getElementById("txt_Id_Consultado").focus();
-}
 
-$('#txt_Id_Consultado').change(function(){
-console.log("Texto" + $('#txt_Id_Consultado').val());
-});

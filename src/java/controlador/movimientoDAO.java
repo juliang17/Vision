@@ -18,16 +18,18 @@ public class movimientoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "Insert into movimiento (fechamovimiento, subtotal, iva, descuento, total, tipo_doc_contable_idtipodoccontable, medio_de_pago_idmediodepago)" + "values (?,?,?,?,?,?,?);";
+            String Query = "Insert into movimiento (numero_documento, fechamovimiento, subtotal, iva, estadoMov, total, usuarios_idusuarios , medio_de_pago_idmediodepago, tipo_mov_id_tipo_mov)" + "values (?,?,?,?,?,?,?,?,?);";
             sentencia = nuevaCon.prepareStatement(Query);
 
-            sentencia.setString(1, Movimiento.getFechamovimiento());
-            sentencia.setInt(2, Movimiento.getSubtotal());
-            sentencia.setInt(3, Movimiento.getIva());
-            sentencia.setInt(4, Movimiento.getDescuento());
-            sentencia.setInt(5, Movimiento.getTotal());
-            sentencia.setInt(6, Movimiento.getTipo_doc_contable_idtipodoccontable());
-            sentencia.setInt(7, Movimiento.getMedio_de_pago_idmediodepago());
+            sentencia.setString(1, Movimiento.getNumero_documento());
+            sentencia.setString(2, Movimiento.getFechamovimiento());
+            sentencia.setDouble(3, Movimiento.getSubtotal());
+            sentencia.setDouble(4, Movimiento.getIva());
+            sentencia.setInt(5, Movimiento.getEstadoMov());
+            sentencia.setDouble(6, Movimiento.getTotal());
+            sentencia.setInt(7, Movimiento.getUsuarios_idusuarios());
+            sentencia.setInt(8, Movimiento.getMedio_de_pago_idmediodepago());
+            sentencia.setInt(9, Movimiento.getTipo_mov_id_tipo_mov());
 
             
             sentencia.execute();
@@ -48,17 +50,19 @@ public class movimientoDAO {
 
         PreparedStatement sentencia;
         try {
-            String Query = "update movimiento set idmovimiento=?, fechamovimiento=?, subtotal=?, iva=?, descuento=?, total=?, tipo_doc_contable_idtipodoccontable=?, medio_de_pago_idmediodepago=? where idmovimiento=?";
+            String Query = "update movimiento set idmovimiento=?, numero_documento=?, fechamovimiento=?, subtotal=?, iva=?, estadoMov=?, total=?, usuarios_idusuarios=? , medio_de_pago_idmediodepago=?, tipo_mov_id_tipo_mov=? where idmovimiento=?";
             sentencia = nuevaCon.prepareStatement(Query);
 
             sentencia.setString(1, Movimiento.getIdmovimiento());
-            sentencia.setString(2, Movimiento.getFechamovimiento());
-            sentencia.setInt(3, Movimiento.getSubtotal());
-            sentencia.setInt(4, Movimiento.getIva());
-            sentencia.setInt(5, Movimiento.getDescuento());
-            sentencia.setInt(6, Movimiento.getTotal());
-            sentencia.setInt(7, Movimiento.getTipo_doc_contable_idtipodoccontable());
-            sentencia.setInt(8, Movimiento.getMedio_de_pago_idmediodepago());
+            sentencia.setString(2, Movimiento.getNumero_documento());
+            sentencia.setString(3, Movimiento.getFechamovimiento());
+            sentencia.setDouble(4, Movimiento.getSubtotal());
+            sentencia.setDouble(5, Movimiento.getIva());
+            sentencia.setInt(6, Movimiento.getEstadoMov());
+            sentencia.setDouble(7, Movimiento.getTotal());
+            sentencia.setInt(8, Movimiento.getUsuarios_idusuarios());
+            sentencia.setInt(9, Movimiento.getMedio_de_pago_idmediodepago());
+            sentencia.setInt(10, Movimiento.getTipo_mov_id_tipo_mov());
 
             sentencia.executeUpdate();
             miRespuesta = "";
@@ -81,19 +85,21 @@ public class movimientoDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "Select idmovimiento, fechamovimiento, subtotal, iva, descuento, total, tipo_doc_contable_idtipodoccontable, medio_de_pago_idmediodepago from movimiento where idmovimiento = " + idmovimiento;
+            String Query = "Select idmovimiento, numero_documento, fechamovimiento, subtotal, iva, estadoMov, total, usuarios_idusuarios , medio_de_pago_idmediodepago, tipo_mov_id_tipo_mov from movimiento where idmovimiento = " + idmovimiento;
             ResultSet rs = sentencia.executeQuery(Query);
             while (rs.next()) {
 
                 mi_movimiento = new movimiento();
                 mi_movimiento.setIdmovimiento(rs.getString(1));
-                mi_movimiento.setFechamovimiento(rs.getString(2));
-                mi_movimiento.setSubtotal(rs.getInt(3));
-                mi_movimiento.setIva(rs.getInt(4));
-                mi_movimiento.setDescuento(rs.getInt(5));
-                mi_movimiento.setTotal(rs.getInt(6));
-                mi_movimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
-                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
+                mi_movimiento.setNumero_documento(rs.getString(2));
+                mi_movimiento.setFechamovimiento(rs.getString(3));
+                mi_movimiento.setSubtotal(rs.getDouble(4));
+                mi_movimiento.setIva(rs.getDouble(5));
+                mi_movimiento.setEstadoMov(rs.getInt(6));
+                mi_movimiento.setTotal(rs.getDouble(7));
+                mi_movimiento.setUsuarios_idusuarios(rs.getInt(8));
+                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(9));
+                mi_movimiento.setTipo_mov_id_tipo_mov(rs.getInt(10));
             }
 
             return mi_movimiento;
@@ -103,7 +109,7 @@ public class movimientoDAO {
         return mi_movimiento;
     }
 
-    public ArrayList<movimiento> ListadoMovimiento(String idmovimiento, String fechamovimiento) {
+    public ArrayList<movimiento> ListadoMovimiento(String idmovimiento, String numero_documento) {
 
         ArrayList<movimiento> mi_lista_movimiento = new ArrayList<movimiento>();
         movimiento mi_movimiento;
@@ -118,23 +124,25 @@ public class movimientoDAO {
 
             Statement sentencia = nuevaCon.createStatement();
 
-            String Query = "select idmovimiento,fechamovimiento,subtotal,iva, descuento,total,tipo_doc_contable_idtipodoccontable,medio_de_pago_idmediodepago "
+            String Query = "select idmovimiento,numero_documento,fechamovimiento,subtotal,iva,estadoMov,total,usuarios_idusuarios,medio_de_pago_idmediodepago,tipo_mov_id_tipo_mov "
                     + " from movimiento"
                     + " where idmovimiento like '%" + idmovimiento + "%'"
-                    + "  or (fechamovimiento) like ('%" + fechamovimiento + "%') ORDER BY idmovimiento;";
+                    + "  or (numero_documento) like ('%" + numero_documento + "%') ORDER BY idmovimiento;";
             ResultSet rs = sentencia.executeQuery(Query);
 
             while (rs.next()) {
 
                 mi_movimiento = new movimiento();
                 mi_movimiento.setIdmovimiento(rs.getString(1));
-                mi_movimiento.setFechamovimiento(rs.getString(2));
-                mi_movimiento.setSubtotal(rs.getInt(3));
-                mi_movimiento.setIva(rs.getInt(4));
-                mi_movimiento.setDescuento(rs.getInt(5));
-                mi_movimiento.setTotal(rs.getInt(6));
-                mi_movimiento.setTipo_doc_contable_idtipodoccontable(rs.getInt(7));
-                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(8));
+                mi_movimiento.setNumero_documento(rs.getString(2));
+                mi_movimiento.setFechamovimiento(rs.getString(3));
+                mi_movimiento.setSubtotal(rs.getDouble(4));
+                mi_movimiento.setIva(rs.getDouble(5));
+                mi_movimiento.setEstadoMov(rs.getInt(6));
+                mi_movimiento.setTotal(rs.getDouble(7));
+                mi_movimiento.setUsuarios_idusuarios(rs.getInt(rs.getInt(8)));
+                mi_movimiento.setMedio_de_pago_idmediodepago(rs.getInt(9));
+                mi_movimiento.setTipo_mov_id_tipo_mov(rs.getInt(10));
 
                 mi_lista_movimiento.add(mi_movimiento);
 

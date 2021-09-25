@@ -7,6 +7,7 @@ public class inventario {
     private int salida;
     private int saldo;
     private int productos_idproductos;
+    private int detalle_movimiento_iddetallemovimiento;
 
     public int getIdinventario() {
         return idinventario;
@@ -48,4 +49,13 @@ public class inventario {
         this.productos_idproductos = productos_idproductos;
     }
 
+    public int getDetalle_movimiento_iddetallemovimiento() {
+        return detalle_movimiento_iddetallemovimiento;
+    }
+
+    public void setDetalle_movimiento_iddetallemovimiento(int detalle_movimiento_iddetallemovimiento) {
+        this.detalle_movimiento_iddetallemovimiento = detalle_movimiento_iddetallemovimiento;
+    }
+    
+    
 }

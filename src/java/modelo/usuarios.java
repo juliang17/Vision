@@ -2,7 +2,7 @@ package modelo;
 
 public class usuarios {
 
-    private int idusuarios;
+    private String idusuarios;
     private String numerodocusuario;
     private String nombreusuarios;
     private String apellidousuarios;
@@ -15,11 +15,11 @@ public class usuarios {
     private int genero_idgenero;
     private int estado_usuario_idestadousuario;
 
-    public int getIdusuarios() {
+    public String getIdusuarios() {
         return idusuarios;
     }
 
-    public void setIdusuarios(int idusuarios) {
+    public void setIdusuarios(String idusuarios) {
         this.idusuarios = idusuarios;
     }
 
@@ -110,5 +110,5 @@ public class usuarios {
     public void setEstado_usuario_idestadousuario(int estado_usuario_idestadousuario) {
         this.estado_usuario_idestadousuario = estado_usuario_idestadousuario;
     }
-    
+
 }

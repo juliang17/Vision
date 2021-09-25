@@ -21,7 +21,7 @@ public class ActualizarProveedores extends HttpServlet {
             
         String nombre = request.getParameter("nombreproveedores");
         String identificacion = request.getParameter("identificacionproveedores");
-        String correo = request.getParameter("correoproveedores");
+        String Correo = request.getParameter("correoproveedores");
         String telefono = request.getParameter("telefonoproveedores");
 
         int Telefono = Integer.parseInt(telefono);
@@ -31,7 +31,7 @@ public class ActualizarProveedores extends HttpServlet {
 
         p.setNombreproveedores(nombre);
         p.setIdentificacionproveedores(identificacion);
-        p.setCorreoproveedores(correo);
+        p.setCorreoproveedores(Correo);
         p.setTelefonoproveedores(Telefono);
         
         System.out.println("Número de documento " + identificacion);
@@ -43,11 +43,10 @@ public class ActualizarProveedores extends HttpServlet {
             out.println("</script>");
         } else {
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('"+"No se ha podido relizar la actualizacion."+"\n"+respuestaRegistrada +"');");
+            out.println("alert('"+"No se ha podido realizar la actualizacion."+"\n"+respuestaRegistrada +"');");
             out.println("</script>");
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

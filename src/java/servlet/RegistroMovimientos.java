@@ -32,34 +32,39 @@ public class RegistroMovimientos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
            
+        String numero_documento = request.getParameter("numero_documento");
         String fechamovimiento = request.getParameter("fechamovimiento");
         String subtotal = request.getParameter("subtotal");
         String iva = request.getParameter("iva");
-        String descuento = request.getParameter("descuento");
+        String estadoMov = request.getParameter("estadoMov");
         String total = request.getParameter("total");
-        String tipo_doc_contable_idtipodoccontable = request.getParameter("tipo_doc_contable_idtipodoccontable");
+        String usuarios_idusuarios = request.getParameter("usuarios_idusuarios");
         String medio_de_pago_idmediodepago = request.getParameter("medio_de_pago_idmediodepago");
+        String tipo_mov_id_tipo_mov = request.getParameter("tipo_mov_id_tipo_mov");
 
         String BanderaEstado = request.getParameter("BanderaRegistro");
         
         int Subtotal = Integer.parseInt(subtotal);
         int Iva = Integer.parseInt(iva);
-        int Descuento = Integer.parseInt(descuento);
         int Total = Integer.parseInt(total);
-        int Tipo = Integer.parseInt(tipo_doc_contable_idtipodoccontable);
+        int user = Integer.parseInt(usuarios_idusuarios);
+        int Tipo = Integer.parseInt(tipo_mov_id_tipo_mov);
         int Medio = Integer.parseInt(medio_de_pago_idmediodepago);
+        int estadoM = Integer.parseInt(estadoMov);
         
         
         movimientoDAO mdao = new movimientoDAO();
         movimiento m = new movimiento();
         
+        m.setNumero_documento(numero_documento);
         m.setFechamovimiento(fechamovimiento);
         m.setSubtotal(Subtotal);
         m.setIva(Iva);
-        m.setDescuento(Descuento);
+        m.setEstadoMov(estadoM);
         m.setTotal(Total);
-        m.setTipo_doc_contable_idtipodoccontable(Tipo);
+        m.setUsuarios_idusuarios(user);
         m.setMedio_de_pago_idmediodepago(Medio);
+        m.setTipo_mov_id_tipo_mov(Tipo);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {

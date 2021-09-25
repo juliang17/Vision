@@ -29,15 +29,17 @@ public class ActualizarProducto extends HttpServlet {
         String marca_idmarca = request.getParameter("marca_idmarca");
         String unidad_de_medida_idunidadmedida = request.getParameter("unidad_de_medida_idunidadmedida");
         String proveedores_idproveedores = request.getParameter("proveedores_idproveedores");
+        String estado_producto_idestado_producto = request.getParameter("estado_producto_idestado_producto");
         
         
         int Cantidad = Integer.parseInt(cantidadproducto);
-        int Iva = Integer.parseInt(ivaproducto);
-        int Precio = Integer.parseInt(precio);
+        double Iva = Double.parseDouble(ivaproducto);
+        double Precio = Double.parseDouble(precio);
         int Categoria = Integer.parseInt(categorias_idcategorias);
         int Marca = Integer.parseInt(marca_idmarca);
         int Unidad = Integer.parseInt(unidad_de_medida_idunidadmedida);
         int Proveedor = Integer.parseInt(proveedores_idproveedores);
+        int estadoP = Integer.parseInt(estado_producto_idestado_producto);
         
         ProductoDAO pdao = new ProductoDAO();
         productos p = new productos();
@@ -52,6 +54,7 @@ public class ActualizarProducto extends HttpServlet {
         p.setMarca_idmarca(Marca);
         p.setUnidad_de_medida_idunidadmedida(Unidad);
         p.setProveedores_idproveedores(Proveedor);
+        p.setEstado_producto_idestado_producto(estadoP);
         
         System.out.println("Referencia producto " + referenciaproducto);
         String respuestaRegistrada = pdao.Actualizarproductos(p);

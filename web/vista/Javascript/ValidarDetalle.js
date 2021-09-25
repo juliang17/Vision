@@ -7,6 +7,7 @@ function validacionDetalle() {
     var precio = $("#txt_precio_Reg").val;
     var iva = $("#txt_iva_Reg").val;
     var subtotal = $("#txt_subtotal_Reg").val;
+    var total_producto = $("#txt_total_producto_Reg").val;
     var productos_idproductos = $("#txt_productos_idproductos_Reg").val;
     var movimiento_idmovimiento = $("movimiento_idmovimiento").val;
     
@@ -18,6 +19,7 @@ function validacionDetalle() {
     console.log("precio : " + precio);
     console.log("iva : " + iva);
     console.log("subtotal : " + subtotal);
+    console.log("total_producto : " + total_producto);
     console.log("productos_idproductos : " + productos_idproductos);
     console.log("movimiento_idmovimiento : " + movimiento_idmovimiento);
 
@@ -29,32 +31,37 @@ function validacionDetalle() {
     }
     if (cantidad == '') {
 
-        alert("La salida no puede estar vacia");
+        alert("La cantidad no puede estar vacia");
         resultado = 'Error';
     }
     if (precio == '') {
 
-        alert("El saldo no puede estar vacia");
+        alert("El precio no puede estar vacia");
         resultado = 'Error';
     }
     if (iva == '') {
 
-        alert("El saldo no puede estar vacia");
+        alert("El iva no puede estar vacia");
         resultado = 'Error';
     }
     if (subtotal == '') {
 
-        alert("El saldo no puede estar vacia");
+        alert("El subtotal no puede estar vacia");
+        resultado = 'Error';
+    }
+    if (total_producto == '') {
+
+        alert("El total no puede estar vacio");
         resultado = 'Error';
     }
     if (productos_idproductos == '') {
 
-        alert("El saldo no puede estar vacia");
+        alert("El producto no puede estar vacia");
         resultado = 'Error';
     }
     if (movimiento_idmovimiento == '') {
 
-        alert("El saldo no puede estar vacia");
+        alert("El movimiento no puede estar vacia");
         resultado = 'Error';
     }
     $('#txt_Bandera_Reg').val(resultado);

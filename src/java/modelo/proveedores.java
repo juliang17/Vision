@@ -47,6 +47,5 @@ public class proveedores {
     public void setTelefonoproveedores(int telefonoproveedores) {
         this.telefonoproveedores = telefonoproveedores;
     }
-    
-    
+  
 }

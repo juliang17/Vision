@@ -4,6 +4,7 @@ public class medio_de_pago {
     
     private String idMedioDePago;
     private String descripcionmediodepago;
+    private int referencia_pago;
 
     public String getIdMedioDePago() {
         return idMedioDePago;
@@ -21,4 +22,13 @@ public class medio_de_pago {
         this.descripcionmediodepago = descripcionmediodepago;
     }
 
+    public int getReferencia_pago() {
+        return referencia_pago;
+    }
+
+    public void setReferencia_pago(int referencia_pago) {
+        this.referencia_pago = referencia_pago;
+    }
+
+    
 }

@@ -36,31 +36,36 @@ public class ActualizarMovimiento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        String numero_documento = request.getParameter("numero_documento");
         String fechamovimiento = request.getParameter("fechamovimiento");
         String subtotal = request.getParameter("subtotal");
         String iva = request.getParameter("iva");
-        String descuento = request.getParameter("descuento");
+        String estadoMov = request.getParameter("estadoMov");
         String total = request.getParameter("total");
-        String tipo_doc_contable_idtipodoccontable = request.getParameter("tipo_doc_contable_idtipodoccontable");
+        String usuarios_idusuarios = request.getParameter("usuarios_idusuarios");
+        String tipo_mov_id_tipo_mov = request.getParameter("tipo_mov_id_tipo_mov");
         String medio_de_pago_idMedioDePago = request.getParameter("medio_de_pago_idMedioDePago");
 
         int sub = Integer.parseInt(subtotal);
         int Iv = Integer.parseInt(iva);
-        int des = Integer.parseInt(descuento);
         int tot = Integer.parseInt(total);
-        int TipoDocC = Integer.parseInt(tipo_doc_contable_idtipodoccontable);
+        int usuarios = Integer.parseInt(usuarios_idusuarios);
+        int TipoMov = Integer.parseInt(tipo_mov_id_tipo_mov);
         int medio = Integer.parseInt(medio_de_pago_idMedioDePago);
+        int estadoM = Integer.parseInt(estadoMov);
 
         movimientoDAO MovDAO = new movimientoDAO();
         movimiento Mov = new movimiento();
 
+        Mov.setNumero_documento(numero_documento);
         Mov.setFechamovimiento(fechamovimiento);
         Mov.setSubtotal(sub);
         Mov.setIva(Iv);
-        Mov.setDescuento(des);
+        Mov.setEstadoMov(estadoM);
         Mov.setTotal(tot);
-        Mov.setTipo_doc_contable_idtipodoccontable(TipoDocC);
+        Mov.setUsuarios_idusuarios(usuarios);
         Mov.setMedio_de_pago_idmediodepago(medio);
+        Mov.setTipo_mov_id_tipo_mov(TipoMov);
 
         System.out.println("fecha de movimiento " + fechamovimiento);
         String respuestaRegistrada = MovDAO.ActualizarMovimiento(Mov);

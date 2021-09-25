@@ -11,6 +11,7 @@ function validacionProducto() {
     var marca_idmarca = document.getElementById("marca_idmarca").value;
     var proveedores_idproveedores = document.getElementById("proveedores_idproveedores").value;
     var unidad_de_medida_idunidadmedida = document.getElementById("unidad_de_medida_idunidadmedida").value;
+    var estado_producto_idestado_producto = document.getElementById("estado_producto_idestado_producto").value;
 
     console.log("-- Informacion a validar -- ");
     console.log("referenciaproducto : " + referenciaproducto);
@@ -23,6 +24,7 @@ function validacionProducto() {
     console.log("marca_idmarca : " + marca_idmarca);
     console.log("proveedores_idproveedores : " + proveedores_idproveedores);
     console.log("unidad_de_medida_idunidadmedida : " + unidad_de_medida_idunidadmedida);
+    console.log("estado_producto_idestado_producto : " + estado_producto_idestado_producto)
 
     if (referenciaproducto == '') {
 
@@ -77,6 +79,8 @@ function validacionProducto() {
 
         alert("La unidad de medida no puede estar vacia");
         resultado = 'Error';
+    } else if(estado_producto_idestado_producto == ''){
+        alert("El estado del producto no puede estar vacio")
     } else {
         resultado = 'Correcto';
     }
@@ -116,6 +120,11 @@ function setMarca(x) {
 function setUnidad(x) {
 
     $('#unidad_de_medida_idunidadmedida').val(x);
+    console.log("valor : " + x);
+}
+function setEstado(x){
+    
+    $('#estado_producto_idestado_producto').val(x);
     console.log("valor : " + x);
 }
 

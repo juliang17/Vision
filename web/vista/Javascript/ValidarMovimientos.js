@@ -1,24 +1,33 @@
 function validacionMovimiento() {
 
     var resultado = 'Correcto';
-    var fechamovimiento = $("#txt_fechamovimiento_Reg").val;
-    var subtotal = $("#txt_subtotal_Reg").val;
-    var iva = $("#txt_iva_Reg").val;
-    var descuento = $("#txt_descuento_Reg").val;
-    var total = $("#txt_total_Reg").val;
-    var tipo_doc_contable_idtipodoccontable = $("#txt_tipo_doc_contable_idtipodoccontable_Reg").val;
-    var medio_de_pago_idmediodepago = $("#txt_medio_de_pago_idmediodepago_Reg").val;
+    var numero_documento = document.getElementById("numero_documento").value;
+    var fechamovimiento = document.getElementById("fechamovimiento").value;
+    var subtotal = document.getElementById("subtotal").value;
+    var iva = document.getElementById("iva").value;
+    var estadoMov = document.getElementById("estadoMov").value;
+    var total = document.getElementById("total").value;
+    var usuarios_idusuarios = document.getElementById("usuarios_idusuarios").value;
+    var tipo_mov_id_tipo_mov = document.getElementById("tipo_mov_id_tipo_mov").value;
+    var medio_de_pago_idmediodepago = document.getElementById("medio_de_pago_idmediodepago");
 
     console.log("-- Informacion a validar -- ");
+    console.log("numero_documento :" + numero_documento);
     console.log("fechamovimiento : " + fechamovimiento);
     console.log("subtotal : " + subtotal);
     console.log("iva : " + iva);
-    console.log("descuento : " + descuento);
+    console.log("estadoMov : " + estadoMov);
     console.log("total : " + total);
-    console.log("TipoDocC : " + tipo_doc_contable_idtipodoccontable);
+    console.log("usuarios_idusuarios : " + usuarios_idusuarios);
+    console.log("tipo_mov_id_tipo_mov : " + tipo_mov_id_tipo_mov);
     console.log("Medio de pago : " + medio_de_pago_idmediodepago);
 
 
+    if (numero_documento == '') {
+
+        alert("El documento no puede estar vacio");
+        resultado = 'Error';
+    }
     if (fechamovimiento == '') {
 
         alert("La fecha de movimiento no puede estar vacia");
@@ -34,9 +43,9 @@ function validacionMovimiento() {
         alert("El iva no puede estar vacia");
         resultado = 'Error';
     }
-    if (descuento == '') {
+    if (estadoMov == '') {
 
-        alert("El descuento no puede estar vacio");
+        alert("El estado de movimiento no puede estar vacio");
         resultado = 'Error';
     }
     if (total == '') {
@@ -44,9 +53,13 @@ function validacionMovimiento() {
         alert("El total no puede estar vacio");
         resultado = 'Error';
     }
-    if (tipo_doc_contable_idtipodoccontable == '') {
+    if (usuarios_idusuarios == '') {
+        alert("El usuario no puede estar vacio");
+        resultado = 'Error';
+    }
+    if (tipo_mov_id_tipo_mov == '') {
 
-        alert("El tipo de documento contable no puede estar vacio");
+        alert("El tipo de movimiento no puede estar vacio");
         resultado = 'Error';
     }
     if (medio_de_pago_idmediodepago == '') {
@@ -65,12 +78,17 @@ function validacionMovimiento() {
         return false;
     }
 }
-function settipo_doc_contable_idtipodoccontable(x) {
-    $('#txt_tipo_doc_contable_idtipodoccontable_Reg').val(x);
+function setusuarios_idusuarios(x){
+    $('#usuarios_idusuarios').val(x);
+    console.log("valor : " + x);
+}
+
+function settipo_mov_id_tipo_mov(x) {
+    $('#tipo_mov_id_tipo_mov').val(x);
     console.log("valor : " + x);
 }
 function setmedio_de_pago_idmediodepago(x) {
-    $('#txt_medio_de_pago_idmediodepago_Reg').val(x);
+    $('#medio_de_pago_idmediodepago').val(x);
     console.log("valor : " + x);
 }
 

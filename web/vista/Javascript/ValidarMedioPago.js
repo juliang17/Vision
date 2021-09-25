@@ -2,16 +2,20 @@ function validarMedioPago() {
 
     var resultado = 'Correcto';
     var MedioPago = document.getElementById("txt_descripcionmediodepago_Reg").value;
+    var referencia_pago = document.getElementById("txt_referenciapago").value;
 
 
     console.log("-- Informacion a validar -- ");
     console.log("MedioPago : " + MedioPago);
+    console.log("referencia_pago : " + referencia_pago);
 
 
     if (MedioPago == '') {
 
         alert("El medio de pago no puede estar vacio");
         resultado = 'Error';
+    } if (referencia_pago == ''){
+     alert("La referencia de pago no puede estar vacia")   
     }
     $('#txt_Bandera_Reg').val(resultado);
     console.log('Resultado:' + $('#txt_Bandera_Reg').val());

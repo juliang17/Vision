@@ -281,28 +281,28 @@
         <url-pattern>/RegistrarDetalle</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ActualizarTipoMovimiento</servlet-name>
-        <servlet-class>servlet.ActualizarTipoMovimiento</servlet-class>
+        <servlet-name>ActualizarTipoMov</servlet-name>
+        <servlet-class>servlet.ActualizarTipoMov</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ActualizarTipoMovimiento</servlet-name>
-        <url-pattern>/ActualizarTipoMovimiento</url-pattern>
+        <servlet-name>ActualizarTipoMov</servlet-name>
+        <url-pattern>/ActualizarTipoMov</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ConsultarTipoMovimiento</servlet-name>
-        <servlet-class>servlet.ConsultarTipoMovimiento</servlet-class>
+        <servlet-name>ConsultarTipoMov</servlet-name>
+        <servlet-class>servlet.ConsultarTipoMov</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ConsultarTipoMovimiento</servlet-name>
-        <url-pattern>/ConsultarTipoMovimiento</url-pattern>
+        <servlet-name>ConsultarTipoMov</servlet-name>
+        <url-pattern>/ConsultarTipoMov</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>RegistrarTipoMovimiento</servlet-name>
-        <servlet-class>servlet.RegistrarTipoMovimiento</servlet-class>
+        <servlet-name>RegistrarTipoMov</servlet-name>
+        <servlet-class>servlet.RegistrarTipoMov</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RegistrarTipoMovimiento</servlet-name>
-        <url-pattern>/RegistrarTipoMovimiento</url-pattern>
+        <servlet-name>RegistrarTipoMov</servlet-name>
+        <url-pattern>/RegistrarTipoMov</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>ActualizarTipoDocumentoC</servlet-name>
@@ -391,6 +391,46 @@
     <servlet-mapping>
         <servlet-name>RegistrarMovimiento</servlet-name>
         <url-pattern>/RegistrarMovimiento</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ActualizarEstadoProducto</servlet-name>
+        <servlet-class>servlet.ActualizarEstadoProducto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActualizarEstadoProducto</servlet-name>
+        <url-pattern>/ActualizarEstadoProducto</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConsultarEstadoProducto</servlet-name>
+        <servlet-class>servlet.ConsultarEstadoProducto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultarEstadoProducto</servlet-name>
+        <url-pattern>/ConsultarEstadoProducto</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RegistrarEstadoProducto</servlet-name>
+        <servlet-class>servlet.RegistrarEstadoProducto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrarEstadoProducto</servlet-name>
+        <url-pattern>/RegistrarEstadoProducto</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>grabarFactura</servlet-name>
+        <servlet-class>servlet.grabarFactura</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>grabarFactura</servlet-name>
+        <url-pattern>/grabarFactura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>agregarCarrito</servlet-name>
+        <servlet-class>servlet.agregarCarrito</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>agregarCarrito</servlet-name>
+        <url-pattern>/agregarCarrito</url-pattern>
     </servlet-mapping>
     
     <session-config>

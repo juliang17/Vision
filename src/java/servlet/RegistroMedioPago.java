@@ -37,12 +37,16 @@ public class RegistroMedioPago extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         String Medio = request.getParameter("descripcionmediodepago");
+        String referencia_pago = request.getParameter("referencia_pago");
         String BanderaEstado = request.getParameter("BanderaRegistro");
+        
+        int referencia = Integer.parseInt(referencia_pago);
         
         mediodepagoDAO MedioPagoDAO = new mediodepagoDAO();
         medio_de_pago MedioPago = new medio_de_pago();
         
         MedioPago.setDescripcionmediodepago(Medio);
+        MedioPago.setReferencia_pago(referencia);
         
         System.out.println("El valor es " + BanderaEstado);
         if (BanderaEstado.equals("Correcto")) {

@@ -36,14 +36,18 @@ public class ActualizarTipodocumento extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        String id = request.getParameter("idtipodoc");
         String descripciontipodoc = request.getParameter("descripciontipodoc");
+        
+        int idTipoDoc = Integer.parseInt(id);
         
         tipo_documentoDAO mitipodocDAO = new tipo_documentoDAO();
         tipo_documento mitipodoc = new tipo_documento();
         
+        mitipodoc.setIdtipodoc(id);
         mitipodoc.setDescripciontipodoc(descripciontipodoc);
         
-        System.out.println(" Descripcion: " + descripciontipodoc);
+        System.out.println(" Id: " + id);
         String respuestaRegistrada = mitipodocDAO.Atualizartipo_documento(mitipodoc);
         if (respuestaRegistrada.length() == 0) {
             out.println("<script type=\"text/javascript\">");
@@ -53,7 +57,7 @@ public class ActualizarTipodocumento extends HttpServlet {
             out.println("</script>");
         } else {
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('" + "No se ha podido relizar la actualizacion." + "\n" + respuestaRegistrada + "');");
+            out.println("alert('" + "No se ha podido realizar la actualizacion." + "\n" + respuestaRegistrada + "');");
             out.println("</script>");
         }
     }

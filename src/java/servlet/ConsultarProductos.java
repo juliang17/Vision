@@ -42,6 +42,7 @@ public class ConsultarProductos extends HttpServlet {
                             + "Marca=" + p.getMarca_idmarca() + "&"
                             + "Unidad=" + p.getUnidad_de_medida_idunidadmedida() + "&"
                             + "Proveedor=" + p.getProveedores_idproveedores() + "&"
+                            + "EstadoP" + p.getEstado_producto_idestado_producto() + "&"
                             + "Vista=" + "Actualizar" + "&");
 
                     System.out.println("Salio");
