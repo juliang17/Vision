@@ -432,6 +432,14 @@
         <servlet-name>agregarCarrito</servlet-name>
         <url-pattern>/agregarCarrito</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoverProducto</servlet-name>
+        <servlet-class>servlet.RemoverProducto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoverProducto</servlet-name>
+        <url-pattern>/RemoverProducto</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <session-timeout>

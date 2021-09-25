@@ -111,7 +111,7 @@
                             <% subtotal = subtotal + d.getSubtotal(); %>
                             <% iva = iva + d.getIva(); %>
                             <% total = total + d.getTotal_producto();%>
-                            <td><a href="../../VISION/removerElementoCarrito?txteli=<%=d.getProductos_idproductos()%>" class="btn btn-danger" >Eliminar</a></td>
+                            <td><a href="../../../VISION/RemoverProducto?txtcod=<%=d.getProductos_idproductos()%>" class="btn btn-danger" >Eliminar</a></td>
                         </tr>    
                         <%
                                 }
